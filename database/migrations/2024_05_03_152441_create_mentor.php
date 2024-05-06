@@ -12,15 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mentor', function (Blueprint $table) {
-            $table->id('MentorID');
+            $table->string('MentorID')->primary();
             $table->string('EducationLevel');
-            $table->string('name');
-            $table->string('position');
-            $table->text('experience');
-            $table->integer('PhoneNumber');
-            $table->string('Username');//foreign key for username
-            $table->foreign('username')->references('username')->on('UserProfile')->onDelete('cascade');
+            $table->string('Username');
+            $table->string('Name');
+            $table->text('position')->nullable();
+            $table->text('Experience')->nullable();
+            $table->integer('PhoneNumber')->nullable();
             $table->timestamps();
+
+            // Foreign key constraint
+            $table->foreign('Username')->references('username')->on('user_profile');
         });
     }
 
