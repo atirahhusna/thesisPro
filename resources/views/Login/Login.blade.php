@@ -86,7 +86,7 @@
                 </div>
                 <div class="text-center">
                   <h1 >Welcome to ThesisPro!</h1>
-                  <br><br>
+                  <br><br><br>
                 </div>
               </div>
 
