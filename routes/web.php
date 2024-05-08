@@ -8,3 +8,5 @@ Route::get('/', function () {
 });
 
 Route::resource('Login',LoginController::class);
+
+Route::resource('publication',PublicationController::class);
