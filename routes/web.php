@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\http\Controllers\LoginController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PublicationController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('Login',LoginController::class);
+Route::resource('/login',LoginController::class);
 
-Route::resource('publication',PublicationController::class);
+Route::resource('publications',PublicationController::class);
