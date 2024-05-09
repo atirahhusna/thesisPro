@@ -9,10 +9,17 @@ class PublicationController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function ReportViewer()
+    {
+        return view('PublicationData.ReportViewer');
+    }
+
+
     public function index()
     {
-        return 'HI';
+        return view('PublicationData.PublicationManager');
     }
+    
 
     /**
      * Show the form for creating a new resource.
