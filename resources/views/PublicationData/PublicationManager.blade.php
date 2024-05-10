@@ -55,8 +55,9 @@
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 16px;
+        font-size: 14px;
         cursor: pointer;
+        font-weight: bold;
         }
 
         li.button.button1 button{border-radius:20px;}
@@ -87,7 +88,7 @@
 		<li  class="navigation" style = "padding-top:10px"><a href="#news"  class="navigation">NEWS</a></li>
 		<li  class="navigation" style = "padding-top:10px"><a href="#contact" class="navigation" >CONTACT</a></li>
 		<li  class="navigation" style = "padding-top:10px; margin-right: 30px;"><a href="#about" class="navigation">ABOUT</a></li>
-    <li  class="button button1"><button type="button" onclick="">ADD PUBLICATION</button></li>
+    <li  class="button button1"><button type="button" onclick="">ADD PUBLICATION ></button></li>
         
 	</ul>
 
