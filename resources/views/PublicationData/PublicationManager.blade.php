@@ -10,6 +10,11 @@
 
     <style>
 
+      body
+      {<!-- class = . , id = # -->
+        font-family: "Times New Roman", Times, serif;
+      }
+
         ul.navigation{ 
         list-style-type: none;
         margin: 0;
@@ -31,8 +36,37 @@
         }
         
         li a:hover{
-        background-color: #987;
+          text-decoration: underline;
+          color: #054bb4;
+          
         }
+
+        #content{
+          background-color: #658CC2;
+          height: 500px;
+        }
+
+        li.button button {
+        background-color: #054BB4;
+        border:none;
+        color: white;
+        margin-top:15px;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        }
+
+        li.button.button1 button{border-radius:20px;}
+
+        li.button.button1 button:hover {
+        background-color: black; /* change background color on hover */
+        text:white;
+}
+
+       
 
     </style>
   </head>
@@ -44,20 +78,27 @@
 <div id="class">
 
 <ul class="navigation">
-        <li ><img src="../resources/views/logo.jpg" alt="logo" width="500" height="300"></li>
-		<li class="navigation" ><a href="#home"  class="navigation">HOME</a></li>
-		<li  class="navigation"><a href="#news"  class="navigation">NEWS</a></li>
-		<li  class="navigation"><a href="#contact" class="navigation" >CONTACT</a></li>
-		<li  class="navigation"s><a href="#about" class="navigation">ABOUT</a></li>
-        <li class="navigation" ><a href="#home"  class="navigation">HOME</a></li>
-		<li  class="navigation"><a href="#news"  class="navigation">NEWS</a></li>
-		<li  class="navigation"><a href="#contact" class="navigation" >CONTACT</a></li>
-		<li  class="navigation"><a href="#about" class="navigation">ABOUT</a></li>
-        <li ><button type="button" onclick="">Add Publication</button></li>
+    <li class="navigation" style="margin-left: 150px; margin-right: 300px;" ><img src="{{ URL('images/logo.jpg') }}" alt="logo" width="80" height="80"></li>
+		<li class="navigation" style = "padding-top:10px;"><a href="#home"  class="navigation">HOME</a></li>
+		<li  class="navigation" style = "padding-top:10px"><a href="#news"  class="navigation">NEWS</a></li>
+		<li  class="navigation" style = "padding-top:10px"><a href="#contact" class="navigation" >CONTACT</a></li>
+		<li  class="navigation" style = "padding-top:10px"><a href="#about" class="navigation">ABOUT</a></li>
+    <li class="navigation" style = "padding-top:10px"><a href="#home"  class="navigation">HOME</a></li>
+		<li  class="navigation" style = "padding-top:10px"><a href="#news"  class="navigation">NEWS</a></li>
+		<li  class="navigation" style = "padding-top:10px"><a href="#contact" class="navigation" >CONTACT</a></li>
+		<li  class="navigation" style = "padding-top:10px; margin-right: 30px;"><a href="#about" class="navigation">ABOUT</a></li>
+    <li  class="button button1"><button type="button" onclick="">ADD PUBLICATION</button></li>
         
 	</ul>
 
 </div>
+
+<div id="content">
+  <p>content</p>
+
+</div>
+
+
 	
 
 </body>
