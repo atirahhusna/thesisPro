@@ -4,15 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class PublicationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function ReportViewer()
+    {
+        return view('PublicationData.ReportViewer');
+    }
+
+
     public function index()
     {
-        return view('Login.Login');
+        return view('PublicationData.PublicationManager');
     }
+    
 
     /**
      * Show the form for creating a new resource.

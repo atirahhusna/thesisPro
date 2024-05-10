@@ -10,21 +10,19 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('_report', function (Blueprint $table) {
-            $table->id('ReportID');
-            $table->date('Date');
-            $table->string('description');
-            $table->string('Comment');
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('publication', function (Blueprint $table) {
+        $table->id('publicationID'); // Primary key named publicationID
+        $table->string('name'); // Name attribute
+        $table->timestamps();
+    });
+}
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('_report');
+        Schema::dropIfExists('publication');
     }
 };
