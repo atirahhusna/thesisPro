@@ -11,16 +11,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('Login',LoginController::class);
 
-Route::resource('publications',PublicationController::class);
+//Route login
+
 Route::get('/PlatinumPage', [PlatinumController::class, 'platinumPage']);
 Route::get('/Login', [LoginController::class, 'Login']);
 Route::get('/ForgotPassword', [LoginController::class, 'ForgotPassword']);
-Route::resource('login',LoginController::class);
+
 
 //Route::resource('publications',PublicationController::class);
-
+Route::resource('publications',PublicationController::class);
 Route::get('/publications', [PublicationController::class , 'index']);
 Route::get('/manager', [PublicationController::class , 'index']);
 Route::get('/publicationReport', [PublicationController::class , 'ReportViewer']);
