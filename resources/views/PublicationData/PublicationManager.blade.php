@@ -174,10 +174,18 @@
     #footer{
       background-color: #ffffff;
       text-align:justify;
+      padding-top:10px;
     }
 
     h3{
       padding-left:30px;
+    }
+
+    hr{
+      border: 2px solid black;
+      width:1100px;
+      margin-left: auto; 
+      margin-right: auto;
     }
 
     </style>
@@ -239,8 +247,9 @@
       <p>Drag file to upload</p>
       </div>
       <div class="button-container">
-          <button type="submit">Submit</button>
           <button type="reset">Reset</button>
+          <button type="submit">Submit</button>
+        
       </div>
       
 
@@ -311,16 +320,13 @@
 
     <table class="center">
       <tr>
-        <td class="column"><img src="{{ URL('images/logo.jpg') }}" alt="logo" width="200" height="200" ></td>
-        <td style="width:800px;"><p>THESISPRO is a premier academic platform designed to support postgraduate students in managing and showcasing their scholarly work. Our system offers a comprehensive suite of tools for editing, publishing, and sharing research and publications within expert domains. By facilitating seamless interactions among students, mentors, and staff, ProThesis aims to enhance academic collaboration and promote excellence in research and education.</p></td>
+        <td class="column"><img src="{{ URL('images/logo.jpg') }}" alt="logo" width="150" height="150" ></td>
+        <td style="width:800px;"><p>THESISPRO is a premier academic platform designed to support postgraduate students in managing and showcasing their scholarly work. Our system offers a comprehensive suite of tools for editing, publishing, and sharing research and publications within expert domains. By facilitating seamless interactions among students, mentors, and staff, THESISPRO aims to enhance academic collaboration and promote excellence in research and education.</p></td>
       </tr>
-
-      <tr>
-      <td colspan="2"><p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p></td>
-      </tr>
-      
-
    </table>
+   <hr>
+   <p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p>
+   
 
 </div>
 
