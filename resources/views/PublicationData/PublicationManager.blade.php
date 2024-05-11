@@ -41,11 +41,6 @@
           
         }
 
-        #content{
-          background-color: #658CC2;
-          height: 500px;
-        }
-
         li.button button {
         background-color: #054BB4;
         border:none;
@@ -65,9 +60,125 @@
         li.button.button1 button:hover {
         background-color: black; /* change background color on hover */
         text:white;
-}
+        }
 
-       
+      input[type=text]{
+          margin-bottom: 20px;
+          width: 300px;
+          height: 50px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          resize: none;
+          
+        }
+
+        #upload{
+          padding-left: 100px;
+          background-color: #ffffff;
+          width: 300px;
+          height: 300px;
+          border: 2px solid blue;
+          padding: 50px;
+          margin: 20px;
+          text-align:center;
+          padding-top:80px;
+        }
+
+        table.center {
+          margin-left: auto; 
+          margin-right: auto;
+        }
+
+        textarea {
+          width: 300px;
+          height: 150px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          resize: none;
+        }
+
+        .column{
+          padding-right:100px;
+        }
+
+        input[type=submit], input[type=reset], input[type=reset]{
+        border-style: double;
+        color: #ffffff;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007BFF;
+        margin-top: 20px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .button-container button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color:  #054BB4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button-container button:hover {
+        background-color: black;
+    }
+
+    #add{
+      background-color: #658CC2;
+      padding-top:40px;
+      padding-bottom:40px;
+    }
+
+    #viewSearchDelete{
+      padding-top:40px;
+      padding-bottom:40px;
+      background-color: #ffffff;
+    }
+
+    #list{
+          padding-left: 100px;
+          background-color: #ffffff;
+          width: 1400px;
+          height: 300px;
+          border: 2px solid blue;
+          padding: 50px;
+          margin: 20px;
+          text-align:center;
+          padding-top:80px;
+        }
+
+    #edit{
+      padding-top:40px;
+      padding-bottom:40px;
+      background-color: #658CC2;
+    }
+
+    #footer{
+      background-color: #ffffff;
+      text-align:justify;
+    }
+
+    h3{
+      padding-left:30px;
+    }
 
     </style>
   </head>
@@ -81,7 +192,7 @@
 <ul class="navigation">
     <li class="navigation" style="margin-left: 150px; margin-right: 300px;" ><img src="{{ URL('images/logo.jpg') }}" alt="logo" width="80" height="80"></li>
 		<li class="navigation" style = "padding-top:10px;"><a href="#home"  class="navigation">HOME</a></li>
-		<li  class="navigation" style = "padding-top:10px"><a href="#news"  class="navigation">NEWS</a></li>
+		<li  class="navigation" style = "padding-top:10px"><a href="#news"  class="navigation">MY PUBLICATION</a></li>
 		<li  class="navigation" style = "padding-top:10px"><a href="#contact" class="navigation" >CONTACT</a></li>
 		<li  class="navigation" style = "padding-top:10px"><a href="#about" class="navigation">ABOUT</a></li>
     <li class="navigation" style = "padding-top:10px"><a href="#home"  class="navigation">HOME</a></li>
@@ -95,7 +206,121 @@
 </div>
 
 <div id="content">
-  <p>content</p>
+  <div id="add">
+  <h3>Add a New Publication</h3>
+
+  <table class="center">
+
+    <tr>
+
+      <td class="column">
+      <p style="margin-bottom:5px;">Title</p>
+      <input type="text" id="title" name="title" placeholder="Enter publication title"  class="input-width" required>
+      <p style="margin-bottom:5px;">DOI</p>
+      <input type="text" id="DOI"  name="DOI" placeholder="Enter DOI" required>
+      <p style="margin-bottom:5px;">Abstract</p>
+      <textarea name="abstract" rows="9" column="63" placeholder="Enter publication abstract"></textarea>   
+      </td>
+
+      <td class="column">
+      <p style="margin-bottom:5px;">Keywords</p>
+      <input type="text" id="keywords" name="keywords" placeholder="Enter publication keywords"  required>
+      <p style="margin-bottom:5px;">Authors</p>
+      <input type="text" id="authors" name="authors" placeholder="Enter publication authors"  required>
+      <p style="margin-bottom:5px;">Instituition/Affiliation</p>
+      <input type="text" id="instituition" name="instituition" placeholder="Enter publication instituition" required>
+      <p style="margin-bottom:5px;">Publication Types</p>
+      <input type="text" id="types" name="types" placeholder="Enter publication types" required>
+      </td>
+
+      <td>
+      <div id="upload">
+      <img src="{{ URL('images/upload.jpg') }}" alt="upload" width="80" height="80" >
+      <p>Drag file to upload</p>
+      </div>
+      <div class="button-container">
+          <button type="submit">Submit</button>
+          <button type="reset">Reset</button>
+      </div>
+      
+
+      </td>
+
+    </tr>
+
+  </table>
+  </div>
+
+  <div id="viewSearchDelete">
+    <h3>My Publications</h3>
+
+    <div id="list">
+
+    </div>
+  </div>
+
+  <div id="edit">
+  <h3>Edit Publications</h3>
+
+  <table class="center">
+
+    <tr>
+
+      <td class="column">
+      <p style="margin-bottom:5px;">Title</p>
+      <input type="text" id="title" name="title" placeholder="Enter publication title"  class="input-width" required>
+      <p style="margin-bottom:5px;">DOI</p>
+      <input type="text" id="DOI"  name="DOI" placeholder="Enter DOI" required>
+      <p style="margin-bottom:5px;">Abstract</p>
+      <textarea name="abstract" rows="9" column="63" placeholder="Enter publication abstract"></textarea>   
+      </td>
+
+      <td class="column">
+      <p style="margin-bottom:5px;">Keywords</p>
+      <input type="text" id="keywords" name="keywords" placeholder="Enter publication keywords"  required>
+      <p style="margin-bottom:5px;">Authors</p>
+      <input type="text" id="authors" name="authors" placeholder="Enter publication authors"  required>
+      <p style="margin-bottom:5px;">Instituition/Affiliation</p>
+      <input type="text" id="instituition" name="instituition" placeholder="Enter publication instituition" required>
+      <p style="margin-bottom:5px;">Publication Types</p>
+      <input type="text" id="types" name="types" placeholder="Enter publication types" required>
+      </td>
+
+      <td>
+      <div id="upload">
+      <img src="{{ URL('images/upload.jpg') }}" alt="upload" width="80" height="80" >
+      <p>Drag file to upload</p>
+      </div>
+      <div class="button-container">
+          <button type="save">Save</button>
+          <button type="submit">Submit</button>
+      </div>
+      
+
+      </td>
+
+    </tr>
+
+  </table>
+
+  </div>
+
+</div>
+
+<div id="footer">
+
+    <table class="center">
+      <tr>
+        <td class="column"><img src="{{ URL('images/logo.jpg') }}" alt="logo" width="200" height="200" ></td>
+        <td style="width:800px;"><p>THESISPRO is a premier academic platform designed to support postgraduate students in managing and showcasing their scholarly work. Our system offers a comprehensive suite of tools for editing, publishing, and sharing research and publications within expert domains. By facilitating seamless interactions among students, mentors, and staff, ProThesis aims to enhance academic collaboration and promote excellence in research and education.</p></td>
+      </tr>
+
+      <tr>
+      <td colspan="2"><p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p></td>
+      </tr>
+      
+
+   </table>
 
 </div>
 
