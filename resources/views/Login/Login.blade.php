@@ -13,7 +13,7 @@
 <section class="background-radial-gradient overflow-hidden">
   <style>
     .background-radial-gradient {
-      background-color: hsl(218, 41%, 15%);
+      background-color: #054bb4(218, 41%, 15%);
       background-image: radial-gradient(650px circle at 0% 0%,
           hsl(218, 41%, 35%) 15%,
           hsl(218, 41%, 30%) 35%,
@@ -37,7 +37,7 @@
       width: 220px;
       top: -60px;
       left: -130px;
-      background: radial-gradient(#44006b, #ad1fff);
+      background: radial-gradient(#658cc2, #2e5caf);
       overflow: hidden;
       background-size: cover; /* Cover the entire background */
     }
@@ -48,13 +48,13 @@
       right: -110px;
       width: 300px;
       height: 300px;
-      background: radial-gradient(#44006b, #ad1fff);
+      background: radial-gradient(#658cc2, #2e5caf);
       overflow: hidden;
       background-size: cover; /* Cover the entire background */
     }
 
     .bg-glass {
-      background-color: hsla(0, 0%, 100%, 0.9) !important;
+      background-color: #5d6169(0, 0%, 100%, 0.9) !important;
       backdrop-filter: saturate(200%) blur(25px);
       background-size: cover; /* Cover the entire background */
     }
@@ -86,7 +86,7 @@
                 </div>
                 <div class="text-center">
                   <h1 >Welcome to ThesisPro!</h1>
-                  <br><br><br>
+                  <br><br>
                 </div>
               </div>
 
@@ -100,9 +100,15 @@
               <div data-mdb-input-init class="form-outline mb-4">
                 <input type="password" id="form3Example4" class="form-control" />
                 <label class="form-label" for="form3Example4">Password</label>
-              </div>
 
-              
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Select your category</option>
+                    <option value="1">Platinum</option>
+                    <option value="2">Staff</option>
+                    <option value="3">Mentor</option>
+                  </select>
+                    
+              </div>
 
               <!-- Submit button -->
               <div class="text-center">
