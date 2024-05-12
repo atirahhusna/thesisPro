@@ -278,19 +278,18 @@
                     </div>
                 </div>
             </div>
-            <div id="footer">
-
-<table class="center">
+            <table class="center" style="margin: 0 auto;">
   <tr>
-    <td class="column"><img src="{{ URL('images/logo.jpg') }}" alt="logo" width="150" height="150" ></td>
-    <td style="width:800px;"><p>THESISPRO is a premier academic platform designed to support postgraduate students in managing and showcasing their scholarly work. Our system offers a comprehensive suite of tools for editing, publishing, and sharing research and publications within expert domains. By facilitating seamless interactions among students, mentors, and staff, THESISPRO aims to enhance academic collaboration and promote excellence in research and education.</p></td>
+    <td class="column" style="text-align: center;">
+      <img src="{{ URL('images/logo.jpg') }}" alt="logo" width="150" height="150">
+    </td>
+    <td style="width: 800px; text-align: justify;">
+      <p>THESISPRO is a premier academic platform designed to support postgraduate students in managing and showcasing their scholarly work. Our system offers a comprehensive suite of tools for editing, publishing, and sharing research and publications within expert domains. By facilitating seamless interactions among students, mentors, and staff, THESISPRO aims to enhance academic collaboration and promote excellence in research and education.</p>
+    </td>
   </tr>
 </table>
 <hr>
 <p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p>
-
-
-</div>
         </div>
     </div>
     
