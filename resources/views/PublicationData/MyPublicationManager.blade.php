@@ -200,8 +200,8 @@
 <ul class="navigation">
     <li class="navigation" style="margin-left: 150px; margin-right: 300px;" ><img src="{{ URL('images/logo.jpg') }}" alt="logo" width="80" height="80"></li>
 		<li class="navigation" style = "padding-top:10px;"><a href="#home"  class="navigation">HOME</a></li>
-		<li  class="navigation" style = "padding-top:10px"><a href="#news"  class="navigation">MY PUBLICATION</a></li>
-		<li  class="navigation" style = "padding-top:10px"><a href="#contact" class="navigation" >CONTACT</a></li>
+		<li  class="navigation" style = "padding-top:10px"><a href="http://127.0.0.1:8000/publicationManager"  class="navigation">MY PUBLICATION</a></li>
+		<li  class="navigation" style = "padding-top:10px"><a href="http://127.0.0.1:8000/publicationReport" class="navigation" >REPORT</a></li>
 		<li  class="navigation" style = "padding-top:10px"><a href="#about" class="navigation">ABOUT</a></li>
     <li class="navigation" style = "padding-top:10px"><a href="#home"  class="navigation">HOME</a></li>
 		<li  class="navigation" style = "padding-top:10px"><a href="#news"  class="navigation">NEWS</a></li>
