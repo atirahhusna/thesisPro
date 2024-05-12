@@ -120,6 +120,183 @@
             border-left: 3px solid #3b7ddd;
         }
 
+        body
+      {<!-- class = . , id = # -->
+        font-family: "Times New Roman", Times, serif;
+      }
+
+        ul.navigation{ 
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #fffff;
+        }
+        
+        li.navigation {
+        float:left;
+        }
+        
+        li a.navigation {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+        
+        li a:hover{
+          text-decoration: underline;
+          color: #054bb4;
+          
+        }
+
+        li.button button {
+        background-color: #054BB4;
+        border:none;
+        color: white;
+        margin-top:15px;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: bold;
+        }
+
+        li.button.button1 button{border-radius:20px;}
+
+        li.button.button1 button:hover {
+        background-color: black; /* change background color on hover */
+        text:white;
+        }
+
+      input[type=text]{
+          margin-bottom: 20px;
+          width: 300px;
+          height: 50px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          resize: none;
+          
+        }
+
+        #upload{
+          padding-left: 100px;
+          background-color: #ffffff;
+          width: 300px;
+          height: 300px;
+          border: 2px solid blue;
+          padding: 50px;
+          margin: 20px;
+          text-align:center;
+          padding-top:80px;
+        }
+
+        table.center {
+          margin-left: auto; 
+          margin-right: auto;
+        }
+
+        textarea {
+          width: 300px;
+          height: 150px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          resize: none;
+        }
+
+        .column{
+          padding-right:100px;
+        }
+
+        input[type=submit], input[type=reset], input[type=reset]{
+        border-style: double;
+        color: #ffffff;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007BFF;
+        margin-top: 20px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .button-container button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color:  #054BB4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button-container button:hover {
+        background-color: black;
+    }
+
+    #add{
+      background-color: #658CC2;
+      padding-top:40px;
+      padding-bottom:40px;
+    }
+
+    #viewSearchDelete{
+      padding-top:40px;
+      padding-bottom:40px;
+      background-color: #ffffff;
+    }
+
+    #list{
+          padding-left: 100px;
+          background-color: #ffffff;
+          width: 1400px;
+          height: 300px;
+          border: 2px solid blue;
+          padding: 50px;
+          margin: 20px;
+          text-align:center;
+          padding-top:80px;
+        }
+
+    #edit{
+      padding-top:40px;
+      padding-bottom:40px;
+      background-color: #658CC2;
+    }
+
+    #footer{
+      background-color: #ffffff;
+      text-align:justify;
+      padding-top:10px;
+    }
+
+    h3{
+      padding-left:30px;
+    }
+
+    hr{
+      border: 2px solid black;
+      width:1100px;
+      margin-left: auto; 
+      margin-right: auto;
+    }
         .sidebar-item {
             position: relative;
         }
@@ -248,38 +425,109 @@
                     </ul>
                 </div>
             </nav>
-            <div class="row border ">
-                <div class="col-md-9">
-                    <div class="container border">
-                        <div class="card">
-                            <img src="{{ URL('images/Software testing.jpg') }}" alt="Software testing" width="100" height="100">
-                            <div class="card-body">
-                                <div class="container">
-                                    <h5 class="card-title">Card title</h5>
-                                </div>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row border ">
-                <div class="col-md-9">
-                    <div class="container border">
-                        <div class="card">
-                            <img src="{{ URL('images/Software testing.jpg') }}" alt="Software testing" width="100" height="100">
-                            <div class="card-body">
-                                <div class="container">
-                                    <h5 class="card-title">Card title</h5>
-                                </div>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div id="content">
+  <div id="add">
+  <h3>Add a New Publication</h3>
+
+  <table class="center">
+
+    <tr>
+
+      <td class="column">
+      <p style="margin-bottom:5px;">Title</p>
+      <input type="text" id="title" name="title" placeholder="Enter publication title"  class="input-width" required>
+      <p style="margin-bottom:5px;">DOI</p>
+      <input type="text" id="DOI"  name="DOI" placeholder="Enter DOI" required>
+      <p style="margin-bottom:5px;">Abstract</p>
+      <textarea name="abstract" rows="9" column="63" placeholder="Enter publication abstract"></textarea>   
+      </td>
+
+      <td class="column">
+      <p style="margin-bottom:5px;">Keywords</p>
+      <input type="text" id="keywords" name="keywords" placeholder="Enter publication keywords"  required>
+      <p style="margin-bottom:5px;">Authors</p>
+      <input type="text" id="authors" name="authors" placeholder="Enter publication authors"  required>
+      <p style="margin-bottom:5px;">Instituition/Affiliation</p>
+      <input type="text" id="instituition" name="instituition" placeholder="Enter publication instituition" required>
+      <p style="margin-bottom:5px;">Publication Types</p>
+      <input type="text" id="types" name="types" placeholder="Enter publication types" required>
+      </td>
+
+      <td>
+      <div id="upload">
+      <img src="{{ URL('images/upload.jpg') }}" alt="upload" width="80" height="80" >
+      <p>Drag file to upload</p>
+      </div>
+      <div class="button-container">
+          <button type="reset">Reset</button>
+          <button type="submit">Submit</button>
+        
+      </div>
+      
+
+      </td>
+
+    </tr>
+
+  </table>
+  </div>
+
+  <div id="viewSearchDelete">
+    <h3>My Publications</h3>
+
+    <div id="list">
+
+    </div>
+  </div>
+
+  <div id="edit">
+  <h3>Edit Publications</h3>
+
+  <table class="center">
+
+    <tr>
+
+      <td class="column">
+      <p style="margin-bottom:5px;">Title</p>
+      <input type="text" id="title" name="title" placeholder="Enter publication title"  class="input-width" required>
+      <p style="margin-bottom:5px;">DOI</p>
+      <input type="text" id="DOI"  name="DOI" placeholder="Enter DOI" required>
+      <p style="margin-bottom:5px;">Abstract</p>
+      <textarea name="abstract" rows="9" column="63" placeholder="Enter publication abstract"></textarea>   
+      </td>
+
+      <td class="column">
+      <p style="margin-bottom:5px;">Keywords</p>
+      <input type="text" id="keywords" name="keywords" placeholder="Enter publication keywords"  required>
+      <p style="margin-bottom:5px;">Authors</p>
+      <input type="text" id="authors" name="authors" placeholder="Enter publication authors"  required>
+      <p style="margin-bottom:5px;">Instituition/Affiliation</p>
+      <input type="text" id="instituition" name="instituition" placeholder="Enter publication instituition" required>
+      <p style="margin-bottom:5px;">Publication Types</p>
+      <input type="text" id="types" name="types" placeholder="Enter publication types" required>
+      </td>
+
+      <td>
+      <div id="upload">
+      <img src="{{ URL('images/upload.jpg') }}" alt="upload" width="80" height="80" >
+      <p>Drag file to upload</p>
+      </div>
+      <div class="button-container">
+          <button type="save">Save</button>
+          <button type="submit">Submit</button>
+      </div>
+      
+
+      </td>
+
+    </tr>
+
+  </table>
+
+  </div>
+
+</div>
+
             <div id="footer">
 
 <table class="center">
@@ -307,8 +555,7 @@
             document.querySelector("#sidebar").classList.toggle("expand");
         });
     </script>
-</body>
-</html>
+    </body>
+    </html>
 
-	
 
