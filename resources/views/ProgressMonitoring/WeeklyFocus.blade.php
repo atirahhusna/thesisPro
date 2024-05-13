@@ -297,13 +297,11 @@
                     </ul>
                 </div>
             </nav>
+            <nav>
     <div class="button-group">
-        <div class="button all active">All</div>
-        <div class="button focus">Focus</div>
-        <div class="button admin">Admin</div>
-        <div class="button social">Social</div>
-        <div class="button recovery">Recovery</div>
+        
     </div>
+    </nav>
     <div class="task-section">
         <div class="task-title">Previous</div>
         <div class="task">Revision Chapter 3 OS</div>
