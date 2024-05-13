@@ -20,7 +20,6 @@
     }
 
 
-=======
     a {
         text-decoration: none;
         color: black; /* Change text color to black */
@@ -293,7 +292,6 @@
 <hr>
 <p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p>
         </div>
->>>>>>> 326bc478a0e15beff85b9a53f9b012ff74ed100f
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
