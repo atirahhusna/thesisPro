@@ -7,6 +7,7 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PlatinumController;
 use App\Http\Controllers\WeeklyFocusController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\platinumTemplateController;
 
 
 Route::get('/', function () {
@@ -29,3 +30,5 @@ Route::get('/publicationReport', [PublicationController::class , 'ReportViewer']
 //Route Progress Monitoring
 Route::get('/WeeklyFocus', [WeeklyFocusController::class , 'weeklyPage']);
 Route::get('/test', [PublicationController::class , 'create']);
+
+Route::get('/temp', [platinumTemplateController::class , 'Template']);

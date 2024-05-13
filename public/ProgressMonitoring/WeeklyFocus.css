@@ -1,0 +1,83 @@
+body:before {
+    content: "";
+    position: absolute;
+    inset: 20% -30% 0 -30%;
+    opacity: 0.5;
+    pointer-events: none;
+}
+.hehe ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.hehe ul li {
+    display: inline;
+}
+
+.hehe ul li a {
+    color: #000; /* Default color */
+    text-decoration: none;
+    padding: 10px 20px;
+    position: relative;
+    transition: color 0.5s ease; /* Transition for color change */
+}
+
+.hehe ul li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background-color: #fddb3a; /* Line color */
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transition: width 0.8s ease;
+    transform: translateX(50%);
+}
+
+.hehe ul li a:hover::after,
+.hehe ul li a.active::after {
+    width: 50%;
+    left: 0;
+}
+
+.hehe ul li:not(:hover) a {
+    color: #777; /* Decreased color when not hovered */
+}
+
+.task-section {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.task-title {
+    font-weight: bold;
+}
+.timer {
+    color: #007bff;
+}
+.add-button {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 20px; /* Rounded ends */
+}
+/* Additional styling for buttons */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 20px; /* Rounded ends */
+}
+.button.active {
+    background-color: #007bff;
+    color: white;
+}
