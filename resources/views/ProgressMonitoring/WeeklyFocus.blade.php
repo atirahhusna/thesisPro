@@ -254,7 +254,22 @@
                         </li>
                     </ul>
                 </li>
-                </li>
+                <li class="sidebar-item">
+    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+        data-bs-target="#progress" aria-expanded="false" aria-controls="progress">
+        <i class="lni lni-layout"></i>
+        <span>Progress Monitoring</span>
+    </a>
+    <ul id="progress" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">Weekly Focus</a>
+        </li>
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link">Monthly Review</a>
+        </li>
+        <!-- Add more dropdown options as needed -->
+    </ul>
+</li>
             </ul>
             <div class="sidebar-footer">
                 <a href="#" class="sidebar-link">
