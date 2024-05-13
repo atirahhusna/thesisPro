@@ -8,6 +8,6 @@ class StaffController extends Controller
 {
     public function StaffPage()
     {
-        return view('MainInterface.staff');
+        return view('LandingPage.staff');
     }
 }
