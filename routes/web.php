@@ -24,4 +24,6 @@ Route::get('/StaffPage', [StaffController::class, 'StaffPage']);
 //Route Publication
 Route::get('/publicationManager', [PublicationController::class , 'index']);
 Route::get('/publicationReport', [PublicationController::class , 'ReportViewer']);
-Route::get('/test', [PublicationController::class , 'create']);
+Route::get('/publicationViewer', [PublicationController::class , 'PublicationViewer']);
+
+//CRMP

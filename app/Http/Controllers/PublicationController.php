@@ -14,6 +14,11 @@ class PublicationController extends Controller
         return view('PublicationData.ReportViewer');
     }
 
+    public function PublicationViewer()
+    {
+        return view('PublicationData.PublicationViewer');
+    }
+
 
     public function index()
     {
