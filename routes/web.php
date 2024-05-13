@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PlatinumController;
+use App\Http\Controllers\WeeklyFocusController;
 
 
 Route::get('/', function () {
@@ -22,3 +23,6 @@ Route::get('/ForgotPassword', [LoginController::class, 'ForgotPassword']);
 //Route Publication
 Route::get('/publicationManager', [PublicationController::class , 'index']);
 Route::get('/publicationReport', [PublicationController::class , 'ReportViewer']);
+
+//Route Progress Monitoring
+Route::get('/WeeklyFocus', [WeeklyFocusController::class , 'weeklyPage']);

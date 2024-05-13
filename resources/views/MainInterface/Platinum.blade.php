@@ -49,6 +49,15 @@
             <li><a class="dropdown-item" href="#">Expert report</a></li>
           </ul>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Progress Monitoring
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Weekly Focus</a></li>
+            <li><a class="dropdown-item" href="#">Draft Thesis Performance</a></li>
+          </ul>
+        </li>
       </ul>
     </div>
   </div>
