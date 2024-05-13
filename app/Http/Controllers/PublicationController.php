@@ -17,7 +17,7 @@ class PublicationController extends Controller
 
     public function index()
     {
-        return view('PublicationData.PublicationManager');
+        return view('PublicationData.MyPublicationManager');
     }
     
 
@@ -26,7 +26,7 @@ class PublicationController extends Controller
      */
     public function create()
     {
-        //
+        return view('PublicationData.test');
     }
 
     /**
