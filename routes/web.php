@@ -8,6 +8,7 @@ use App\Http\Controllers\PlatinumController;
 use App\Http\Controllers\WeeklyFocusController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\platinumTemplateController;
+use App\Http\Controllers\MentorController;
 
 
 Route::get('/', function () {
@@ -21,6 +22,7 @@ Route::get('/PlatinumPage', [PlatinumController::class, 'platinumPage']);
 Route::get('/Login', [LoginController::class, 'Login']);
 Route::get('/ForgotPassword', [LoginController::class, 'ForgotPassword']);
 Route::get('/StaffPage', [StaffController::class, 'StaffPage']);
+Route::get('/MentorPage', [MentorController::class, 'MentorPage']);
 
 
 //Route Publication
