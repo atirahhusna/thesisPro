@@ -135,5 +135,7 @@
 <p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p>
 </div>
 
-<!-- Section: Design Block -->
+
+
+  </body>
 </html>
