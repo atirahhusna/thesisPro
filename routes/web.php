@@ -7,11 +7,8 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PlatinumController;
 use App\Http\Controllers\WeeklyFocusController;
 use App\Http\Controllers\StaffController;
-<<<<<<< Updated upstream
 use App\Http\Controllers\platinumTemplateController;
-=======
 use App\Http\Controllers\MentorController;
->>>>>>> Stashed changes
 
 
 Route::get('/', function () {
