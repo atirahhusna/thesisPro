@@ -5,13 +5,20 @@ body:before {
     opacity: 0.5;
     pointer-events: none;
 }
+.button-group {
+    display: flex;
+    justify-content: center; /* Horizontally center the items */
+    margin-bottom: 20px;
+}
 .hehe ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .hehe ul li {
     display: inline;
+    margin: 0 10px;
 }
 
 .hehe ul li a {
@@ -31,14 +38,13 @@ body:before {
     position: absolute;
     bottom: -5px;
     left: 50%;
-    transition: width 0.8s ease;
-    transform: translateX(50%);
+    transition: width 0.5s ease;
+    transform: translateX(-50%);
 }
 
 .hehe ul li a:hover::after,
 .hehe ul li a.active::after {
     width: 50%;
-    left: 0;
 }
 
 .hehe ul li:not(:hover) a {
@@ -49,9 +55,12 @@ body:before {
     border: 1px solid #ccc;
     padding: 10px;
     margin-bottom: 20px;
+    border-radius: 20px;
 }
 .task-title {
-    font-weight: bold;
+    font-weight: 1000;
+    margin-bottom: 10px;
+    padding-left: 10px;
 }
 .timer {
     color: #007bff;

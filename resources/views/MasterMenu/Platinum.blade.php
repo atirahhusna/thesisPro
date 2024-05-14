@@ -219,6 +219,21 @@
                         </li>
                     </ul>
                 </li>
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#progress" aria-expanded="false" aria-controls="register">
+                        <i class="lni lni-layout"></i>
+                        <span>Progress Monitoring</span>
+                    </a>
+                    <ul id="progress" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Weekly Focus</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Draft Thesis</a>
+                        </li>
+                    </ul>
+                </li>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -250,7 +265,7 @@
             
             @yield('content')
 
-<p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p>
+
         </div>
     </div>
     
@@ -264,6 +279,7 @@
             document.querySelector("#sidebar").classList.toggle("expand");
         });
     </script>
+    <footer><p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p></footer>
 </body>
 </html>
 
