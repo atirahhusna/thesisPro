@@ -1,73 +1,141 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <title>Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Forgot Password</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+  <!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+  <style>
+    .background-radial-gradient {
+      background-color: #054bb4(218, 41%, 15%);
+      background-image: radial-gradient(650px circle at 0% 0%,
+          hsl(218, 41%, 35%) 15%,
+          hsl(218, 41%, 30%) 35%,
+          hsl(218, 41%, 20%) 75%,
+          hsl(218, 41%, 19%) 80%,
+          transparent 100%),
+        radial-gradient(1250px circle at 100% 100%,
+          hsl(218, 41%, 45%) 15%,
+          hsl(218, 41%, 30%) 35%,
+          hsl(218, 41%, 20%) 75%,
+          hsl(218, 41%, 19%) 80%,
+          transparent 100%);
 
-<style>
-    .background {
-        background: #ffffff;
+          background-position: center; /* Center the background image */
+          background-repeat: no-repeat; /* Do not repeat the background image */
+          background-size: cover; /* Cover the entire background */
     }
 
-    #footer {
-        background-color: #ffffff;
-        text-align: justify;
-        padding-top: 10px;
-        margin-top: 20px; /* Adjusted margin-top to create space between footer and container */
+    #radius-shape-1 {
+      height: 220px;
+      width: 220px;
+      top: -60px;
+      left: -130px;
+      background: radial-gradient(#658cc2, #2e5caf);
+      overflow: hidden;
+      background-size: cover; /* Cover the entire background */
     }
 
-    .forgot-password-container {
-        margin-bottom: 20px; /* Adjusted margin-bottom to reduce space between footer and container */
+    #radius-shape-2 {
+      border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+      bottom: -60px;
+      right: -110px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(#658cc2, #2e5caf);
+      overflow: hidden;
+      background-size: cover; /* Cover the entire background */
     }
-</style>
 
-<body class="background">
-    <div class="container d-flex flex-column">
-        <div class="row align-items-center justify-content-center min-vh-100">
-            <div class="col-12 col-md-8 col-lg-4 forgot-password-container"> <!-- Added class to increase space -->
-                <div class="card shadow-sm">
-                    <div class="card-body">
-                        <div class="mb-4">
-                            <h5>Forgot Password?</h5>
-                            <p class="mb-2">Enter your registered email ID to reset the password</p>
-                        </div>
-                        <form>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" id="email" class="form-control" name="email"
-                                    placeholder="Enter Your Email" required="">
-                            </div>
-                            <div class="mb-3 d-grid">
-                                <button type="submit" class="btn btn-primary">
-                                    Reset Password
-                                </button>
-                            </div>
-                            <span>Want to try log in? <a href="http://127.0.0.1:8000/Login">Login</a></span>
-                        </form>
-                    </div>
+    #button-forgotPassword{
+      color: #ffffff;
+    }
+
+    .bg-glass {
+      background-color: #5d6169(0, 0%, 100%, 0.9) !important;
+      backdrop-filter: saturate(200%) blur(25px);
+      background-size: cover; /* Cover the entire background */
+    }
+  </style>
+
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+        <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+          The best offer <br />
+          <span style="color: hsl(218, 81%, 75%)">Finish your Thesis within 6 months?</span>
+        </h1>
+        <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
+        ThesisPro offers you opportunity to help you finish your thesis and graduate on time ! Do not lose this opportunity!
+        </p>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+        <div class="card bg-glass">
+          <div class="card-body px-4 py-5 px-md-5">
+            <form>
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  
                 </div>
-            </div>
-        </div>
-    </div>
-    <div id="footer">
-    <table class="center" style="margin: 0 auto;">
-            <tr>
-                <td class="column" style="text-align: center;">
-                    <img src="{{ URL('images/logo.jpg') }}" alt="logo" width="150" height="150">
-                </td>
-                <td style="width: 800px; text-align: justify;">
-                    <p>THESISPRO is a premier academic platform designed to support postgraduate students in managing and showcasing their scholarly work. Our system offers a comprehensive suite of tools for editing, publishing, and sharing research and publications within expert domains. By facilitating seamless interactions among students, mentors, and staff, THESISPRO aims to enhance academic collaboration and promote excellence in research and education.</p>
-                </td>
-            </tr>
-        </table>
-        <hr>
-        <p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p>
-    </div>
-</body>
+                <div class="text-center">
+                  <h1 >Forgot password</h1>
+                  <br><br>
+                </div>
+              </div>
 
+              <!-- Email input -->
+              <div data-mdb-input-init class="form-outline mb-4">
+                <input type="text" id="form3Example3" class="form-control" />
+                <label class="form-label" for="form3Example3">Email</label>
+  </div>
+
+              <!-- Submit button -->
+              <div class="text-center">
+              <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+                Submit
+              </button>
+              <a href="http://127.0.0.1:8000/Login" class="btn btn-primary btn-block mb-4">
+    Login
+</a>
+
+               </div>
+
+                
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="footer">
+    <table class="center" style="margin: 0 auto;">
+  <tr>
+    <td class="column" style="text-align: center;">
+      <img src="{{ URL('images/logo.jpg') }}" alt="logo" width="150" height="150">
+    </td>
+    <td style="width: 800px; text-align: justify;">
+      <p>THESISPRO is a premier academic platform designed to support postgraduate students in managing and showcasing their scholarly work. Our system offers a comprehensive suite of tools for editing, publishing, and sharing research and publications within expert domains. By facilitating seamless interactions among students, mentors, and staff, THESISPRO aims to enhance academic collaboration and promote excellence in research and education.</p>
+    </td>
+  </tr>
+</table>
+<hr>
+<p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p>
+</div>
+
+
+
+  </body>
 </html>

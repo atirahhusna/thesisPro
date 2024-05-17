@@ -53,6 +53,10 @@
       background-size: cover; /* Cover the entire background */
     }
 
+    #button-forgotPassword{
+      color: #ffffff;
+    }
+
     .bg-glass {
       background-color: #5d6169(0, 0%, 100%, 0.9) !important;
       backdrop-filter: saturate(200%) blur(25px);
@@ -115,6 +119,10 @@
               <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
                 Login
               </button>
+              <a href="http://127.0.0.1:8000/ForgotPassword" class="btn btn-primary btn-block mb-4">
+    Forgot password
+</a>
+
                </div>
 
               <!-- Register buttons -->
@@ -128,5 +136,25 @@
     </div>
   </div>
 </section>
-<!-- Section: Design Block -->
+
+<script>
+    document.getElementById('loginButton').addEventListener('click', function() {
+        var category = document.querySelector('#category').value;
+        var landingPages = {
+            platinum: 'http://127.0.0.1:8000/PlatinumPage',
+            staff: 'http://example.com/staff-landing',
+            mentor: 'http://example.com/mentor-landing'
+        };
+
+        if (landingPages.hasOwnProperty(category)) {
+            window.location.href = landingPages[category];
+        } else {
+            alert('Invalid category selected.');
+        }
+    });
+</script>
+
+
+</body>
+
 </html>
