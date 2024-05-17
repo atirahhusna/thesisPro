@@ -256,6 +256,35 @@
         background-color: black;
     }
 
+    /*button add delete*/
+
+    .button-container-delete-edit {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .button-container-delete-edit button {
+        margin: 0 10px;
+        padding: 5px 15px;
+        font-size: 14px;
+        background-color:  #17252A;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button-container-delete-edit button[type="delete"]:hover {
+    background-color: #FF0000;
+    }
+
+    .button-container-delete-edit button[type="edit"]:hover {
+        background-color: #2B7A78;
+    }
+
     #add{
       background-color: #3AAFA9;
       padding-top:40px;
@@ -274,10 +303,10 @@
           width: 1400px;
           height: 300px;
           border: 2px solid #17252A;
-          padding: 50px;
+          padding: 20px;
           margin: 20px;
           text-align:center;
-          padding-top:80px;
+          padding-top:10px;
         }
 
     #edit{
@@ -496,6 +525,42 @@
     <h3>My Publications</h3>
 
     <div id="list">
+        <table class="center" border="1">
+            <tr>
+                <th style="width:200px" >Publication ID</th>
+                <th style="width:300px">Title</th>
+                <th style="width:300px">DOI</th>
+                <th style="width:300px">Authors</th>
+                <th style="width:300px">Institutions</th>
+                <th style="width:200px">Types</th>
+                <th style="width:200px">Action</th>
+            </tr>
+            @foreach ($data as $publication)
+
+            <tr>
+                <td>{{ $publication->publication_ID}} </td>
+                <td>{{ $publication->publication_title}}</td>
+                <td>{{ $publication->publication_DOI}}</td>
+                <td>{{ $publication->publication_authors}}</td>
+                <td>{{ $publication->publication_institution}}</td>
+                <td>{{ $publication->publication_types}}</td>
+                <td>
+                    <div class="button-container-delete-edit">
+                        <a href="delete-link-here">
+                            <button type="delete">Delete</button>
+                        </a>
+                        <a href="edit-link-here">
+                            <button type="edit">Edit</button>
+                        </a>
+                    </div>             
+                </td>
+
+
+            </tr>              
+
+            @endforeach
+           
+        </table>
 
     </div>
   </div>

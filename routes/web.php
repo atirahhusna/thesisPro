@@ -28,7 +28,7 @@ Route::get('/MentorPage', [MentorController::class, 'MentorPage']);
 
 //Route Publication
 Route::resource('publication',PublicationController::class ); /* call controller*/
-Route::get('/publicationManager', [PublicationController::class , 'PublicationManager']);
+Route::get('/publicationManager', [PublicationController::class , 'PublicationManager'])->name('publication.publicationManager');
 Route::get('/publicationReport', [PublicationController::class , 'ReportViewer']);
 Route::get('/publicationViewer', [PublicationController::class , 'PublicationViewer'])->name('publication.publicationViewer');
 

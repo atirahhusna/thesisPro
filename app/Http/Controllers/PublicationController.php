@@ -30,7 +30,8 @@ class PublicationController extends Controller
 
     public function index()
     {
-        /*return 'HI';*/
+        $data = publication::orderBy('publication_ID', 'desc')->get();
+       return view('PublicationData.MyPublicationManager')->with('data', $data);
     }
     
 
@@ -49,7 +50,10 @@ class PublicationController extends Controller
     {
 
         $request->validate([
-            'publicationid' => 'required|max:10',
+            'publicationid' => 'required|max:10|unique:publication,publication_ID',
+        ], [
+            'publicationid.required' => 'Please enter different publication ID',
+            
         ]);
         $data = [
             'publication_ID' => $request->publicationid,

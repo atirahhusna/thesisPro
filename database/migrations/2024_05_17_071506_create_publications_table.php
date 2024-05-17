@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('publications', function (Blueprint $table) {  // Use plural table name for convention
+        Schema::create('publication', function (Blueprint $table) {  // Use plural table name for convention
             $table->id('publication_ID',10); // Auto-incrementing ID
             $table->string('publication_title', 100);
             $table->string('publication_DOI', 100)->nullable();
