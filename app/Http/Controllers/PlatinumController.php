@@ -8,6 +8,6 @@ class PlatinumController extends Controller
 {
     public function platinumPage()
     {
-        return view('MainInterface.Platinum');
+        return view('LandingPage.Platinum');
     }
 }

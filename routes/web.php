@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PlatinumController;
+use App\Http\Controllers\WeeklyFocusController;
 use App\Http\Controllers\StaffController;
 
 
@@ -27,3 +28,7 @@ Route::get('/publicationReport', [PublicationController::class , 'ReportViewer']
 Route::get('/publicationViewer', [PublicationController::class , 'PublicationViewer']);
 
 //CRMP
+
+//Route Progress Monitoring
+Route::get('/WeeklyFocus', [WeeklyFocusController::class , 'weeklyPage']);
+Route::get('/test', [PublicationController::class , 'create']);

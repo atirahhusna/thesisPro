@@ -19,6 +19,7 @@
         padding: 0;
     }
 
+
     a {
         text-decoration: none;
         color: black; /* Change text color to black */
