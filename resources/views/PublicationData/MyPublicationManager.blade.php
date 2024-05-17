@@ -440,11 +440,19 @@
   <div id="add">
   <h3>Add a New Publication</h3>
 
+<form action='{{ url('publication') }}'  method="post">
+    @csrf
   <table class="center">
 
     <tr>
 
       <td class="column">
+      <p style="margin-bottom:5px;">Publication ID</p>
+      <input type="text" id="title" name="publicationid" placeholder="Enter publication ID"  class="input-width" required>
+      @if ($errors->has('publicationid'))
+        <div class="error-text-danger">{{ $errors->first('publicationid') }}
+        </div>
+        @endif
       <p style="margin-bottom:5px;">Title</p>
       <input type="text" id="title" name="title" placeholder="Enter publication title"  class="input-width" required>
       <p style="margin-bottom:5px;">DOI</p>
@@ -458,8 +466,8 @@
       <input type="text" id="keywords" name="keywords" placeholder="Enter publication keywords"  required>
       <p style="margin-bottom:5px;">Authors</p>
       <input type="text" id="authors" name="authors" placeholder="Enter publication authors"  required>
-      <p style="margin-bottom:5px;">Instituition/Affiliation</p>
-      <input type="text" id="instituition" name="instituition" placeholder="Enter publication instituition" required>
+      <p style="margin-bottom:5px;">Institution/Affiliation</p>
+      <input type="text" id="instituition" name="institution" placeholder="Enter publication instituition" required>
       <p style="margin-bottom:5px;">Publication Types</p>
       <input type="text" id="types" name="types" placeholder="Enter publication types" required>
       </td>
@@ -481,6 +489,7 @@
     </tr>
 
   </table>
+    </form>
   </div>
 
   <div id="viewSearchDelete">

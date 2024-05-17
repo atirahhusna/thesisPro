@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\publication;
 use Illuminate\Http\Request;
+
+
 
 class PublicationController extends Controller
 {
@@ -19,10 +22,15 @@ class PublicationController extends Controller
         return view('PublicationData.PublicationViewer');
     }
 
+    public function PublicationManager()
+    {
+        return view('PublicationData.MyPublicationManager');
+    }
+
 
     public function index()
     {
-        return view('PublicationData.MyPublicationManager');
+        /*return 'HI';*/
     }
     
 
@@ -39,7 +47,25 @@ class PublicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'publicationid' => 'required|max:10',
+        ]);
+        $data = [
+            'publication_ID' => $request->publicationid,
+            'publication_title' => $request->title,
+            'publication_DOI' => $request->DOI,
+            'publication_abstract' => $request->abstract,
+            'publication_keywords' => $request->keywords,
+            'publication_authors' => $request->authors,
+            'publication_institution' => $request->institution,
+            'publication_types' => $request->types,        
+            
+        ];
+        
+        publication::create($data);
+
+        return redirect()->route('publication.publicationViewer')->with('success', 'Publication created successfully.');
     }
 
     /**
