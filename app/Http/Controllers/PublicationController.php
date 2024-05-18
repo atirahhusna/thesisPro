@@ -19,19 +19,22 @@ class PublicationController extends Controller
 
     public function PublicationViewer()
     {
-        return view('PublicationData.PublicationViewer');
+        // Fetch data here if needed
+        $data = publication::orderBy('publication_ID', 'desc')->get();
+        return view('PublicationData.PublicationViewer')->with('data', $data);
     }
 
     public function PublicationManager()
     {
-        return view('PublicationData.MyPublicationManager');
+        // Fetch data here if needed
+        $data = publication::orderBy('publication_ID', 'desc')->get();
+        return view('PublicationData.MyPublicationManager')->with('data', $data);
     }
-
 
     public function index()
     {
         $data = publication::orderBy('publication_ID', 'desc')->get();
-       return view('PublicationData.MyPublicationManager')->with('data', $data);
+        return view('PublicationData.MyPublicationManager')->with('data', $data);
     }
     
 
@@ -69,7 +72,7 @@ class PublicationController extends Controller
         
         publication::create($data);
 
-        return redirect()->route('publication.publicationViewer')->with('success', 'Publication created successfully.');
+        return redirect()->route('publication.publicationManager')->with('success', 'Publication created successfully.');
     }
 
     /**
@@ -85,7 +88,8 @@ class PublicationController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = publication::where('publication_ID', $id)->first();
+        return view('PublicationData.editMyPublication')->with('data', $data);
     }
 
     /**
@@ -93,14 +97,34 @@ class PublicationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+        ], [
+            
+            
+        ]);
+        $data = [
+            'publication_title' => $request->title,
+            'publication_DOI' => $request->DOI,
+            'publication_abstract' => $request->abstract,
+            'publication_keywords' => $request->keywords,
+            'publication_authors' => $request->authors,
+            'publication_institution' => $request->institution,
+            'publication_types' => $request->types,        
+            
+        ];
+        
+        publication::where('publication_ID',$id)->update($data);
+
+        return redirect()->route('publication.publicationManager')->with('success', 'Publication created successfully.');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        publication::where('publication_ID',$id)->delete();
+        return redirect()->route('publication.publicationManager')->with('success', 'Publication created successfully.');
     }
 }
