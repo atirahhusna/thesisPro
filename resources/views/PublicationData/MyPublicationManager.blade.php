@@ -416,10 +416,22 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#publication" aria-expanded="false" aria-controls="publication">
                         <i class="lni lni-agenda"></i>
                         <span>Publication</span>
                     </a>
+                    <ul id="publication" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="{{ route('publication.publicationManager') }}" class="sidebar-link">My Publication</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('publication.publicationViewer') }}" class="sidebar-link">General Publications</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('publication.publicationReport') }}" class="sidebar-link">Report Publication</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
