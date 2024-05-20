@@ -53,7 +53,7 @@
             min-width: 70px;
             z-index: 1000;
             transition: all .25s ease-in-out;
-            background-color: #2B7A78;
+            background-color: #4B0082;
             display: flex;
             flex-direction: column;
         }
@@ -120,10 +120,6 @@
             border-left: 3px solid #3b7ddd;
         }
 
-        body
-      {<!-- class = . , id = # -->
-        font-family: "Times New Roman", Times, serif;
-      }
 
         ul.navigation{ 
         list-style-type: none;
@@ -172,31 +168,8 @@
         text:white;
         }
 
-      input[type=text]{
-          margin-bottom: 20px;
-          width: 300px;
-          height: 50px;
-          padding: 12px 20px;
-          box-sizing: border-box;
-          border: 2px solid #ccc;
-          border-radius: 4px;
-          background-color: #f8f8f8;
-          font-size: 16px;
-          resize: none;
-          
-        }
-
-        #upload{
-          padding-left: 100px;
-          background-color: #ffffff;
-          width: 300px;
-          height: 300px;
-          border: 2px solid #17252A;
-          padding: 50px;
-          margin: 20px;
-          text-align:center;
-          padding-top:80px;
-        }
+    
+       
 
         table.center {
           margin-left: auto; 
@@ -217,10 +190,6 @@
 
         .column{
           padding-right:100px;
-        }
-
-        #add p ,#edit p{
-            color: white;
         }
 
         input[type=submit], input[type=reset], input[type=save]{
@@ -256,83 +225,12 @@
         background-color: black;
     }
 
-    /*button add delete*/
 
-    .button-container-delete-edit-view {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    .button-container-delete-edit-view button {
-        margin: 0 10px;
-        padding: 5px 15px;
-        font-size: 14px;
-        background-color:  #17252A;
-        color: white;
-        font-weight: bold;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .button-container-delete-edit-view button[type="delete"]:hover {
-    background-color: #FF0000;
-    }
-
-    .button-container-delete-edit-view button[type="edit"]:hover {
-        background-color: #2B7A78;
-    }
-
-    .button-container-delete-edit-view button[type="view"]:hover {
-        background-color: #0000FF;
-    }
-
-    #add{
-      background-color: #3AAFA9;
-      padding-top:40px;
-      padding-bottom:40px;
-    }
-
-    #viewSearchDelete{
-      padding-top:40px;
-      padding-bottom:40px;
-      background-color: #ffffff;
-    }
-
-    #list{
-          padding-left: 100px;
-          background-color: #ffffff;
-          width: 1400px;
-          height: 500px;
-          border: 2px solid #17252A;
-          padding: 20px;
-          margin: 20px;
-          text-align:center;
-          padding-top:10px;
-        }
-
-    #edit{
-      padding-top:40px;
-      padding-bottom:40px;
-      background-color: #3AAFA9;
-    }
-
-    #viewSearchDelete h3{
-      padding-left:30px;
-      color: #17252A;
-    }
 
     #footer{
       background-color: #ffffff;
       text-align:justify;
       padding-top:10px;
-    }
-
-    h3{
-      padding-left:30px;
-      color:white;
     }
 
     hr{
@@ -380,8 +278,6 @@
             transition: all .2s ease-out;
         }
 
-        
-        
     </style>
 </head>
 <body>
@@ -408,9 +304,6 @@
                             <a href="#" class="sidebar-link">My Profile</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Mentor profile</a>
-                        </li>
-                        <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Staff Profile</a>
                         </li>
                         <li class="sidebar-item">
@@ -418,25 +311,62 @@
                         </li>
                     </ul>
                 </li>
+
+                <!-- New Registration Section -->
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#publication" aria-expanded="false" aria-controls="publication">
-                        <i class="lni lni-agenda"></i>
-                        <span>Publication</span>
+                        data-bs-target="#registration" aria-expanded="false" aria-controls="registration">
+                        <i class="lni lni-pencil-alt"></i>
+                        <span>Registration</span>
                     </a>
-                    <ul id="publication" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <ul id="registration" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="{{ route('publication.publicationManager') }}" class="sidebar-link">My Publication</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="{{ route('publication.publicationViewer') }}" class="sidebar-link">General Publications</a>
+                            <a href="#" class="sidebar-link">Registration List</a>
                         </li>
                     </ul>
                 </li>
+
+                <!-- New Progress Monitoring Section -->
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#progress" aria-expanded="false" aria-controls="progress">
+                        <i class="lni lni-bar-chart"></i>
+                        <span>Progress Monitoring</span>
+                    </a>
+                    <ul id="progress" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Weekly Focus</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Modified Expert Information Section -->
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#expert" aria-expanded="false" aria-controls="expert">
                         <i class="lni lni-popup"></i>
                         <span>Expert Information</span>
+                    </a>
+                    <ul id="expert" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Search Expert</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- New General Publication Section -->
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-agenda"></i>
+                        <span>General Publication</span>
+                    </a>
+                </li>
+
+                <!-- New Publication Report Section -->
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link">
+                        <i class="lni lni-bookmark"></i>
+                        <span>Publication Report</span>
                     </a>
                 </li>
             </ul>
@@ -496,5 +426,4 @@
                       });
                   </script>
                   </body>
-                  </html>
-              
+</html>
