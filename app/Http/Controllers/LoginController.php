@@ -8,11 +8,11 @@ class LoginController extends Controller
 {
     public function Login()
     {
-        return view('Login.Login');
+        return view('LandingPage.Login');
     }
 
     public function ForgotPassword()
     {
-        return view('Login.ForgotPassword');
+        return view('Landingpage.ForgotPassword');
     }
 }
