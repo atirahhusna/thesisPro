@@ -123,7 +123,7 @@
             if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
               $category = $_POST['category'];
               if ($category == "platinum") {
-                header("Location: platinum.blade.php");
+                header("Location:LandingPage/platinum.blade.php");
                 exit();
               } elseif ($category == "staff") {
                 header("Location: staff.blade.php");
