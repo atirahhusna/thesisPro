@@ -1,4 +1,4 @@
-@extends('MasterMenu/Platinum')
+@extends('Header.platinum')
 @section('content')
 
 <div class="test">

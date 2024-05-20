@@ -9,7 +9,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -121,7 +120,227 @@
             border-left: 3px solid #3b7ddd;
         }
 
-       
+        body
+      {<!-- class = . , id = # -->
+        font-family: "Times New Roman", Times, serif;
+      }
+
+        ul.navigation{ 
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #fffff;
+        }
+        
+        li.navigation {
+        float:left;
+        }
+        
+        li a.navigation {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+        
+        li a:hover{
+          text-decoration: underline;
+          color: #054bb4;
+          
+        }
+
+        li.button button {
+        background-color: #054BB4;
+        border:none;
+        color: white;
+        margin-top:15px;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: bold;
+        }
+
+        li.button.button1 button{border-radius:20px;}
+
+        li.button.button1 button:hover {
+        background-color: black; /* change background color on hover */
+        text:white;
+        }
+
+      input[type=text]{
+          margin-bottom: 20px;
+          width: 300px;
+          height: 50px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          resize: none;
+          
+        }
+
+        #upload{
+          padding-left: 100px;
+          background-color: #ffffff;
+          width: 300px;
+          height: 300px;
+          border: 2px solid #17252A;
+          padding: 50px;
+          margin: 20px;
+          text-align:center;
+          padding-top:80px;
+        }
+
+        table.center {
+          margin-left: auto; 
+          margin-right: auto;
+        }
+
+        textarea {
+          width: 300px;
+          height: 150px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          resize: none;
+        }
+
+        .column{
+          padding-right:100px;
+        }
+
+        #add p ,#edit p{
+            color: white;
+        }
+
+        input[type=submit], input[type=reset], input[type=save]{
+        border-style: double;
+        color: #ffffff;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007BFF;
+        margin-top: 20px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .button-container button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color:  #2B7A78;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button-container button:hover {
+        background-color: black;
+    }
+
+    /*button add delete*/
+
+    .button-container-delete-edit-view {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .button-container-delete-edit-view button {
+        margin: 0 10px;
+        padding: 5px 15px;
+        font-size: 14px;
+        background-color:  #17252A;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button-container-delete-edit-view button[type="delete"]:hover {
+    background-color: #FF0000;
+    }
+
+    .button-container-delete-edit-view button[type="edit"]:hover {
+        background-color: #2B7A78;
+    }
+
+    .button-container-delete-edit-view button[type="view"]:hover {
+        background-color: #0000FF;
+    }
+
+    #add{
+      background-color: #3AAFA9;
+      padding-top:40px;
+      padding-bottom:40px;
+    }
+
+    #viewSearchDelete{
+      padding-top:40px;
+      padding-bottom:40px;
+      background-color: #ffffff;
+    }
+
+    #list{
+          padding-left: 100px;
+          background-color: #ffffff;
+          width: 1400px;
+          height: 500px;
+          border: 2px solid #17252A;
+          padding: 20px;
+          margin: 20px;
+          text-align:center;
+          padding-top:10px;
+        }
+
+    #edit{
+      padding-top:40px;
+      padding-bottom:40px;
+      background-color: #3AAFA9;
+    }
+
+    #viewSearchDelete h3{
+      padding-left:30px;
+      color: #17252A;
+    }
+
+    #footer{
+      background-color: #ffffff;
+      text-align:justify;
+      padding-top:10px;
+    }
+
+    h3{
+      padding-left:30px;
+      color:white;
+    }
+
+    hr{
+      border: 2px solid black;
+      width:1100px;
+      margin-left: auto; 
+      margin-right: auto;
+    }
         .sidebar-item {
             position: relative;
         }
@@ -161,77 +380,8 @@
             transition: all .2s ease-out;
         }
 
-        .sidenav {
-            height: 100%;
-            width: 200px;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            overflow-x: hidden;
-            padding-top: 10px;
-            }
-
-            /* Style the sidenav links and the dropdown button */
-            .sidenav a, .dropdown-btn {
-            padding: 6px 8px 6px 16px;
-            text-decoration: none;
-            font-size: 16px;
-            color: black;
-            display: block;
-            border: none;
-            background: none;
-            width: 100%;
-            text-align: left;
-            cursor: pointer;
-            outline: none;
-            }
-
-
-            /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-            .dropdown-container {
-            display: none;
-            padding-left: 8px;
-            }
-
-            /* Optional: Style the caret down icon */
-            .fa-caret-down {
-            float: right;
-            padding-right: 8px;
-            }
-
-            /* Some media queries for responsiveness */
-            @media screen and (max-height: 450px) {
-            .sidenav {padding-top: 15px;}
-            .sidenav a {font-size: 18px;}
-            }
-
-            hr{   
-            border: 1px solid #2B7A78;
-            
-            }
-
-
-            table{
-                margin-left:10px;
-                margin-right:10px;
-            }
-
-            input[type=text]{
-                margin-top: 20px;
-                width: 80px;
-                height: 30px;
-                padding: 12px 20px;
-                box-sizing: border-box;
-                border: 2px solid #ccc;
-                border-radius: 4px;
-                background-color: #f8f8f8;
-                font-size: 16px;
-                resize: none;
-                display: inline-block; /* Display horizontally */
-                margin-right: 10px; /* Adjust spacing between input fields */
-                
-                }
-
+        
+        
     </style>
 </head>
 <body>
@@ -269,10 +419,22 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#publication" aria-expanded="false" aria-controls="publication">
                         <i class="lni lni-agenda"></i>
                         <span>Publication</span>
                     </a>
+                    <ul id="publication" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="{{ route('publication.publicationManager') }}" class="sidebar-link">My Publication</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('publication.publicationViewer') }}" class="sidebar-link">General Publications</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('publication.publicationReport') }}" class="sidebar-link">Report Publication</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
@@ -322,93 +484,35 @@
                     </ul>
                 </div>
             </nav>
-            
-            <div id="content">
 
-            <table>
+                @yield('content')
 
+            <table class="center" style="margin: 0 auto;">
                 <tr>
-
-                    <td class="column">
-                        <div class="sidenav">
-                            <hr>
-                            <button class="dropdown-btn">Year 
-                                <i class="fa fa-caret-down"></i>
-                            </button>
-                            <input type="text" id="year" name="year" placeholder="2000">
-                            <input type="text" id="year" name="year" placeholder="2000">
-                            <div class="dropdown-container">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
-                            </div>
-                            <hr>
-                            <a href="#services">Services</a>
-                            <hr>
-                            <a href="#clients">Clients</a>
-                            <hr>
-                            <a href="#contact">Contact</a>
-                            <hr>
-                            <button class="dropdown-btn">Dropdown 
-                                <i class="fa fa-caret-down"></i>
-                            </button>
-                            <div class="dropdown-container">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
-                            </div>
-                            <a href="#contact">Search</a>
-                        </div>
-                    </td>
-
+                  <td class="column" style="text-align: center;">
+                    <img src="{{ URL('images/logo.jpg') }}" alt="logo" width="150" height="150">
+                  </td>
+                  <td style="width: 800px; text-align: justify;">
+                    <p>THESISPRO is a premier academic platform designed to support postgraduate students in managing and showcasing their scholarly work. Our system offers a comprehensive suite of tools for editing, publishing, and sharing research and publications within expert domains. By facilitating seamless interactions among students, mentors, and staff, THESISPRO aims to enhance academic collaboration and promote excellence in research and education.</p>
+                  </td>
                 </tr>
-
-            </table>
-            </div>
-
-<table class="center" style="margin: 0 auto;">
-  <tr>
-    <td class="column" style="text-align: center;">
-      <img src="{{ URL('images/logo.jpg') }}" alt="logo" width="150" height="150">
-    </td>
-    <td style="width: 800px; text-align: justify;">
-      <p>THESISPRO is a premier academic platform designed to support postgraduate students in managing and showcasing their scholarly work. Our system offers a comprehensive suite of tools for editing, publishing, and sharing research and publications within expert domains. By facilitating seamless interactions among students, mentors, and staff, THESISPRO aims to enhance academic collaboration and promote excellence in research and education.</p>
-    </td>
-  </tr>
-</table>
-<hr>
-<p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p>
-        </div>
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-    <script src="script.js"></script>
-    <script>
-        const hamBurger = document.querySelector(".toggle-btn");
-
-        hamBurger.addEventListener("click", function () {
-            document.querySelector("#sidebar").classList.toggle("expand");
-        });
-
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
-
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
-    }
-  });
-}
-    </script>
-    </body>
-    </html>
-
-
+              </table>
+              <hr>
+              <p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p>
+                      </div>
+                  </div>
+                  
+                  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+                      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+                      crossorigin="anonymous"></script>
+                  <script src="script.js"></script>
+                  <script>
+                      const hamBurger = document.querySelector(".toggle-btn");
+              
+                      hamBurger.addEventListener("click", function () {
+                          document.querySelector("#sidebar").classList.toggle("expand");
+                      });
+                  </script>
+                  </body>
+                  </html>
+              
