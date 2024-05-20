@@ -10,6 +10,8 @@ use App\Http\Controllers\DraftController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\platinumTemplateController;
 use App\Http\Controllers\MentorController;
+use App\Http\Controllers\ExpertController;
+
 
 
 Route::get('/', function () {
@@ -36,3 +38,7 @@ Route::get('/DraftThesis', [DraftController::class , 'draftPage']);
 Route::get('/test', [PublicationController::class , 'create']);
 
 Route::get('/temp', [platinumTemplateController::class , 'Template']);
+
+//Route ExpertDomain
+Route::get('/SearchExpert', [ExpertController::class , 'SearchExpert']);
+Route::get('/AddExpert', [ExpertController::class , 'AddExpert']);
