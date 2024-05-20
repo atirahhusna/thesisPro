@@ -120,7 +120,227 @@
             border-left: 3px solid #3b7ddd;
         }
 
-       
+        body
+      {<!-- class = . , id = # -->
+        font-family: "Times New Roman", Times, serif;
+      }
+
+        ul.navigation{ 
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #fffff;
+        }
+        
+        li.navigation {
+        float:left;
+        }
+        
+        li a.navigation {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+        
+        li a:hover{
+          text-decoration: underline;
+          color: #054bb4;
+          
+        }
+
+        li.button button {
+        background-color: #054BB4;
+        border:none;
+        color: white;
+        margin-top:15px;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: bold;
+        }
+
+        li.button.button1 button{border-radius:20px;}
+
+        li.button.button1 button:hover {
+        background-color: black; /* change background color on hover */
+        text:white;
+        }
+
+      input[type=text]{
+          margin-bottom: 20px;
+          width: 300px;
+          height: 50px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          resize: none;
+          
+        }
+
+        #upload{
+          padding-left: 100px;
+          background-color: #ffffff;
+          width: 300px;
+          height: 300px;
+          border: 2px solid #17252A;
+          padding: 50px;
+          margin: 20px;
+          text-align:center;
+          padding-top:80px;
+        }
+
+        table.center {
+          margin-left: auto; 
+          margin-right: auto;
+        }
+
+        textarea {
+          width: 300px;
+          height: 150px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          resize: none;
+        }
+
+        .column{
+          padding-right:100px;
+        }
+
+        #add p ,#edit p{
+            color: white;
+        }
+
+        input[type=submit], input[type=reset], input[type=save]{
+        border-style: double;
+        color: #ffffff;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007BFF;
+        margin-top: 20px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .button-container button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color:  #2B7A78;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button-container button:hover {
+        background-color: black;
+    }
+
+    /*button add delete*/
+
+    .button-container-delete-edit-view {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .button-container-delete-edit-view button {
+        margin: 0 10px;
+        padding: 5px 15px;
+        font-size: 14px;
+        background-color:  #17252A;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button-container-delete-edit-view button[type="delete"]:hover {
+    background-color: #FF0000;
+    }
+
+    .button-container-delete-edit-view button[type="edit"]:hover {
+        background-color: #2B7A78;
+    }
+
+    .button-container-delete-edit-view button[type="view"]:hover {
+        background-color: #0000FF;
+    }
+
+    #add{
+      background-color: #3AAFA9;
+      padding-top:40px;
+      padding-bottom:40px;
+    }
+
+    #viewSearchDelete{
+      padding-top:40px;
+      padding-bottom:40px;
+      background-color: #ffffff;
+    }
+
+    #list{
+          padding-left: 100px;
+          background-color: #ffffff;
+          width: 1400px;
+          height: 500px;
+          border: 2px solid #17252A;
+          padding: 20px;
+          margin: 20px;
+          text-align:center;
+          padding-top:10px;
+        }
+
+    #edit{
+      padding-top:40px;
+      padding-bottom:40px;
+      background-color: #3AAFA9;
+    }
+
+    #viewSearchDelete h3{
+      padding-left:30px;
+      color: #17252A;
+    }
+
+    #footer{
+      background-color: #ffffff;
+      text-align:justify;
+      padding-top:10px;
+    }
+
+    h3{
+      padding-left:30px;
+      color:white;
+    }
+
+    hr{
+      border: 2px solid black;
+      width:1100px;
+      margin-left: auto; 
+      margin-right: auto;
+    }
         .sidebar-item {
             position: relative;
         }
@@ -250,7 +470,56 @@
                 </div>
             </nav>
             <div id="content">
+  <div id="edit">
+    <h3>Edit Publications</h3>
   
+    <form id="editForm" action="{{ url('publication/'.$data->publication_ID)}}" method="post">
+      @csrf
+      <table class="center">
+        @method('PUT')
+        <tr>
+  
+          <td class="column">
+            <p style="margin-bottom:5px;">Publication ID</p>
+            {{ $data->publication_ID}}
+            <p style="margin-bottom:5px;">Title</p>
+            <input type="text" id="edit-title" name="title" placeholder="Enter publication title" class="input-width" value="{{ $data->publication_title}}" required>
+            <p style="margin-bottom:5px;">DOI</p>
+            <input type="text" id="edit-DOI" name="DOI" placeholder="Enter DOI" value="{{ $data->publication_DOI}}" required>
+            <p style="margin-bottom:5px;">Abstract</p>
+            <<input type="text" id="edit-abstract" name="abstract" placeholder="Enter publication abstract" style="height: 200px;" value="{{ $data->publication_abstract}}">
+          </td>
+  
+          <td class="column">
+            <p style="margin-bottom:5px;">Keywords</p>
+            <input type="text" id="edit-keywords" name="keywords" placeholder="Enter publication keywords" value="{{ $data->publication_keywords}}" required>
+            <p style="margin-bottom:5px;">Authors</p>
+            <input type="text" id="edit-authors" name="authors" placeholder="Enter publication authors" value="{{ $data->publication_authors}}" required>
+            <p style="margin-bottom:5px;">Institution/Affiliation</p>
+            <input type="text" id="edit-institution" name="institution" placeholder="Enter publication institution" value="{{ $data->publication_institution}}"required>
+            <p style="margin-bottom:5px;">Publication Types</p>
+            <input type="text" id="edit-types" name="types" placeholder="Enter publication types" value="{{ $data->publication_types}}" required>
+          </td>
+  
+          <td>
+            <div id="upload">
+              <img src="{{ URL('images/upload.jpg') }}" alt="upload" width="80" height="80">
+              <p style="color:black;">Drag file to upload</p>
+            </div>
+            <div class="button-container">
+              <button type="submit">Submit</button>
+            </div>
+  
+          </td>
+  
+        </tr>
+  
+      </table>
+    </form>
+  
+  </div>
+
+</div>
 
 <table class="center" style="margin: 0 auto;">
   <tr>
@@ -282,10 +551,3 @@
     </html>
 
 
-@extends('MasterMenu/Platinum')
-@section('content')
-
-<div class="test">
-    hello hitam
-</div>
-@endsection

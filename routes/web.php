@@ -29,8 +29,16 @@ Route::get('/MentorPage', [MentorController::class, 'MentorPage']);
 
 
 //Route Publication
-Route::get('/publicationManager', [PublicationController::class , 'index']);
-Route::get('/publicationReport', [PublicationController::class , 'ReportViewer']);
+Route::resource('publication',PublicationController::class ); /* call controller*/
+Route::get('/publicationManager', [PublicationController::class , 'PublicationManager'])->name('publication.publicationManager');
+Route::get('/publicationReport', [PublicationController::class , 'ReportViewer'])->name('publication.publicationReport');
+Route::get('/publicationViewer', [PublicationController::class , 'PublicationViewer'])->name('publication.publicationViewer');
+Route::get('/publication/{id}/edit', [PublicationController::class, 'edit'])->name('publication.edit');
+
+
+
+
+//CRMP
 
 //Route Progress Monitoring
 Route::get('/WeeklyFocus', [WeeklyFocusController::class , 'weeklyPage']);
