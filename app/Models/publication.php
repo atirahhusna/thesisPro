@@ -20,7 +20,7 @@ class publication extends Model
         'publication_title',
         'publication_DOI', 
         'publication_abstract', 
-        'publication_keywords', 
+        'publication_year', 
         'publication_authors', 
         'publication_institution', 
         'publication_types'
