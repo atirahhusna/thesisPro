@@ -16,3 +16,4 @@ addSectionForm.addEventListener('submit', (event) => {
 
     popup.style.display = 'none'; // Hide the popup after submission
 });
+
