@@ -81,6 +81,17 @@ button:hover {
     <form id="registrationForm" method="POST" action="/register">
         @csrf
     <div class="form-container">
+        <div class="nt-5">
+            @if($error->any())
+            <div class="col-12">
+                @foreach($errors->all() as $error)
+                  <div class="alert alert-danger">{{$error}}</div>
+                @endforeach
+            </div>
+            @endif
+        </div>
+
+
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" id="Title" name="Title" maxlength="30" required>

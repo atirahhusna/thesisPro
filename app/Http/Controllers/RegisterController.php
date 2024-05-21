@@ -54,6 +54,7 @@ class RegisterController extends Controller
     if (!$user) {
         return redirect(route('RegisterForm'))->with('error', 'Failed Register');
     }
-    
+    return redirect(route('RegisterForm'))->with('success', 'Registration success');
     }
+    
 }
