@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mentor', function (Blueprint $table) {
-            $table->bigIncrements('MentorID'); // Mentor ID (Primary Key, auto increment)
-            $table->string('Name', 100); // Mentor name
+            $table->string('MentorID'); // Mentor ID (Primary Key, auto increment)
+            $table->string('Name'); // Mentor name
             $table->string('EducationLevel', 500); // Mentor education level and history
             $table->string('Position', 100); // Mentor position in ThesisPro system
             $table->string('Experience', 200); // Mentor career experience
