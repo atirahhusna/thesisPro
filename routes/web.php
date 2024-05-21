@@ -28,7 +28,7 @@ Route::get('/ForgotPassword', [LoginController::class, 'ForgotPassword']);
 Route::get('/StaffPage', [StaffController::class, 'StaffPage']);
 Route::get('/MentorPage', [MentorController::class, 'MentorPage']);
 Route::get('/Registration', [RegisterController::class, 'RegisterForm'])->name(registerForm);
-Route::post('/Registration', [RegisterController::class, 'RegisterForm'])->name(registerForm);
+
 
 
 
