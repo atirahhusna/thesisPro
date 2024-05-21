@@ -8,7 +8,7 @@ class RegisterController extends Controller
 {
     public function RegisterForm()
     {
-        return view('Register');
+        return view('Registration.Register');
     }
 
     public function registerPost(Request $request)
@@ -37,6 +37,23 @@ class RegisterController extends Controller
         'batch'=> 'required'
        ]);
 
-       
+       $data = [];
+       $fields = [
+    'Title', 'name', 'identityCard', 'gender', 'Religion', 'race', 
+    'citizenship', 'address', 'phoneNumber', 'facebook', 'email', 
+    'currentEduLevel', 'eduField', 'eduInstitute', 'occupation', 
+    'sponsor', 'program', 'size', 'batch'
+    ];
+
+    foreach ($fields as $field) {
+    $data[$field] = $request->$field;
+    }
+
+    $user = User::create($data);
+    
+    if (!$user) {
+        return redirect(route('RegisterForm'))->with('error', 'Failed Register');
+    }
+    
     }
 }

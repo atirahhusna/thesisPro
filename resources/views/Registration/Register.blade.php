@@ -1,4 +1,5 @@
 @extends('Header.staff')
+<title>Register form</title>
 <style>
 body {
     font-family: Arial, sans-serif;
