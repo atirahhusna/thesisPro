@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\WeeklyFocus;
 use Illuminate\Http\Request;
 
 class WeeklyController extends Controller
@@ -19,7 +20,7 @@ class WeeklyController extends Controller
      */
     public function create()
     {
-        //
+        return view('ProgressMonitoring.WeeklyAdd');
     }
 
     /**
@@ -27,7 +28,13 @@ class WeeklyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $data = [
+            'description' =>$request->description,
+            'category' =>$request->category,
+            'date' =>$request->date,
+       ];
+       WeeklyFocus::create($data);
+       return 'HI';
     }
 
     /**

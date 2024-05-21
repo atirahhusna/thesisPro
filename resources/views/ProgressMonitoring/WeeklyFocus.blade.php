@@ -4,6 +4,13 @@
 <hr>
 <link rel="stylesheet" href="{{ asset('ProgressMonitoring/WeeklyFocus.css') }}"/>
 
+<!-- SEARCH FORM -->
+<div class="pb-3">
+                  <form class="d-flex" action="" method="get">
+                      <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci" aria-label="Search">
+                      <button class="btn btn-secondary" type="submit">Cari</button>
+                  </form>
+</div>
 <div class="button-group">
     <nav class="hehe">
         <ul>
@@ -16,32 +23,83 @@
     </nav>
 </div>
 
-<div class="task-title"><h4>Previous</h4></div>
-<div id="previous-tasks" class="task-section">
-    <h5>Kurangkan bermain permainan online</h5><span >FOCUS </span><span>21 MAY 2025</span>
-</div>
-
-<div class="task-title"><h4>Future</h4></div>
-<div id="future-tasks" class="task-section">
-
-</div>
+ <!-- START DATA -->
+ <div class="my-3 p-3 bg-body rounded shadow-sm">
+                
+                <!-- TOMBOL TAMBAH DATA -->
+                <h5>PREVIOUS</h5>
+          
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="col-md-1">No</th>
+                            <th class="col-md-3">TASK</th>
+                            <th class="col-md-4">Category</th>
+                            <th class="col-md-2">DATE</th>
+                            <th class="col-md-2"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>1001</td>
+                            <td>Ani</td>
+                            <td>Ilmu Komputer</td>
+                            <td>
+                                <a href='' class="btn btn-warning btn-sm">Edit</a>
+                                <a href='' class="btn btn-danger btn-sm">Del</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+               
+          </div>
+          <!-- AKHIR DATA -->
+          <div class="my-3 p-3 bg-body rounded shadow-sm">
+                
+                <!-- TOMBOL TAMBAH DATA -->
+                <h5>FUTURE</h5>
+          
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="col-md-1">No</th>
+                            <th class="col-md-3">TASK</th>
+                            <th class="col-md-4">Category</th>
+                            <th class="col-md-2">DATE</th>
+                            <th class="col-md-2"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>1001</td>
+                            <td>Ani</td>
+                            <td>Ilmu Komputer</td>
+                            <td>
+                                <a href='' class="btn btn-warning btn-sm">Edit</a>
+                                <a href='' class="btn btn-danger btn-sm">Del</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="pb-3">
+                    <center>
+                  <button onclick="document.getElementById('loginModal').style.display='block'" style="width:auto;" class="btn btn-primary">+</button>
+                  </center>
+          </div>
 
 <!-- Add button to trigger popup -->
-<center>
-    <button onclick="document.getElementById('loginModal').style.display='block'" style="width:auto;">+</button>
-</center>
-<hr>
-<!-- Popup for adding new section -->
-
 <div id="loginModal" class="modal">
-    <form class="modal-content animate" action="Register.html" method="post">
+    <form class="modal-content animate" action='{{ url('WeeklyController') }}' method="post">
+        @csrf 
         <div class="imgcontainer">
             <span onclick="document.getElementById('loginModal').style.display='none'" class="close" title="Close Modal">&times;</span>
         </div>
 
         <div class="container">
-            <label for="taskDescription"><b>Task Description</b></label>
-            <textarea id="taskDescription" placeholder="Enter Description" name="taskDescription" required></textarea>
+            <label for="description"><b>Task Description</b></label>
+            <textarea id="description" placeholder="Enter Description" name="description" required></textarea>
             <br>
 
             <label for="category"><b>Category:</b></label>
@@ -62,9 +120,9 @@
         </div>
     </form>
 </div>
+<hr>
 
 <!-- Centered table -->
 <table class="center" style="margin: 0 auto;"></table>
-
 <!-- End of content -->
 @endsection

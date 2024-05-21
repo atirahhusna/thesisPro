@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class WeeklyFocus extends Model
 {
     use HasFactory;
+    protected $fillable = ['description', 'category', 'date'];
+    protected $table = 'WeeklyFocus';
+    public $timestamps = false;
 }
