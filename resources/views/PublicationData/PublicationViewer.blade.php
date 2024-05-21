@@ -163,7 +163,7 @@
 
         .sidenav {
             height: 100%;
-            width: 200px;
+            width: 250px;
             z-index: 1;
             top: 0;
             left: 0;
@@ -218,7 +218,7 @@
 
             input[type=text]{
                 margin-top: 20px;
-                width: 80px;
+                width: 100px;
                 height: 30px;
                 padding: 12px 20px;
                 box-sizing: border-box;
@@ -231,6 +231,60 @@
                 margin-right: 10px; /* Adjust spacing between input fields */
                 
                 }
+
+        input[type=submit]{
+        border-style: double;
+        color: #ffffff;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007BFF;
+        margin-top: 20px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .button-container button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color:  #2B7A78;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button-container button:hover {
+        background-color: black;
+    }
+
+
+    .button-container-view button {
+        padding: 5px 15px;
+        font-size: 14px;
+        background-color:  #17252A;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+
+    .button-container-view button[type="view"]:hover {
+        background-color: #0000FF;
+    }
+
+    th{
+        font-size: 18px;
+    }
 
     </style>
 </head>
@@ -325,7 +379,7 @@
             
             <div id="content">
 
-            <table>
+            <table style="margin-bottom:50px;">
 
                 <tr>
 
@@ -335,33 +389,91 @@
                             <button class="dropdown-btn">Year 
                                 <i class="fa fa-caret-down"></i>
                             </button>
-                            <input type="text" id="year" name="year" placeholder="2000">
-                            <input type="text" id="year" name="year" placeholder="2000">
                             <div class="dropdown-container">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
+                                <input type="text" id="year" name="year" placeholder="2000">
+                                <input type="text" id="year" name="year" placeholder="2000">
                             </div>
                             <hr>
-                            <a href="#services">Services</a>
-                            <hr>
-                            <a href="#clients">Clients</a>
-                            <hr>
-                            <a href="#contact">Contact</a>
-                            <hr>
-                            <button class="dropdown-btn">Dropdown 
+                            <button class="dropdown-btn">Author 
                                 <i class="fa fa-caret-down"></i>
                             </button>
                             <div class="dropdown-container">
-                                <a href="#">Link 1</a>
-                                <a href="#">Link 2</a>
-                                <a href="#">Link 3</a>
+                                <input style="width:230px;" type="text" id="year" name="year" placeholder="Enter Author Name">
+                                
                             </div>
-                            <a href="#contact">Search</a>
+                            <hr>
+                            <button class="dropdown-btn">Institution 
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-container">
+                                <input style="width:230px;" type="text" id="year" name="year" placeholder="Enter Institution">
+                                
+                            </div>
+                            <hr>
+                            <button class="dropdown-btn">Publication Title 
+                                <i class="fa fa-caret-down"></i>
+                            </button>
+                            <div class="dropdown-container">
+                                <input style="width:230px;" type="text" id="year" name="year" placeholder="Enter Publication Title">
+                                
+                            </div>
+                            <hr>
+                            
+                            <div class="button-container">
+                                <button type="submit">Submit</button>
+                              
+                            </div>
                         </div>
                     </td>
 
+                    <td style="width:1200px;padding-left:50px;" >
+                        <div style="display: flex; align-items: center;">
+                            <input style="width:600px;height:40px;" type="text" id="search" name="search">
+                            <div class="button-container">
+                                <button  style="height:40px;" type="submit">Search</button>
+                            </div>
+                        </div>
+
+                        <div>
+                            <table style="margin-top:20px;" >
+                                <tr>
+                                    <th style="width:900px">TITLE</th>
+                                    <th style="width:100px">YEAR</th>
+                                    <th style="width:100px">ACTION</th>
+                                </tr>
+
+                                @foreach ($data as $publication)
+                                <tr>
+                                    <td style="padding-top:20px;">
+                                        {{ $publication->publication_title}}<br>
+                                        {{ $publication->publication_authors}}<br>
+                                        {{ $publication->publication_institution}}
+        
+                                    </td>
+
+                                    <td>
+                                        {{ $publication->publication_year}}
+                                    </td>
+                        
+                                    <td>
+                                        <div class="button-container-view">
+                                            <a href="view-link-here" >
+                                                <button type="view">View</button>
+                                            </a>
+                                        </div>             
+                                    </td>
+                                </tr>              
+                                @endforeach
+                            </table>
+                        </div>
+
+
+                                        
+                    </td>
+
                 </tr>
+
+
 
             </table>
             </div>

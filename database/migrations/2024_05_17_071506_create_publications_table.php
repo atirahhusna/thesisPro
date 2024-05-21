@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('publication_title', 100);
             $table->string('publication_DOI', 100)->nullable();
             $table->string('publication_abstract', 255)->nullable();
-            $table->string('publication_keywords', 100)->nullable();
+            $table->string('publication_year', 100)->nullable();
             $table->string('publication_authors', 100);
             $table->string('publication_institution', 100);
             $table->string('publication_types', 50);

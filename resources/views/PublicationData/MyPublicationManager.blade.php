@@ -29,14 +29,14 @@
         </td>
   
         <td class="column">
-        <p style="margin-bottom:5px;">Keywords</p>
-        <input type="text" id="keywords" name="keywords" placeholder="Enter publication keywords"  required>
+        <p style="margin-bottom:5px;">Year</p>
+        <input type="text" id="year" name="year" placeholder="Enter publication year"  required>
         <p style="margin-bottom:5px;">Authors</p>
         <input type="text" id="authors" name="authors" placeholder="Enter publication authors"  required>
         <p style="margin-bottom:5px;">Institution/Affiliation</p>
         <input type="text" id="instituition" name="institution" placeholder="Enter publication instituition" required>
         <p style="margin-bottom:5px;">Publication Types</p>
-        <input type="text" id="types" name="types" placeholder="Enter publication types" required>
+        <input type="text" id="type" name="type" placeholder="Enter publication type" required>
         </td>
   
         <td>
@@ -69,7 +69,7 @@
                   <th style="width:500px">Title</th>
                   <th style="width:400px">Authors</th>
                   <th style="width:200px">Institutions</th>
-                  <th style="width:100px">Types</th>
+                  <th style="width:100px">Year</th>
                   <th style="width:300px">Action</th>
               </tr>
   
@@ -79,7 +79,7 @@
                   <td>{{ $publication->publication_title}}</td>
                   <td>{{ $publication->publication_authors}}</td>
                   <td>{{ $publication->publication_institution}}</td>
-                  <td>{{ $publication->publication_types}}</td>
+                  <td>{{ $publication->publication_year}}</td>
                   <td>
                       <div class="button-container-delete-edit-view">
                           <form onsubmit="return confirm('Are you sure you want to delete this publication?')" action="{{ url('publication/'.$publication->publication_ID) }}" method="post">
