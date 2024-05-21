@@ -5,7 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PlatinumController;
-use App\Http\Controllers\WeeklyController;
+use App\Http\Controllers\WeeklyFocusController;
 use App\Http\Controllers\DraftController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\platinumTemplateController;
@@ -27,8 +27,8 @@ Route::post('/Login', [LoginController::class, 'Login']);
 Route::get('/ForgotPassword', [LoginController::class, 'ForgotPassword']);
 Route::get('/StaffPage', [StaffController::class, 'StaffPage']);
 Route::get('/MentorPage', [MentorController::class, 'MentorPage']);
-Route::get('/Registration', [RegisterController::class, 'RegisterForm']);
-Route::post('/Registration', [RegisterController::class, 'RegisterForm']);
+Route::get('/Registration', [RegisterController::class, 'RegisterForm'])->name(registerForm);
+Route::post('/Registration', [RegisterController::class, 'RegisterForm'])->name(registerForm);
 
 
 
@@ -45,8 +45,7 @@ Route::get('/publication/{id}/edit', [PublicationController::class, 'edit'])->na
 //CRMP
 
 //Route Progress Monitoring
-Route::resource('WeeklyFocus', WeeklyController::class);
-Route::get('/WeeklyAdd', [WeeklyControllerr::class , 'create']);
+Route::get('/WeeklyFocus', [WeeklyFocusController::class , 'weeklyPage']);
 Route::get('/DraftThesis', [DraftController::class , 'draftPage']);
 Route::get('/test', [PublicationController::class , 'create']);
 
