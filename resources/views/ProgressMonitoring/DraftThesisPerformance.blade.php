@@ -1,3 +1,6 @@
+@extends('Header/Platinum')
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -281,11 +284,4 @@
     </body>
     </html>
 
-
-@extends('MasterMenu/Platinum')
-@section('content')
-
-<div class="test">
-    hello hitam
-</div>
 @endsection
