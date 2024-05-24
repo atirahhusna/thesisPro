@@ -47,7 +47,9 @@ Route::get('/publication/{id}/edit', [PublicationController::class, 'edit'])->na
 //Route Progress Monitoring
 Route::resource('WeeklyFocus', WeeklyController::class);
 Route::get('/WeeklyAdd', [WeeklyControllerr::class , 'create']);
-Route::get('/DraftThesis', [DraftController::class , 'draftPage']);
+
+Route::resource('DraftThesis', DraftController::class);
+Route::get('/DraftNewTitle', [DraftController::class , 'createThesis']);
 Route::get('/test', [PublicationController::class , 'create']);
 
 Route::get('/temp', [platinumTemplateController::class , 'Template']);
