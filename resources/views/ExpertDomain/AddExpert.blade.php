@@ -58,7 +58,7 @@
             min-width: 70px;
             z-index: 1000;
             transition: all .25s ease-in-out;
-            background-color: #0e2238;
+            background-color: #2B7A78;
             display: flex;
             flex-direction: column;
         }
@@ -169,7 +169,7 @@
         }
 
         h3 {
-            background-color: #0e2238;
+            background-color: #2B7A78;
             padding: 10px;
             text-align: center;
             border-radius: 10px 10px 0 0;
@@ -249,6 +249,14 @@
 
         #year {
             width: 100px;
+        }
+
+        #paper {
+            width: 400px;
+        }
+
+        #titleResearch {
+            width: 400px;
         }
     </style>
 </head>
@@ -399,8 +407,6 @@
                             <div class="form-group">
                                 <label for="titleResearch">TITLE RESEARCH</label>
                                 <input type="text" id="titleResearch" name="titleResearch" required>
-                            </div>
-                            <div class="form-group">
                                 <label for="paper">PAPER</label>
                                 <input type="text" id="paper" name="paper" required>
                             </div>
