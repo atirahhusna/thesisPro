@@ -23,8 +23,8 @@
         </td>
   
         <td class="column">
-        <p style="margin-bottom:5px;">Year</p>
-        <input type="text" id="year" name="year" placeholder="Enter publication year"  required>
+        <p style="margin-bottom:5px;">Publication Date</p>
+        <input type="date" id="date" name="date" placeholder="Enter publication date"  required>
         <p style="margin-bottom:5px;">Authors</p>
         <input type="text" id="authors" name="authors" placeholder="Enter publication authors"  required>
         <p style="margin-bottom:5px;">Institution/Affiliation</p>
@@ -59,19 +59,19 @@
       <div id="list">
           <table class="center">
               <tr>
-                  <th style="width:500px">Title</th>
+                  <th style="width:500px;">Title</th>
                   <th style="width:400px">Authors</th>
                   <th style="width:200px">Institutions</th>
-                  <th style="width:100px">Year</th>
+                  <th style="width:200px">Date</th>
                   <th style="width:300px">Action</th>
               </tr>
   
               @foreach ($data as $publication)
               <tr>
-                  <td>{{ $publication->publication_title}}</td>
-                  <td>{{ $publication->publication_authors}}</td>
-                  <td>{{ $publication->publication_institution}}</td>
-                  <td>{{ $publication->publication_year}}</td>
+                  <td style="text-align:left;" >{{ $publication->publication_title}}</td>
+                  <td style="text-align:left;">{{ $publication->publication_authors}}</td>
+                  <td style="text-align:center;">{{ $publication->publication_institution}}</td>
+                  <td style="text-align:center;">{{ $publication->publication_date}}</td>
                   <td>
                       <div class="button-container-delete-edit-view">
                           <form onsubmit="return confirm('Are you sure you want to delete this publication?')" action="{{ url('publication/'.$publication->publication_ID) }}" method="post">
@@ -83,7 +83,7 @@
                           <a href="{{ url('publication/'.$publication->publication_ID.'/edit') }}" method="GET">
                               <button type="edit">Edit</button>
                           </a>
-                          <a href="view-link-here" >
+                          <a href="{{ url('publication/'.$publication->publication_ID.'/show') }}" method="GET" >
                               <button type="view">View</button>
                           </a>
                       </div>             

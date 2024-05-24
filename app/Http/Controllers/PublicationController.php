@@ -26,6 +26,7 @@ class PublicationController extends Controller
 
     public function PublicationManager()
     {
+        
         // Fetch data here if needed
         $data = publication::orderBy('publication_ID', 'desc')->get();
         return view('PublicationData.MyPublicationManager')->with('data', $data);
@@ -56,7 +57,7 @@ class PublicationController extends Controller
             'publication_title' => $request->title,
             'publication_DOI' => $request->DOI,
             'publication_abstract' => $request->abstract,
-            'publication_year' => $request->year,
+            'publication_date' => $request->date,
             'publication_authors' => $request->authors,
             'publication_institution' => $request->institution,
             'publication_types' => $request->type,        
@@ -73,7 +74,8 @@ class PublicationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = publication::where('publication_ID', $id)->first();
+        return view('PublicationData.viewMyPublication')->with('data', $data);
     }
 
     /**
@@ -99,7 +101,7 @@ class PublicationController extends Controller
             'publication_title' => $request->title,
             'publication_DOI' => $request->DOI,
             'publication_abstract' => $request->abstract,
-            'publication_year' => $request->year,
+            'publication_date' => $request->date,
             'publication_authors' => $request->authors,
             'publication_institution' => $request->institution,
             'publication_types' => $request->types,        

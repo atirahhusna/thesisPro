@@ -286,6 +286,18 @@
         font-size: 18px;
     }
 
+    #view{
+      padding-top:40px;
+      padding-bottom:40px;
+      background-color: #3AAFA9;
+      color:white;
+      
+    }
+
+    .sidenav button{
+        color:white;
+    }
+
     </style>
 </head>
 <body>
@@ -323,10 +335,19 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#publication" aria-expanded="false" aria-controls="publication">
                         <i class="lni lni-agenda"></i>
                         <span>Publication</span>
                     </a>
+                    <ul id="publication" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="{{ route('publication.publicationManager') }}" class="sidebar-link">My Publication</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('publication.publicationViewer') }}" class="sidebar-link">General Publications</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
@@ -378,6 +399,7 @@
             </nav>
             
             <div id="content">
+            <div id ="view" >
 
             <table style="margin-bottom:50px;">
 
@@ -437,8 +459,8 @@
                         <div>
                             <table style="margin-top:20px;" >
                                 <tr>
-                                    <th style="width:900px">TITLE</th>
-                                    <th style="width:100px">YEAR</th>
+                                    <th style="width:850px">TITLE</th>
+                                    <th style="width:150px">YEAR</th>
                                     <th style="width:100px">ACTION</th>
                                 </tr>
 
@@ -452,12 +474,12 @@
                                     </td>
 
                                     <td>
-                                        {{ $publication->publication_year}}
+                                        {{ $publication->publication_date}}
                                     </td>
                         
                                     <td>
                                         <div class="button-container-view">
-                                            <a href="view-link-here" >
+                                            <a href="{{ url('publication/'.$publication->publication_ID.'/show') }}" method="GET" >
                                                 <button type="view">View</button>
                                             </a>
                                         </div>             
@@ -476,6 +498,7 @@
 
 
             </table>
+        </div>
             </div>
 
 <table class="center" style="margin: 0 auto;">

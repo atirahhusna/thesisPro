@@ -24,8 +24,8 @@
           </td>
   
           <td class="column">
-            <p style="margin-bottom:5px;">Year</p>
-            <input type="text" id="edit-year" name="year" placeholder="Enter publication keywords" value="{{ $data->publication_year}}" required>
+            <p style="margin-bottom:5px;">Publication Date</p>
+            <input type="date" id="edit-date" name="date" placeholder="Enter publication date" value="{{ $data->publication_date}}" required>
             <p style="margin-bottom:5px;">Authors</p>
             <input type="text" id="edit-authors" name="authors" placeholder="Enter publication authors" value="{{ $data->publication_authors}}" required>
             <p style="margin-bottom:5px;">Institution/Affiliation</p>

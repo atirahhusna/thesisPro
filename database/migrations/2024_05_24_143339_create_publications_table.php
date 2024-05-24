@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('publication', function (Blueprint $table) {  // Use plural table name for convention
             $table->id('publication_ID',10); // Auto-incrementing ID
-            $table->string('publication_title', 100);
+            $table->string('publication_title', 255);
             $table->string('publication_DOI', 100)->nullable();
             $table->string('publication_abstract', 255)->nullable();
-            $table->string('publication_year', 100)->nullable();
+            $table->date('publication_date')->nullable();
             $table->string('publication_authors', 100);
             $table->string('publication_institution', 100);
             $table->string('publication_types', 50);

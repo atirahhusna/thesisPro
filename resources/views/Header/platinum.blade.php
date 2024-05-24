@@ -219,9 +219,14 @@
           padding-right:100px;
         }
 
-        #add p ,#edit p{
+        #add p ,#edit p, #view p{
             color: white;
         }
+
+        #view p{
+            font-size:20px;
+        }
+
 
         input[type=submit], input[type=reset], input[type=save]{
         border-style: double;
@@ -313,7 +318,7 @@
           padding-top:10px;
         }
 
-    #edit{
+    #edit, #view{
       padding-top:40px;
       padding-bottom:40px;
       background-color: #3AAFA9;
@@ -333,6 +338,11 @@
     h3{
       padding-left:30px;
       color:white;
+    }
+
+    #viewForm{
+        padding-top:40px;
+        padding-left:70px;
     }
 
     hr{

@@ -38,6 +38,7 @@ Route::get('/publicationManager', [PublicationController::class , 'PublicationMa
 Route::get('/publicationReport', [PublicationController::class , 'ReportViewer'])->name('publication.publicationReport');
 Route::get('/publicationViewer', [PublicationController::class , 'PublicationViewer'])->name('publication.publicationViewer');
 Route::get('/publication/{id}/edit', [PublicationController::class, 'edit'])->name('publication.edit');
+Route::get('/publication/{id}/show', [PublicationController::class, 'show'])->name('publication.show');
 
 
 
