@@ -45,8 +45,11 @@ Route::get('/publication/{id}/edit', [PublicationController::class, 'edit'])->na
 //CRMP
 
 //Route Progress Monitoring
-Route::get('/WeeklyFocus', [WeeklyFocusController::class , 'weeklyPage']);
-Route::get('/DraftThesis', [DraftController::class , 'draftPage']);
+Route::resource('WeeklyFocus', WeeklyController::class);
+Route::get('/WeeklyAdd', [WeeklyControllerr::class , 'create']);
+
+Route::resource('DraftThesis', DraftController::class);
+Route::get('/DraftNewTitle', [DraftController::class , 'createThesis']);
 Route::get('/test', [PublicationController::class , 'create']);
 
 Route::get('/temp', [platinumTemplateController::class , 'Template']);
