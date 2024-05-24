@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('register_profile', function (Blueprint $table) {
-            $table->string('r_profileID'); // Profile ID (Primary Key, auto increment)
+            $table->increments('r_profile_id'); // Profile ID (Primary Key, auto increment)
+            $table->string('plat_id')->foreign()->references('plat_id')->on('platinum');
+            $table->string('staff_id')->foreign()->references('staff_id')->on('staff');
+            $table->string('mentor_id')->foreign()->references('mentor_id')->on('mentor');
+            $table->string('crmp_id')->foreign()->references('crmp_id')->on('crmp');
             $table->integer('r_identity_card'); // Identity card number
+            $table->string('r_password');
             $table->string('r_gender'); // Gender
             $table->string('r_religion'); // Religion
             $table->string('r_race'); // Race
@@ -30,19 +35,9 @@ return new class extends Migration
             $table->string('r_size', 5); // T-shirt size
             $table->string('r_batch', 10); // Platinum batch
             $table->string('r_name', 30); // Platinum name
-            $table->string('platID'); // Platinum ID (Foreign Key)
-            $table->string('StaffID'); // Staff ID (Foreign Key)
-            $table->string('MentorID'); // Mentor ID (Foreign Key)
-            $table->string('crmp_ID'); // CRMP ID (Foreign Key)
-
-            // Foreign key constraints
-            $table->foreign('platID')->references('platID')->on('platinum')->onDelete('cascade');
-            $table->foreign('StaffID')->references('StaffID')->on('staff')->onDelete('cascade');
-            $table->foreign('MentorID')->references('MentorID')->on('mentor')->onDelete('cascade');
-            $table->foreign('crmp_ID')->references('crmp_ID')->on('crmp')->onDelete('cascade');
-
             // Timestamps
             $table->timestamps();
+            $table->softdeletes();
         });
     }
 

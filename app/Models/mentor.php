@@ -11,7 +11,7 @@ class Mentor extends Model
 
     protected $table = 'mentor';
 
-    protected $primaryKey = 'MentorID';
+    protected $primaryKey = 'mentor_id';
 
     protected $fillable = [
         'Name',
@@ -22,8 +22,8 @@ class Mentor extends Model
         'username',
     ];
 
-    public function userProfile()
+    public function userprofile()
     {
-        return $this->belongsTo(UserProfile::class, 'username', 'username');
+        return $this->belongsTo(userProfile::class, 'username', 'username');
     }
 }

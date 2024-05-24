@@ -15,16 +15,16 @@ class Staff extends Model
         'address',
         'PhoneNum',
         'username',
-        'MentorID',
+        'mentor_id',
     ];
 
     public function userProfile()
     {
-        return $this->belongsTo(UserProfile::class, 'username', 'username');
+        return $this->belongsTo(userprofile::class, 'username', 'username');
     }
 
     public function mentor()
     {
-        return $this->belongsTo(Mentor::class, 'MentorID', 'MentorID');
+        return $this->belongsTo(mentor::class, 'mentor_id', 'mentor_id');
     }
 }

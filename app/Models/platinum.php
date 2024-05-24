@@ -22,12 +22,12 @@ class Platinum extends Model
     // Define the relationships
     public function crmp()
     {
-        return $this->belongsTo(crmp::class, 'crmp_ID', 'crmp_ID');
+        return $this->belongsTo(crmp::class, 'crmp_id', 'crmp_id');
     }
 
     public function staff()
     {
-        return $this->belongsTo(staff::class, 'StaffID', 'StaffID');
+        return $this->belongsTo(staff::class, 'staff_id', 'staff_id');
     }
 
     public function userProfile()

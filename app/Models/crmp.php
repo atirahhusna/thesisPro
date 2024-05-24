@@ -21,6 +21,6 @@ class CRMP extends Model
 
     public function userProfile()
     {
-        return $this->belongsTo(UserProfile::class, 'username', 'username');
+        return $this->belongsTo(userProfile::class, 'username', 'username');
     }
 }

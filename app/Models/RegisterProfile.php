@@ -15,6 +15,7 @@ class register_profile extends Model
         'r_profileID',
         'r_identity_card',
         'r_gender',
+        'r_password',
         'r_religion',
         'r_race',
         'r_citizenship',
@@ -30,30 +31,31 @@ class register_profile extends Model
         'r_size',
         'r_batch',
         'r_name',
-        'platID',
-        'StaffID',
-        'MentorID',
+        'plat_id',
+        'staff_id',
+        'mentor_id',
         'crmp_ID'
     ];
 
-    // Define relationships with other models
-    public function platinum()
-    {
-        return $this->belongsTo(platinum::class, 'platID', 'platID');
-    }
-
-    public function staff()
-    {
-        return $this->belongsTo(staff::class, 'StaffID', 'StaffID');
-    }
-
     public function mentor()
     {
-        return $this->belongsTo(mentor::class, 'MentorID', 'MentorID');
+        return $this->belongsTo(mentor::class, 'mentor_id');
     }
 
     public function crmp()
     {
-        return $this->belongsTo(crmp::class, 'crmp_ID', 'crmp_ID');
+        return $this->belongsTo(crmp::class, 'crmp_id');
     }
+
+    public function platinum()
+    {
+        return $this->belongsTo(platinum::class, 'plat_id');
+    }
+
+    public function staff()
+    {
+        return $this->belongsTo(staff::class, 'staff_id');
+    }
+
+    
 }

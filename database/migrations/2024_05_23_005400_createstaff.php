@@ -12,17 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('staff', function (Blueprint $table) {
-            $table->string('StaffID'); // Staff ID (Primary Key, auto increment)
-            $table->string('Name', 100); // Staff Name
+            $table->string('staff_id')->primary(); // Staff ID (Primary Key)
+            $table->string('username')->foreign()->references('username')->on('user_profile');
+            $table->string('name', 100); // Staff Name
             $table->string('address', 100); // Staff address
-            $table->string('PhoneNum'); // Staff phone number
-            $table->string('username', 10); // Staff username (Foreign Key)
-
-            // Foreign key constraint
-            $table->foreign('username')->references('username')->on('userProfile')->onDelete('cascade');
-
+            $table->string('phone_number'); // Staff phone number
+            
             // Timestamps
             $table->timestamps();
+            $table->softdeletes();
         });
     }
 
