@@ -405,7 +405,7 @@
 
                 <tr>
 
-                    <td class="column">
+                    <!--<td class="column">
                         <div class="sidenav">
                             <hr>
                             <button class="dropdown-btn">Year 
@@ -446,7 +446,7 @@
                               
                             </div>
                         </div>
-                    </td>
+                    </td>-->
 
                     <td style="width:1200px;padding-left:50px;" >
                         <div style="display: flex; align-items: center;">
