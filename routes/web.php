@@ -5,7 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PlatinumController;
-use App\Http\Controllers\WeeklyController;
+use App\Http\Controllers\WeeklyFocusController;
 use App\Http\Controllers\DraftController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\platinumTemplateController;
@@ -27,8 +27,8 @@ Route::post('/Login', [LoginController::class, 'Login']);
 Route::get('/ForgotPassword', [LoginController::class, 'ForgotPassword']);
 Route::get('/StaffPage', [StaffController::class, 'StaffPage']);
 Route::get('/MentorPage', [MentorController::class, 'MentorPage']);
-Route::get('/Registration', [RegisterController::class, 'RegisterForm']);
-Route::post('/Registration', [RegisterController::class, 'RegisterForm']);
+Route::get('/Registration', [RegisterController::class, 'registerForm'])->name('register');
+Route::post('/Registration', [RegisterController::class, 'registerPost'])->name('registerPost');
 
 
 

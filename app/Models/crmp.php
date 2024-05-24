@@ -5,24 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Mentor extends Model
+class CRMP extends Model
 {
     use HasFactory;
 
-    protected $table = 'mentor';
-
-    protected $primaryKey = 'mentor_id';
-
     protected $fillable = [
-        'Name',
-        'EducationLevel',
-        'Position',
-        'Experience',
-        'PhoneNumber',
+        'crmp_ID',
+        'crmp_Education',
+        'crmp_Expertise',
+        'crmp_Teaching',
+        'crmp_Biography',
+        'crmp_Name',
         'username',
     ];
 
-    public function userprofile()
+    public function userProfile()
     {
         return $this->belongsTo(userProfile::class, 'username', 'username');
     }

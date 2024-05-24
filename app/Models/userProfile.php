@@ -5,7 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class register_profile extends Model
+class userProfile extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'username',
+        'password',
+        'role',
+        'email'
+
+    ];
 }
+
