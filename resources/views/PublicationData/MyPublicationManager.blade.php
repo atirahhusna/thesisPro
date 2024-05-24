@@ -14,12 +14,6 @@
       <tr>
   
         <td class="column">
-        <p style="margin-bottom:5px;">Publication ID</p>
-        <input type="text" id="id" name="publicationid" placeholder="Enter publication ID"  class="input-width" required>
-        @if ($errors->has('publicationid'))
-          <div class="error-text-danger">{{ $errors->first('publicationid') }}
-          </div>
-          @endif
         <p style="margin-bottom:5px;">Title</p>
         <input type="text" id="title" name="title" placeholder="Enter publication title"  class="input-width" required>
         <p style="margin-bottom:5px;">DOI</p>
@@ -65,7 +59,6 @@
       <div id="list">
           <table class="center">
               <tr>
-                  <th style="width:300px">Publication ID</th>
                   <th style="width:500px">Title</th>
                   <th style="width:400px">Authors</th>
                   <th style="width:200px">Institutions</th>
@@ -75,7 +68,6 @@
   
               @foreach ($data as $publication)
               <tr>
-                  <td>{{ $publication->publication_ID}}</td>
                   <td>{{ $publication->publication_title}}</td>
                   <td>{{ $publication->publication_authors}}</td>
                   <td>{{ $publication->publication_institution}}</td>

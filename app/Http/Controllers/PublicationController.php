@@ -52,21 +52,14 @@ class PublicationController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'publicationid' => 'required|max:10|unique:publication,publication_ID',
-        ], [
-            'publicationid.required' => 'Please enter different publication ID',
-            
-        ]);
         $data = [
-            'publication_ID' => $request->publicationid,
             'publication_title' => $request->title,
             'publication_DOI' => $request->DOI,
             'publication_abstract' => $request->abstract,
             'publication_year' => $request->year,
             'publication_authors' => $request->authors,
             'publication_institution' => $request->institution,
-            'publication_types' => $request->types,        
+            'publication_types' => $request->type,        
             
         ];
         
