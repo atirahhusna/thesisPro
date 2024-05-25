@@ -1,12 +1,68 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\DraftThesis;
 use Illuminate\Http\Request;
 
 class DraftController extends Controller
 {
-    public function draftPage(){
-        return view('ProgressMonitoring.DraftThesisPerformance');
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        return view('ProgressMonitoring.DraftThesis');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function createThesis()
+    {
+        return view('ProgressMonitoring.DraftNewTitle');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $data=[
+            'title'=> $request ->title
+        ];
+        DraftThesis::create($data);
+        return 'HI';
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }
