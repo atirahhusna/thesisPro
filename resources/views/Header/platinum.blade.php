@@ -172,7 +172,7 @@
         text:white;
         }
 
-      input[type=text]{
+      input[type=text], input[type=date], input[type=search],select{
           margin-bottom: 20px;
           width: 300px;
           height: 50px;
@@ -310,7 +310,7 @@
           padding-left: 100px;
           background-color: #ffffff;
           width: 1400px;
-          height: 500px;
+          height: auto; /* Set height to auto to adjust automatically */
           border: 2px solid #17252A;
           padding: 20px;
           margin: 20px;
@@ -389,6 +389,16 @@
             transform: rotate(45deg);
             transition: all .2s ease-out;
         }
+
+        
+        .even-row-publication {
+        background-color: #d1ffff; /* Blue */
+        }
+
+        .odd-row-publication {
+            background-color: white; /* Pink */
+        }
+        
 
         
         
@@ -505,6 +515,13 @@
                           document.querySelector("#sidebar").classList.toggle("expand");
                       });
                   </script>
+                  <script>
+                    // JavaScript to add alternating row colors
+                    const rows = document.querySelectorAll('#publication-table tr:nth-child(even)');
+                    rows.forEach(row => {
+                        row.classList.add('even-row-publication');
+                    });
+                </script>
                   </body>
                   </html>
               

@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id('publication_ID',10); // Auto-incrementing ID
             $table->string('publication_title', 255);
             $table->string('publication_DOI', 100)->nullable();
-            $table->string('publication_abstract', 255)->nullable();
+            $table->text('publication_abstract')->nullable();
             $table->date('publication_date')->nullable();
-            $table->string('publication_authors', 100);
-            $table->string('publication_institution', 100);
+            $table->string('publication_authors', 255);
+            $table->string('publication_institution', 255);
             $table->string('publication_types', 50);
             $table->timestamps(); // Add created_at and updated_at timestamps
         });

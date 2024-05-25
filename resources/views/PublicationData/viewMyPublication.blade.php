@@ -14,7 +14,7 @@
         
         <tr>
   
-          <td class="viewPublication">
+          <td style="padding-right:40px;" class="viewPublication">
             
             <p style="margin-bottom:5px;">Publication ID:</p>
             {{ $data->publication_ID}}           

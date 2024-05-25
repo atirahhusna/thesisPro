@@ -17,10 +17,19 @@ class PublicationController extends Controller
         return view('PublicationData.ReportViewer');
     }
 
-    public function PublicationViewer()
+    public function PublicationViewer(Request $request)
     {
-        // Fetch data here if needed
-        $data = publication::orderBy('publication_ID', 'desc')->get();
+        $keywords = $request->keywords;
+        if(strlen($keywords))
+        {
+            $data = publication::where('publication_title', 'like', "%$keywords%")
+                                    ->orWhereYear('publication_date', 'like', "%$keywords%")->get(); // Add ->get() to execute the query
+        }
+        else{
+                    // Fetch data here if needed
+            $data = publication::orderBy('publication_ID', 'desc')->get();
+        }
+
         return view('PublicationData.PublicationViewer')->with('data', $data);
     }
 
@@ -31,6 +40,7 @@ class PublicationController extends Controller
         $data = publication::orderBy('publication_ID', 'desc')->get();
         return view('PublicationData.MyPublicationManager')->with('data', $data);
     }
+
 
     public function index()
     {

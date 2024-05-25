@@ -216,7 +216,7 @@
                 margin-right:10px;
             }
 
-            input[type=text]{
+            input[type=text], input[type=search]{
                 margin-top: 20px;
                 width: 100px;
                 height: 30px;
@@ -297,6 +297,7 @@
     .sidenav button{
         color:white;
     }
+
 
     </style>
 </head>
@@ -448,24 +449,26 @@
                         </div>
                     </td>-->
 
-                    <td style="width:1200px;padding-left:50px;" >
-                        <div style="display: flex; align-items: center;">
-                            <input style="width:600px;height:40px;" type="text" id="search" name="search">
-                            <div class="button-container">
-                                <button  style="height:40px;" type="submit">Search</button>
+                    <td style="width:1800px;padding-left:50px;" >
+                        <form action="{{ url('publicationViewer') }}" method ="get">
+                            <div style="display: flex; align-items: center;">
+                                <input style="width:1000px;height:40px;" type="search" id="search" name="keywords" value="{{Request::get('keywords') }}" placeholder="Enter keywords">
+                                <div class="button-container">
+                                    <button  style="height:40px;" type="submit">Search</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
 
                         <div>
                             <table style="margin-top:20px;" >
                                 <tr>
-                                    <th style="width:850px">TITLE</th>
-                                    <th style="width:150px">YEAR</th>
+                                    <th style="width:1150px">TITLE</th>
+                                    <th style="width:100px;">YEAR</th>
                                     <th style="width:100px">ACTION</th>
                                 </tr>
 
                                 @foreach ($data as $publication)
-                                <tr>
+                                <tr >
                                     <td style="padding-top:20px;">
                                         {{ $publication->publication_title}}<br>
                                         {{ $publication->publication_authors}}<br>
@@ -474,7 +477,8 @@
                                     </td>
 
                                     <td>
-                                        {{ $publication->publication_date}}
+                                        {{ \Carbon\Carbon::parse($publication->publication_date)->format('Y') }}
+                                    </td>
                                     </td>
                         
                                     <td>
@@ -483,6 +487,11 @@
                                                 <button type="view">View</button>
                                             </a>
                                         </div>             
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">
+                                        <hr>
                                     </td>
                                 </tr>              
                                 @endforeach
