@@ -13,7 +13,5 @@ class userProfile extends Model
         'password',
         'role',
         'email'
-
     ];
 }
-

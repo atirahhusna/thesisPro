@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->string('staff_id')->primary(); // Staff ID (Primary Key)
-            $table->string('username')->foreign()->references('username')->on('user_profile');
-            $table->string('name', 100); // Staff Name
-            $table->string('address', 100); // Staff address
-            $table->string('phone_number'); // Staff phone number
+            $table->string('s_username')->foreign()->references('username')->on('user_profile');
+            $table->string('s_name', 100); // Staff Name'
+            $table->string('s_password');
+            $table->string('s_address', 100); // Staff address
+            $table->string('s_phone_number'); // Staff phone number
             
             // Timestamps
             $table->timestamps();

@@ -16,18 +16,19 @@ class Platinum extends Model
         'platID',
         'crmp_ID',
         'StaffID',
-        'username'
+        'p_username',
+        'p_password'
     ];
 
     // Define the relationships
     public function crmp()
     {
-        return $this->belongsTo(crmp::class, 'crmp_id', 'crmp_id');
+        return $this->belongsTo(Crmp::class, 'crmp_id', 'crmp_id');
     }
 
     public function staff()
     {
-        return $this->belongsTo(staff::class, 'staff_id', 'staff_id');
+        return $this->belongsTo(Staff::class, 'staff_id', 'staff_id');
     }
 
     public function userProfile()

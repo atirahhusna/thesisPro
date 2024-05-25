@@ -11,10 +11,12 @@ class Staff extends Model
 
 
     protected $fillable = [
-        'Name',
-        'address',
-        'PhoneNum',
-        'username',
+        'staff_id',
+        's_name',
+        's_address',
+        's_phone_number',
+        's_username',
+        's_password',
         'mentor_id',
     ];
 
@@ -23,8 +25,4 @@ class Staff extends Model
         return $this->belongsTo(userprofile::class, 'username', 'username');
     }
 
-    public function mentor()
-    {
-        return $this->belongsTo(mentor::class, 'mentor_id', 'mentor_id');
-    }
 }

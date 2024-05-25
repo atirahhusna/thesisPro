@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PlatinumController;
@@ -10,7 +9,7 @@ use App\Http\Controllers\DraftController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\platinumTemplateController;
 use App\Http\Controllers\MentorController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\AccountController;
 
 
 
@@ -22,13 +21,15 @@ Route::get('/', function () {
 //Route module 1
 
 Route::get('/PlatinumPage', [PlatinumController::class, 'platinumPage']);
-Route::get('/Login', [LoginController::class, 'Login']);
-Route::post('/Login', [LoginController::class, 'Login']);
-Route::get('/ForgotPassword', [LoginController::class, 'ForgotPassword']);
+Route::get('/Login', [AccountController::class, 'Login'])->name('Login');
+Route::post('/Login', [AccountController::class, 'LoginPost'])->name('LoginPost');
+Route::get('/ForgotPassword', [AccountController::class, 'ForgotPassword']);
 Route::get('/StaffPage', [StaffController::class, 'StaffPage']);
 Route::get('/MentorPage', [MentorController::class, 'MentorPage']);
-Route::get('/Registration', [RegisterController::class, 'registerForm'])->name('register');
-Route::post('/Registration', [RegisterController::class, 'registerPost'])->name('registerPost');
+Route::get('/Registration', [AccountController::class, 'registerForm'])->name('registerForm');
+Route::post('/Registration', [AccountController::class, 'registerPost'])->name('registerPost');
+Route::get('/userRegister', [AccountController::class, 'user'])->name('user');
+Route::post('/userRegister', [AccountController::class, 'userPost'])->name('userPost');
 
 
 

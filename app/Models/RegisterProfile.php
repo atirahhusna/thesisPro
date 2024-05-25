@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class register_profile extends Model
+class RegisterProfile extends Model
 {
     use HasFactory;
 
@@ -39,22 +39,22 @@ class register_profile extends Model
 
     public function mentor()
     {
-        return $this->belongsTo(mentor::class, 'mentor_id');
+        return $this->belongsTo(Mentor::class, 'mentor_id');
     }
 
     public function crmp()
     {
-        return $this->belongsTo(crmp::class, 'crmp_id');
+        return $this->belongsTo(Crmp::class, 'crmp_id');
     }
 
     public function platinum()
     {
-        return $this->belongsTo(platinum::class, 'plat_id');
+        return $this->belongsTo(Platinum::class, 'plat_id');
     }
 
     public function staff()
     {
-        return $this->belongsTo(staff::class, 'staff_id');
+        return $this->belongsTo(Staff::class, 'staff_id');
     }
 
     

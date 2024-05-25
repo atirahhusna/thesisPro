@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('username')->foreign()->references('username')->on('user_profile');
             $table->string('name'); // Mentor name
             $table->string('education_level'); // Mentor education level and history
-            $table->string('position', 100); // Mentor position in ThesisPro system
+            $table->string('position', 100);
             $table->string('experience', 200); // Mentor career experience
             $table->string('phone_number'); // Mentor phone number
                     // Timestamps
