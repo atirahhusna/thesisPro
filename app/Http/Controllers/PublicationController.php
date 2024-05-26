@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\publication;
 use Illuminate\Http\Request;
-
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PublicationController extends Controller
 {
@@ -15,6 +14,41 @@ class PublicationController extends Controller
     public function ReportViewer()
     {
         return view('PublicationData.ReportViewer');
+    }
+
+    public function generatePublicationPdf(Request $request)
+    {
+
+        $institutionKeywords = $request->institutionKeywords;
+        $yearKeywords = $request->yearKeywords;
+
+        $query = publication::query();
+
+        if (strlen($institutionKeywords) && strlen($yearKeywords)) {
+            // If both keywords are provided
+            $query->where('publication_institution', 'like', "%$institutionKeywords%")
+                  ->whereYear('publication_date', $yearKeywords);
+        } else {
+            // If only institution keyword is provided
+            if (strlen($institutionKeywords)) {
+                $query->where('publication_institution', 'like', "%$institutionKeywords%");
+            }
+    
+            // If only year keyword is provided
+            if (strlen($yearKeywords)) {
+                $query->whereYear('publication_date', $yearKeywords);
+            }
+        }
+
+        $publications = $query->get();
+
+        $data = [
+            'title' => 'Publication Report',
+            'date' => date('Y-m-d'),
+            'publications' => $publications // Correct the data key
+        ];
+        $pdf = Pdf::loadView('PublicationData.generate-publication-pdf', $data);
+        return $pdf->download('publication-report.pdf');
     }
 
     public function PublicationViewer(Request $request)
