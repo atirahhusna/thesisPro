@@ -10,6 +10,8 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\platinumTemplateController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\PdfController;
 
 
 
@@ -36,10 +38,11 @@ Route::post('/userRegister', [AccountController::class, 'userPost'])->name('user
 //Route Publication
 Route::resource('publication',PublicationController::class ); /* call controller*/
 Route::get('/publicationManager', [PublicationController::class , 'PublicationManager'])->name('publication.publicationManager');
-Route::get('/publicationReport', [PublicationController::class , 'ReportViewer'])->name('publication.publicationReport');
+Route::get('/publicationReport', [PublicationController::class , 'ReportViewer'])->name('publication.publicationReport'); /*route name*/
 Route::get('/publicationViewer', [PublicationController::class , 'PublicationViewer'])->name('publication.publicationViewer');
 Route::get('/publication/{id}/edit', [PublicationController::class, 'edit'])->name('publication.edit');
 Route::get('/publication/{id}/show', [PublicationController::class, 'show'])->name('publication.show');
+Route::post('/generatePdf', [PublicationController::class, 'generatePublicationPdf']);
 
 
 
