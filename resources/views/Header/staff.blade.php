@@ -323,7 +323,7 @@
                     <ul id="registration" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">View registration</a>
+                            <a href="http://127.0.0.1:8000/RegisterList" class="sidebar-link">View registration</a>
                         </li>
                         <!-- Add dropdown items for different types of registration -->
                         <li class="sidebar-item">

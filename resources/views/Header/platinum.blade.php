@@ -430,9 +430,7 @@
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Mentor profile</a>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Staff Profile</a>
-                        </li>
+                        
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Platinum Profile</a>
                         </li>

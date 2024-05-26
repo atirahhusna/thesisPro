@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RegisterProfile extends Model
+class register_profiles extends Model
 {
     use HasFactory;
 
@@ -30,32 +30,8 @@ class RegisterProfile extends Model
         'r_program',
         'r_size',
         'r_batch',
-        'r_name',
-        'plat_id',
-        'staff_id',
-        'mentor_id',
-        'crmp_ID'
+        'r_name'
+       
     ];
-
-    public function mentor()
-    {
-        return $this->belongsTo(Mentor::class, 'mentor_id');
-    }
-
-    public function crmp()
-    {
-        return $this->belongsTo(Crmp::class, 'crmp_id');
-    }
-
-    public function platinum()
-    {
-        return $this->belongsTo(Platinum::class, 'plat_id');
-    }
-
-    public function staff()
-    {
-        return $this->belongsTo(Staff::class, 'staff_id');
-    }
-
     
 }

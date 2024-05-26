@@ -99,6 +99,7 @@ button:hover {
 
             <form id="registrationForm" method="POST" action="{{ route('userPost') }}">
                 @csrf
+                @method('post')
                 <!-- Add input fields for staff registration details -->
                 <div class="form-group">
                     <label for="email">Identity Card</label>

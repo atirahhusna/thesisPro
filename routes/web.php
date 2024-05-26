@@ -30,7 +30,10 @@ Route::get('/Registration', [AccountController::class, 'registerForm'])->name('r
 Route::post('/Registration', [AccountController::class, 'registerPost'])->name('registerPost');
 Route::get('/userRegister', [AccountController::class, 'user'])->name('user');
 Route::post('/userRegister', [AccountController::class, 'userPost'])->name('userPost');
-
+Route::get('/PlatinumProfile', [PlatinumController::class, 'ProfileShow']);
+Route::get('/RegisterList', [AccountController::class, 'RegisterList'])->name('RegisterList');
+Route::get('/RegisterList/{users}/edit', [AccountController::class, 'edit'])->name('edit');
+Route::delete('/RegisterList/{users}', [AccountController::class, 'destroy'])->name('destroy');
 
 
 //Route Publication

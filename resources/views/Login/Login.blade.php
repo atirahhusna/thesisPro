@@ -101,7 +101,7 @@
                 <!-- Username input -->
                 <div data-mdb-input-init class="form-outline mb-4">
                   <label class="form-label" for="form3Example3">Username</label>
-                  <input type="text" id="form3Example3" name="username" class="form-control @error('username') is-invalid @enderror" placeholder="Enter email" value="{{ old('username') }}" />
+                  <input type="text" id="form3Example3" name="username" class="form-control @error('username') is-invalid @enderror" placeholder="Enter username" value="{{ old('username') }}" />
                   @error('username')
                     <div class="invalid-feedback">
                       {{ $message }}

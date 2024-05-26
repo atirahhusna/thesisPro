@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\RegisterProfile;
+use App\Models\register_profiles;
 use App\Models\Staff;
 use App\Models\CRMP;
 use App\Models\Mentor;
 use App\Models\Platinum;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use App\Models\userProfile;
+use App\Models\user_profiles;
 
-class RegisterController extends Controller
+class AccountController extends Controller
 {
     public function user()
     {
@@ -23,139 +23,68 @@ class RegisterController extends Controller
     {
         return view('Registration.Register');
     }
+    public function registerList ()
+    {
+        $users = register_profiles::all();
+        return view('Registration.Index', ['users'=>$users]);
+    }
+    public function edit(register_profiles $users)
+    {
+        return view('Registration.edit', ['users' =>$users]);
+    }
+
+    
+
 
     public function userPost(Request $request)
     {
         // Validation
-        $request->validate([
-            'email' => 'required',
+        $data = $request->validate([
+            'username' => 'required',
             'password' => 'required',
-            'role' => 'required'
+            'role' => 'required',
+            'email' => 'required'
             // Add more validation rules as needed for other fields
         ]);
 
-        DB::beginTransaction();
         try {
-            $userProfile = new userProfile(); // Corrected capitalization of "UserProfile"
-            $userProfile->password = bcrypt($request->password);
-            $userProfile->role = $request->role;
-            $userProfile->email = $request->username; // Assuming the email is the same as the username
-            $userProfile->save();
-
-            DB::commit();
-
-            // Redirect with success message
-            return redirect()->route('user')->with('success', 'Registration successful!');
+            $newUser = user_profiles::create($data);
+            return redirect()->route('user')->with('success', 'User created successfully!');
         } catch (\Exception $e) {
-            // Log the error
-            DB::rollback();
-            Log::error('Staff registration failed: ' . $e->getMessage());
-            // Redirect with error message
-            return redirect()->route('user')->with('error', 'Registration failed! Please try again.');
+            return redirect()->back()->with('error', 'Failed to create user: ' . $e->getMessage());
         }
     }
 
     public function registerPost(Request $request)
     {
         // Validation
-        $request->validate([
-            'Title' => 'required|max:30',
-            'name' => 'required|max:30',
-            'password' => 'required|max:30',
-            'identityCard' => 'required|numeric',
-            'gender' => 'required',
-            'religion' => 'required|min:5|max:12',
-            'race' => 'required',
-            'citizenship' => 'required|max:15',
-            'address' => 'required|max:100',
-            'phoneNumber' => 'required|numeric',
-            'facebook' => 'required|max:20',
-            'email' => 'required|email|max:50',
-            'currentEduLevel' => 'required',
-            'eduField' => 'required|max:30',
-            'eduInstitute' => 'required|max:30',
-            'occupation' => 'required|max:30',
-            'sponsor' => 'required|max:30',
-            'program' => 'required',
-            'size' => 'required',
-            'batch' => 'required|max:10',
+        $data = $request->validate([
+            'r_identity_card' =>'required',
+            'r_gender'=>'required',
+            'r_password'=>'required',
+            'r_religion'=>'required',
+            'r_race'=>'required',
+            'r_citizenship'=>'required',
+            'r_address'=>'required',
+            'r_phone_number'=>'required',
+            'r_facebook'=>'required',
+            'r_current_edu_level'=>'required',
+            'r_edu_field'=>'required',
+            'r_edu_institute'=>'required',
+            'r_occupation'=>'required',
+            'r_sponsor'=>'required',
+            'r_program'=>'required',
+            'r_size'=>'required',
+            'r_batch'=>'required',
+            'r_name'=>'required'
         ]);
 
-        DB::beginTransaction();
         try {
-            // Create and save the Staff instance
-            $staff = new Staff();
-            $staff->staff_id = $request->ic;
-            $staff->name = $request->name;
-            $staff->address = $request->address;
-            $staff->phone_number = $request->phone_number;
-            $staff->username = $request->email;
-            $staff->mentor_id = $request->ic;
-            $staff->save();
-
-            // Create and save the CRMP instance
-            $crmp = new CRMP();
-            $crmp->crmp_ID = $request->crmp_ID;
-            $crmp->crmp_Education = $request->crmp_Education;
-            $crmp->crmp_Expertise = $request->crmp_Expertise;
-            $crmp->crmp_Teaching = $request->crmp_Teaching;
-            $crmp->crmp_Biography = $request->crmp_Biography;
-            $crmp->crmp_Name = $request->crmp_Name;
-            $crmp->username = $request->email;
-            $crmp->password = $request->password;
-            $crmp->save();
-
-            // Create and save the Mentor instance
-            $mentor = new Mentor();
-            $mentor->mentor_id = $request->ic;
-            $mentor->name = $request->name;
-            $mentor->education_level = $request->currentEduLevel;
-            $mentor->position = $request->position;
-            $mentor->experience = $request->experience;
-            $mentor->phone_number = $request->phoneNumber;
-            $mentor->username = $request->email;
-            $mentor->save();
-
-            // Create and save the Platinum instance
-            $platinum = new Platinum();
-            $platinum->plat_id = $request->ic;
-            $platinum->crmp_id = $request->id;
-            $platinum->staff_id = $request->id;
-            $platinum->username = $request->email;
-            $platinum->save();
-
-            // Create and save the RegisterProfile instance
-            $registerProfile = new RegisterProfile();
-            $registerProfile->title = $request->Title;
-            $registerProfile->name = $request->name; // Corrected duplicated assignment
-            $registerProfile->password = bcrypt($request->password);
-            $registerProfile->identity_card = $request->identityCard;
-            $registerProfile->gender = $request->gender;
-            $registerProfile->religion = $request->religion;
-            $registerProfile->race = $request->race;
-            $registerProfile->citizenship = $request->citizenship;
-            $registerProfile->address = $request->address;
-            $registerProfile->phone_number = $request->phoneNumber;
-            $registerProfile->facebook = $request->facebook;
-            $registerProfile->email = $request->email;
-            $registerProfile->current_edu_level = $request->currentEduLevel;
-            $registerProfile->edu_field = $request->eduField;
-            $registerProfile->edu_institute = $request->eduInstitute;
-            $registerProfile->occupation = $request->occupation;
-            $registerProfile->sponsor = $request->sponsor;
-            $registerProfile->program = $request->program;
-            $registerProfile->size = $request->size;
-            $registerProfile->batch = $request->batch;
-            $registerProfile->save();
-
-            DB::commit();
-
+            $newPlatinum = register_profiles::create($data);
             // Redirect with success message
-            return redirect()->route('registerForm')->with('success', 'Registration successful!');
+            return redirect()->route('registerForm')->with('success', 'Platinum registered successfully!');
         } catch (\Exception $e) {
-            DB::rollback();
-            Log::error('Registration failed: ' . $e->getMessage());
-            return redirect()->route('registerForm')->with('error', 'Registration failed! Please try again.');
+            return redirect()->back()->with('error', 'Failed to registered platinum: ' . $e->getMessage());
         }
     }
 
@@ -191,9 +120,10 @@ class RegisterController extends Controller
                     return redirect()->route('PlatinumPage');
                 }
             }
+        }else{
+            return redirect()->back()->withErrors(['Invalid credentials']);
         }
 
-        return redirect()->back()->withErrors(['Invalid credentials']);
     }
 
     private function manualStaffAuth($username, $password)
@@ -240,12 +170,14 @@ class RegisterController extends Controller
 
     public function Login()
     {
-        return view('LandingPage.Login');
+        return view('Login.Login');
     }
 
     public function ForgotPassword()
     {
-        return view('Landingpage.ForgotPassword');
+        return view('Login.ForgotPassword');
     }
+
+    
 }
 
