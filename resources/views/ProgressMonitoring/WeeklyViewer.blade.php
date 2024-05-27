@@ -1,5 +1,5 @@
 <!-- Existing content -->
-@extends('Header/platinum')
+@extends('Header/crmp')
 @section('content')
 <hr>
 <link rel="stylesheet" href="{{ asset('ProgressMonitoring/WeeklyFocus.css') }}"/>
@@ -45,10 +45,10 @@
                     <thead>
                         <tr>
                             <th class="col-md-1">No</th>
-                            <th class="col-md-3">TASK</th>
+                            <th class="col-md-3">Task</th>
                             <th class="col-md-4">Category</th>
-                            <th class="col-md-2">DATE</th>
-                            <th class="col-md-2">Actions</th>
+                            <th class="col-md-2">Range Date</th>
+                            <th class="col-md-2">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -56,19 +56,22 @@
                             <td>1</td>
                             <td>Focus on SDW Project</td>
                             <td>Focus</td>
-                            <td>20 MAY 2024</td>
+                            <td>20-30 MAY 2024</td>
                             <td>
-                                <a href='' class="btn btn-warning btn-sm">Edit</a>
-                                <a href='' class="btn btn-danger btn-sm">Del</a>
+                                <a href='' class="btn btn-warning btn-sm">Comment</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Spend less time on social media</td>
+                            <td>Social</td>
+                            <td>30-20 JUN 2024</td>
+                            <td>
+                                <button onclick="document.getElementById('loginModal').style.display='block'" style="width:auto;" class="btn btn-warning btn-sm">Comment</button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="pb-3">
-   
-                  <button onclick="document.getElementById('loginModal').style.display='block'" style="width:auto;" class="btn btn-primary">+</button>
-
-          </div>
 
 <!-- Add button to trigger popup -->
 <div id="loginModal" class="modal">

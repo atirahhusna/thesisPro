@@ -5,7 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PlatinumController;
-use App\Http\Controllers\WeeklyFocusController;
+use App\Http\Controllers\WeeklyController;
 use App\Http\Controllers\DraftController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\platinumTemplateController;
@@ -44,12 +44,17 @@ Route::get('/publication/{id}/edit', [PublicationController::class, 'edit'])->na
 
 //CRMP
 
-//Route Progress Monitoring
+//Route Progress Monitoring weekly focus
 Route::resource('WeeklyFocus', WeeklyController::class);
 Route::get('/WeeklyAdd', [WeeklyControllerr::class , 'create']);
+Route::get('/WeeklyViewer', [WeeklyController::class , 'viewer']);
 
+//Route Progress Monitoring draft thesis
 Route::resource('DraftThesis', DraftController::class);
 Route::get('/DraftNewTitle', [DraftController::class , 'createThesis']);
+Route::get('/DraftWork', [DraftController::class , 'showDratfList']);
+Route::get('/DraftViewer', [DraftController::class , 'DraftViewer']);
+Route::get('/DraftWorkViewer', [DraftController::class , 'DraftWorkViewer']);
 Route::get('/test', [PublicationController::class , 'create']);
 
 Route::get('/temp', [platinumTemplateController::class , 'Template']);

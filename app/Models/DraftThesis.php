@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class DraftThesis extends Model
 {
     use HasFactory;
-    protected $fillable = ['title'];
-    protected $table = 'DraftThesis';
+    protected $table = 'draft_theses';
+    protected $fillable = [
+    'DT_Title', 
+    'DT_DraftNum',
+    'DT_PagesNum',
+    'DT_Comment',
+    'DT_DDC',
+    'DT_Completion',
+    ];
     public $timestamps = false;
 }

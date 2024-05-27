@@ -9,6 +9,6 @@ class WeeklyFocus extends Model
 {
     use HasFactory;
     protected $fillable = ['description', 'category', 'date'];
-    protected $table = 'WeeklyFocus';
+    protected $table = 'weekly_foci';
     public $timestamps = false;
 }
