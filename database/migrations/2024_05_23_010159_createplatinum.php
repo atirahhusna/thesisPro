@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('platinum', function (Blueprint $table) {
             $table->string('plat_id')->primary(); // Platinum ID (Primary Key)
-            $table->string('username')->foreign()->references('username')->on('userProfile');
+            $table->string('p_username')->foreign()->references('username')->on('user_profiles');
+            $table->string('p_password');
             $table->string('crmp_id')->foreign()->references('crmp_id')->on('crmp');
             $table->string('staff_id')->foreign()->references('staff_id')->on('staff');
             // Timestamps
