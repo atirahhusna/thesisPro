@@ -172,7 +172,7 @@
         text:white;
         }
 
-      input[type=text]{
+      input[type=text], input[type=date], input[type=search],select{
           margin-bottom: 20px;
           width: 300px;
           height: 50px;
@@ -219,9 +219,14 @@
           padding-right:100px;
         }
 
-        #add p ,#edit p{
+        #add p ,#edit p, #view p{
             color: white;
         }
+
+        #view p{
+            font-size:20px;
+        }
+
 
         input[type=submit], input[type=reset], input[type=save]{
         border-style: double;
@@ -305,7 +310,7 @@
           padding-left: 100px;
           background-color: #ffffff;
           width: 1400px;
-          height: 500px;
+          height: auto; /* Set height to auto to adjust automatically */
           border: 2px solid #17252A;
           padding: 20px;
           margin: 20px;
@@ -313,7 +318,7 @@
           padding-top:10px;
         }
 
-    #edit{
+    #edit, #view{
       padding-top:40px;
       padding-bottom:40px;
       background-color: #3AAFA9;
@@ -333,6 +338,11 @@
     h3{
       padding-left:30px;
       color:white;
+    }
+
+    #viewForm{
+        padding-top:40px;
+        padding-left:70px;
     }
 
     hr{
@@ -381,6 +391,16 @@
         }
 
         
+        .even-row-publication {
+        background-color: #d1ffff; /* Blue */
+        }
+
+        .odd-row-publication {
+            background-color: white; /* Pink */
+        }
+        
+
+        
         
     </style>
 </head>
@@ -410,9 +430,7 @@
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Mentor profile</a>
                         </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Staff Profile</a>
-                        </li>
+                        
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Platinum Profile</a>
                         </li>
@@ -434,10 +452,22 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#expertDropdown" aria-expanded="false" aria-controls="expertDropdown">
                         <i class="lni lni-popup"></i>
                         <span>Expert Information</span>
                     </a>
+                    <ul id="expertDropdown" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                        <a href="{{ route('search.expert') }}" class="sidebar-link">Search Expert</a>
+                        </li>
+                        <li class="sidebar-item">
+                        <a href="{{ route('add.expert') }}" class="sidebar-link">Add Expert</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Expert Report</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -497,6 +527,13 @@
                           document.querySelector("#sidebar").classList.toggle("expand");
                       });
                   </script>
+                  <script>
+                    // JavaScript to add alternating row colors
+                    const rows = document.querySelectorAll('#publication-table tr:nth-child(even)');
+                    rows.forEach(row => {
+                        row.classList.add('even-row-publication');
+                    });
+                </script>
                   </body>
                   </html>
               

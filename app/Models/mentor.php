@@ -14,12 +14,14 @@ class Mentor extends Model
     protected $primaryKey = 'mentor_id';
 
     protected $fillable = [
-        'Name',
-        'EducationLevel',
-        'Position',
-        'Experience',
-        'PhoneNumber',
-        'username',
+
+        'mentor_id',
+        'm_username',
+        'name',
+        'm_education_level',
+        'm_position',
+        'm_experience',
+        'm_phone_number'
     ];
 
     public function userprofile()

@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\publication;
 use Illuminate\Http\Request;
-
-
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PublicationController extends Controller
 {
@@ -17,19 +16,65 @@ class PublicationController extends Controller
         return view('PublicationData.ReportViewer');
     }
 
-    public function PublicationViewer()
+    public function generatePublicationPdf(Request $request)
     {
-        // Fetch data here if needed
-        $data = publication::orderBy('publication_ID', 'desc')->get();
+
+        $institutionKeywords = $request->institutionKeywords;
+        $yearKeywords = $request->yearKeywords;
+
+        $query = publication::query();
+
+        if (strlen($institutionKeywords) && strlen($yearKeywords)) {
+            // If both keywords are provided
+            $query->where('publication_institution', 'like', "%$institutionKeywords%")
+                  ->whereYear('publication_date', $yearKeywords);
+        } else {
+            // If only institution keyword is provided
+            if (strlen($institutionKeywords)) {
+                $query->where('publication_institution', 'like', "%$institutionKeywords%");
+            }
+    
+            // If only year keyword is provided
+            if (strlen($yearKeywords)) {
+                $query->whereYear('publication_date', $yearKeywords);
+            }
+        }
+
+        $publications = $query->get();
+
+        $data = [
+            'title' => 'Publication Report',
+            'date' => date('Y-m-d'),
+            'publications' => $publications // Correct the data key
+        ];
+        $pdf = Pdf::loadView('PublicationData.generate-publication-pdf', $data);
+        return $pdf->download('publication-report.pdf');
+    }
+
+    public function PublicationViewer(Request $request)
+    {
+        $keywords = $request->keywords;
+        if(strlen($keywords))
+        {
+            $data = publication::where('publication_title', 'like', "%$keywords%")
+                                    ->orWhereYear('publication_date', 'like', "%$keywords%")->get(); // Add ->get() to execute the query
+        }
+        else{
+                    // Fetch data here if needed
+            $data = publication::orderBy('publication_ID', 'desc')->get();
+        }
+
         return view('PublicationData.PublicationViewer')->with('data', $data);
     }
 
     public function PublicationManager()
     {
+        
         // Fetch data here if needed
         $data = publication::orderBy('publication_ID', 'desc')->get();
         return view('PublicationData.MyPublicationManager')->with('data', $data);
     }
+
 
     public function index()
     {
@@ -52,21 +97,14 @@ class PublicationController extends Controller
     public function store(Request $request)
     {
 
-        $request->validate([
-            'publicationid' => 'required|max:10|unique:publication,publication_ID',
-        ], [
-            'publicationid.required' => 'Please enter different publication ID',
-            
-        ]);
         $data = [
-            'publication_ID' => $request->publicationid,
             'publication_title' => $request->title,
             'publication_DOI' => $request->DOI,
             'publication_abstract' => $request->abstract,
-            'publication_year' => $request->year,
+            'publication_date' => $request->date,
             'publication_authors' => $request->authors,
             'publication_institution' => $request->institution,
-            'publication_types' => $request->types,        
+            'publication_types' => $request->type,        
             
         ];
         
@@ -80,7 +118,8 @@ class PublicationController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data = publication::where('publication_ID', $id)->first();
+        return view('PublicationData.viewMyPublication')->with('data', $data);
     }
 
     /**
@@ -106,7 +145,7 @@ class PublicationController extends Controller
             'publication_title' => $request->title,
             'publication_DOI' => $request->DOI,
             'publication_abstract' => $request->abstract,
-            'publication_year' => $request->year,
+            'publication_date' => $request->date,
             'publication_authors' => $request->authors,
             'publication_institution' => $request->institution,
             'publication_types' => $request->types,        

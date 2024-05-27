@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class register_profile extends Model
+class register_profiles extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'r_profile_id';
 
     
     // Specify the attributes that are mass assignable
     protected $fillable = [
-        'r_profileID',
+        'r_profile_id',
         'r_identity_card',
         'r_gender',
         'r_password',
@@ -30,32 +31,8 @@ class register_profile extends Model
         'r_program',
         'r_size',
         'r_batch',
-        'r_name',
-        'plat_id',
-        'staff_id',
-        'mentor_id',
-        'crmp_ID'
+        'r_name'
+       
     ];
-
-    public function mentor()
-    {
-        return $this->belongsTo(mentor::class, 'mentor_id');
-    }
-
-    public function crmp()
-    {
-        return $this->belongsTo(crmp::class, 'crmp_id');
-    }
-
-    public function platinum()
-    {
-        return $this->belongsTo(platinum::class, 'plat_id');
-    }
-
-    public function staff()
-    {
-        return $this->belongsTo(staff::class, 'staff_id');
-    }
-
     
 }

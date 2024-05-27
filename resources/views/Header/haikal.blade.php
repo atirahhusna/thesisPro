@@ -1,4 +1,4 @@
-@extends('layout.Administrator')
+@extends('Header.platinum')
 @section('content')
 
 <div class="test">

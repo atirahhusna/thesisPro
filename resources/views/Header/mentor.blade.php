@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -225,6 +226,53 @@
         background-color: black;
     }
 
+    .button-container-filter {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .button-container-filter button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color:  #4B0082;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button-container-filter button:hover {
+        background-color: black;
+    }
+
+    .container-filter{
+        padding:40px 40px;
+        background-color: #a580c1;
+        height:400px;
+    }
+
+    input[type=text],select{
+          width: 300px;
+          height: 50px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          resize: none;
+          margin-right:40px;
+          
+        }
+
+    .container-filter h2{
+        color:white;
+    }
+
+
 
 
     #footer{
@@ -356,7 +404,7 @@
 
                 <!-- New General Publication Section -->
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="{{ route('publication.publicationViewer') }}" class="sidebar-link">
                         <i class="lni lni-agenda"></i>
                         <span>General Publication</span>
                     </a>
@@ -364,7 +412,7 @@
 
                 <!-- New Publication Report Section -->
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="{{ route('publication.publicationReport') }}" class="sidebar-link">
                         <i class="lni lni-bookmark"></i>
                         <span>Publication Report</span>
                     </a>

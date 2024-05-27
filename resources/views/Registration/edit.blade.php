@@ -92,116 +92,116 @@ button:hover {
             </div>
         @endif
 
-        <form id="registrationForm" method="POST" action="{{ route('registerPost') }}">
+        <form id="registrationForm" method="POST" action="{{ url('RegisterList/'.$data->r_profile_id) }}">
             @csrf
-            @method('post')
+            @method('PUT')
            
             <div class="form-group">
                 <label for="r_name">Name</label>
-                <input type="text" id="r_name" name="r_name" maxlength="30" required>
+                <input type="text" id="r_name" name="r_name" placeholder="name" value="{{ $data->r_name }}" required>
             </div>
             <div class="form-group">
                 <label for="r_password">Password</label>
-                <input type="password" id="r_password" name="r_password" maxlength="30" required>
+                <input type="password" id="r_password" name="r_password" placeholder="password" value="{{ $data->r_password }}" required>
             </div>
             <div class="form-group">
                 <label for="r_identity_card">Identity Card Number</label>
-                <input type="text" id="r_identity_card" name="r_identity_card" required>
+                <input type="text" id="r_identity_card" name="r_identity_card" placeholder="Identity card" value="{{ $data->r_identity_card }}" required>
             </div>
             <div class="form-group">
                 <label for="r_gender">Gender</label>
                 <select id="r_gender" name="r_gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
+                    <option value="male" {{ $data->r_gender == 'male' ? 'selected' : '' }}>Male</option>
+                    <option value="female" {{ $data->r_gender == 'female' ? 'selected' : '' }}>Female</option>
+                    <option value="other" {{ $data->r_gender == 'other' ? 'selected' : '' }}>Other</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="r_religion">Religion</label>
                 <select id="r_religion" name="r_religion">
-                    <option value="Christianity">Christianity</option>
-                    <option value="Islam">Islam</option>
-                    <option value="Hinduism">Hinduism</option>
-                    <option value="Buddhism">Buddhism</option>
-                    <option value="Judaism">Judaism</option>
+                    <option value="Christianity" {{ $data->r_religion == 'Christianity' ? 'selected' : '' }}>Christianity</option>
+                    <option value="Islam" {{ $data->r_religion == 'Islam' ? 'selected' : '' }}>Islam</option>
+                    <option value="Hinduism" {{ $data->r_religion == 'Hinduism' ? 'selected' : '' }}>Hinduism</option>
+                    <option value="Buddhism" {{ $data->r_religion == 'Buddhism' ? 'selected' : '' }}>Buddhism</option>
+                    <option value="Judaism" {{ $data->r_religion == 'Judaism' ? 'selected' : '' }}>Judaism</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="r_race">Race</label>
                 <select id="r_race" name="r_race">
-                    <option value="Malay">Malay</option>
-                    <option value="Chinese">Chinese</option>
-                    <option value="Indian">Indian</option>
-                    <option value="Bumiputera">Bumiputera</option>
+                    <option value="Malay" {{ $data->r_race == 'Malay' ? 'selected' : '' }}>Malay</option>
+                    <option value="Chinese" {{ $data->r_race == 'Chinese' ? 'selected' : '' }}>Chinese</option>
+                    <option value="Indian" {{ $data->r_race == 'Indian' ? 'selected' : '' }}>Indian</option>
+                    <option value="Bumiputera" {{ $data->r_race == 'Bumiputera' ? 'selected' : '' }}>Bumiputera</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="r_citizenship">Citizenship</label>
-                <input type="text" id="r_citizenship" name="r_citizenship" maxlength="15">
+                <input type="text" id="r_citizenship" name="r_citizenship" placeholder="Citizenship" value="{{ $data->r_citizenship }}">
             </div>
             <div class="form-group">
                 <label for="r_address">Address</label>
-                <input type="text" id="r_address" name="r_address" maxlength="100">
+                <input type="text" id="r_address" name="r_address" placeholder="Address" value="{{ $data->r_address }}">
             </div>
             <div class="form-group">
                 <label for="r_phone_number">Phone Number</label>
-                <input type="number" id="r_phone_number" name="r_phone_number">
+                <input type="number" id="r_phone_number" name="r_phone_number" placeholder="Phone number" value="{{ $data->r_phone_number }}">
             </div>
             <div class="form-group">
                 <label for="r_facebook">Facebook Account</label>
-                <input type="text" id="r_facebook" name="r_facebook" maxlength="20">
+                <input type="text" id="r_facebook" name="r_facebook" placeholder="facebook" value="{{ $data->r_facebook }}">
             </div>
             <h2>Education Information</h2>
             <div class="form-group">
                 <label for="r_current_edu_level">Current Education Level</label>
                 <select id="r_current_edu_level" name="r_current_edu_level">
-                    <option value="Bachelor's Degree">Bachelor's Degree</option>
-                    <option value="Master's Degree">Master's Degree</option>
-                    <option value="PhD">PhD</option>
+                    <option value="Bachelor's Degree" {{ $data->r_current_edu_level == "Bachelor's Degree" ? 'selected' : '' }}>Bachelor's Degree</option>
+                    <option value="Master's Degree" {{ $data->r_current_edu_level == "Master's Degree" ? 'selected' : '' }}>Master's Degree</option>
+                    <option value="PhD" {{ $data->r_current_edu_level == 'PhD' ? 'selected' : '' }}>PhD</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="r_edu_field">Education Field</label>
-                <input type="text" id="r_edu_field" name="r_edu_field" maxlength="30">
+                <input type="text" id="r_edu_field" name="r_edu_field" placeholder="Education field" value="{{ $data->r_edu_field }}">
             </div>
             <div class="form-group">
                 <label for="r_edu_institute">Education Institute</label>
-                <input type="text" id="r_edu_institute" name="r_edu_institute" maxlength="30">
+                <input type="text" id="r_edu_institute" name="r_edu_institute" placeholder="Education Institute" value="{{ $data->r_edu_institute }}">
             </div>
             <div class="form-group">
                 <label for="r_occupation">Occupation</label>
-                <input type="text" id="r_occupation" name="r_occupation" maxlength="30">
+                <input type="text" id="r_occupation" name="r_occupation" placeholder="Occupation " value="{{ $data->r_occupation }}">
             </div>
             <div class="form-group">
                 <label for="r_sponsor">Sponsorship Company Name</label>
-                <input type="text" id="r_sponsor" name="r_sponsor" maxlength="30">
+                <input type="text" id="r_sponsor" name="r_sponsor" placeholder="Company" value="{{ $data->r_sponsor }}">
             </div>
             <h2>Program Information</h2>
             <div class="form-group">
                 <label for="r_program">Program Interested (Required)</label>
                 <select id="r_program" name="r_program">
-                    <option value="Platinum Professorship">Platinum Professorship</option>
-                    <option value="Platinum Premier">Platinum Premier</option>
-                    <option value="Platinum Elite">Platinum Elite</option>
-                    <option value="Platinum Dr. Jr.">Platinum Dr. Jr.</option>
-                    <option value="Ala Carte">Ala Carte</option>
+                    <option value="Platinum Professorship" {{ $data->r_program == 'Platinum Professorship' ? 'selected' : '' }}>Platinum Professorship</option>
+                    <option value="Platinum Premier" {{ $data->r_program == 'Platinum Premier' ? 'selected' : '' }}>Platinum Premier</option>
+                    <option value="Platinum Elite" {{ $data->r_program == 'Platinum Elite' ? 'selected' : '' }}>Platinum Elite</option>
+                    <option value="Platinum Dr. Jr." {{ $data->r_program == 'Platinum Dr. Jr.' ? 'selected' : '' }}>Platinum Dr. Jr.</option>
+                    <option value="Ala Carte" {{ $data->r_program == 'Ala Carte' ? 'selected' : '' }}>Ala Carte</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="r_size">T-shirt Size (Berkolar & Lengan Pendek Sahaja) (Required)</label>
                 <select id="r_size" name="r_size">
-                    <option value="XS">XS</option>
-                    <option value="S">S</option>
-                    <option value="2XL">2XL</option>
-                    <option value="3XL">3XL</option>
+                    <option value="XS" {{ $data->r_size == 'XS' ? 'selected' : '' }}>XS</option>
+                    <option value="S" {{ $data->r_size == 'S' ? 'selected' : '' }}>S</option>
+                    <option value="2XL" {{ $data->r_size == '2XL' ? 'selected' : '' }}>2XL</option>
+                    <option value="3XL" {{ $data->r_size == '3XL' ? 'selected' : '' }}>3XL</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="r_batch">Platinum Batch</label>
-                <input type="text" id="r_batch" name="r_batch" maxlength="10">
+                <input type="text" id="r_batch" name="r_batch" placeholder=" Batch" value="{{ $data->r_batch }}">
             </div>
             <div class="button-place">
-                <button type="submit">Register</button>
+                <button type="submit">Save</button>
             </div>
         </form>
     </div>

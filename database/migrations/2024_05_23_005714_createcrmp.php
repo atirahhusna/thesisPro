@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('username'); // Foreign key to user_profile
 
             // Defining foreign key constraint correctly
-            $table->foreign('username')->references('username')->on('user_profile')->onDelete('cascade');
+            $table->foreign('username')->references('username')->on('user_profiles')->onDelete('cascade');
 
             $table->string('crmp_education', 100); // CRMP Education Background
             $table->string('crmp_expertise', 10); // CRMP Expertise
