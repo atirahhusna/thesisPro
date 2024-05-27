@@ -11,6 +11,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\platinumTemplateController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ExpertController;
 
 
 
@@ -54,3 +55,11 @@ Route::get('/DraftNewTitle', [DraftController::class , 'createThesis']);
 Route::get('/test', [PublicationController::class , 'create']);
 
 Route::get('/temp', [platinumTemplateController::class , 'Template']);
+
+
+//RouteExpert Domain
+Route::get('/AddExpert', function () {return view('ExpertDomain.AddExpert');});
+Route::get('/SearchExpert', function () {return view('ExpertDomain.SearchExpert');});
+Route::get('/EditExpert', [ExpertController::class, 'edit'])->name('ExpertDomain.EditExpert');
+Route::get('/test', function () {return view('ExpertDomain.test');});
+
