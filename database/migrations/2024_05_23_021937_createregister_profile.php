@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('r_program', 30)->nullable(); // Program
             $table->string('r_size', 5)->nullable(); // T-shirt size
             $table->string('r_batch', 10)->nullable(); // Platinum batch
-            $table->string('r_name', 30)->nullable();// Platinum name
+            $table->string('r_name',255)->change();// Platinum name
             // Timestamps
             $table->timestamps();
             $table->softdeletes();
@@ -43,5 +43,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('register_profiles');
+        $table->string('r_name', 30)->change(); // Adjust to the original length
     }
 };
