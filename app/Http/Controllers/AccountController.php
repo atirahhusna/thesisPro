@@ -28,13 +28,84 @@ class AccountController extends Controller
         $users = register_profiles::all();
         return view('Registration.Index', ['users'=>$users]);
     }
-    public function edit(register_profiles $users)
-    {
-        return view('Registration.edit', ['users' =>$users]);
-    }
+     // Method to show the edit form
+     public function edit(string $id)
+     {
+         $data = register_profiles::where('r_profile_id', $id)->first();
+         return view('Registration.edit')->with('data', $data);
+     }
+ 
+     // Method to update the registration data
+     public function update(Request $request, string $id)
+     {
+         $request->validate([
+             'r_name' ,
+             'r_identity_card' ,
+             'r_gender',
+             'r_password' ,
+             'r_religion',
+             'r_race',
+             'r_citizenship' ,
+             'r_address',
+             'r_phone_number' ,
+             'r_facebook',
+             'r_current_edu_level' ,
+             'r_edu_field',
+             'r_edu_institute',
+             'r_occupation' ,
+             'r_sponsor' ,
+             'r_program' ,
+             'r_size' ,
+             'r_batch' 
+         ]);
+ 
+         $data = [
+             'r_name' => $request->r_name,
+             'r_identity_card' => $request->r_identity_card,
+             'r_gender' => $request->r_gender,
+             'r_password' => bcrypt($request->r_password), // Encrypt the password before saving
+             'r_religion' => $request->r_religion,
+             'r_race' => $request->r_race,
+             'r_citizenship' => $request->r_citizenship,
+             'r_address' => $request->r_address,
+             'r_phone_number' => $request->r_phone_number,
+             'r_facebook' => $request->r_facebook,
+             'r_current_edu_level' => $request->r_current_edu_level,
+             'r_edu_field' => $request->r_edu_field,
+             'r_edu_institute' => $request->r_edu_institute,
+             'r_occupation' => $request->r_occupation,
+             'r_sponsor' => $request->r_sponsor,
+             'r_program' => $request->r_program,
+             'r_size' => $request->r_size,
+             'r_batch' => $request->r_batch,
+         ];
+ 
+         $user = register_profiles::where('r_profile_id', $id)->first();
+         if ($user) {
+             $user->update($data);
+ 
+             // Redirect with success message
+             return redirect()->back()->with('success', 'Profile updated successfully.');
+         } else {
+             // Redirect with error message if user not found
+             return redirect()->back()->with('error', 'Profile not found.');
+         }
+     }
+ 
+     // Method to show a specific profile
+     public function show(string $id)
+     {
+         $data = register_profiles::where('r_profile_id', $id)->first();
+         return view('Registration.Index')->with('data', $data);
+     }
+ 
 
-    
-
+     public function destroy(string $id)
+     {
+         register_profiles::where('r_profile_id',$id)->delete();
+         return redirect()->route('Registration.Index')->with('success', 'User Deleted!');
+     }
+     
 
     public function userPost(Request $request)
     {

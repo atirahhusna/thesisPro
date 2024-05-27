@@ -39,8 +39,11 @@ Route::get('/userRegister', [AccountController::class, 'user'])->name('user');
 Route::post('/userRegister', [AccountController::class, 'userPost'])->name('userPost');
 Route::get('/PlatinumProfile', [PlatinumController::class, 'ProfileShow']);
 Route::get('/RegisterList', [AccountController::class, 'RegisterList'])->name('RegisterList');
-Route::get('/RegisterList/{users}/edit', [AccountController::class, 'edit'])->name('edit');
-Route::delete('/RegisterList/{users}', [AccountController::class, 'destroy'])->name('destroy');
+Route::get('/RegisterList/{id}/edit', [AccountController::class, 'edit'])->name('edit');
+Route::get('/RegisterList/{id}/show', [AccountController::class, 'show'])->name('show');
+Route::delete('/RegisterList/{id}', [AccountController::class, 'destroy'])->name('destroy');
+Route::put('/RegisterList/{id}', [AccountController::class, 'update']);
+
 
 
 //Route Publication

@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class register_profiles extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'r_profile_id';
 
     
     // Specify the attributes that are mass assignable
     protected $fillable = [
-        'r_profileID',
+        'r_profile_id',
         'r_identity_card',
         'r_gender',
         'r_password',
