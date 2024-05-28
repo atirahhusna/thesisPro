@@ -38,6 +38,11 @@ Route::get('/RegisterList/{id}/edit', [AccountController::class, 'edit'])->name(
 Route::get('/RegisterList/{id}/show', [AccountController::class, 'show'])->name('show');
 Route::delete('/RegisterList/{id}', [AccountController::class, 'destroy'])->name('destroy');
 Route::put('/RegisterList/{id}', [AccountController::class, 'update']);
+Route::get('/PlatinumProfile/{id}/edit', [PlatinumController::class, 'edit'])->name('edit');
+Route::get('/RegisterList/{id}/show', [AccountController::class, 'show'])->name('show');
+Route::get('/PlatinumProfile', [PlatinumController::class, 'edit'])->name('edit');
+Route::get('/PlatinumProfile', [PlatinumController::class, 'ProfileShow'])->name('ProfileShow');
+Route::get('/Staff.PlatinumList', [StaffController::class, 'profileList'])->name('profileList');
 
 
 
