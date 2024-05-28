@@ -15,7 +15,7 @@ class PlatinumController extends Controller
     {
         return view('userprofile.platinum');
     }
-    public function showProfile(string $id)
+    public function show(string $id)
     {
        $user = register_profiles::where('r_profile_id',$id)->first();
 
