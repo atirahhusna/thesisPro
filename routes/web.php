@@ -39,10 +39,15 @@ Route::get('/RegisterList', [AccountController::class, 'RegisterList'])->name('R
 Route::get('/RegisterList/{id}/edit', [AccountController::class, 'edit'])->name('edit');
 Route::delete('/RegisterList/{id}', [AccountController::class, 'destroy'])->name('destroy');
 Route::put('/RegisterList/{id}', [AccountController::class, 'update']);
-//profile
+//profile staff
 Route::get('/Staff.PlatinumList', [StaffController::class, 'profileView'])->name('profileView');
 Route::get('/Staff.PlatinumList/{id}/show', [StaffController::class, 'show'])->name('show');
 Route::get('/Staff.PlatinumList/search', [StaffController::class, 'profileView'])->name('profileView');
+//profile mentor
+Route::get('/Mentor.PlatinumList', [MentorController::class, 'profileView'])->name('profileView');
+Route::get('/Mentor.PlatinumList/{id}/show', [MentorController::class, 'show'])->name('show');
+Route::get('/Mentor.PlatinumList/search', [MentorController::class, 'profileView'])->name('profileView');
+Route::get('/MentorRegisterList', [MentorController::class, 'RegisterList'])->name('RegisterList');
 
 
 

@@ -34,7 +34,4 @@ class StaffController extends Controller
 
         return view('userProfile.Staff.ProfileList')->with('users',$users);
     }
-
-
-
 }
