@@ -452,10 +452,22 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#expertDropdown" aria-expanded="false" aria-controls="expertDropdown">
                         <i class="lni lni-popup"></i>
                         <span>Expert Information</span>
                     </a>
+                    <ul id="expertDropdown" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                        <a href="{{ route('search.expert') }}" class="sidebar-link">Search Expert</a>
+                        </li>
+                        <li class="sidebar-item">
+                        <a href="{{ route('add.expert') }}" class="sidebar-link">Add Expert</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Expert Report</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
             <div class="sidebar-footer">
@@ -497,7 +509,9 @@
                   </td>
                 </tr>
               </table>
+              <center>
               <hr>
+            </center>
               <p style="text-align:center;">Copyright &copy; 2024 THESISPRO Corporation. All Rights Reserved.</p>
                       </div>
                   </div>
