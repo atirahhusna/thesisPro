@@ -23,6 +23,11 @@ class WeeklyController extends Controller
         return view('ProgressMonitoring.WeeklyAdd');
     }
 
+    public function viewer()
+    {
+        return view('ProgressMonitoring.WeeklyViewer');
+    }
+
     /**
      * Store a newly created resource in storage.
      */

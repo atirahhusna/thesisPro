@@ -12,8 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('draft_theses', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->string('DT_Title', 100)->primary();
+            $table->integer('DT_DraftNum')->nullable();
+            $table->integer('DT_PagesNum')->nullable();
+            $table->text('DT_Comment')->nullable();
+            $table->integer('DT_DDC')->nullable();
+            $table->date('DT_Completion')->nullable();
         });
     }
 

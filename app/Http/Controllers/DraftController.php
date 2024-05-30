@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\DraftThesis;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class DraftController extends Controller
 {
@@ -11,7 +13,8 @@ class DraftController extends Controller
      */
     public function index()
     {
-        return view('ProgressMonitoring.DraftThesis');
+        $data = DraftThesis::orderBy('DT_Title', 'desc')->paginate(10);
+        return view('ProgressMonitoring.DraftThesis')->with('data', $data);
     }
 
     /**
@@ -27,19 +30,48 @@ class DraftController extends Controller
      */
     public function store(Request $request)
     {
+        Session::flash('DT_Title', $request -> DT_Title);
+        
+        $request ->validate([
+            'DT_Title' => 'required|unique:draft_theses,DT_Title',
+    ],[
+        'DT_Title.required' => 'Title is required',
+        'DT_Title.unique' => 'Title already exists',
+    ]);
         $data=[
-            'title'=> $request ->title
+            'DT_Title'=> $request -> DT_Title
         ];
         DraftThesis::create($data);
-        return 'HI';
+        return redirect()->to('DraftThesis')->with('success', 'Data saved successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function showDratfList(Request $request)
     {
-        //
+        $data=[
+            'DT_DraftNum'=> $request -> DT_DraftNum,
+            'DT_PagesNum'=> $request -> DT_PagesNum,
+            'DT_Comment'=> $request -> DT_Comment,
+            'DT_DDC'=> $request -> DT_DDC,
+            'DT_Completion'=> $request -> DT_Completion,
+        ];
+
+        return view('ProgressMonitoring.DraftWork');
+    }
+
+        /**
+     * Show the viewer interface.
+     */
+    public function DraftViewer()
+    {
+        return view('ProgressMonitoring.DraftViewer');
+    }
+
+    public function DraftWorkViewer()
+    {
+        return view('ProgressMonitoring.DraftWorkViewer');
     }
 
     /**

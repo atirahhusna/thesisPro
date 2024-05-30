@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\RegisterProfile;
+use App\Models\register_profiles;
 
 use Illuminate\Http\Request;
 
@@ -11,13 +11,13 @@ class PlatinumController extends Controller
     {
         return view('LandingPage.Platinum');
     }
-    public function ProfileShow()
+    public function ProfileShow(string $id)
     {
         return view('userprofile.platinum');
     }
-    public function showProfile(string $id)
+    public function show(string $id)
     {
-       $user = RegisterProfile::where('r_profileID',$id)->first();
+       $user = register_profiles::where('r_profile_id',$id)->first();
 
         if (!$user) {
             return redirect()->back()->with('error', 'User not found.');
@@ -26,4 +26,9 @@ class PlatinumController extends Controller
         return view('userProfile.platinum')->with('user', $user);
     }
     
+    public function edit(string $id)
+    {
+        $data = register_profiles::where('r_profile_id', $id)->first();
+        return view('userProfile.platinum')->with('data', $data);
+    }
 }

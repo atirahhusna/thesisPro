@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\PlatinumController;
-use App\Http\Controllers\WeeklyFocusController;
+use App\Http\Controllers\WeeklyController;
 use App\Http\Controllers\DraftController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\platinumTemplateController;
@@ -12,6 +12,7 @@ use App\Http\Controllers\MentorController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ExpertController;
+
 use App\Http\Controllers\PdfController;
 
 
@@ -29,16 +30,24 @@ Route::post('/Login', [AccountController::class, 'LoginPost'])->name('LoginPost'
 Route::get('/ForgotPassword', [AccountController::class, 'ForgotPassword']);
 Route::get('/StaffPage', [StaffController::class, 'StaffPage']);
 Route::get('/MentorPage', [MentorController::class, 'MentorPage']);
+//registration
 Route::get('/Registration', [AccountController::class, 'registerForm'])->name('registerForm');
 Route::post('/Registration', [AccountController::class, 'registerPost'])->name('registerPost');
 Route::get('/userRegister', [AccountController::class, 'user'])->name('user');
 Route::post('/userRegister', [AccountController::class, 'userPost'])->name('userPost');
-Route::get('/PlatinumProfile', [PlatinumController::class, 'ProfileShow']);
 Route::get('/RegisterList', [AccountController::class, 'RegisterList'])->name('RegisterList');
 Route::get('/RegisterList/{id}/edit', [AccountController::class, 'edit'])->name('edit');
-Route::get('/RegisterList/{id}/show', [AccountController::class, 'show'])->name('show');
 Route::delete('/RegisterList/{id}', [AccountController::class, 'destroy'])->name('destroy');
 Route::put('/RegisterList/{id}', [AccountController::class, 'update']);
+//profile staff
+Route::get('/Staff.PlatinumList', [StaffController::class, 'profileView'])->name('profileView');
+Route::get('/Staff.PlatinumList/{id}/show', [StaffController::class, 'show'])->name('show');
+Route::get('/Staff.PlatinumList/search', [StaffController::class, 'profileView'])->name('profileView');
+//profile mentor
+Route::get('/Mentor.PlatinumList', [MentorController::class, 'profileView'])->name('profileView');
+Route::get('/Mentor.PlatinumList/{id}/show', [MentorController::class, 'show'])->name('show');
+Route::get('/Mentor.PlatinumList/search', [MentorController::class, 'profileView'])->name('profileView');
+Route::get('/MentorRegisterList', [MentorController::class, 'RegisterList'])->name('RegisterList');
 
 
 
@@ -56,12 +65,17 @@ Route::post('/generatePdf', [PublicationController::class, 'generatePublicationP
 
 //CRMP
 
-//Route Progress Monitoring
+//Route Progress Monitoring weekly focus
 Route::resource('WeeklyFocus', WeeklyController::class);
 Route::get('/WeeklyAdd', [WeeklyControllerr::class , 'create']);
+Route::get('/WeeklyViewer', [WeeklyController::class , 'viewer']);
 
+//Route Progress Monitoring draft thesis
 Route::resource('DraftThesis', DraftController::class);
 Route::get('/DraftNewTitle', [DraftController::class , 'createThesis']);
+Route::get('/DraftWork', [DraftController::class , 'showDratfList']);
+Route::get('/DraftViewer', [DraftController::class , 'DraftViewer']);
+Route::get('/DraftWorkViewer', [DraftController::class , 'DraftWorkViewer']);
 Route::get('/test', [PublicationController::class , 'create']);
 
 Route::get('/temp', [platinumTemplateController::class , 'Template']);

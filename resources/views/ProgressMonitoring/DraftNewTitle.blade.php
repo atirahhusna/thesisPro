@@ -16,15 +16,25 @@
    </head>
    <body class="bg-light">
      <main class="container">
-
+      @if ($errors->any())
+        <div class="pt-3">
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $item)
+                  <li>{{$item}}</li>
+              @endforeach
+            </ul>
+          </div>
+        </div>
+      @endif
 <!-- START FORM -->
 <form action='{{ url('DraftThesis')}}' method='post'>
     @csrf
     <div class="my-3 p-3 bg-body rounded shadow-sm">
         <div class="mb-3 row">
-            <label for="title" class="col-sm-2 col-form-label">Title Thesis</label>
+            <label for="DT_Title" class="col-sm-2 col-form-label">Title Thesis</label>
             <div class="col-sm-10">
-                <input type="number" class="form-control" name='nim' id="nim">
+                <input type="text" class="form-control" name='DT_Title' value="{{ Session::get('nim')}}" id="DT_Title">
             </div>
         </div>
         <div class="mb-3 row">

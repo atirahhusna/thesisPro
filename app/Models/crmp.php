@@ -10,7 +10,7 @@ class CRMP extends Model
     use HasFactory;
 
     protected $fillable = [
-        'crmp_ID',
+        'crmp_id',
         'crmp_Education',
         'crmp_Expertise',
         'crmp_Teaching',
@@ -18,9 +18,4 @@ class CRMP extends Model
         'crmp_Name',
         'username',
     ];
-
-    public function userProfile()
-    {
-        return $this->belongsTo(userProfile::class, 'username', 'username');
-    }
 }

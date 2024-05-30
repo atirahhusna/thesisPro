@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class register_profiles extends Model
 {
     use HasFactory;
+    
     protected $primaryKey = 'r_profile_id';
 
-    
     // Specify the attributes that are mass assignable
     protected $fillable = [
         'r_profile_id',
@@ -31,8 +31,7 @@ class register_profiles extends Model
         'r_program',
         'r_size',
         'r_batch',
-        'r_name'
-       
+        'r_name',   
     ];
-    
+
 }
