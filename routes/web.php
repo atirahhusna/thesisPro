@@ -12,11 +12,7 @@ use App\Http\Controllers\MentorController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ExpertController;
-
-<<<<<<< HEAD
-=======
 use App\Http\Controllers\PdfController;
->>>>>>> 72d91634c79b1806802c600a22f909429ad2d162
 
 
 
