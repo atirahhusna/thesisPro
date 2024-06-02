@@ -399,7 +399,20 @@
             background-color: white; /* Pink */
         }
         
+        th{
+        font-size: 18px;
+    }
 
+    .button-container-view button {
+        padding: 5px 15px;
+        font-size: 14px;
+        background-color:  #17252A;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
         
         
     </style>
@@ -533,6 +546,22 @@
                     rows.forEach(row => {
                         row.classList.add('even-row-publication');
                     });
+
+                    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+                    var dropdown = document.getElementsByClassName("dropdown-btn");
+                    var i;
+
+                    for (i = 0; i < dropdown.length; i++) {
+                    dropdown[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var dropdownContent = this.nextElementSibling;
+                        if (dropdownContent.style.display === "block") {
+                        dropdownContent.style.display = "none";
+                        } else {
+                        dropdownContent.style.display = "block";
+                        }
+                    });
+                    }
                 </script>
                   </body>
                   </html>
