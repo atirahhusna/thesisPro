@@ -1,109 +1,297 @@
-<!-- Existing content -->
 @extends('Header/platinum')
 @section('content')
 <hr>
 <link rel="stylesheet" href="{{ asset('ProgressMonitoring/WeeklyFocus.css') }}"/>
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"crossorigin="anonymous"> 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Data Mahasiswa</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  </head>
+    <style>
+
+    </style>
+</head>
+<body>
 <!-- SEARCH FORM -->
 <div class="pb-3">
-                  <form class="d-flex" action="" method="get">
-                      <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Enter keyword" aria-label="Search">
-                      <button class="btn btn-secondary" type="submit">Seacrh</button>
-                  </form>
-</div>
-<div class="button-group">
-    <nav class="hehe">
-        <ul>
-            <li><a href="#" onclick="filterTasks('All')">All</a></li>
-            <li><a href="#" onclick="filterTasks('Focus')">Focus</a></li>
-            <li><a href="#" onclick="filterTasks('Admin')">Admin</a></li>
-            <li><a href="#" onclick="filterTasks('Social')">Social</a></li>
-            <li><a href="#" onclick="filterTasks('Recovery')">Recovery</a></li>
-        </ul>
-    </nav>
-</div>
-
- <!-- START DATA -->
- <div class="my-3 p-3 bg-body rounded shadow-sm">
-                
-            
-          <!-- AKHIR DATA -->
-          <div class="my-3 p-3 bg-body rounded shadow-sm">
-                
-                <!-- TOMBOL TAMBAH DATA -->
-
-          
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th class="col-md-1">No</th>
-                            <th class="col-md-3">TASK</th>
-                            <th class="col-md-4">Category</th>
-                            <th class="col-md-2">DATE</th>
-                            <th class="col-md-2">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Focus on SDW Project</td>
-                            <td>Focus</td>
-                            <td>20 MAY 2024</td>
-                            <td>
-                                <a href='' class="btn btn-warning btn-sm">Edit</a>
-                                <a href='' class="btn btn-danger btn-sm">Del</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="pb-3">
-   
-                  <button onclick="document.getElementById('loginModal').style.display='block'" style="width:auto;" class="btn btn-primary">+</button>
-
-          </div>
-
-<!-- Add button to trigger popup -->
-<div id="loginModal" class="modal">
-    <form class="modal-content animate" action='{{ url('WeeklyController') }}' method="post">
-        @csrf 
-        <div class="imgcontainer">
-            <span onclick="document.getElementById('loginModal').style.display='none'" class="close" title="Close Modal">&times;</span>
-        </div>
-
-        <div class="container">
-            <label for="description"><b>Task Description</b></label>
-            <textarea id="description" placeholder="Enter Description" name="description" required></textarea>
-            <br>
-
-            <label for="category"><b>Category:</b></label>
-            <select name="category" id="category" class="input-field">
-                <option value="Focus">Focus</option>
-                <option value="Admin">Admin</option>
-                <option value="Social">Social</option>
-                <option value="Recovery">Recovery</option>
-            </select>
-            <br>
-            <label for="date"><b>Date:</b></label>
-            <input type="date" name="date" id="date" class="input-field" required>
-            <br>
-            
-            <center>
-                <button type="submit">Submit</button>
-            </center>
+    <form class="d-flex" action="{{ url('WeeklyFocus')}}" method="get" style="padding-left: 100px">
+        <div style="display: flex; align-items: center;">
+            <input style="width:1000px;height:40px;" type="search" id="search" name="keywords" value="{{Request::get('keywords') }}" placeholder="Enter keywords">
+            <div class="button-container">
+                <button style="height:40px;" type="submit">Search</button>
+            </div>
         </div>
     </form>
 </div>
-<hr>
+<div class="button-group">
+    <nav class="hehe">
+        <center>
+            <ul>
+                <li><a href="#" onclick="filterTasks('All')">All</a></li>
+                <li><a href="#" onclick="filterTasks('Focus')">Focus</a></li>
+                <li><a href="#" onclick="filterTasks('Admin')">Admin</a></li>
+                <li><a href="#" onclick="filterTasks('Social')">Social</a></li>
+                <li><a href="#" onclick="filterTasks('Recovery')">Recovery</a></li>
+            </ul>
+        </center>
+    </nav>
+</div>
+@if (Session::has('success'))
+<div class="pt-3">
+    <div class="alert alert-success">
+        {{ Session::get('success') }}
+    </div>
+</div>
+@endif
 
+@if (Session::has('error'))
+    <div class="alert alert-danger">
+        {{ Session::get('error') }}
+    </div>
+@endif
+
+@if ($errors->any())
+<div class="pt-3">
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $item)
+                <li>{{$item}}</li>
+            @endforeach
+        </ul>
+    </div>
+</div>
+@endif
+
+<!-- Week navigation -->
+<center>
+    <div class="my-3 p-3 bg-body rounded shadow-sm">
+        <div>
+            <a href=""><</a>
+            <span>Week: </span>
+            <a href="">></a>
+        </div>
+    </div>
+    </center>
+
+
+<center>
+    @if ($data1->isEmpty() && $data2->isEmpty() && $data3->isEmpty() && $data4->isEmpty())
+<div class="pb-3">
+    <a href='{{ url('WeeklyAdd') }}' class="btn btn-primary">+</a>
+</div>
+@else
+<div class="pb-3">
+    <a href='{{ url('WeeklyAddItem') }}' class="btn btn-primary">Add New Task</a>
+</div>
+@endif
+</center>
+
+<div class="my-3 p-3 bg-body rounded shadow-sm">
+    <table class="table table-striped">
+        <div>
+        <h3><b>FOCUS</b></h3>
+        </div>
+        <thead>
+            <tr>
+                <th class="col-md-1">No</th>
+                <th class="col-md-3">Description</th>
+                <th class="col-md-4">StartDate</th>
+                <th class="col-md-2">EndDate</th>
+                <th class="col-md-2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php  $i=1;?>
+            @foreach ($data1 as $item)
+            <tr>
+                <td>{{$i}}</td>
+                <td>{{ $item->WF_Description}}</td>
+                <td>{{ $item->WF_SDate}}</td>
+                <td>{{ $item->WF_EDate}}</td>
+                <td>
+                    <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
+                    <button type="button" class="btn btn-danger btn-sm" onclick="showMessage()">Del</button>
+                </td>
+            </tr>
+            
+                <?php $i++; ?>
+            @endforeach
+            <?php  $p=2;?>
+            @foreach ($data as $item)
+            @if ($item->WF_Type == 'focus')
+                <tr>
+                    <td>{{$p}}</td>
+                    <td>{{ $item->WF_Description}}</td>
+                    <td>{{ $item->WF_SDate}}</td>
+                    <td>{{ $item->WF_EDate}}</td>
+                    <td>
+                        <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
+                        <form action='{{ url('WeeklyFocus/'. $item->WF_Description) }}' method="POST" class = 'd-inline' onsubmit="return confirm('Want to delete the data?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                        </form>
+                    </td>
+                </tr>
+                <?php $i++; ?>
+            @endif
+
+            @endforeach
+        </tbody>
+    </table>
+    <table class="table table-striped">
+        <h3><b>ADMIN</b></h3>
+        <thead>
+            <tr>
+                <th class="col-md-1">No</th>
+                <th class="col-md-3">Description</th>
+                <th class="col-md-4">StartDate</th>
+                <th class="col-md-2">EndDate</th>
+                <th class="col-md-2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php  $i=1;?>
+            @foreach ($data2 as $item)
+            <tr>
+            <td>{{$i}}</td>
+            <td>{{ $item->WF_Description}}</td>
+            <td>{{ $item->WF_SDate}}</td>
+            <td>{{ $item->WF_EDate}}</td>
+            <td>
+                <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
+                <button type="button" class="btn btn-danger btn-sm" onclick="showMessage()">Del</button>
+            </td>
+        </tr>
+        <?php $i++; ?>
+            @endforeach
+            @foreach ($data as $item)
+            @if ($item->WF_Type == 'admin')
+            <?php  $i=2;?>
+            <tr>
+                <td>{{$i}}</td>
+                <td>{{ $item->WF_Description}}</td>
+                <td>{{ $item->WF_SDate}}</td>
+                <td>{{ $item->WF_EDate}}</td>
+                <td>
+                    <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
+                    <form class = 'd-inline' onsubmit="return confirm('Last data cannot be deleted?')">
+                        <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                    </form>
+                </td>
+            </tr>
+            <?php $i++; ?>
+            @endif
+        @endforeach
+        </tbody>
+    </table>
+    <table class="table table-striped">
+        <h3><b>SOCIAL</b></h3>
+        <thead>
+            <tr>
+                <th class="col-md-1">No</th>
+                <th class="col-md-3">Description</th>
+                <th class="col-md-4">StartDate</th>
+                <th class="col-md-2">EndDate</th>
+                <th class="col-md-2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php  $i=1;?>
+            @foreach ($data3 as $item)
+            <tr>
+            <td>{{$i}}</td>
+            <td>{{ $item->WF_Description}}</td>
+            <td>{{ $item->WF_SDate}}</td>
+            <td>{{ $item->WF_EDate}}</td>
+            <td>
+                <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
+                <button type="button" class="btn btn-danger btn-sm" onclick="showMessage()">Del</button>
+            </td>
+        </tr>
+        <?php $i++; ?>
+            @endforeach
+            @foreach ($data as $item)
+            @if ($item->WF_Type == 'social')
+            <?php  $i=2;?>
+            <tr>
+                <td>{{$i}}</td>
+                <td>{{ $item->WF_Description}}</td>
+                <td>{{ $item->WF_SDate}}</td>
+                <td>{{ $item->WF_EDate}}</td>
+                <td>
+                    <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
+                    <form action='{{ url('WeeklyFocus/'. $item->WF_Description) }}' method="POST" class = 'd-inline' onsubmit="return confirm('Want to delete the data?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                    </form>
+                </td>
+            </tr>
+            <?php $i++; ?>
+            @endif
+        @endforeach
+        </tbody>
+    </table>
+    <table class="table table-striped">
+        <h3><b>RECOVERY</b></h3>
+        <thead>
+            <tr>
+                <th class="col-md-1">No</th>
+                <th class="col-md-3">Description</th>
+                <th class="col-md-4">StartDate</th>
+                <th class="col-md-2">EndDate</th>
+                <th class="col-md-2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php  $i=1;?>
+            @foreach ($data4 as $item)
+            <tr>
+            <td>{{$i}}</td>
+            <td>{{ $item->WF_Description}}</td>
+            <td>{{ $item->WF_SDate}}</td>
+            <td>{{ $item->WF_EDate}}</td>
+            <td>
+                <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
+                <button type="button" class="btn btn-danger btn-sm" onclick="showMessage()">Del</button>
+            </td>
+        </tr>
+        <?php $i++; ?>
+            @endforeach
+            @foreach ($data as $item)
+            @if ($item->WF_Type == 'recovery')
+            <?php  $i=2;?>
+            <tr>
+                <td>{{$i}}</td>
+                <td>{{ $item->WF_Description}}</td>
+                <td>{{ $item->WF_SDate}}</td>
+                <td>{{ $item->WF_EDate}}</td>
+                <td>
+                    <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
+                    <form action='{{ url('WeeklyFocus/'. $item->WF_Description) }}' method="POST" class = 'd-inline' onsubmit="return confirm('Want to delete the data?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                    </form>
+                </td>
+            </tr>
+            <?php $i++; ?>
+            @endif
+        @endforeach
+        </tbody>
+    </table>
+</div>
+<hr>
 <!-- Centered table -->
 <table class="center" style="margin: 0 auto;"></table>
 <!-- End of content -->
+
+<script>
+    function showMessage() {
+        alert('Last data cannot be deleted.');
+    }
+</script>
 @endsection

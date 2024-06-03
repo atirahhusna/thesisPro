@@ -59,8 +59,19 @@ Route::post('/generatePdf', [PublicationController::class, 'generatePublicationP
 
 //Route Progress Monitoring weekly focus
 Route::resource('WeeklyFocus', WeeklyController::class);
-Route::get('/WeeklyAdd', [WeeklyControllerr::class , 'create']);
+Route::get('/WeeklyAdd', [WeeklyController::class , 'addBlock']);
 Route::get('/WeeklyViewer', [WeeklyController::class , 'viewer']);
+Route::get('/WeeklyAddItem', [WeeklyController::class , 'addItem']);
+Route::post('WeeklyFocus/storeItem', [WeeklyController::class, 'storeItem']);
+Route::post('WeeklyFocus/showWeeklyFocus', [WeeklyController::class, 'showWeeklyFocus']);
+Route::get('WeeklyFocus/{id}/viewP', [WeeklyController::class, 'viewP'])->name('WeeklyFocus.viewP');
+Route::get('WeeklyFocus/{id}/edit', [WeeklyController::class, 'edit'])->name('WeeklyFocus.edit');
+Route::put('WeeklyFocus/{id}', [WeeklyController::class, 'update'])->name('WeeklyFocus.update');;
+
+
+
+
+
 
 //Route Progress Monitoring draft thesis
 Route::resource('DraftThesis', DraftController::class);

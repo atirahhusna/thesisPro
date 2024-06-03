@@ -12,9 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('weekly_foci', function (Blueprint $table) {
-            $table->text('description');
-            $table->string('category');
-            $table->date('date');
+            $table->id('WF_ID')->primary();
+            $table->text('WF_Description')->nullable();
+            $table->string('WF_Type', 50)->nullable();
+            $table->date('WF_SDate')->nullable();
+            $table->date('WF_EDate')->nullable();
         });
     }
 
