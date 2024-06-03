@@ -355,7 +355,7 @@
                             <a href="#" class="sidebar-link">Staff Profile</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Platinum Profile</a>
+                            <a href="http://127.0.0.1:8000/Mentor.PlatinumList" class="sidebar-link">Platinum Profile</a>
                         </li>
                     </ul>
                 </li>
@@ -369,7 +369,7 @@
                     </a>
                     <ul id="registration" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Registration List</a>
+                            <a href="http://127.0.0.1:8000/MentorRegisterList" class="sidebar-link">Registration List</a>
                         </li>
                     </ul>
                 </li>

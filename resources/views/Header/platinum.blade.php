@@ -170,6 +170,7 @@
             padding-top: 10px;
             }
 
+<<<<<<< HEAD
             /* Style the sidenav links and the dropdown button */
             .sidenav a, .dropdown-btn {
             padding: 6px 8px 6px 16px;
@@ -265,6 +266,16 @@
     }
 
 
+=======
+        .odd-row-publication {
+            background-color: white; /* Pink */
+        }
+        
+        th{
+        font-size: 18px;
+    }
+
+>>>>>>> d365d6552b4eb8bbc8f1c3c3f97a2d6d11e56f62
     .button-container-view button {
         padding: 5px 15px;
         font-size: 14px;
@@ -275,6 +286,7 @@
         border-radius: 5px;
         cursor: pointer;
     }
+<<<<<<< HEAD
 
 
     .button-container-view button[type="view"]:hover {
@@ -296,6 +308,9 @@
     .sidenav button{
         color:white;
     }
+=======
+        
+>>>>>>> d365d6552b4eb8bbc8f1c3c3f97a2d6d11e56f62
         
     </style>
 </head>
@@ -428,6 +443,22 @@
                     rows.forEach(row => {
                         row.classList.add('even-row-publication');
                     });
+
+                    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+                    var dropdown = document.getElementsByClassName("dropdown-btn");
+                    var i;
+
+                    for (i = 0; i < dropdown.length; i++) {
+                    dropdown[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var dropdownContent = this.nextElementSibling;
+                        if (dropdownContent.style.display === "block") {
+                        dropdownContent.style.display = "none";
+                        } else {
+                        dropdownContent.style.display = "block";
+                        }
+                    });
+                    }
                 </script>
                   </body>
                   </html>

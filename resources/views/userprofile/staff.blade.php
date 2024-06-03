@@ -1,4 +1,4 @@
-@extends('Header.platinum')
+@extends('Header.staff')
 @section('content')
 
 <!--START-->

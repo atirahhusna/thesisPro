@@ -30,16 +30,24 @@ Route::post('/Login', [AccountController::class, 'LoginPost'])->name('LoginPost'
 Route::get('/ForgotPassword', [AccountController::class, 'ForgotPassword']);
 Route::get('/StaffPage', [StaffController::class, 'StaffPage']);
 Route::get('/MentorPage', [MentorController::class, 'MentorPage']);
+//registration
 Route::get('/Registration', [AccountController::class, 'registerForm'])->name('registerForm');
 Route::post('/Registration', [AccountController::class, 'registerPost'])->name('registerPost');
 Route::get('/userRegister', [AccountController::class, 'user'])->name('user');
 Route::post('/userRegister', [AccountController::class, 'userPost'])->name('userPost');
-Route::get('/PlatinumProfile', [PlatinumController::class, 'ProfileShow']);
 Route::get('/RegisterList', [AccountController::class, 'RegisterList'])->name('RegisterList');
 Route::get('/RegisterList/{id}/edit', [AccountController::class, 'edit'])->name('edit');
-Route::get('/RegisterList/{id}/show', [AccountController::class, 'show'])->name('show');
 Route::delete('/RegisterList/{id}', [AccountController::class, 'destroy'])->name('destroy');
 Route::put('/RegisterList/{id}', [AccountController::class, 'update']);
+//profile staff
+Route::get('/Staff.PlatinumList', [StaffController::class, 'profileView'])->name('profileView');
+Route::get('/Staff.PlatinumList/{id}/show', [StaffController::class, 'show'])->name('show');
+Route::get('/Staff.PlatinumList/search', [StaffController::class, 'profileView'])->name('profileView');
+//profile mentor
+Route::get('/Mentor.PlatinumList', [MentorController::class, 'profileView'])->name('profileView');
+Route::get('/Mentor.PlatinumList/{id}/show', [MentorController::class, 'show'])->name('show');
+Route::get('/Mentor.PlatinumList/search', [MentorController::class, 'profileView'])->name('profileView');
+Route::get('/MentorRegisterList', [MentorController::class, 'RegisterList'])->name('RegisterList');
 
 
 

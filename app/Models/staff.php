@@ -19,10 +19,4 @@ class Staff extends Model
         's_password',
         'mentor_id',
     ];
-
-    public function userProfile()
-    {
-        return $this->belongsTo(userprofile::class, 'username', 'username');
-    }
-
 }

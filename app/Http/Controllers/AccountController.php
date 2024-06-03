@@ -79,6 +79,8 @@ class AccountController extends Controller
              'r_size' => $request->r_size,
              'r_batch' => $request->r_batch,
          ];
+         $data['crmp_id'] = 1; // Or any default value you prefer
+
  
          $user = register_profiles::where('r_profile_id', $id)->first();
          if ($user) {
@@ -103,7 +105,7 @@ class AccountController extends Controller
      public function destroy(string $id)
      {
          register_profiles::where('r_profile_id',$id)->delete();
-         return redirect()->route('Registration.Index')->with('success', 'User Deleted!');
+         return redirect()->route('RegisterList')->with('success', 'User Deleted!');
      }
      
 
@@ -147,11 +149,11 @@ class AccountController extends Controller
             'r_program'=>'required',
             'r_size'=>'required',
             'r_batch'=>'required',
-            'r_name'=>'required'
+            'r_name'=>'required',
         ]);
 
         try {
-            $newPlatinum = register_profiles::create($data);
+            $data = register_profiles::create($data);
             // Redirect with success message
             return redirect()->route('registerForm')->with('success', 'Platinum registered successfully!');
         } catch (\Exception $e) {

@@ -308,7 +308,7 @@
                             <a href="#" class="sidebar-link">Mentor profile</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Platinum Profile</a>
+                            <a href="http://127.0.0.1:8000/Staff.PlatinumList" class="sidebar-link">Platinum Profile</a>
                         </li>
                     </ul>
                 </li>
@@ -330,7 +330,7 @@
                             <a href="{{ route('user')}}" class="sidebar-link">User registration</a>
                         </li>
                         <li class="sidebar-item">
-                        <a href="{{ route('registerForm') }}" class="sidebar-link">Student registration</a>
+                        <a href="{{ route('registerForm') }}" class="sidebar-link">Platinum registration</a>
                         </li>
                     </ul>
                 </li>
