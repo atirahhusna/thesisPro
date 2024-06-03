@@ -357,7 +357,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
-                        
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">CRMP to each Platinum</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Platinum as CRMP</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

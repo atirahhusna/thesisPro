@@ -315,6 +315,9 @@
                     </a>
                     <ul id="registration" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Platinum Profile</a>
+                        </li>
+                        <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Weekly focus</a>
                         </li>
                         <li class="sidebar-item">

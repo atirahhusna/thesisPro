@@ -170,7 +170,6 @@
             padding-top: 10px;
             }
 
-<<<<<<< HEAD
             /* Style the sidenav links and the dropdown button */
             .sidenav a, .dropdown-btn {
             padding: 6px 8px 6px 16px;
@@ -266,7 +265,6 @@
     }
 
 
-=======
         .odd-row-publication {
             background-color: white; /* Pink */
         }
@@ -275,7 +273,6 @@
         font-size: 18px;
     }
 
->>>>>>> d365d6552b4eb8bbc8f1c3c3f97a2d6d11e56f62
     .button-container-view button {
         padding: 5px 15px;
         font-size: 14px;
@@ -286,7 +283,6 @@
         border-radius: 5px;
         cursor: pointer;
     }
-<<<<<<< HEAD
 
 
     .button-container-view button[type="view"]:hover {
@@ -308,14 +304,11 @@
     .sidenav button{
         color:white;
     }
-=======
         
->>>>>>> d365d6552b4eb8bbc8f1c3c3f97a2d6d11e56f62
         
     </style>
 </head>
 <body>
-    
     <div class="wrapper">
         <aside id="sidebar">
             <div class="d-flex">
@@ -376,6 +369,25 @@
                         </li>
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Expert Report</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- New Progress Monitoring Menu -->
+                <li class="sidebar-item">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#progressMonitoring" aria-expanded="false" aria-controls="progressMonitoring">
+                        <i class="lni lni-bar-chart"></i>
+                        <span>Progress Monitoring</span>
+                    </a>
+                    <ul id="progressMonitoring" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">CRMP Profile</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Weekly Focus</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Draft Thesis</a>
                         </li>
                     </ul>
                 </li>
@@ -461,5 +473,6 @@
                     }
                 </script>
                   </body>
+
                   </html>
               

@@ -385,6 +385,12 @@
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Weekly Focus</a>
                         </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Weekly Focus</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">Draft Thesis</a>
+                        </li>
                     </ul>
                 </li>
 
