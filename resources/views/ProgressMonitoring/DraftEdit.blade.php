@@ -28,20 +28,21 @@
       </div>
       @endif
 <!-- START FORM -->
-<form action='{{ url('DraftThesis')}}' method='post'>
+<form action='{{ url('DraftThesis/'.$data->DT_Title)}}' method='post'>
   @csrf
+  @method('put')
   <!-- Select type -->
   <div class="mb-3 row">
       <label for="DT_Title" class="col-sm-2 col-form-label">Title Thesis</label>
       <div class="col-sm-10">
-        <textarea class="form-control" name="DT_Title" id="DT_Title">{{ Session::get('DT_Title')}}</textarea>
+        <textarea class="form-control" name="DT_Title" id="DT_Title">{{ $data->DT_Title }}</textarea>
       </div>
   </div>
   <!-- Description -->
   <div class="mb-3 row">
       <label for="DT_SDate" class="col-sm-2 col-form-label">Start Date</label>
       <div class="col-sm-10">
-        <input type="date" class="form-control" name='DT_SDate' value="{{ Session::get('DT_SDate')}}" id="DT_SDate">
+        <input type="date" class="form-control" name='DT_SDate' value="{{ $data->DT_SDate }}" id="DT_SDate">
       </div>
   </div>
   <!-- Start Date -->
@@ -49,7 +50,7 @@
       <label for="DT_EDate" class="col-sm-2 col-form-label">End Date</label>
       <div class="col-sm-10">
           <div class="col-sm-10">
-            <input type="date" class="form-control" name='DT_EDate' value="{{ Session::get('DT_EDate')}}" id="DT_EDate">
+            <input type="date" class="form-control" name='DT_EDate' value="{{ $data->DT_EDate }}" id="DT_EDate">
           </div>
       </div>
   </div>
@@ -58,7 +59,7 @@
       <label for="DT_PagesNum" class="col-sm-2 col-form-label">Pages</label>
       <div class="col-sm-10">
           <div class="col-sm-10">
-            <input type="number" class="form-control" name='DT_PagesNum' value="{{ Session::get('DT_PagesNum')}}" id="DT_PagesNum">
+            <input type="number" class="form-control" name='DT_PagesNum' value="{{ $data->DT_PagesNum }}" id="DT_PagesNum">
           </div>
       </div>
   </div>

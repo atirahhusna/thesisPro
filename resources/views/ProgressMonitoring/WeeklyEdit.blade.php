@@ -6,7 +6,7 @@
 <div class="my-3 p-3 bg-body rounded shadow-sm">
     <div class="mb-3 row">
         <div class="col-sm-10">
-            <a href="{{ url('WeeklyFocus/' . $data->id . '/viewP') }}" class="btn btn-secondary">
+            <a href="{{ url('WeeklyFocus/' . $data->WF_Description . '/viewP') }}" class="btn btn-secondary">
                 <i class="fas fa-arrow-left"></i> Back
             </a>
         </div>
@@ -24,7 +24,7 @@
     </div>
     @endif
 
-    <form action="{{ route('WeeklyFocus.update', $data->id) }}" method="POST">
+    <form action="{{ route('WeeklyFocus.update', $data->WF_Description) }}" method="POST">
         @csrf
         @method('PUT')
 

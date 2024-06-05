@@ -383,7 +383,7 @@
                     </a>
                     <ul id="progress" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Weekly Focus</a>
+                            <a href="#" class="sidebar-link">CRMP Profile</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Weekly Focus</a>
