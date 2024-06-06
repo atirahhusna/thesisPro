@@ -16,7 +16,7 @@
 <body>
 <!-- SEARCH FORM -->
 <div class="pb-3">
-    <form class="d-flex" action="{{ url('WeeklyFocus')}}" method="get" style="padding-left: 100px">
+    <form class="d-flex" action="{{ url('WeeklyFocus')}}" method="get" style="padding-left: 50px">
         <div style="display: flex; align-items: center;">
             <input style="width:1000px;height:40px;" type="search" id="search" name="keywords" value="{{Request::get('keywords') }}" placeholder="Enter keywords">
             <div class="button-container">
@@ -112,10 +112,17 @@
                 <td>{{ $item->WF_EDate}}</td>
                 <td>
                     <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
+                    @if ($data1->count() > 1)
+                    <form action='{{ url('WeeklyFocus/'. $item->WF_Description) }}' method="POST" class='d-inline' onsubmit="return confirm('Want to delete the data?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                    </form>
+                    @else
                     <button type="button" class="btn btn-danger btn-sm" onclick="showMessage()">Del</button>
+                    @endif
                 </td>
             </tr>
-            
                 <?php $i++; ?>
             @endforeach
             <?php  $p=2;?>
@@ -162,7 +169,15 @@
             <td>{{ $item->WF_EDate}}</td>
             <td>
                 <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
+                @if ($data2->count() > 1)
+                <form action='{{ url('WeeklyFocus/'. $item->WF_Description) }}' method="POST" class='d-inline' onsubmit="return confirm('Want to delete the data?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                </form>
+                @else
                 <button type="button" class="btn btn-danger btn-sm" onclick="showMessage()">Del</button>
+                @endif
             </td>
         </tr>
         <?php $i++; ?>
@@ -177,7 +192,9 @@
                 <td>{{ $item->WF_EDate}}</td>
                 <td>
                     <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
-                    <form class = 'd-inline' onsubmit="return confirm('Last data cannot be deleted?')">
+                    <form action='{{ url('WeeklyFocus/'. $item->WF_Description) }}' method="POST" class='d-inline' onsubmit="return confirm('Want to delete the data?')">
+                        @csrf
+                        @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm">Del</button>
                     </form>
                 </td>
@@ -208,7 +225,15 @@
             <td>{{ $item->WF_EDate}}</td>
             <td>
                 <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
+                @if ($data3->count() > 1)
+                <form action='{{ url('WeeklyFocus/'. $item->WF_Description) }}' method="POST" class='d-inline' onsubmit="return confirm('Want to delete the data?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                </form>
+                @else
                 <button type="button" class="btn btn-danger btn-sm" onclick="showMessage()">Del</button>
+                @endif
             </td>
         </tr>
         <?php $i++; ?>
@@ -256,7 +281,15 @@
             <td>{{ $item->WF_EDate}}</td>
             <td>
                 <a href='{{ url('WeeklyFocus/' . $item->WF_Description.'/viewP') }}' class="btn btn-info btn-sm">View</a>
+                @if ($data4->count() > 1)
+                <form action='{{ url('WeeklyFocus/'. $item->WF_Description) }}' method="POST" class='d-inline' onsubmit="return confirm('Want to delete the data?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                </form>
+                @else
                 <button type="button" class="btn btn-danger btn-sm" onclick="showMessage()">Del</button>
+                @endif
             </td>
         </tr>
         <?php $i++; ?>

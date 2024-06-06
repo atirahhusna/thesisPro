@@ -36,12 +36,37 @@ class WeeklyController extends Controller
         
         return view('ProgressMonitoring.WeeklyFocus', compact('data1', 'data2', 'data3', 'data4', 'data'));
     }
+
+    public function view($platinum_id)
+    {
+        // Fetch weekly focus data for a specific platinum student
+        $data1 = WeeklyFocus::where('platinum_id', $platinum_id)->where('WF_Type', 'focus')->get();
+        $data2 = WeeklyFocus::where('platinum_id', $platinum_id)->where('WF_Type', 'admin')->get();
+        $data3 = WeeklyFocus::where('platinum_id', $platinum_id)->where('WF_Type', 'social')->get();
+        $data4 = WeeklyFocus::where('platinum_id', $platinum_id)->where('WF_Type', 'recovery')->get();
+        $data = WeeklyFocus::where('platinum_id', $platinum_id)->where('WF_Type')->get();
+        return view('WeeklyFocus.view', compact('data1', 'data2', 'data3', 'data4', 'data'));
+    }
+
+    public function viewerMentor()
+    {
+        return view('ProgressMonitoring.WeeklyViewerMentor');
+    }
+
+    public function viewerCRMP()
+    {
+        return view('ProgressMonitoring.WeeklyViewerCRMP');
+    }
     /**
      * Show the form for creating a new resource.
      */
     public function addBlock()
     {
         return view('ProgressMonitoring.WeeklyAdd');
+    }
+
+    public function viewer(){
+        return view('ProgressMonitoring.WeeklyViewer');
     }
 
     /**
@@ -183,6 +208,7 @@ class WeeklyController extends Controller
     $data = WeeklyFocus::findOrFail($id);
 
     // Update the record's attributes
+    $data->WF_Type = $request->input('type');
     $data->WF_Description = $request->input('description');
     $data->WF_SDate = $request->input('start_date');
     $data->WF_EDate = $request->input('end_date');

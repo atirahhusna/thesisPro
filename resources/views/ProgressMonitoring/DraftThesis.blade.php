@@ -26,38 +26,59 @@
          
          <!-- START DATA -->
          <div class="my-3 p-3 bg-body rounded shadow-sm">
-                 <!-- FORM PENCARIAN -->
-                 <div class="pb-3">
-                   <form class="d-flex" action="" method="get">
-                       <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Enter Thesis Title" aria-label="Search">
-                       <button class="btn btn-secondary" type="submit">Search</button>
-                   </form>
-                 </div>
-           
+
+          <!-- SEARCH FORM -->
+          <div class="pb-3">
+            <form class="d-flex" action="{{ url('DraftThesis')}}" method="get">
+                <div style="display: flex; align-items: center;">
+                    <input style="width:1000px;height:40px;" type="search" id="search" name="keywords" value="{{Request::get('keywords') }}" placeholder="Enter keywords">
+                    <div class="button-container">
+                        <button style="height:40px;" type="submit">Search</button>
+                    </div>
+                </div>
+            </form>
+          </div>
+                    
                  <table class="table table-striped">
                      <thead>
                          <tr>
-                             <th class="col-md-1">No</th>
-                             <th class="col-md-3">Title</th>
-                             <th class="col-md-4">No. of Draft</th>
-                             <th class="col-md-2">Actions</th>
+                             <th>Draf No</th>
+                             <th>Title</th>
+                             <th>Start Date</th>
+                             <th>Completion</th>
+                             <th>Days To Prepare</th>
+                             <th>Pages</th>
+                             <th>Actions</th>
                          </tr>
                      </thead>
                      <tbody>
                       <?php $i = $data->firstItem(); ?>
                       @foreach ($data as $item)
                       <tr>
-                        <td>{{ $i }}</td>
+                        <td>{{ $item->DT_DraftNum}}</td>
                         <td>{{ $item->DT_Title }}</td>
-                        <td>{{ $item->DT_DraftNum ?? 0 }}</td>
+                        <td>{{ $item->DT_SDate }}</td>
+                        <td>{{ $item->DT_Completion }}</td>
+                        <td>{{ $item->DT_DaysToPrepare }}</td>
+                        <td>{{ $item->DT_PagesNum }}</td>
                         <td>
-                            <a href='{{ url('DraftWork/'.$item->DT_Title.'/showDraftList') }}' class="btn btn-warning btn-sm">View</a>
-                            <a href='' class="btn btn-danger btn-sm">Del</a>
+                            <a href='{{ url('DraftThesis/'.$item->DT_Title.'/edit') }}' class="btn btn-warning btn-sm">Edit</a>
+                            <form action='{{ url('DraftThesis/'. $item->DT_Title) }}' method="POST" class = "d-inline" onsubmit="return confirm('Want to delete the data?')">
+                              @csrf
+                              @method('DELETE')
+                              <button type="submit" class="btn btn-danger btn-sm">Del</button>
+                          </form>
                         </td>
                       </tr>
                       <?php $i++; ?>
                       @endforeach
                      </tbody>
+                     <thead>
+                      <tr>
+                        <th colspan="5" style="text-align: right; padding-right:20px;">Total Pages:</th>
+                        <td> <?php $totalPages = $data->sum('DT_PagesNum'); ?>
+                          {{ $totalPages }}</td>
+                      </tr>
                  </table>
                  <!-- TOMBOL TAMBAH DATA -->
                  <div class="pb-3">
