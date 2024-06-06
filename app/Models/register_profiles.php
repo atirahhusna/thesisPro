@@ -31,7 +31,8 @@ class register_profiles extends Model
         'r_program',
         'r_size',
         'r_batch',
-        'r_name',   
+        'r_name', 
     ];
+
 
 }

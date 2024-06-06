@@ -31,8 +31,6 @@ return new class extends Migration
             $table->string('r_size', 5)->nullable(); // T-shirt size
             $table->string('r_batch', 10)->nullable(); // Platinum batch
             $table->string('r_name', 55)->nullable(); // Platinum name
-            $table->unsignedBigInteger('username');
-            $table->foreign()->references('username')->on('user_profiles');
             // Timestamps
             $table->timestamps();
             $table->softDeletes();

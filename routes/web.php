@@ -24,12 +24,12 @@ Route::get('/', function () {
 
 //Route module 1
 
-Route::get('/PlatinumPage', [PlatinumController::class, 'platinumPage']);
+Route::get('/PlatinumPage', [PlatinumController::class, 'platinumPage'])->name('PlatinumPage');
 Route::get('/Login', [AccountController::class, 'Login'])->name('Login');
 Route::post('/Login', [AccountController::class, 'LoginPost'])->name('LoginPost');
 Route::get('/ForgotPassword', [AccountController::class, 'ForgotPassword']);
-Route::get('/StaffPage', [StaffController::class, 'StaffPage']);
-Route::get('/MentorPage', [MentorController::class, 'MentorPage']);
+Route::get('/StaffPage', [StaffController::class, 'StaffPage'])->name('StaffPage');
+Route::get('/MentorPage', [MentorController::class, 'MentorPage'])->name('MentorPage');
 //registration
 Route::get('/Registration', [AccountController::class, 'registerForm'])->name('registerForm');
 Route::post('/Registration', [AccountController::class, 'registerPost'])->name('registerPost');
