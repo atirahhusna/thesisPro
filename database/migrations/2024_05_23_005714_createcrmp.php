@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('crmp', function (Blueprint $table) {
             $table->integer('crmp_id')->autoIncrement(); // CRMP ID (Primary Key
-            // Defining foreign key constraint correctly
             $table->string('crmp_education', 100)->nullable(); // CRMP Education Background
             $table->string('crmp_expertise', 10)->nullable(); // CRMP Expertise
             $table->string('crmp_teaching', 50)->nullable(); // CRMP Teaching

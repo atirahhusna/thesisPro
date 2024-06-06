@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('staff', function (Blueprint $table) {
-            $table->string('staff_id')->primary(); // Staff ID (Primary Key)
-            $table->string('s_username')->foreign()->references('username')->on('user_profiles');
+            $table->id('staff_id'); // Staff ID (Primary Key)
+            $table->unsignedBigInteger('username');
+            $table->foreign()->references('username')->on('user_profiles');
             $table->string('s_name', 100); // Staff Name'
             $table->string('s_password');
             $table->string('s_address', 100); // Staff address

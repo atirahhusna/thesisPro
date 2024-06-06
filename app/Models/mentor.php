@@ -10,7 +10,6 @@ class Mentor extends Model
     use HasFactory;
 
     protected $table = 'mentor';
-
     protected $primaryKey = 'mentor_id';
 
     protected $fillable = [
@@ -21,11 +20,12 @@ class Mentor extends Model
         'm_education_level',
         'm_position',
         'm_experience',
-        'm_phone_number'
+        'm_phone_number',
+        'username'
     ];
 
-    public function userprofile()
+    public function user_profiles()
     {
-        return $this->belongsTo(userProfile::class, 'username', 'username');
+        return $this->belongsTo(user_profiles::class, 'username', 'username');
     }
 }

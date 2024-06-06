@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\register_profiles;
-use App\Models\Staff;
+use App\Models\staff;
 use App\Models\CRMP;
 use App\Models\Mentor;
 use App\Models\Platinum;
@@ -79,8 +79,7 @@ class AccountController extends Controller
              'r_size' => $request->r_size,
              'r_batch' => $request->r_batch,
          ];
-         $data['crmp_id'] = 1; // Or any default value you prefer
-
+      
  
          $user = register_profiles::where('r_profile_id', $id)->first();
          if ($user) {
@@ -109,25 +108,30 @@ class AccountController extends Controller
      }
      
 
-    public function userPost(Request $request)
-    {
-        // Validation
-        $data = $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-            'role' => 'required',
-            'email' => 'required'
-            // Add more validation rules as needed for other fields
-        ]);
-
-        try {
-            $newUser = user_profiles::create($data);
-            return redirect()->route('user')->with('success', 'User created successfully!');
-        } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Failed to create user: ' . $e->getMessage());
-        }
-    }
-
+     public function StaffPost(Request $request)
+     {
+         // Validation
+         $validatedData = $request->validate([
+             'password' => 'required',
+             'role' => 'required',
+             'username' =>'required'
+         ]);
+     
+         try {
+             // Create user profile
+             $userProfile = user_profiles::create([
+                 'password' => bcrypt($validatedData['password']),
+                 'role' => $validatedData['role'],
+                 'username' => $validatedData['username']
+             ]);
+     
+     
+             return redirect()->route('user')->with('success', 'User created successfully!');
+         } catch (\Exception $e) {
+             return redirect()->back()->with('error', 'Failed to create user: ' . $e->getMessage());
+         }
+     }
+     
     public function registerPost(Request $request)
     {
         // Validation
@@ -250,6 +254,8 @@ class AccountController extends Controller
     {
         return view('Login.ForgotPassword');
     }
+
+
 
     
 }

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('register_profiles', function (Blueprint $table) {
-            $table->increments('r_profile_id'); // Profile ID (Primary Key, auto increment)
+            $table->id('r_profile_id'); // Profile ID (Primary Key, auto increment)
             $table->string('r_identity_card')->nullable(); // Identity card number
             $table->string('r_password');
             $table->string('r_gender')->nullable(); // Gender
@@ -31,6 +31,8 @@ return new class extends Migration
             $table->string('r_size', 5)->nullable(); // T-shirt size
             $table->string('r_batch', 10)->nullable(); // Platinum batch
             $table->string('r_name', 55)->nullable(); // Platinum name
+            $table->unsignedBigInteger('username');
+            $table->foreign()->references('username')->on('user_profiles');
             // Timestamps
             $table->timestamps();
             $table->softDeletes();
