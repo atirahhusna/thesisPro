@@ -374,26 +374,6 @@
                     </ul>
                 </li>
 
-                <!-- New Progress Monitoring Section -->
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#progress" aria-expanded="false" aria-controls="progress">
-                        <i class="lni lni-bar-chart"></i>
-                        <span>Progress Monitoring</span>
-                    </a>
-                    <ul id="progress" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">CRMP Profile</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Weekly Focus</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Draft Thesis</a>
-                        </li>
-                    </ul>
-                </li>
-
                 <!-- Modified Expert Information Section -->
                 <li class="sidebar-item">
                     <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
@@ -423,6 +403,25 @@
                         <span>Publication Report</span>
                     </a>
                 </li>
+                                <!-- New Progress Monitoring Section -->
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                                        data-bs-target="#progress" aria-expanded="false" aria-controls="progress">
+                                        <i class="lni lni-bar-chart"></i>
+                                        <span>Progress Monitoring</span>
+                                    </a>
+                                    <ul id="progress" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                                        <li class="sidebar-item">
+                                            <a href="#" class="sidebar-link">CRMP Profile</a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="#" class="sidebar-link">Weekly Focus</a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="#" class="sidebar-link">Draft Thesis</a>
+                                        </li>
+                                    </ul>
+                                </li>
             </ul>
             <div class="sidebar-footer">
                 <a href="#" class="sidebar-link">

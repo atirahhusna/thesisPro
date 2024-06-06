@@ -47,6 +47,16 @@ class WeeklyController extends Controller
         $data = WeeklyFocus::where('platinum_id', $platinum_id)->where('WF_Type')->get();
         return view('WeeklyFocus.view', compact('data1', 'data2', 'data3', 'data4', 'data'));
     }
+
+    public function viewerMentor()
+    {
+        return view('ProgressMonitoring.WeeklyViewerMentor');
+    }
+
+    public function viewerCRMP()
+    {
+        return view('ProgressMonitoring.WeeklyViewerCRMP');
+    }
     /**
      * Show the form for creating a new resource.
      */

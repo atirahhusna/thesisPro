@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('weekly_foci', function (Blueprint $table) {
             $table->id('WF_ID'); // Defines the primary key as 'WF_ID
+            $table->unsignedBigInteger('username');
+            $table->foreign('username')->references('id')->on('user_profiles');
             $table->text('WF_Description')->nullable();
             $table->string('WF_Type', 50)->nullable();
             $table->date('WF_SDate')->nullable();

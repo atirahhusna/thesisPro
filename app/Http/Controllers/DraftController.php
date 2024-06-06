@@ -13,6 +13,11 @@ class DraftController extends Controller
      */
     public function index(Request $request)
     {
+        $uname = App\Models\register_profiles::first();
+        if($uname){
+            $register_id = $uname->$register_id;
+        }
+        $drafts = DraftThesis::where('user_id', auth()->user()->id)->
         $keywords = $request->keywords;
         $totLine = 10;
         if(strlen($keywords)){
@@ -88,9 +93,14 @@ class DraftController extends Controller
         /**
      * Show the viewer interface.
      */
-    public function DraftViewer()
+    public function DraftViewerCRMP()
     {
-        return view('ProgressMonitoring.DraftViewer');
+        return view('ProgressMonitoring.DraftViewerCRMP');
+    }
+
+    public function DraftViewerMentor()
+    {
+        return view('ProgressMonitoring.DraftViewerMentor');
     }
 
     public function DraftWorkViewer()

@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('draft_theses', function (Blueprint $table) {
             $table->id('DT_DraftNum')->primary();
-            $table->foreignIdFor(App\Models\register_profile::class);
+            $table->unsignedBigInteger('username');
+            $table->foreign('username')->references('username')->on('user_profiles');
             $table->string('DT_Title', 100)->nullable();
             $table->integer('DT_PagesNum')->nullable();
             $table->integer('DT_TotPagesNum')->nullable();
