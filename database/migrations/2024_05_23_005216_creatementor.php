@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mentor', function (Blueprint $table) {
-            $table->string('mentor_id')->primary(); // Mentor ID (Primary Key)
-            $table->string('m_username')->foreign()->references('username')->on('user_profiles');
+            $table->id('mentor_id'); // Mentor ID (Primary Key)
+            $table->unsignedBigInteger('username');
+            $table->foreign()->references('username')->on('user_profiles');
             $table->string('m_name'); // Mentor name
             $table->string('m_education_level')->nullable(); // Mentor education level and history
             $table->string('m_position', 100)->nullable();
