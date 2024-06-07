@@ -120,6 +120,9 @@
             background-color: #e9ecef;
             color: blue;
         }
+        .expert-detail {
+            color: #1E47A7; /* or any other color value */
+        }
     </style>
 
 <div class="container-form">
@@ -132,19 +135,23 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Name"><strong>NAME</label>
-                                <p>{{$data->e_Name}}</p>
-                                <label for="e_Name"><strong>WORKPLACE</label>
-                                <p>{{$data->e_University}}</p>
-                                <label for="e_Name"><strong>EMAIL</label>
-                                <p>{{$data->e_Email}}</p>
-                                <label for="e_Name"><strong>PHONE NUMBER</label>
-                                <p>{{$data->e_PhoneNum}}</p>
-                                <label for="e_Name"><strong>EXPERTISE</label>
-                                <p>{{$data->e_Expertise}}</p>
-                                <label for="e_Name"><strong>TITLE RESEARCH</label>
-                                <p>{{$data->e_TitleResearch}}</p>
-                                <label for="e_Name"><strong>PAPER</label>
-                                <p>{{$data->e_Paper}}</p>
+                                <p class="expert-detail">{{$data->e_Name}}</p>
+                                <label for="e_University"><strong>WORKPLACE</label>
+                                <p class="expert-detail">{{$data->e_University}}</p>
+                                <label for="e_Email"><strong>EMAIL</label>
+                                <p class="expert-detail">{{$data->e_Email}}</p>
+                                <label for="e_PhoneNum"><strong>PHONE NUMBER</label>
+                                <p class="expert-detail">{{$data->e_PhoneNum}}</p>
+                                <label for="e_Expertise"><strong>EXPERTISE</label>
+                                <p class="expert-detail">{{$data->e_Expertise}}</p>
+                                <label for="e_TitleResearch"><strong>TITLE RESEARCH</label>
+                                <p class="expert-detail">{{$data->e_TitleResearch}}</p>
+                                <label for="e_Paper"><strong>PAPER</label>
+                                <p class="expert-detail">{{$data->e_Paper}}</p>
+                                <label for="year"><strong>Year</label>
+                                <p class="expert-detail">{{$data->year}}</p>                                
+                                <label for="publication_types"><strong>Type of Publication</label>
+                                <p class="expert-detail">{{$data->publication_types}}</p>
                             </div>
                         </div>
                     </div>

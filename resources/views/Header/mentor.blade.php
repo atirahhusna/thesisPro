@@ -391,6 +391,11 @@
                             <a href="#" class="sidebar-link">Search Expert</a>
                         </li>
                     </ul>
+                    <ul id="expert" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="#" class="sidebar-link">View Expert</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <!-- New General Publication Section -->
