@@ -6,28 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        Schema::create('_expert_domain', function (Blueprint $table) {
+        Schema::create('expertdomain', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('platID');
+            //$table->foreign('platID')->references('platID')->on('');
             $table->string('e_Name', 100);
             $table->string('e_Email', 50);
             $table->string('e_PhoneNum');
             $table->string('e_TitleResearch', 100);
             $table->string('e_Paper', 100);
             $table->string('e_University', 100);
+            $table->string('e_Expertise', 100);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('_expert_domain');
+        Schema::dropIfExists('expertdomain');
     }
 };

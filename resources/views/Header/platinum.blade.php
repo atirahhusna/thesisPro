@@ -459,10 +459,10 @@
                     </a>
                     <ul id="expertDropdown" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                        <a href="{{ route('search.expert') }}" class="sidebar-link">Search Expert</a>
+                        <a href="#" class="sidebar-link">Search Expert</a>
                         </li>
                         <li class="sidebar-item">
-                        <a href="{{ route('add.expert') }}" class="sidebar-link">Add Expert</a>
+                        <a href="#" class="sidebar-link">Add Expert</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Expert Report</a>

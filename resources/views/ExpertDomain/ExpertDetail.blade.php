@@ -1,6 +1,6 @@
 @extends('Header/platinum')
 @section('content')
-
+<title>EXPERT DETAIL</title>
 <style>
 .container-form {
             background-color: #f5f5f5;
@@ -102,82 +102,53 @@
         #titleResearch {
             width: 400px;
         }
-
         .form-group {
             margin-bottom: 15px;
         }
         .form-group label {
+            font-size: 1.2em;
             display: block;
             margin-bottom: 5px;
         }
-        .form-group textarea {
-            width: 70%; /* This will make the textarea take the full width of its container */
-            padding: 10px;
-            font-size: 14px;
-            line-height: 1.5;
+        .p {
+            font-size: 1em; /* Standard font size for data */
+            margin-bottom: 10px;
+            font-weight: normal;
+            padding: 4px;
             border: 1px solid #ccc;
             border-radius: 4px;
+            background-color: #e9ecef;
+            color: blue;
         }
     </style>
 
 <div class="container-form">
-                <h3>EXPERT REGISTRATION</h3>
+                <h3>EXPERT'S DETAILS</h3>
 
-                @if(Session::has('success'))
-                    <div class="alert alert-success" role="alert">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-
-                <form action="{{url('SaveExpert')}}" method="POST">
+                <form action="{{url('UpdateExpert')}}" method="POST">
                     @csrf
                     <div class="section">
                         <div class="section-header">Expert’s details</div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="e_Name">NAME</label>
-                                <input type="text" id="e_Name" name="e_Name" required value="{{old('e_Name')}}">
-                                @error('e_Name')
-                                <div class="alert alert-danger" role="alert"></div>
-                                    {{$message}}
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="e_University">WORKPLACE</label>
-                                <input type="text" id="e_University" name="e_University" required value="{{old('e_University')}}">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="e_Email">EMAIL</label>
-                                <input type="email" id="e_Email" name="e_Email" required value="{{old('e_Email')}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="e_PhoneNum">PHONE NUMBER</label>
-                                <input type="tel" id="e_PhoneNum" name="e_PhoneNum" required value="{{old('e_PhoneNum')}}">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="e_Expertise">EXPERTISE</label>
-                                <input type="text" id="e_Expertise" name="e_Expertise" required value="{{old('e_Expertise')}}">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="section">
-                        <div class="section-header">Research</div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="e_TitleResearch">TITLE RESEARCH</label>
-                                <textarea id="e_TitleResearch" name="e_TitleResearch"  required value="{{old('e_TitleResearch')}}"></textarea>
-                                <label for="e_Paper">PAPER</label>
-                                <textarea id="e_Paper" rows="3" name="e_Paper" required value="{{old('e_Paper')}}"></textarea>
+                                <label for="e_Name"><strong>NAME</label>
+                                <p>{{$data->e_Name}}</p>
+                                <label for="e_Name"><strong>WORKPLACE</label>
+                                <p>{{$data->e_University}}</p>
+                                <label for="e_Name"><strong>EMAIL</label>
+                                <p>{{$data->e_Email}}</p>
+                                <label for="e_Name"><strong>PHONE NUMBER</label>
+                                <p>{{$data->e_PhoneNum}}</p>
+                                <label for="e_Name"><strong>EXPERTISE</label>
+                                <p>{{$data->e_Expertise}}</p>
+                                <label for="e_Name"><strong>TITLE RESEARCH</label>
+                                <p>{{$data->e_TitleResearch}}</p>
+                                <label for="e_Name"><strong>PAPER</label>
+                                <p>{{$data->e_Paper}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="form-actions">
-                        <button type="submit" class="btn btn-primary">ADD EXPERT</button>
                         <a href="{{url('ViewExpert')}}" class="btn btn-danger">BACK</a>
                     </div>
                 </form>

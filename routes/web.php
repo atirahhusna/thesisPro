@@ -82,10 +82,11 @@ Route::get('/temp', [platinumTemplateController::class , 'Template']);
 
 
 //RouteExpert Domain
-Route::get('/AddExpert', function () {return view('ExpertDomain.AddExpert');});
-Route::get('/SearchExpert', function () {return view('ExpertDomain.SearchExpert');});
-Route::get('/EditExpert', [ExpertController::class, 'edit'])->name('ExpertDomain.EditExpert');
-Route::get('/test', function () {return view('ExpertDomain.test');});
-Route::get('/SearchExpert', function () {return view('ExpertDomain.SearchExpert');})->name('search.expert');
-Route::get('/AddExpert', function () {return view('ExpertDomain.AddExpert');})->name('add.expert');
-Route::get('/EditExpert', function () {return view('ExpertDomain.EditExpert');})->name('edit.expert');
+Route::get('ViewExpert', [ExpertController::class, 'index']);
+Route::get('AddExpert', [ExpertController::class, 'AddExpert']);
+Route::post('SaveExpert', [ExpertController::class, 'SaveExpert']);
+Route::get('EditExpert/{e_ID}', [ExpertController::class, 'EditExpert']);
+Route::post('UpdateExpert', [ExpertController::class, 'UpdateExpert']);
+Route::get('DeleteExpert/{e_ID}', [ExpertController::class, 'DeleteExpert']);
+Route::get('ExpertDetail/{e_ID}', [ExpertController::class, 'ExpertDetail']);
+Route::get('SearchExpert', [ExpertController::class, 'SearchExpert'])->name('SearchExpert');
