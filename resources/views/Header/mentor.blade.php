@@ -95,8 +95,10 @@
       background-color: #ffffff;
       text-align:justify;
       padding-top:10px;
+      position: relative;
     }
-
+    
+    
         .sidebar-nav {
             padding: 2rem 0;
             flex: 1 1 auto;
@@ -252,7 +254,10 @@
         padding:40px 40px;
         background-color: #a580c1;
         height:400px;
+        
     }
+
+    
 
     input[type=text],select{
           width: 300px;
