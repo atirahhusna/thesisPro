@@ -460,11 +460,12 @@
                     </a>
                     <ul id="expertDropdown" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                        <a href="{{ route('SearchExpert') }}" class="sidebar-link">Search Expert</a>
+                        <a href=" {{ route('SearchExpert') }} " class="sidebar-link">Search Expert</a>
                         </li>
                         <li class="sidebar-item">
-                        <a href="{{ route('ViewExpert') }}" class="sidebar-link">View Expert</a>
+                        <a href=" {{ route('ViewExpert') }}" class="sidebar-link">Add Expert</a>
                         </li>
+                       
                     </ul>
                 </li>
                 <!-- New Progress Monitoring Menu -->
