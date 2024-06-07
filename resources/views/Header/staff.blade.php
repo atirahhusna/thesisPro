@@ -327,10 +327,10 @@
                         </li>
                         <!-- Add dropdown items for different types of registration -->
                         <li class="sidebar-item">
-                            <a href="{{ route('user')}}" class="sidebar-link">User registration</a>
+                            <a href="{{ route('user')}}" class="sidebar-link">Registered user</a>
                         </li>
                         <li class="sidebar-item">
-                        <a href="{{ route('registerForm') }}" class="sidebar-link">Platinum registration</a>
+                        <a href="{{ route('registerForm') }}" class="sidebar-link">Registered Platinum</a>
                         </li>
                     </ul>
                 </li>

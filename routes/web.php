@@ -48,7 +48,9 @@ Route::get('/Mentor.PlatinumList', [MentorController::class, 'profileView'])->na
 Route::get('/Mentor.PlatinumList/{id}/show', [MentorController::class, 'show'])->name('show');
 Route::get('/Mentor.PlatinumList/search', [MentorController::class, 'profileView'])->name('profileView');
 Route::get('/MentorRegisterList', [MentorController::class, 'RegisterList'])->name('RegisterList');
-
+//edit and update profile platinum
+Route::get('/platinumProfile/show', [PlatinumController::class, 'show'])->name('showPlatinumProfile');
+Route::put('/platinumProfile/update', [PlatinumController::class, 'update'])->name('updatePlatinumProfile');
 
 
 //Route Publication
