@@ -343,10 +343,10 @@
                                     </a>
                                     <ul id="progressMonitoring" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                                         <li class="sidebar-item">
-                                            <a href="" class="sidebar-link">Platinum As CRMP</a>
+                                            <a href="{{ route('assignPlatinum') }}" class="sidebar-link">Platinum As CRMP</a>
                                         </li>
                                         <li class="sidebar-item">
-                                            <a href="" class="sidebar-link">CRMP To Each Platinum</a>
+                                            <a href=" {{ route('assignCRMP') }}" class="sidebar-link">CRMP To Each Platinum</a>
                                         </li>
                                     </ul>
                                 </li>
