@@ -7,7 +7,7 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            max-width: 700px;
+            max-width: 900px;
             width: 100%;
             margin: auto;
         }
@@ -136,32 +136,50 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Name">NAME</label>
-                                <input type="text" id="e_Name" name="e_Name" required value="{{old('e_Name')}}">
-                                @error('e_Name')
-                                <div class="alert alert-danger" role="alert"></div>
-                                    {{$message}}
-                                @enderror
+                                <input type="text" style="width:400px; height:40px" id="e_Name" name="e_Name" required value="{{old('e_Name')}}">
                             </div>
                             <div class="form-group">
                                 <label for="e_University">WORKPLACE</label>
-                                <input type="text" id="e_University" name="e_University" required value="{{old('e_University')}}">
-                            </div>
+                                <select style="width:400px;height:40px;margin-right:20px;" id="filter-institution" name="institutionKeywords">
+                                    <option value="">Select institution</option>
+                                    <option value="Universiti Islam Antarabangsa Malaysia (UIAM)">Universiti Islam Antarabangsa Malaysia (UIAM)</option>
+                                    <option value="Universiti Kebangsaan Malaysia (UKM)">Universiti Kebangsaan Malaysia (UKM)</option>
+                                    <option value="Universiti Malaysia Kelantan (UMK)">Universiti Malaysia Kelantan (UMK)</option>
+                                    <option value="Universiti Malaysia Pahang Al-Sultan Abdullah (UMPSA)">Universiti Malaysia Pahang Al-Sultan Abdullah (UMPSA)</option>
+                                    <option value="Universiti Malaysia Perlis (UniMAP)">Universiti Malaysia Perlis (UniMAP)</option>
+                                    <option value="Universiti Malaysia Sabah (UMS)">Universiti Malaysia Sabah (UMS)</option>
+                                    <option value="Universiti Malaysia Sarawak (UNIMAS)">Universiti Malaysia Sarawak (UNIMAS)</option>
+                                    <option value="Universiti Malaysia Terengganu (UMT)">Universiti Malaysia Terengganu (UMT)</option>
+                                    <option value="Universiti Malaya (UM)">Universiti Malaya (UM)</option>
+                                    <option value="Universiti Pertahanan Nasional Malaysia (UPNM)">Universiti Pertahanan Nasional Malaysia (UPNM)</option>
+                                    <option value="Universiti Putra Malaysia (UPM)">Universiti Putra Malaysia (UPM)</option>
+                                    <option value="Universiti Sains Islam Malaysia (USIM)">Universiti Sains Islam Malaysia (USIM)</option>
+                                    <option value="Universiti Sains Malaysia (USM)">Universiti Sains Malaysia (USM)</option>
+                                    <option value="Universiti Teknikal Malaysia Melaka (UTeM)">Universiti Teknikal Malaysia Melaka (UTeM)</option>
+                                    <option value="Universiti Teknologi MARA (UiTM)">Universiti Teknologi MARA (UiTM)</option>
+                                    <option value="Universiti Teknologi Malaysia (UTM)">Universiti Teknologi Malaysia (UTM)</option>
+                                    <option value="Universiti Tun Hussein Onn Malaysia (UTHM)">Universiti Tun Hussein Onn Malaysia (UTHM)</option>
+                                    <option value="Universiti Utara Malaysia (UUM)">Universiti Utara Malaysia (UUM)</option>
+                                    <option value="Sultan Zainal Abidin (UniSZA)">Sultan Zainal Abidin (UniSZA)</option>
+                                    <option value="Universiti Pendidikan Sultan Idris (UPSI)">Universiti Pendidikan Sultan Idris (UPSI)</option>
+                                  </select>                            
+                                </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Email">EMAIL</label>
-                                <input type="email" id="e_Email" name="e_Email" required value="{{old('e_Email')}}">
+                                <input type="email" style="width:400px; height:40px" id="e_Email" name="e_Email" required value="{{old('e_Email')}}">
                             </div>
                             <div class="form-group">
                                 <label for="e_PhoneNum">PHONE NUMBER</label>
-                                <input type="tel" id="e_PhoneNum" name="e_PhoneNum" required value="{{old('e_PhoneNum')}}">
+                                <input type="tel" style="width:400px; height:40px" id="e_PhoneNum" name="e_PhoneNum" required value="{{old('e_PhoneNum')}}">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Expertise">EXPERTISE</label>
-                                <input type="text" id="e_Expertise" name="e_Expertise" required value="{{old('e_Expertise')}}">
+                                <input type="text" style="width:400px; height:40px" id="e_Expertise" name="e_Expertise" required value="{{old('e_Expertise')}}">
                             </div>
                         </div>
                     </div>

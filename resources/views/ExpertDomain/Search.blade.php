@@ -1,4 +1,4 @@
-@extends('Header/platinum')
+@extends('Header/mentor')
 @section('content')
 <!DOCTYPE html>
 <html lang="en">
@@ -114,7 +114,7 @@
                         </select>
                     </div>
 
-                    <form action="{{url('SearchExpert')}}" method="GET">
+                    <form action="{{url('Search')}}" method="GET">
                         <input type="text" name="query" class="search-input" placeholder="Search...">
                         <button type="submit" class="search-button">Search</button>
                     </form>
