@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DraftThesis;
+use App\Models\register_profiles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -13,11 +14,7 @@ class DraftController extends Controller
      */
     public function index(Request $request)
     {
-        $uname = App\Models\register_profiles::first();
-        if($uname){
-            $register_id = $uname->$register_id;
-        }
-        $drafts = DraftThesis::where('user_id', auth()->user()->id)->
+
         $keywords = $request->keywords;
         $totLine = 10;
         if(strlen($keywords)){
@@ -98,9 +95,16 @@ class DraftController extends Controller
         return view('ProgressMonitoring.DraftViewerCRMP');
     }
 
-    public function DraftViewerMentor()
+    public function DraftViewerMentor(Request $request)
     {
-        return view('ProgressMonitoring.DraftViewerMentor');
+        // Fetch the search keyword
+        $crmps = crmp::all();
+        $profiles = register_profiles::all();
+        if ($request->has('katakunci')) {
+            $profiles = register_profiles::where('r_profile_id', 'like', '%' . $request->katakunci . '%')
+                                       ->orWhere('r_name', 'like', '%' . $request->katakunci . '%')
+                                       ->get();}
+        return view('ProgressMonitoring.DraftViewerMentor',compact('profiles'));
     }
 
     public function DraftWorkViewer()

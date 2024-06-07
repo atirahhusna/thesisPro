@@ -67,6 +67,8 @@ Route::post('/generatePdf', [PublicationController::class, 'generatePublicationP
 
 //Assign Platinum As CRMP
 Route::get('/assignPlatinum', [StaffController::class, 'assignPlatinum'])->name('assignPlatinum');
+Route::get('/storePlatinum/{id}', [StaffController::class, 'storePlatinum'])->name('storePlatinum');
+Route::post('/storePlatinum/{id}', [StaffController::class, 'storePlatinum'])->name('storePlatinum');
 //Assign Platinum As CRMP
 Route::get('/assignCRMP', [StaffController::class, 'assignCRMP'])->name('assignCRMP');
 
@@ -74,8 +76,8 @@ Route::get('/assignCRMP', [StaffController::class, 'assignCRMP'])->name('assignC
 Route::resource('WeeklyFocus', WeeklyController::class);
 Route::get('/WeeklyFocusManager', [WeeklyController::class, 'index'])->name('WeeklyFocus.index');
 Route::get('/WeeklyAdd', [WeeklyController::class , 'addBlock']);
-Route::get('/WeeklyViewerMentor', [WeeklyController::class , 'viewerMentor']);
-Route::get('/WeeklyViewerCRMP', [WeeklyController::class , 'viewerCRMP']);
+Route::get('/WeeklyViewerMentor', [WeeklyController::class , 'viewerMentor'])->name('WeeklyFocus.viewerMentor');
+Route::get('/WeeklyViewerCRMP', [WeeklyController::class , 'viewerCRMP'])->name('WeeklyFocus.viewerCRMP');
 Route::get('/WeeklyAddItem', [WeeklyController::class , 'addItem']);
 Route::post('WeeklyFocus/storeItem', [WeeklyController::class, 'storeItem']);
 Route::post('WeeklyFocus/showWeeklyFocus', [WeeklyController::class, 'showWeeklyFocus']);
@@ -98,10 +100,13 @@ Route::get('/temp', [platinumTemplateController::class , 'Template']);
 
 
 //RouteExpert Domain
-Route::get('/AddExpert', function () {return view('ExpertDomain.AddExpert');});
-Route::get('/SearchExpert', function () {return view('ExpertDomain.SearchExpert');});
-Route::get('/EditExpert', [ExpertController::class, 'edit'])->name('ExpertDomain.EditExpert');
-Route::get('/test', function () {return view('ExpertDomain.test');});
-Route::get('/SearchExpert', function () {return view('ExpertDomain.SearchExpert');})->name('search.expert');
-Route::get('/AddExpert', function () {return view('ExpertDomain.AddExpert');})->name('add.expert');
-Route::get('/EditExpert', function () {return view('ExpertDomain.EditExpert');})->name('edit.expert');
+Route::get('ViewExpert', [ExpertController::class, 'index'])->name('ViewExpert');
+Route::get('AddExpert', [ExpertController::class, 'AddExpert']);
+Route::post('SaveExpert', [ExpertController::class, 'SaveExpert']);
+Route::get('EditExpert/{e_ID}', [ExpertController::class, 'EditExpert']);
+Route::post('UpdateExpert', [ExpertController::class, 'UpdateExpert']);
+Route::get('DeleteExpert/{e_ID}', [ExpertController::class, 'DeleteExpert']);
+Route::get('ExpertDetail/{e_ID}', [ExpertController::class, 'ExpertDetail']);
+Route::get('SearchExpert', [ExpertController::class, 'SearchExpert'])->name('SearchExpert');
+Route::get('ExpertList', [ExpertController::class, 'ExpertList'])->name('ExpertList');
+Route::get('MentorView/{e_ID}', [ExpertController::class, 'MentorView']);

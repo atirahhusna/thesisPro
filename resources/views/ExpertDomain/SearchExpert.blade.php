@@ -1,3 +1,5 @@
+@extends('Header/platinum')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,146 +14,6 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-        ::after,
-        ::before {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        li {
-            list-style: none;
-        }
-
-        h1 {
-            font-weight: 600;
-            font-size: 1.5rem;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .wrapper {
-            display: flex;
-        }
-
-        .main {
-            min-height: 100vh;
-            width: 100%;
-            overflow: hidden;
-            transition: all 0.35s ease-in-out;
-            background-color: #fafbfe;
-        }
-
-        #sidebar {
-            width: 70px;
-            min-width: 70px;
-            z-index: 1000;
-            transition: all .25s ease-in-out;
-            background-color: #2B7A78;
-            display: flex;
-            flex-direction: column;
-        }
-
-        #sidebar.expand {
-            width: 260px;
-            min-width: 260px;
-        }
-
-        .toggle-btn {
-            background-color: transparent;
-            cursor: pointer;
-            border: 0;
-            padding: 1rem 1.5rem;
-        }
-
-        .toggle-btn i {
-            font-size: 1.5rem;
-            color: #FFF;
-        }
-
-        .sidebar-logo {
-            margin: auto 0;
-        }
-
-        .sidebar-logo a {
-            color: #FFF;
-            font-size: 1.15rem;
-            font-weight: 600;
-        }
-
-        #sidebar:not(.expand) .sidebar-logo,
-        #sidebar:not(.expand) a.sidebar-link span {
-            display: none;
-        }
-
-        .sidebar-nav {
-            padding: 2rem 0;
-            flex: 1 1 auto;
-        }
-
-        a.sidebar-link {
-            padding: .625rem 1.625rem;
-            color: #FFF;
-            display: block;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            border-left: 3px solid transparent;
-        }
-
-        .sidebar-link i {
-            font-size: 1.1rem;
-            margin-right: .75rem;
-        }
-
-        a.sidebar-link:hover {
-            background-color: rgba(255, 255, 255, .075);
-            border-left: 3px solid #3b7ddd;
-        }
-
-        .sidebar-item {
-            position: relative;
-        }
-
-        #sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
-            position: absolute;
-            top: 0;
-            left: 70px;
-            background-color: #0e2238;
-            padding: 0;
-            min-width: 15rem;
-            display: none;
-        }
-
-        #sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
-            display: block;
-            max-height: 15em;
-            width: 100%;
-            opacity: 1;
-        }
-
-        #sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
-            border: solid;
-            border-width: 0 .075rem .075rem 0;
-            content: "";
-            display: inline-block;
-            padding: 2px;
-            position: absolute;
-            right: 1.5rem;
-            top: 1.4rem;
-            transform: rotate(-135deg);
-            transition: all .2s ease-out;
-        }
-
-        #sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
-            transform: rotate(45deg);
-            transition: all .2s ease-out;
-        }
 
         .search-container {
             margin: auto;
@@ -174,7 +36,7 @@
 
         .search-button {
             width: 100px;
-            padding: 10px;
+            padding: 5px;
             background-color: #3b7ddd;
             color: white;
             border: none;
@@ -189,7 +51,7 @@
         }
 
         .search-text {
-        max-width: 600px; /* Adjust the width as needed */
+        max-width: 900px; /* Adjust the width as needed */
         margin: 0 auto; /* Centers the container horizontally */
         }
 
@@ -202,6 +64,33 @@
        .search-text p {
         font-size: 13px; 
         font-weight: normal; 
+        }
+
+        .filter-container {
+            margin-bottom: 20px;
+        }
+
+        .filter-select {
+            width: 150px; /* Adjusted width */
+            padding: 5px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin: 0 auto;
+            outline: none;
+            display: block;
+        }
+
+        .search-container .search-input {
+            width: 300px; /* Adjusted width */
+            padding: 6px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            outline: none;
         }
 
     </style>
@@ -285,19 +174,17 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#expertDropdown" aria-expanded="false" aria-controls="expertDropdown">
                         <i class="lni lni-popup"></i>
-                        <span>Expert information</span>
+                        <span>Expert Information</span>
                     </a>
                     <ul id="expertDropdown" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                        <a href="{{ route('search.expert') }}" class="sidebar-link">Search Expert</a>
+                        <a href="{{ route('SearchExpert') }}" class="sidebar-link">Search Expert</a>
                         </li>
                         <li class="sidebar-item">
-                        <a href="{{ route('add.expert') }}" class="sidebar-link">Add Expert</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Expert Report</a>
+                        <a href="{{ route('ViewExpert') }}" class="sidebar-link">View Expert</a>
                         </li>
                     </ul>
                 </li>
@@ -311,27 +198,66 @@
             </div>
         </aside>
         <div class="main p-3">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <nav class="navbar bg-body-tertiary">
-                    <div class="container-fluid">
-                    </div>
+                    <div class="container-fluid"></div>
                 </nav>
 
                 <div class="search-container">
-                  <div class="search-text">
-                  <h4><b>Discover Expertise<b></h4>
-                  <p class="search-text">Explore a Diverse Range of Expertise and Connect with 
-                    Knowledgeable Professionals to Find the Right Support for Your Needs</p><br>
-      </div>  
-                <input type="text" class="search-input" placeholder="Search...">
-                <button type="submit" class="search-button">Search</button>
-                </div>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
+                    <div class="search-text">
+                        <h4><b>Discover Expertise<b></h4>
+                        <p class="search-text">Explore a Diverse Range of Expertise and Connect with 
+                        Knowledgeable Professionals to Find the Right Support for Your Needs</p><br>
+                    </div>
 
-                    </ul>
+                    <div class="filter-container">
+                        <label for="filter">Filter</label>
+                        <select id="filter" wire:model="nyFilter" class="filter-select">
+                            <option value="">No Selected</option>
+                            @foreach ($experts as $expert)
+                                <option value="{{ $expert->e_ID }}">{{ $expert->e_Expertise}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <form action="{{url('SearchExpert')}}" method="GET">
+                        <input type="text" name="query" class="search-input" placeholder="Search...">
+                        <button type="submit" class="search-button">Search</button>
+                    </form>
                 </div>
+
             </nav>
+
+
+            @if(isset($experts))
+                <div class="container mt-5">
+                    <h4>Search Results for "{{ $query }}"</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Expertise</th>
+                                <th>Title Research</th>
+                                <th>Paper</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($experts as $expert)
+                                <tr>
+                                    <td>{{ $expert->e_Name }}</td>
+                                    <td>{{ $expert->e_Expertise }}</td>
+                                    <td>{{ $expert->e_TitleResearch }}</td>
+                                    <td>{{ $expert->e_Paper }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="7">No experts found matching your search criteria.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            @endif
       
         </div>
     </div>

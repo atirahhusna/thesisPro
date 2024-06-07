@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('publication', function (Blueprint $table) {  // Use plural table name for convention
             $table->id('publication_ID',10); // Auto-incrementing ID
+            $table->unsignedBigInteger('r_profile_id');
+            $table->foreign('r_profile_id')->references('r_profile_id')->on('register_profiles');
+
             $table->string('publication_title', 255);
             $table->string('publication_DOI', 100)->nullable();
             $table->text('publication_abstract')->nullable();

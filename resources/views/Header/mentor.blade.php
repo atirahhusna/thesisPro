@@ -95,8 +95,10 @@
       background-color: #ffffff;
       text-align:justify;
       padding-top:10px;
+      position: relative;
     }
-
+    
+    
         .sidebar-nav {
             padding: 2rem 0;
             flex: 1 1 auto;
@@ -252,7 +254,10 @@
         padding:40px 40px;
         background-color: #a580c1;
         height:400px;
+        
     }
+
+    
 
     input[type=text],select{
           width: 300px;
@@ -383,18 +388,18 @@
                     </a>
                     <ul id="expert" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Search Expert</a>
+                            <a href=" {{ route('SearchExpert') }}" class="sidebar-link">Search Expert</a>
                         </li>
                     </ul>
                 </li>
 
                 <!-- New General Publication Section -->
-                <li class="sidebar-item">
+                <!--li class="sidebar-item">
                     <a href="{{ route('publication.publicationViewer') }}" class="sidebar-link">
                         <i class="lni lni-agenda"></i>
                         <span>General Publication</span>
                     </a>
-                </li>
+                </li-->
 
                 <!-- New Publication Report Section -->
                 <li class="sidebar-item">
@@ -415,10 +420,10 @@
                                             <a href="#" class="sidebar-link">CRMP Profile</a>
                                         </li>
                                         <li class="sidebar-item">
-                                            <a href="#" class="sidebar-link">Weekly Focus</a>
+                                            <a href=" {{route('WeeklyFocus.viewerMentor')}}" class="sidebar-link">Weekly Focus</a>
                                         </li>
                                         <li class="sidebar-item">
-                                            <a href="#" class="sidebar-link">Draft Thesis</a>
+                                            <a href="{{route('WeeklyFocus.viewerCRMP')}}" class="sidebar-link">Draft Thesis</a>
                                         </li>
                                     </ul>
                                 </li>
