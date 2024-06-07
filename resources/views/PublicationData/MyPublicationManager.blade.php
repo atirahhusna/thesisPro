@@ -9,6 +9,7 @@
   
   <form action='{{ url('publication') }}'  method="post">
       @csrf
+      <p style="padding-left:40px;" >{{ $platinum_id}} </p>
     <table class="center">
   
       <tr>

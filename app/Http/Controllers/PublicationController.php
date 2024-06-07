@@ -122,10 +122,22 @@ class PublicationController extends Controller
 
     public function PublicationManager()
     {
+
+          // Fetch data here if needed
+          $data = publication::orderBy('publication_ID', 'desc')->get();
         
-        // Fetch data here if needed
-        $data = publication::orderBy('publication_ID', 'desc')->get();
-        return view('PublicationData.MyPublicationManager')->with('data', $data);
+        $platinum = \App\Models\register_profiles::first();
+
+        if ($platinum) {
+            $platinum_id = $platinum->r_profile_id;
+        } else {
+            $platinum_id = null;
+        }
+
+      
+        return view('PublicationData.MyPublicationManager')
+        ->with('data', $data)
+        ->with('platinum_id', $platinum_id);
     }
 
 
