@@ -388,18 +388,18 @@
                     </a>
                     <ul id="expert" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Search Expert</a>
+                            <a href=" {{ route('SearchExpert') }}" class="sidebar-link">Search Expert</a>
                         </li>
                     </ul>
                 </li>
 
                 <!-- New General Publication Section -->
-                <li class="sidebar-item">
+                <!--li class="sidebar-item">
                     <a href="{{ route('publication.publicationViewer') }}" class="sidebar-link">
                         <i class="lni lni-agenda"></i>
                         <span>General Publication</span>
                     </a>
-                </li>
+                </li-->
 
                 <!-- New Publication Report Section -->
                 <li class="sidebar-item">
@@ -420,7 +420,7 @@
                                             <a href="#" class="sidebar-link">CRMP Profile</a>
                                         </li>
                                         <li class="sidebar-item">
-                                            <a href="#" class="sidebar-link">Weekly Focus</a>
+                                            <a href=" {{WeeklyFocus}}" class="sidebar-link">Weekly Focus</a>
                                         </li>
                                         <li class="sidebar-item">
                                             <a href="#" class="sidebar-link">Draft Thesis</a>
