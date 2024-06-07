@@ -74,8 +74,8 @@ Route::get('/assignCRMP', [StaffController::class, 'assignCRMP'])->name('assignC
 Route::resource('WeeklyFocus', WeeklyController::class);
 Route::get('/WeeklyFocusManager', [WeeklyController::class, 'index'])->name('WeeklyFocus.index');
 Route::get('/WeeklyAdd', [WeeklyController::class , 'addBlock']);
-Route::get('/WeeklyViewerMentor', [WeeklyController::class , 'viewerMentor']);
-Route::get('/WeeklyViewerCRMP', [WeeklyController::class , 'viewerCRMP']);
+Route::get('/WeeklyViewerMentor', [WeeklyController::class , 'viewerMentor'])->name('WeeklyFocus.viewerMentor');
+Route::get('/WeeklyViewerCRMP', [WeeklyController::class , 'viewerCRMP'])->name('WeeklyFocus.viewerCRMP');
 Route::get('/WeeklyAddItem', [WeeklyController::class , 'addItem']);
 Route::post('WeeklyFocus/storeItem', [WeeklyController::class, 'storeItem']);
 Route::post('WeeklyFocus/showWeeklyFocus', [WeeklyController::class, 'showWeeklyFocus']);
