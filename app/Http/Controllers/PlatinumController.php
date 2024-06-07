@@ -11,24 +11,42 @@ class PlatinumController extends Controller
     {
         return view('LandingPage.Platinum');
     }
-    public function ProfileShow(string $id)
+   
+    public function show()
     {
-        return view('userprofile.platinum');
-    }
-    public function show(string $id)
-    {
-       $user = register_profiles::where('r_profile_id',$id)->first();
+        $platinumProfile = session('platinum');
+
+        if (!$platinumProfile || !isset($platinumProfile['r_profile_id'])) {
+            return redirect()->back()->with('error', 'Profile ID not found in session.');
+        }
+
+        $id = $platinumProfile['r_profile_id'];
+        $user = RegisterProfile::where('r_profile_id', $id)->first();
 
         if (!$user) {
             return redirect()->back()->with('error', 'User not found.');
         }
 
-        return view('userProfile.platinum')->with('user', $user);
+        return view('userProfile.PlatinumProfileIndex', compact('user'));
     }
-    
-    public function edit(string $id)
+
+    public function update(Request $request)
     {
-        $data = register_profiles::where('r_profile_id', $id)->first();
-        return view('userProfile.platinum')->with('data', $data);
+        $platinumProfile = session('platinum');
+
+        if (!$platinumProfile || !isset($platinumProfile['r_profile_id'])) {
+            return redirect()->back()->with('error', 'Profile ID not found in session.');
+        }
+
+        $id = $platinumProfile['r_profile_id'];
+        $user = RegisterProfile::where('r_profile_id', $id)->first();
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found.');
+        }
+
+        $user->update($request->all());
+
+        return redirect()->back()->with('success', 'Profile updated successfully.');
     }
 }

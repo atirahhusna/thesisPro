@@ -327,10 +327,10 @@
                         </li>
                         <!-- Add dropdown items for different types of registration -->
                         <li class="sidebar-item">
-                            <a href="{{ route('user')}}" class="sidebar-link">User registration</a>
+                            <a href="{{ route('user')}}" class="sidebar-link">Registered user</a>
                         </li>
                         <li class="sidebar-item">
-                        <a href="{{ route('registerForm') }}" class="sidebar-link">Platinum registration</a>
+                        <a href="{{ route('registerForm') }}" class="sidebar-link">Registered Platinum</a>
                         </li>
                     </ul>
                 </li>
@@ -343,10 +343,10 @@
                                     </a>
                                     <ul id="progressMonitoring" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                                         <li class="sidebar-item">
-                                            <a href="" class="sidebar-link">Platinum As CRMP</a>
+                                            <a href="{{ route('assignPlatinum') }}" class="sidebar-link">Platinum As CRMP</a>
                                         </li>
                                         <li class="sidebar-item">
-                                            <a href="" class="sidebar-link">CRMP To Each Platinum</a>
+                                            <a href=" {{ route('assignCRMP') }}" class="sidebar-link">CRMP To Each Platinum</a>
                                         </li>
                                     </ul>
                                 </li>

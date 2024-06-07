@@ -44,38 +44,23 @@
            
                  <h4><b id="listTitle">LIST OF PLATINUM</b></h4>
                  <table class="table table-striped">
-                     <thead>
+                     <thead id="tableHeader">
                          <tr>
                              <th class="col-md-1">No</th>
-                             <th class="col-md-3">Name</th>
-                             <th class="col-md-4">ID Matric</th>
+                             <th class="col-md-3">ID Matric</th>
+                             <th>Name</th>
+                             <th>CRMP ID</th>
                              <th class="col-md-2">Total Draft</th>
-                             <th class="col-md-2">Action</th>
+                             <th class="col-md-1">Action</th>
                          </tr>
                      </thead>
                      <tbody id="platinumList">
-                        <tr>
-                            <td>1</td>
-                            <td>ME</td>
-                            <td>CB21101</td>
-                            <td>4</td>
-                            <td>
-                                <a href='' class="btn btn-warning btn-sm">View</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>YOU</td>
-                            <td>CB21102</td>
-                            <td>5</td>
-                            <td>
-                                <a href='' class="btn btn-warning btn-sm">View</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>US</td>
-                            <td>CB21103</td>
+                        @foreach($profiles as $profile)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $profile->r_profile_id }}</td>
+                                <td>{{ $profile->r_name }}</td>
+                            <td>CR21093</td>
                             <td>7</td>
                             <td>
                                 <a href='' class="btn btn-warning btn-sm">View</a>
@@ -85,27 +70,33 @@
                      <tbody id="crmpList" style="display: none;">
                         <tr>
                             <td>1</td>
-                            <td>John Doe</td>
                             <td>CRMP1001</td>
-                            <td>2</td>
+                            <td>John Doe</td>
+                            <td>
+                                <a href='' class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#chooseModal">View</a>
+                            </td>
                             <td>
                                 <a href='' class="btn btn-warning btn-sm">View</a>
                             </td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Jane Doe</td>
                             <td>CRMP1002</td>
-                            <td>3</td>
+                            <td>Jane Doe</td>
+                            <td>
+                                <a href='' class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#chooseModal">View</a>
+                            </td>
                             <td>
                                 <a href='' class="btn btn-warning btn-sm">View</a>
                             </td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>John Smith</td>
                             <td>CRMP1003</td>
-                            <td>5</td>
+                            <td>John Smith</td>
+                            <td>
+                                <a href='' class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#chooseModal">View</a>
+                            </td>
                             <td>
                                 <a href='' class="btn btn-warning btn-sm">View</a>
                             </td>
@@ -114,8 +105,58 @@
                  </table>
                  
            </div>
+           <!-- Modal -->
+<div class="modal fade" id="chooseModal" tabindex="-1" aria-labelledby="chooseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="chooseModalLabel">List Of Platinum</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Search Bar -->
+                <form class="d-flex mb-3" action="" method="get">
+                    <input class="form-control me-1" type="search" placeholder="Search Platinum" aria-label="Search">
+                    <button class="btn btn-secondary" type="submit">Search</button>
+                </form>
+                <!-- List of Platinum -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th class="col-md-1">No</th>
+                            <th class="col-md-3">ID</th>
+                            <th class="col-md-4">NAME</th>
+                            <th class="col-md-1">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($profiles as $profile)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $profile->r_profile_id }}</td>
+                                <td>{{ $profile->r_name }}</td>
+                                <td>
+                                @foreach($crmps as $crmp)
+                                @if($crmp->r_profile_id == $profile->r_profile_id)
+                                </td>
+
+                                <td>
+                                <a href='' class="btn btn-warning btn-sm">View</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                        <!-- Add more items as needed -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
           <!-- AKHIR DATA -->
-    </main>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script>
       document.getElementById('platinumBtn').addEventListener('click', function() {
@@ -123,6 +164,17 @@
         document.getElementById('platinumList').style.display = '';
         document.getElementById('crmpList').style.display = 'none';
         document.getElementById('searchInput').placeholder = 'Enter ID Matric Platinum';
+        
+        // Update thead for Platinum
+        document.getElementById('tableHeader').innerHTML = `
+          <tr>
+            <th class="col-md-1">No</th>
+            <th class="col-md-3">ID Matric</th>
+            <th>Name</th>
+            <th>CRMP ID</th>
+            <th class="col-md-2">Total Draft</th>
+            <th class="col-md-1">Action</th>
+          </tr>`;
         
         // Toggle button active state
         document.getElementById('platinumBtn').classList.add('active-btn');
@@ -137,6 +189,16 @@
         document.getElementById('crmpList').style.display = '';
         document.getElementById('searchInput').placeholder = 'Enter ID Matric CRMP';
         
+        // Update thead for CRMP
+        document.getElementById('tableHeader').innerHTML = `
+          <tr>
+            <th class="col-md-1">No</th>
+            <th class="col-md-3">ID</th>
+            <th>Name</th>
+            <th class="col-md-3">List of Platinum</th>
+            <th class="col-md-1">Action</th>
+          </tr>`;
+        
         // Toggle button active state
         document.getElementById('crmpBtn').classList.add('active-btn');
         document.getElementById('platinumBtn').classList.remove('active-btn');
@@ -144,7 +206,4 @@
         document.getElementById('platinumBtn').classList.add('btn-secondary');
       });
     </script>
-  </body>
-</html>
-
 @endsection

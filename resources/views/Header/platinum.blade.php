@@ -9,16 +9,25 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <!-- Add this in your header section -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Add this before the closing body tag -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
+  
         ::after,
         ::before {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
+    
         a {
             text-decoration: none;
         }
@@ -407,6 +416,10 @@
     </style>
 </head>
 <body>
+
+@php
+        $r_name = session('r_name', 'default value'); // Retrieve r_name from session or use 'default value' if it doesn't exist
+    @endphp
     <div class="wrapper">
         <aside id="sidebar">
             <div class="d-flex">
@@ -460,11 +473,12 @@
                     </a>
                     <ul id="expertDropdown" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                        <a href="{{ route('SearchExpert') }}" class="sidebar-link">Search Expert</a>
+                        <a href=" {{ route('SearchExpert') }} " class="sidebar-link">Search Expert</a>
                         </li>
                         <li class="sidebar-item">
-                        <a href="{{ route('ViewExpert') }}" class="sidebar-link">View Expert</a>
+                        <a href=" {{ route('ViewExpert') }}" class="sidebar-link">Add Expert</a>
                         </li>
+                       
                     </ul>
                 </li>
                 <!-- New Progress Monitoring Menu -->
@@ -503,7 +517,7 @@
                         </a>
                     </div>
                 </nav>
-                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome To ThesisPro !</a>
+                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome to ThesisPro, {{ $r_name }}!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

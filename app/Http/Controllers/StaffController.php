@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\register_profiles;
-
+use App\Models\crmp;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -35,13 +35,46 @@ class StaffController extends Controller
         return view('userProfile.Staff.ProfileList')->with('users',$users);
     }
 
-    public function assignPlatinum()
+    public function assignPlatinum(Request $request)
     {
-        return view('ProgressMonitoring.AssignPlatinum');
+        // Fetch the search keyword
+        $profiles = register_profiles::all();
+        if ($request->has('katakunci')) {
+            $profiles = register_profiles::where('r_profile_id', 'like', '%' . $request->katakunci . '%')
+                                       ->orWhere('r_name', 'like', '%' . $request->katakunci . '%')
+                                       ->get();
+        }
+        return view('ProgressMonitoring.AssignPlatinum', compact('profiles'));
     }
 
-    public function assignCRMP()
+    public function storePlatinum(Request $request, $id)
     {
-        return view('ProgressMonitoring.AssignCRMP');
+        // Find the profile by ID
+        $profile = register_profiles::findOrFail($id);
+
+        // Create a new CRMP record
+        $crmp = crmp::create([
+            'crmp_education' => 'default education', // Add your default values
+            'crmp_expertise' => 'default expertise',
+            'crmp_teaching' => 'default teaching',
+            'crmp_biography' => 'default biography',
+            'crmp_name' => $request,
+            'r_profile_id' => $profile->r_profile_id, // Associate the profile ID
+        ]);
+
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'CRMP assigned successfully.');
+    }
+
+    public function assignCRMP(Request $request)
+    {
+        $profiles = register_profiles::all();
+        if ($request->has('katakunci')) {
+            $profiles = register_profiles::where('r_profile_id', 'like', '%' . $request->katakunci . '%')
+                                       ->orWhere('r_name', 'like', '%' . $request->katakunci . '%')
+                                       ->get();
+        }
+        return view('ProgressMonitoring.AssignCRMP', compact('profiles'));
     }
 }

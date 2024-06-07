@@ -284,6 +284,7 @@ class AccountController extends Controller
             session(['mentor' => $user->mentor_id]);
         } elseif ($role == 'platinum') {
             session(['platinum' => $user->r_profile_id]);
+            session(['r_name' => $user->r_name]); // Store r_name in session
         }
     }
     

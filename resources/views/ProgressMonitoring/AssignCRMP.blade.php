@@ -68,16 +68,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($profiles as $profile)
                         <tr>
                             <td><input type="checkbox" name="platinum[]" value="2001"></td>
-                            <td>2001</td>
-                            <td>Platinum 1</td>
+                            <td>{{ $profile->r_profile_id }}</td>
+                            <td>{{ $profile->r_name }}</td>
                         </tr>
-                        <tr>
-                            <td><input type="checkbox" name="platinum[]" value="2002"></td>
-                            <td>2002</td>
-                            <td>Platinum 2</td>
-                        </tr>
+                        @endforeach
                         <!-- Add more items as needed -->
                     </tbody>
                 </table>

@@ -48,7 +48,9 @@ Route::get('/Mentor.PlatinumList', [MentorController::class, 'profileView'])->na
 Route::get('/Mentor.PlatinumList/{id}/show', [MentorController::class, 'show'])->name('show');
 Route::get('/Mentor.PlatinumList/search', [MentorController::class, 'profileView'])->name('profileView');
 Route::get('/MentorRegisterList', [MentorController::class, 'RegisterList'])->name('RegisterList');
-
+//edit and update profile platinum
+Route::get('/platinumProfile/show', [PlatinumController::class, 'show'])->name('showPlatinumProfile');
+Route::put('/platinumProfile/update', [PlatinumController::class, 'update'])->name('updatePlatinumProfile');
 
 
 //Route Publication
@@ -65,6 +67,8 @@ Route::post('/generatePdf', [PublicationController::class, 'generatePublicationP
 
 //Assign Platinum As CRMP
 Route::get('/assignPlatinum', [StaffController::class, 'assignPlatinum'])->name('assignPlatinum');
+Route::get('/storePlatinum/{id}', [StaffController::class, 'storePlatinum'])->name('storePlatinum');
+Route::post('/storePlatinum/{id}', [StaffController::class, 'storePlatinum'])->name('storePlatinum');
 //Assign Platinum As CRMP
 Route::get('/assignCRMP', [StaffController::class, 'assignCRMP'])->name('assignCRMP');
 
@@ -72,8 +76,8 @@ Route::get('/assignCRMP', [StaffController::class, 'assignCRMP'])->name('assignC
 Route::resource('WeeklyFocus', WeeklyController::class);
 Route::get('/WeeklyFocusManager', [WeeklyController::class, 'index'])->name('WeeklyFocus.index');
 Route::get('/WeeklyAdd', [WeeklyController::class , 'addBlock']);
-Route::get('/WeeklyViewerMentor', [WeeklyController::class , 'viewerMentor']);
-Route::get('/WeeklyViewerCRMP', [WeeklyController::class , 'viewerCRMP']);
+Route::get('/WeeklyViewerMentor', [WeeklyController::class , 'viewerMentor'])->name('WeeklyFocus.viewerMentor');
+Route::get('/WeeklyViewerCRMP', [WeeklyController::class , 'viewerCRMP'])->name('WeeklyFocus.viewerCRMP');
 Route::get('/WeeklyAddItem', [WeeklyController::class , 'addItem']);
 Route::post('WeeklyFocus/storeItem', [WeeklyController::class, 'storeItem']);
 Route::post('WeeklyFocus/showWeeklyFocus', [WeeklyController::class, 'showWeeklyFocus']);
