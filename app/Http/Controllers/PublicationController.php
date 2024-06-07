@@ -11,9 +11,41 @@ class PublicationController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function ReportViewer()
+    public function ReportViewer(Request $request)
     {
-        return view('PublicationData.ReportViewer');
+
+        $institutionKeywords = $request->institutionKeywords;
+        $yearKeywords = $request->yearKeywords;
+        $keywords = $request->keywords;
+    
+        $query = publication::query();
+    
+        if (strlen($institutionKeywords) && strlen($yearKeywords) && strlen($keywords)) {
+            // If both institution and year keywords are provided
+            $query->where('publication_institution', 'like', "%$institutionKeywords%")
+                  ->whereYear('publication_date', $yearKeywords)
+                  ->where('publication_title', 'like', "%$keywords%");
+        } else {
+            // If only institution keyword is provided
+            if (strlen($institutionKeywords)) {
+                $query->where('publication_institution', 'like', "%$institutionKeywords%");
+            }
+    
+            // If only year keyword is provided
+            if (strlen($yearKeywords)) {
+                $query->whereYear('publication_date', $yearKeywords);
+            }
+
+            // Adding title keywords conditionally
+            if (strlen($keywords)) {
+                $query->where('publication_title', 'like', "%$keywords%");
+            }
+        }
+
+    
+        $data = $query->orderBy('publication_ID', 'desc')->get();
+    
+        return view('PublicationData.ReportViewer')->with('data', $data);
     }
 
     public function generatePublicationPdf(Request $request)
@@ -53,26 +85,59 @@ class PublicationController extends Controller
 
     public function PublicationViewer(Request $request)
     {
+
+        $institutionKeywords = $request->institutionKeywords;
+        $yearKeywords = $request->yearKeywords;
         $keywords = $request->keywords;
-        if(strlen($keywords))
-        {
-            $data = publication::where('publication_title', 'like', "%$keywords%")
-                                    ->orWhereYear('publication_date', 'like', "%$keywords%")->get(); // Add ->get() to execute the query
-        }
-        else{
-                    // Fetch data here if needed
-            $data = publication::orderBy('publication_ID', 'desc')->get();
+    
+        $query = publication::query();
+    
+        if (strlen($institutionKeywords) && strlen($yearKeywords) && strlen($keywords)) {
+            // If both institution and year keywords are provided
+            $query->where('publication_institution', 'like', "%$institutionKeywords%")
+                  ->whereYear('publication_date', $yearKeywords)
+                  ->where('publication_title', 'like', "%$keywords%");
+        } else {
+            // If only institution keyword is provided
+            if (strlen($institutionKeywords)) {
+                $query->where('publication_institution', 'like', "%$institutionKeywords%");
+            }
+    
+            // If only year keyword is provided
+            if (strlen($yearKeywords)) {
+                $query->whereYear('publication_date', $yearKeywords);
+            }
+
+            // Adding title keywords conditionally
+            if (strlen($keywords)) {
+                $query->where('publication_title', 'like', "%$keywords%");
+            }
         }
 
+    
+        $data = $query->orderBy('publication_ID', 'desc')->get();
+    
         return view('PublicationData.PublicationViewer')->with('data', $data);
     }
 
     public function PublicationManager()
     {
+
+          // Fetch data here if needed
+          $data = publication::orderBy('publication_ID', 'desc')->get();
         
-        // Fetch data here if needed
-        $data = publication::orderBy('publication_ID', 'desc')->get();
-        return view('PublicationData.MyPublicationManager')->with('data', $data);
+        $platinum = \App\Models\register_profiles::first();
+
+        if ($platinum) {
+            $platinum_id = $platinum->r_profile_id;
+        } else {
+            $platinum_id = null;
+        }
+
+      
+        return view('PublicationData.MyPublicationManager')
+        ->with('data', $data)
+        ->with('platinum_id', $platinum_id);
     }
 
 

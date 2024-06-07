@@ -36,7 +36,7 @@
 
         .search-button {
             width: 100px;
-            padding: 10px;
+            padding: 5px;
             background-color: #3b7ddd;
             color: white;
             border: none;
@@ -51,7 +51,7 @@
         }
 
         .search-text {
-        max-width: 600px; /* Adjust the width as needed */
+        max-width: 900px; /* Adjust the width as needed */
         margin: 0 auto; /* Centers the container horizontally */
         }
 
@@ -80,6 +80,17 @@
             margin: 0 auto;
             outline: none;
             display: block;
+        }
+
+        .search-container .search-input {
+            width: 300px; /* Adjusted width */
+            padding: 6px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            outline: none;
         }
 
     </style>
@@ -163,19 +174,17 @@
                     </ul>
                 </li>
                 <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
+                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                        data-bs-target="#expertDropdown" aria-expanded="false" aria-controls="expertDropdown">
                         <i class="lni lni-popup"></i>
-                        <span>Expert information</span>
+                        <span>Expert Information</span>
                     </a>
                     <ul id="expertDropdown" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Search Expert</a>
+                        <a href="{{ route('SearchExpert') }}" class="sidebar-link">Search Expert</a>
                         </li>
                         <li class="sidebar-item">
-                        <a href="#" class="sidebar-link">Add Expert</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Expert Report</a>
+                        <a href="{{ route('ViewExpert') }}" class="sidebar-link">View Expert</a>
                         </li>
                     </ul>
                 </li>

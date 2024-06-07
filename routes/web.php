@@ -98,7 +98,7 @@ Route::get('/temp', [platinumTemplateController::class , 'Template']);
 
 
 //RouteExpert Domain
-Route::get('ViewExpert', [ExpertController::class, 'index']);
+Route::get('ViewExpert', [ExpertController::class, 'index'])->name('ViewExpert');
 Route::get('AddExpert', [ExpertController::class, 'AddExpert']);
 Route::post('SaveExpert', [ExpertController::class, 'SaveExpert']);
 Route::get('EditExpert/{e_ID}', [ExpertController::class, 'EditExpert']);
@@ -106,3 +106,5 @@ Route::post('UpdateExpert', [ExpertController::class, 'UpdateExpert']);
 Route::get('DeleteExpert/{e_ID}', [ExpertController::class, 'DeleteExpert']);
 Route::get('ExpertDetail/{e_ID}', [ExpertController::class, 'ExpertDetail']);
 Route::get('SearchExpert', [ExpertController::class, 'SearchExpert'])->name('SearchExpert');
+Route::get('ExpertList', [ExpertController::class, 'ExpertList'])->name('ExpertList');
+Route::get('MentorView/{e_ID}', [ExpertController::class, 'MentorView']);
