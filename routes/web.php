@@ -65,6 +65,8 @@ Route::post('/generatePdf', [PublicationController::class, 'generatePublicationP
 
 //Assign Platinum As CRMP
 Route::get('/assignPlatinum', [StaffController::class, 'assignPlatinum'])->name('assignPlatinum');
+Route::get('/storePlatinum/{id}', [StaffController::class, 'storePlatinum'])->name('storePlatinum');
+Route::post('/storePlatinum/{id}', [StaffController::class, 'storePlatinum'])->name('storePlatinum');
 //Assign Platinum As CRMP
 Route::get('/assignCRMP', [StaffController::class, 'assignCRMP'])->name('assignCRMP');
 

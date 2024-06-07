@@ -10,7 +10,8 @@ class DraftThesis extends Model
     use HasFactory;
     protected $table = 'draft_theses';
     protected $fillable = [
-    'DT_Title', 
+    'DT_Title',
+    'r_profile_id', 
     'DT_DraftNum',
     'DT_PagesNum',
     'DT_TotPagesNum',
