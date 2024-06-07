@@ -334,6 +334,22 @@
                         </li>
                     </ul>
                 </li>
+                                <!-- New Progress Monitoring Menu -->
+                                <li class="sidebar-item">
+                                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                                        data-bs-target="#progressMonitoring" aria-expanded="false" aria-controls="progressMonitoring">
+                                        <i class="lni lni-bar-chart"></i>
+                                        <span>Assign User</span>
+                                    </a>
+                                    <ul id="progressMonitoring" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                                        <li class="sidebar-item">
+                                            <a href="" class="sidebar-link">Platinum As CRMP</a>
+                                        </li>
+                                        <li class="sidebar-item">
+                                            <a href="" class="sidebar-link">CRMP To Each Platinum</a>
+                                        </li>
+                                    </ul>
+                                </li>
             </ul>
             <div class="sidebar-footer">
                 <a href="#" class="sidebar-link">
@@ -355,11 +371,6 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        
-                    </ul>
-                </div>
             </nav>
 
             @yield('content')

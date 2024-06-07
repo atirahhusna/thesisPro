@@ -24,19 +24,20 @@
          <div class="my-3 p-3 bg-body rounded shadow-sm">
                  <!-- FORM PENCARIAN -->
                  <div class="pb-3">
-                   <form class="d-flex" action="" method="get">
+                   <form class="d-flex" action="" method="get" style="padding-bottom: 2%">
                        <input class="form-control me-1" type="search" name="katakunci" value="" placeholder="Enter ID Matric Platinum" aria-label="Search">
                        <button class="btn btn-secondary" type="submit">Search</button>
                    </form>
                  </div>
            
+                 <h4><b>LIST OF PLATINUM</b></h4>
                  <table class="table table-striped">
                      <thead>
                          <tr>
                              <th class="col-md-1">No</th>
                              <th class="col-md-3">Name</th>
                              <th class="col-md-4">ID Matric</th>
-                             <th class="col-md-2">Thesis No.</th>
+                             <th class="col-md-2">Total Draft</th>
                              <th class="col-md-2">Action</th>
                          </tr>
                      </thead>

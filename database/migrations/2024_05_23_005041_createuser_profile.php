@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_profiles', function (Blueprint $table) {
-            $table->string('username')->primary(); // User username (Primary Key)
+            $table->id('username')->autoIncrement(); // User username (Primary Key)
             $table->string('password'); // User password
             $table->string('role'); // User role
             $table->string('email'); // User email

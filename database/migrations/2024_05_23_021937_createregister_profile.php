@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('register_profiles', function (Blueprint $table) {
-            $table->increments('r_profile_id'); // Profile ID (Primary Key, auto increment)
+            $table->id('r_profile_id'); // Profile ID (Primary Key, auto increment)
             $table->string('r_identity_card')->nullable(); // Identity card number
             $table->string('r_password');
             $table->string('r_gender')->nullable(); // Gender

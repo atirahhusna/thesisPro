@@ -12,12 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('draft_theses', function (Blueprint $table) {
-            $table->string('DT_Title', 100)->primary();
-            $table->integer('DT_DraftNum')->nullable();
+            $table->id('DT_DraftNum')->primary();
+            $table->unsignedBigInteger('username');
+            $table->foreign('username')->references('username')->on('user_profiles');
+            $table->string('DT_Title', 100)->nullable();
             $table->integer('DT_PagesNum')->nullable();
+            $table->integer('DT_TotPagesNum')->nullable();
+            $table->date('DT_SDate')->nullable();
+            $table->date('DT_EDate')->nullable();
+            $table->date('DT_DaysPrepare')->nullable();
             $table->text('DT_Comment')->nullable();
             $table->integer('DT_DDC')->nullable();
-            $table->date('DT_Completion')->nullable();
+            $table->integer('DT_Completion')->nullable();
         });
     }
 

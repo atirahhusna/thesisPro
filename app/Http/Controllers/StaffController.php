@@ -34,4 +34,14 @@ class StaffController extends Controller
 
         return view('userProfile.Staff.ProfileList')->with('users',$users);
     }
+
+    public function assignPlatinum()
+    {
+        return view('ProgressMonitoring.AssignPlatinum');
+    }
+
+    public function assignCRMP()
+    {
+        return view('ProgressMonitoring.AssignCRMP');
+    }
 }

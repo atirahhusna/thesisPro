@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Staff extends Model
+class staff extends Model
 {
     use HasFactory;
 
@@ -18,5 +18,11 @@ class Staff extends Model
         's_username',
         's_password',
         'mentor_id',
+        'username'
     ];
+
+    public function user_profiles()
+    {
+        return $this->belongsTo(user_profiles::class, 'username', 'username');
+    }
 }
