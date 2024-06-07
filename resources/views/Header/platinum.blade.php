@@ -121,7 +121,242 @@
         }
 
        
-        .sidebar-item {
+        body
+      {<!-- class = . , id = # -->
+        font-family: "Times New Roman", Times, serif;
+      }
+
+        ul.navigation{ 
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #fffff;
+        }
+        
+        li.navigation {
+        float:left;
+        }
+        
+        li a.navigation {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        }
+        
+        li a:hover{
+          text-decoration: underline;
+          color: #054bb4;
+          
+        }
+
+        li.button button {
+        background-color: #054BB4;
+        border:none;
+        color: white;
+        margin-top:15px;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: bold;
+        }
+
+        li.button.button1 button{border-radius:20px;}
+
+        li.button.button1 button:hover {
+        background-color: black; /* change background color on hover */
+        text:white;
+        }
+
+      input[type=text], input[type=date], input[type=search],select{
+          margin-bottom: 20px;
+          width: 300px;
+          height: 50px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          resize: none;
+          
+        }
+
+        #upload{
+          padding-left: 100px;
+          background-color: #ffffff;
+          width: 300px;
+          height: 300px;
+          border: 2px solid #17252A;
+          padding: 50px;
+          margin: 20px;
+          text-align:center;
+          padding-top:80px;
+        }
+
+        table.center {
+          margin-left: auto; 
+          margin-right: auto;
+        }
+
+        textarea {
+          width: 300px;
+          height: 150px;
+          padding: 12px 20px;
+          box-sizing: border-box;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          background-color: #f8f8f8;
+          font-size: 16px;
+          resize: none;
+        }
+
+        .column{
+            padding-right:100px;
+        }
+
+        #add p ,#edit p, #view p{
+            color: white;
+        }
+
+        #view p{
+            font-size:20px;
+        }
+
+
+        input[type=submit], input[type=reset], input[type=save]{
+        border-style: double;
+        color: #ffffff;
+        text-align: center;
+        text-decoration: none;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007BFF;
+        margin-top: 20px;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .button-container button {
+        margin: 0 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color:  #2B7A78;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .button-container button:hover {
+        background-color: black;
+    }
+
+
+    .button-container-delete-edit-view {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+
+    .button-container-delete-edit-view button {
+        margin: 0 10px;
+        padding: 5px 15px;
+        font-size: 14px;
+        background-color:  #17252A;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+
+    .button-container-delete-edit-view button[type="delete"]:hover {
+    background-color: #FF0000;
+    }
+
+    .button-container-delete-edit-view button[type="edit"]:hover {
+        background-color: #2B7A78;
+    }
+
+    .button-container-delete-edit-view button[type="view"]:hover {
+        background-color: #0000FF;
+    }
+
+    #add{
+      background-color: #3AAFA9;
+      padding-top:40px;
+      padding-bottom:40px;
+    }
+
+    #viewSearchDelete{
+      padding-top:40px;
+      padding-bottom:40px;
+      background-color: #ffffff;
+    }
+
+    #list{
+          padding-left: 100px;
+          background-color: #ffffff;
+          width: 1400px;
+          height: auto; /* Set height to auto to adjust automatically */
+          border: 2px solid #17252A;
+          padding: 20px;
+          margin: 20px;
+          text-align:center;
+          padding-top:10px;
+        }
+
+    #edit, #view{
+      padding-top:40px;
+      padding-bottom:40px;
+      background-color: #3AAFA9;
+      color:white;
+      
+    }
+
+        #viewSearchDelete h3{
+        padding-left:30px;
+        color: #17252A;
+        }
+
+        #footer{
+        background-color: #ffffff;
+        text-align:justify;
+        padding-top:10px;
+        }
+
+        h3{
+        padding-left:30px;
+        color:white;
+    }
+
+    #viewForm{
+        padding-top:40px;
+        padding-left:70px;
+    }
+
+    hr{
+      border: 2px solid black;
+      width:1100px;
+      margin-left: auto; 
+      margin-right: auto;
+
+    }
+    .sidebar-item {
             position: relative;
         }
 
@@ -160,151 +395,14 @@
             transition: all .2s ease-out;
         }
 
-        .sidenav {
-            height: 100%;
-            width: 250px;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            overflow-x: hidden;
-            padding-top: 10px;
-            }
-
-            /* Style the sidenav links and the dropdown button */
-            .sidenav a, .dropdown-btn {
-            padding: 6px 8px 6px 16px;
-            text-decoration: none;
-            font-size: 16px;
-            color: black;
-            display: block;
-            border: none;
-            background: none;
-            width: 100%;
-            text-align: left;
-            cursor: pointer;
-            outline: none;
-            }
-
-
-            /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
-            .dropdown-container {
-            display: none;
-            padding-left: 8px;
-            }
-
-            /* Optional: Style the caret down icon */
-            .fa-caret-down {
-            float: right;
-            padding-right: 8px;
-            }
-
-            /* Some media queries for responsiveness */
-            @media screen and (max-height: 450px) {
-            .sidenav {padding-top: 15px;}
-            .sidenav a {font-size: 18px;}
-            }
-
-            hr{   
-            border: 1px solid #2B7A78;
-            
-            }
-
-
-            table{
-                margin-left:10px;
-                margin-right:10px;
-            }
-
-            input[type=text], input[type=search]{
-                margin-top: 20px;
-                width: 100px;
-                height: 30px;
-                padding: 12px 20px;
-                box-sizing: border-box;
-                border: 2px solid #ccc;
-                border-radius: 4px;
-                background-color: #f8f8f8;
-                font-size: 16px;
-                resize: none;
-                display: inline-block; /* Display horizontally */
-                margin-right: 10px; /* Adjust spacing between input fields */
-                
-                }
-
-        input[type=submit]{
-        border-style: double;
-        color: #ffffff;
-        text-align: center;
-        text-decoration: none;
-        font-size: 16px;
-        cursor: pointer;
-        background-color: #007BFF;
-        margin-top: 20px;
-      }
-
-      .button-container {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-    }
-
-    .button-container button {
-        margin: 0 10px;
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color:  #2B7A78;
-        color: white;
-        font-weight: bold;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .button-container button:hover {
-        background-color: black;
-    }
-
+        
+        .even-row-publication {
+        background-color: #d1ffff; /* Blue */
+        }
 
         .odd-row-publication {
             background-color: white; /* Pink */
         }
-        
-        th{
-        font-size: 18px;
-    }
-
-    .button-container-view button {
-        padding: 5px 15px;
-        font-size: 14px;
-        background-color:  #17252A;
-        color: white;
-        font-weight: bold;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-
-    .button-container-view button[type="view"]:hover {
-        background-color: #0000FF;
-    }
-
-    th{
-        font-size: 18px;
-    }
-
-    #view{
-      padding-top:40px;
-      padding-bottom:40px;
-      background-color: #3AAFA9;
-      color:white;
-      
-    }
-
-    .sidenav button{
-        color:white;
-    }
-        
         
     </style>
 </head>
