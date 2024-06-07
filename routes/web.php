@@ -30,6 +30,7 @@ Route::post('/Login', [AccountController::class, 'LoginPost'])->name('LoginPost'
 Route::get('/ForgotPassword', [AccountController::class, 'ForgotPassword']);
 Route::get('/StaffPage', [StaffController::class, 'StaffPage'])->name('StaffPage');
 Route::get('/MentorPage', [MentorController::class, 'MentorPage'])->name('MentorPage');
+Route::get('/logout', [AccountController::class, 'logout'])->name('logout');
 //registration
 Route::get('/Registration', [AccountController::class, 'registerForm'])->name('registerForm');
 Route::post('/Registration', [AccountController::class, 'registerPost'])->name('registerPost');
