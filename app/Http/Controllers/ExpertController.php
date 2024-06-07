@@ -107,14 +107,29 @@ class ExpertController extends Controller
     }
 
     public function SearchExpert(Request $request)
-{
+    {
     $query = $request->input('query');
 
     $experts = ExpertDomain::where('e_Name', 'like', "%$query%")
         ->orWhere('e_University', 'like', "%$query%")
         ->orWhere('e_Expertise', 'like', "%$query%")
+        ->orWhere('e_TitleResearch', 'like', "%$query%")
         ->get();
 
     return view('ExpertDomain/SearchExpert', compact('experts', 'query'));
-}
+    }
+
+    public function ExpertList(){
+        $data = ExpertDomain::get();
+        //return $data;
+        return view('ExpertDomain/ExpertList', compact('data'));
+     }
+
+     public function MentorView($e_ID)
+    {
+        $data = ExpertDomain::find($e_ID);
+        return view('ExpertDomain/MentorView', compact('data'));
+    }
+
+
 }
