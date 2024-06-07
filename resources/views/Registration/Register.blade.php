@@ -97,9 +97,10 @@ button:hover {
             @method('post')
            
             <div class="form-group">
-                <label for="r_name">Name</label>
-                <input type="text" id="r_name" name="r_name" maxlength="30" required>
-            </div>
+    <label for="r_name">Name</label>
+    <input type="text" id="r_name" name="r_name" maxlength="30" required>
+</div>
+
             <div class="form-group">
                 <label for="r_password">Password</label>
                 <input type="password" id="r_password" name="r_password" maxlength="30" required>

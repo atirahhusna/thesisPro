@@ -25,7 +25,7 @@ class AccountController extends Controller
     {
         return view('Registration.Register');
     }
-    public function registerList ()
+    public function RegisterList ()
     {
         $users = register_profiles::all();
         return view('Registration.Index', ['users'=>$users]);
@@ -105,9 +105,13 @@ class AccountController extends Controller
 
      public function destroy(string $id)
      {
-         register_profiles::where('r_profile_id',$id)->delete();
+         // Delete the user with the given profile ID
+         register_profiles::where('r_profile_id', $id)->delete();
+     
+         // Redirect to the RegisterList route with a success message
          return redirect()->route('RegisterList')->with('success', 'User Deleted!');
      }
+     
      
 
      public function userPost(Request $request)
@@ -133,45 +137,45 @@ class AccountController extends Controller
              return redirect()->back()->with('error', 'Failed to create user: ' . $e->getMessage());
          }
      }
-     
      public function registerPost(Request $request)
-     {
-         // Validation
-         $data = $request->validate([
-             'r_identity_card' =>'required',
-             'r_gender'=>'required',
-             'r_password'=>'required',
-             'r_religion'=>'required',
-             'r_race'=>'required',
-             'r_citizenship'=>'required',
-             'r_address'=>'required',
-             'r_phone_number'=>'required',
-             'r_facebook'=>'required',
-             'r_current_edu_level'=>'required',
-             'r_edu_field'=>'required',
-             'r_edu_institute'=>'required',
-             'r_occupation'=>'required',
-             'r_sponsor'=>'required',
-             'r_program'=>'required',
-             'r_size'=>'required',
-             'r_batch'=>'required',
-             'r_name'=>'required',
-         ]);
-     
-         try {
-             // Hash the password before storing
-             $data['r_password'] = bcrypt($data['r_password']);
-     
-             // Create the register_profiles entry
-             $profile = register_profiles::create($data);
-     
-             // Redirect with success message
-             return redirect()->route('registerForm')->with('success', 'Platinum registered successfully!');
-         } catch (\Exception $e) {
-             return redirect()->back()->with('error', 'Failed to registered platinum: ' . $e->getMessage());
-         }
-     }
-     
+{
+    // Validation
+    $data = $request->validate([
+        'r_identity_card' =>'required',
+        'r_gender'=>'required',
+        'r_password'=>'required',
+        'r_religion'=>'required',
+        'r_race'=>'required',
+        'r_citizenship'=>'required',
+        'r_address'=>'required',
+        'r_phone_number'=>'required',
+        'r_facebook'=>'required',
+        'r_current_edu_level'=>'required',
+        'r_edu_field'=>'required',
+        'r_edu_institute'=>'required',
+        'r_occupation'=>'required',
+        'r_sponsor'=>'required',
+        'r_program'=>'required',
+        'r_size'=>'required',
+        'r_batch'=>'required',
+        'r_name'=>'required', // Make sure 'r_name' is included in validation rules
+    ]);
+
+    try {
+        // Hash the password before storing
+        $data['r_password'] = bcrypt($data['r_password']);
+        
+        // Create the register_profiles entry
+        $profile = register_profiles::create($data);
+        session(['platinum' => $profile->r_name]);
+
+        // Redirect with success message
+        return redirect()->route('registerForm')->with('success', 'Platinum registered successfully!');
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Failed to register platinum: ' . $e->getMessage());
+    }
+}
+
 
     public function LoginPost(Request $request)
     {
@@ -283,8 +287,11 @@ class AccountController extends Controller
         } elseif ($role == 'mentor') {
             session(['mentor' => $user->mentor_id]);
         } elseif ($role == 'platinum') {
-            session(['platinum' => $user->r_profile_id]);
-            session(['r_name' => $user->r_name]); // Store r_name in session
+            session(['platinum' => [
+                'r_name' => $user->r_name,
+                'r_profile_id' => $user->r_profile_id
+            ]]);
+            
         }
     }
     

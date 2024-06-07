@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('r_program', 30)->nullable(); // Program
             $table->string('r_size', 5)->nullable(); // T-shirt size
             $table->string('r_batch', 10)->nullable(); // Platinum batch
-            $table->string('r_name', 55)->nullable(); // Platinum name
+            $table->string('r_name'); // Platinum name
 
             // Timestamps
             $table->timestamps();

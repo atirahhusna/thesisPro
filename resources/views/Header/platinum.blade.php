@@ -416,10 +416,6 @@
     </style>
 </head>
 <body>
-
-@php
-        $r_name = session('r_name', 'default value'); // Retrieve r_name from session or use 'default value' if it doesn't exist
-    @endphp
     <div class="wrapper">
         <aside id="sidebar">
             <div class="d-flex">
@@ -517,7 +513,7 @@
                         </a>
                     </div>
                 </nav>
-                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome to ThesisPro, {{ $r_name }}!</a>
+                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome to ThesisPro, {{ session('platinum')['r_name'] }}!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

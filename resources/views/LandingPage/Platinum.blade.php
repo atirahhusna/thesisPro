@@ -1,8 +1,5 @@
 @extends('Header.platinum')
 @section('content')
-@php
-    $r_name = session('r_name', 'default value'); // Retrieve r_name from session or use 'default value' if it doesn't exist
-@endphp
 
 <style>
     .carousel-control-prev-icon,

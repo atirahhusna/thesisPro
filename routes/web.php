@@ -47,7 +47,7 @@ Route::get('/Staff.PlatinumList/search', [StaffController::class, 'profileView']
 Route::get('/Mentor.PlatinumList', [MentorController::class, 'profileView'])->name('profileView');
 Route::get('/Mentor.PlatinumList/{id}/show', [MentorController::class, 'show'])->name('show');
 Route::get('/Mentor.PlatinumList/search', [MentorController::class, 'profileView'])->name('profileView');
-Route::get('/MentorRegisterList', [MentorController::class, 'RegisterList'])->name('RegisterList');
+Route::get('/MentorRegisterList', [MentorController::class, 'MentorRegisterList'])->name('MentorRegisterList');
 //edit and update profile platinum
 Route::get('/platinumProfile/show', [PlatinumController::class, 'show'])->name('showPlatinumProfile');
 Route::put('/platinumProfile/update', [PlatinumController::class, 'update'])->name('updatePlatinumProfile');
