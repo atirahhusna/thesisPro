@@ -92,7 +92,7 @@ Route::resource('DraftThesis', DraftController::class);
 Route::get('/DraftThesisManager', [DraftController::class, 'index'])->name('DraftThesis.index');
 Route::get('/DraftNewTitle', [DraftController::class , 'createThesis']);
 Route::get('/DraftWork', [DraftController::class , 'showDratfList']);
-Route::get('/DraftViewerMentor', [DraftController::class , 'DraftViewerMentor']);
+Route::get('/DraftViewerMentor', [DraftController::class , 'DraftViewerMentor'])->name('DraftThesis.DraftViewerMentor');
 Route::get('/DraftViewerCRMP', [DraftController::class , 'DraftViewerCRMP']);
 Route::get('/DraftWorkViewer', [DraftController::class , 'DraftWorkViewer']);
 Route::get('/test', [PublicationController::class , 'create']);
