@@ -27,6 +27,16 @@
             margin: 0;
             padding: 0;
         }
+
+        .profile-view {
+    width: 50%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Add margin to the bottom */
+}
+
     
         a {
             text-decoration: none;
@@ -417,9 +427,6 @@
 </head>
 <body>
 
-@php
-        $r_name = session('r_name', 'default value'); // Retrieve r_name from session or use 'default value' if it doesn't exist
-    @endphp
     <div class="wrapper">
         <aside id="sidebar">
             <div class="d-flex">
@@ -439,14 +446,15 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">My Profile</a>
+                        <a href="{{ route('platinumProfile') }}" class="sidebar-link">My Profile</a>
+
                         </li>
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Mentor profile</a>
                         </li>
                         
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Platinum Profile</a>
+                            <a href="http://127.0.0.1:8000/Platinum.PlatinumList" class="sidebar-link">Platinum Profile</a>
                         </li>
                     </ul>
                 </li>
@@ -502,7 +510,7 @@
                 </li>
             </ul>
             <div class="sidebar-footer">
-                <a href="#" class="sidebar-link">
+            <a href="{{ route('logout') }}" class="sidebar-link">
                     <i class="lni lni-exit"></i>
                     <span>Logout</span>
                 </a>
@@ -517,7 +525,7 @@
                         </a>
                     </div>
                 </nav>
-                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome to ThesisPro, {{ $r_name }}!</a>
+                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome to ThesisPro, {{ session('platinum')['r_profile_id'] }}!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

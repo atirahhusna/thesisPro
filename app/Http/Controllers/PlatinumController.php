@@ -7,46 +7,80 @@ use Illuminate\Http\Request;
 
 class PlatinumController extends Controller
 {
+
     public function platinumPage()
     {
         return view('LandingPage.Platinum');
     }
-   
+    
     public function show()
     {
         $platinumProfile = session('platinum');
-
+    
         if (!$platinumProfile || !isset($platinumProfile['r_profile_id'])) {
             return redirect()->back()->with('error', 'Profile ID not found in session.');
         }
-
+    
         $id = $platinumProfile['r_profile_id'];
-        $user = RegisterProfile::where('r_profile_id', $id)->first();
-
-        if (!$user) {
+        $data = register_profiles::where('r_profile_id', $id)->first(); // Fetch the data
+    
+        if (!$data) {
             return redirect()->back()->with('error', 'User not found.');
         }
-
-        return view('userProfile.PlatinumProfileIndex', compact('user'));
+    
+        // Pass the data to the view
+        return view('userprofile.platinum.PlatinumProfileIndex', ['data' => $data]);
     }
-
     public function update(Request $request)
     {
         $platinumProfile = session('platinum');
-
+    
         if (!$platinumProfile || !isset($platinumProfile['r_profile_id'])) {
             return redirect()->back()->with('error', 'Profile ID not found in session.');
         }
-
+    
         $id = $platinumProfile['r_profile_id'];
-        $user = RegisterProfile::where('r_profile_id', $id)->first();
-
-        if (!$user) {
+        $data = register_profiles::where('r_profile_id', $id)->first();
+    
+        if (!$data) {
             return redirect()->back()->with('error', 'User not found.');
         }
-
-        $user->update($request->all());
-
-        return redirect()->back()->with('success', 'Profile updated successfully.');
+    
+        // Update the profile
+        $data->update($request->all());
+    
+        // Set success message
+        return redirect()->route('platinumProfile')->with('message', ['type' => 'success', 'text' => 'Profile updated successfully.']);
     }
+    
+    public function edit(string $id)
+    {
+        $data = register_profiles::where('r_profile_id', $id)->first();
+        return view('userprofile.platinum.PlatinumProfileEdit')->with('data', $data);
+    }
+
+    public function profileView(Request $request)
+    {
+        $search = $request->input('search');
+        
+        // If there is a search query, filter the users
+        if ($search) {
+            $users = register_profiles::where('r_identity_card', 'LIKE', "%$search%")
+                          ->orWhere('r_name', 'LIKE', "%$search%")
+                          ->get();
+        } else {
+            // Otherwise, get all users
+            $users = register_profiles::all();
+        }
+
+        return view('userprofile.Platinum.platinumList')->with('users',$users);
+    }
+
+    public function showPlatinum(string $id)
+    {
+        $data = register_profiles::where('r_profile_id', $id)->first();
+        return view('userprofile.Platinum.platinumProfile')->with('data', $data);
+    }
+  
+
 }
