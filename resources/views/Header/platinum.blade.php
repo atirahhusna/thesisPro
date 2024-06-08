@@ -27,6 +27,16 @@
             margin: 0;
             padding: 0;
         }
+
+        .profile-view {
+    width: 50%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Add margin to the bottom */
+}
+
     
         a {
             text-decoration: none;
@@ -436,7 +446,8 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">My Profile</a>
+                        <a href="{{ route('platinumProfile') }}" class="sidebar-link">My Profile</a>
+
                         </li>
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Mentor profile</a>
