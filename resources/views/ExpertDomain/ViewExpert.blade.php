@@ -52,7 +52,7 @@
                                 <td>{{$expert->e_Name}}</td>
                                 <td>{{$expert->e_Expertise}}</td>
                                 <td>{{$expert->year}}</td>
-                                <td>{{$expert->Type}}</td>
+                                <td>{{$expert->TypeOfPublication}}</td>
                                 <td>
                                 <a href="{{url('ExpertDetail/'.$expert->e_ID)}}" class="btn btn-primary">VIEW</a>
                                 <a href="{{url('EditExpert/'.$expert->e_ID)}}" class="btn btn-primary">EDIT</a>

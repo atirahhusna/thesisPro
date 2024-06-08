@@ -136,11 +136,11 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Name">NAME</label>
-                                <input type="text" style="width:400px; height:40px" id="e_Name" name="e_Name" required value="{{old('e_Name')}}">
+                                <input type="text" style="width:300px; height:40px" id="e_Name" name="e_Name" required value="{{old('e_Name')}}">
                             </div>
                             <div class="form-group">
                                 <label for="e_University">WORKPLACE</label>
-                                <select style="width:400px;height:40px;margin-right:20px;" id="filter-institution" name="institutionKeywords">
+                                <select style="width:400px;height:40px;margin-right:20px;" id="e_University" name="e_University">
                                     <option value="">Select institution</option>
                                     <option value="Universiti Islam Antarabangsa Malaysia (UIAM)">Universiti Islam Antarabangsa Malaysia (UIAM)</option>
                                     <option value="Universiti Kebangsaan Malaysia (UKM)">Universiti Kebangsaan Malaysia (UKM)</option>
@@ -168,18 +168,18 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Email">EMAIL</label>
-                                <input type="email" style="width:400px; height:40px" id="e_Email" name="e_Email" required value="{{old('e_Email')}}">
+                                <input type="email" style="width:300px; height:40px" id="e_Email" name="e_Email" required value="{{old('e_Email')}}">
                             </div>
                             <div class="form-group">
                                 <label for="e_PhoneNum">PHONE NUMBER</label>
-                                <input type="tel" style="width:400px; height:40px" id="e_PhoneNum" name="e_PhoneNum" required value="{{old('e_PhoneNum')}}">
+                                <input type="tel" style="width:300px; height:40px" id="e_PhoneNum" name="e_PhoneNum" required value="{{old('e_PhoneNum')}}">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Expertise">EXPERTISE</label>
-                                <input type="text" style="width:400px; height:40px" id="e_Expertise" name="e_Expertise" required value="{{old('e_Expertise')}}">
+                                <input type="text" style="width:300px; height:40px" id="e_Expertise" name="e_Expertise" required value="{{old('e_Expertise')}}">
                             </div>
                         </div>
                     </div>
@@ -191,6 +191,10 @@
                                 <textarea id="e_TitleResearch" name="e_TitleResearch"  required value="{{old('e_TitleResearch')}}"></textarea>
                                 <label for="e_Paper">PAPER</label>
                                 <textarea id="e_Paper" rows="3" name="e_Paper" required value="{{old('e_Paper')}}"></textarea>
+                                <label for="TypeOfPublication">TYPE OF PUBLICATION</label>
+                                <input type="text" style="width:400px; height:40px" id="TypeOfPublication" name="TypeOfPublication" required value="{{old('TypeOfPublication')}}">
+                                <label for="year">YEAR</label>
+                                <input type="text" style="width:200px; height:40px" id="year" name="year" required value="{{old('year')}}">
                             </div>
                         </div>
                     </div>

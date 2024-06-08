@@ -152,6 +152,7 @@
                     </div>
                     <div class="form-actions">
                         <a href="{{url('List')}}" class="btn btn-primary">BACK</a>
+                        <a href="{{url('Export')}}" class="btn btn-success">DOWNLOAD</a>
                     </div>
                 </form>
             </div>

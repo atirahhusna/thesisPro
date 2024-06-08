@@ -388,12 +388,12 @@
                     </a>
                     <ul id="expert" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href=" {{ route('SearchExpert') }}" class="sidebar-link">Search Expert</a>
+                            <a href=" {{ route('Search') }}" class="sidebar-link">Search Expert</a>
                         </li>
                     </ul>
                     <ul id="expert" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">View Expert</a>
+                            <a href="{{ route('List') }}" class="sidebar-link">View Expert</a>
                         </li>
                     </ul>
                 </li>

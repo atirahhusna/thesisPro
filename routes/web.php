@@ -111,3 +111,4 @@ Route::get('SearchExpert', [ExpertController::class, 'SearchExpert'])->name('Sea
 Route::get('List', [ExpertController::class, 'List'])->name('List');
 Route::get('View/{e_ID}', [ExpertController::class, 'View']);
 Route::get('Search', [ExpertController::class, 'Search'])->name('Search');
+Route::get('Export', [ExpertController::class, 'Export'])->name('Export');
