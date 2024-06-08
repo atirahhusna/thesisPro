@@ -50,7 +50,7 @@ Route::get('/Mentor.PlatinumList/{id}/show', [MentorController::class, 'show'])-
 Route::get('/Mentor.PlatinumList/search', [MentorController::class, 'profileView'])->name('profileView');
 Route::get('/MentorRegisterList', [MentorController::class, 'MentorRegisterList'])->name('MentorRegisterList');
 //edit and update profile platinum
-Route::get('/platinumProfile/show', [PlatinumController::class, 'show'])->name('showPlatinumProfile');
+Route::get('/platinumProfile', [PlatinumController::class, 'show'])->name('platinumProfile');
 Route::put('/platinumProfile/update', [PlatinumController::class, 'update'])->name('updatePlatinumProfile');
 
 

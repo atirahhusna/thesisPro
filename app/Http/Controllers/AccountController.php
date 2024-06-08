@@ -330,8 +330,5 @@ class AccountController extends Controller
         return redirect('/Login')->with('success', 'You have been logged out.');
     }
     
-
-
-    
 }
 
