@@ -427,10 +427,10 @@
                                             <a href="#" class="sidebar-link">CRMP Profile</a>
                                         </li>
                                         <li class="sidebar-item">
-                                            <a href=" {{route('WeeklyFocus.viewerMentor')}}" class="sidebar-link">Weekly Focus</a>
+                                            <a href=" {{WeeklyFocus}}" class="sidebar-link">Weekly Focus</a>
                                         </li>
                                         <li class="sidebar-item">
-                                            <a href="{{route('WeeklyFocus.viewerCRMP')}}" class="sidebar-link">Draft Thesis</a>
+                                            <a href="#" class="sidebar-link">Draft Thesis</a>
                                         </li>
                                     </ul>
                                 </li>
