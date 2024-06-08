@@ -416,6 +416,7 @@
     </style>
 </head>
 <body>
+
     <div class="wrapper">
         <aside id="sidebar">
             <div class="d-flex">
@@ -513,7 +514,7 @@
                         </a>
                     </div>
                 </nav>
-                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome to ThesisPro, {{ session('platinum')['r_name'] }}!</a>
+                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome to ThesisPro, {{ session('platinum')['r_profile_id'] }}!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

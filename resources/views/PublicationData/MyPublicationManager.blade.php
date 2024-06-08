@@ -1,7 +1,9 @@
 
 @extends('Header.platinum')
 @section('content')
-
+@php
+$r_profile_id = session('r_profile_id', 'default value'); // Retrieve r_profile_id from session or use 'default value' if it doesn't exist
+@endphp
     <!--START-->
 <div id="content">
     <div id="add">
@@ -9,7 +11,6 @@
   
   <form action='{{ url('publication') }}'  method="post">
       @csrf
-      <p style="padding-left:40px;" >{{ $platinum_id}} </p>
     <table class="center">
   
       <tr>
