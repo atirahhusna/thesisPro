@@ -30,6 +30,13 @@
 <!-- START FORM -->
 <form action='{{ url('DraftThesis')}}' method='post'>
   @csrf
+  <div class="mb-3 row">
+    <div class="col-sm-10">
+        <a href="{{ url('DraftThesis') }}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Back
+        </a>
+    </div>
+</div>
   <!-- Select type -->
   <div class="mb-3 row">
       <label for="DT_Title" class="col-sm-2 col-form-label">Title Thesis</label>
@@ -65,7 +72,10 @@
 
   <div class="mb-3 row">
     <label for="jurusan" class="col-sm-2 col-form-label"></label>
-    <div class="col-sm-10"><button type="submit" class="btn btn-primary" name="submit">Confirm</button></div>
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary" name="submit">Confirm</button>
+      <button type="submit" class="btn btn-warning" name="submit">Reset</button>
+    </div>
 </div>
 </form>
     <!-- AKHIR FORM -->

@@ -10,7 +10,7 @@ class register_profiles extends Model
     use HasFactory;
     
     protected $primaryKey = 'r_profile_id';
-
+    public $timestamps = false;
     // Specify the attributes that are mass assignable
     protected $fillable = [
         'r_profile_id',
