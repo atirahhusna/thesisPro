@@ -2,7 +2,7 @@
 @extends('Header.platinum')
 @section('content')
 @php
-$r_profile_id = session('r_profile_id', 'default value'); // Retrieve r_profile_id from session or use 'default value' if it doesn't exist
+$r_profile_id = session('r_profile_id'); // Retrieve r_profile_id from session or use 'default value' if it doesn't exist
 @endphp
     <!--START-->
 <div id="content">
@@ -16,12 +16,13 @@ $r_profile_id = session('r_profile_id', 'default value'); // Retrieve r_profile_
       <tr>
   
         <td class="column">
+        <input type="text" id="user_id" name="user_id" value="{{ session('platinum')['r_profile_id'] }}" readonly>
         <p style="margin-bottom:5px;">Title</p>
         <input type="text" id="title" name="title" placeholder="Enter publication title"  class="input-width" required>
         <p style="margin-bottom:5px;">DOI</p>
         <input type="text" id="DOI"  name="DOI" placeholder="Enter DOI" required>
         <p style="margin-bottom:5px;">Abstract</p>
-        <textarea id="abstract" name="abstract" style="height: 200px; width: 100%;" placeholder="Enter publication abstract"></textarea>
+        <textarea id="abstract" name="abstract" style="height: 150px; width: 100%;" placeholder="Enter publication abstract"></textarea>
         </td>
   
         <td class="column">
@@ -61,8 +62,8 @@ $r_profile_id = session('r_profile_id', 'default value'); // Retrieve r_profile_
           <option value="Journal">Journal</option>
           <option value="Review">Review</option>
           <option value="Thesis">Thesis</option>
-          <!-- Add more options as needed -->
       </select>
+
         </td>
   
         <td>
@@ -97,31 +98,32 @@ $r_profile_id = session('r_profile_id', 'default value'); // Retrieve r_profile_
               </tr>
   
               @foreach ($data as $index => $publication)
-              <tr class="{{ $index % 2 == 0 ? 'even-row-publication' : 'odd-row-publication' }}">
-                  <td style="text-align:left;padding-left:30px;" >{{ $publication->publication_title}}<br>
-                  {{ $publication->publication_authors}}<br>
-                  {{ $publication->publication_institution}}
-                  </td>
-                  <td style="text-align:center;"> {{ \Carbon\Carbon::parse($publication->publication_date)->format('Y') }}
-                  </td></td>
-                  <td>
-                      <div class="button-container-delete-edit-view">
-                          <form onsubmit="return confirm('Are you sure you want to delete this publication?')" action="{{ url('publication/'.$publication->publication_ID) }}" method="post">
-                              @csrf
-                              @method('DELETE')
-                              <button type="delete" name="delete" >Delete</button>
-                          </form>
-  
-                          <a href="{{ url('publication/'.$publication->publication_ID.'/edit') }}" method="GET">
-                              <button type="edit">Edit</button>
-                          </a>
-                          <a href="{{ url('publication/'.$publication->publication_ID.'/show') }}" method="GET" >
-                              <button type="view">View</button>
-                          </a>
-                      </div>             
-                  </td>
-              </tr>              
-              @endforeach
+              
+                  <tr class="{{ $index % 2 == 0 ? 'even-row-publication' : 'odd-row-publication' }}">
+                      <td style="text-align:left;padding-left:30px;" >{{ $publication->publication_title}}<br>
+                      {{ $publication->publication_authors}}<br>
+                      {{ $publication->publication_institution}}
+                      </td>
+                      <td style="text-align:center;"> {{ \Carbon\Carbon::parse($publication->publication_date)->format('Y') }}</td>
+                      <td>
+                          <div class="button-container-delete-edit-view">
+                              <form onsubmit="return confirm('Are you sure you want to delete this publication?')" action="{{ url('publication/'.$publication->publication_ID) }}" method="post">
+                                  @csrf
+                                  @method('DELETE')
+                                  <button type="delete" name="delete" >Delete</button>
+                              </form>
+          
+                              <a href="{{ url('publication/'.$publication->publication_ID.'/edit') }}" method="GET">
+                                  <button type="edit">Edit</button>
+                              </a>
+                              <a href="{{ url('publication/'.$publication->publication_ID.'/show') }}" method="GET" >
+                                  <button type="view">View</button>
+                              </a>
+                          </div>             
+                      </td>
+                  </tr>              
+            
+          @endforeach
              
           </table>
           

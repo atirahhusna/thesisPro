@@ -50,7 +50,7 @@ $r_profile_id = session('r_profile_id', 'default value'); // Retrieve r_profile_
                                 <tr>
                                     <th style="width:1150px;color:white;">TITLE</th>
                                     <th style="width:100px;color:white;">YEAR</th>
-                                    <th style="width:100px;color:white;">ACTION</th>
+                                    <th style="width:100px;color:white;text-align:center;">ACTION</th>
                                 </tr>
 
                                 @foreach ($data as $publication)
@@ -68,9 +68,9 @@ $r_profile_id = session('r_profile_id', 'default value'); // Retrieve r_profile_
                                     </td>
                         
                                     <td>
-                                        <div class="button-container-view">
+                                        <div class="button-container-delete-edit-view">
                                             <a href="{{ url('publication/'.$publication->publication_ID.'/show') }}" method="GET" >
-                                                <button type="view">View</button>
+                                                <button style="margin-left:10px;" type="view">View</button>
                                             </a>
                                         </div>             
                                     </td>
