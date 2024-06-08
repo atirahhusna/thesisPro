@@ -18,6 +18,7 @@ class publication extends Model
     protected $fillable = [
         'publication_ID',
         'r_profile_id', //FK platinum
+        'e_ID', //FK expert
         'publication_title',
         'publication_DOI', 
         'publication_abstract', 
@@ -30,6 +31,11 @@ class publication extends Model
     public function platinum()
 {
     return $this->belongsTo(register_profiles::class, 'r_profile_id', 'r_profile_id');
+}
+
+public function expert()
+{
+    return $this->belongsTo(expertdomain::class, 'e_ID', 'e_ID');
 }
 
 }
