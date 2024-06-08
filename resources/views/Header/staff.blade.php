@@ -302,7 +302,7 @@
                             <a href="#" class="sidebar-link">My Profile</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Other Staff Profile</a>
+                            <a href="#" class="sidebar-link">Staff Profile</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Mentor profile</a>
@@ -327,10 +327,10 @@
                         </li>
                         <!-- Add dropdown items for different types of registration -->
                         <li class="sidebar-item">
-                            <a href="{{ route('user')}}" class="sidebar-link">Registered user</a>
+                            <a href="{{ route('user')}}" class="sidebar-link">Register user</a>
                         </li>
                         <li class="sidebar-item">
-                        <a href="{{ route('registerForm') }}" class="sidebar-link">Registered Platinum</a>
+                        <a href="{{ route('registerForm') }}" class="sidebar-link">Register Platinum</a>
                         </li>
                     </ul>
                 </li>

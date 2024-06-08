@@ -454,7 +454,7 @@
                         </li>
                         
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Platinum Profile</a>
+                            <a href="http://127.0.0.1:8000/Platinum.PlatinumList" class="sidebar-link">Platinum Profile</a>
                         </li>
                     </ul>
                 </li>

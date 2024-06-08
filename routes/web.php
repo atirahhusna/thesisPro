@@ -23,7 +23,6 @@ Route::get('/', function () {
 
 
 //Route module 1
-
 Route::get('/PlatinumPage', [PlatinumController::class, 'platinumPage'])->name('PlatinumPage');
 Route::get('/Login', [AccountController::class, 'Login'])->name('Login');
 Route::post('/Login', [AccountController::class, 'LoginPost'])->name('LoginPost');
@@ -48,10 +47,18 @@ Route::get('/Staff.PlatinumList/search', [StaffController::class, 'profileView']
 Route::get('/Mentor.PlatinumList', [MentorController::class, 'profileView'])->name('profileView');
 Route::get('/Mentor.PlatinumList/{id}/show', [MentorController::class, 'show'])->name('show');
 Route::get('/Mentor.PlatinumList/search', [MentorController::class, 'profileView'])->name('profileView');
-Route::get('/MentorRegisterList', [MentorController::class, 'MentorRegisterList'])->name('MentorRegisterList');
+Route::get('/MentorRegisterList', [MentorController::class, 'registerList'])->name('MentorRegisterList');
 //edit and update profile platinum
 Route::get('/platinumProfile', [PlatinumController::class, 'show'])->name('platinumProfile');
-Route::put('/platinumProfile/update', [PlatinumController::class, 'update'])->name('updatePlatinumProfile');
+Route::put('/platinumProfile/update', [PlatinumController::class, 'update'])->name('update');
+Route::get('/platinumProfile/{id}/edit', [PlatinumController::class, 'edit'])->name('PlatEditProfile');
+Route::get('/Platinum.PlatinumList', [PlatinumController::class, 'profileView'])->name('platinumList');
+Route::get('/Platinum.PlatinumList/{id}/show', [PlatinumController::class, 'showPlatinum'])->name('ViewPlatinum');
+Route::get('/Platinum.PlatinumList/search', [PlatinumController::class, 'profileView'])->name('platinumList');
+//edit and update staff profile
+Route::get('/StaffProfile', [StaffController::class, 'show'])->name('StaffProfile');
+Route::put('/StaffProfile/update', [StaffController::class, 'update'])->name('StaffUpdateProfile');
+Route::get('/StaffProfile/{id}/edit', [StaffController::class, 'edit'])->name('StaffEditProfile');
 
 
 //Route Publication
@@ -72,7 +79,6 @@ Route::get('/storePlatinum/{id}', [StaffController::class, 'storePlatinum'])->na
 Route::post('/storePlatinum/{id}', [StaffController::class, 'storePlatinum'])->name('storePlatinum');
 //Assign Platinum As CRMP
 Route::get('/assignCRMP', [StaffController::class, 'assignCRMP'])->name('assignCRMP');
-
 //Route Progress Monitoring weekly focus
 Route::resource('WeeklyFocus', WeeklyController::class);
 Route::get('/WeeklyFocusManager', [WeeklyController::class, 'index'])->name('WeeklyFocus.index');
@@ -85,8 +91,6 @@ Route::post('WeeklyFocus/showWeeklyFocus', [WeeklyController::class, 'showWeekly
 Route::get('WeeklyFocus/{id}/viewP', [WeeklyController::class, 'viewP'])->name('WeeklyFocus.viewP');
 Route::get('WeeklyFocus/{id}/edit', [WeeklyController::class, 'edit'])->name('WeeklyFocus.edit');
 Route::put('WeeklyFocus/{id}', [WeeklyController::class, 'update'])->name('WeeklyFocus.update');
-
-
 //Route Progress Monitoring draft thesis
 Route::resource('DraftThesis', DraftController::class);
 Route::get('/DraftThesisManager', [DraftController::class, 'index'])->name('DraftThesis.index');

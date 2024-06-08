@@ -40,4 +40,5 @@ class MentorController extends Controller
         return view('Registration.mentorView', ['users'=>$users]);
     }
 
+
 }
