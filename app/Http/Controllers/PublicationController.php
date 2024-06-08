@@ -122,23 +122,19 @@ class PublicationController extends Controller
 
     public function PublicationManager()
     {
+        $r_profile_id = session('platinum')['r_profile_id'];
 
-          // Fetch data here if needed
-          $data = publication::orderBy('publication_ID', 'desc')->get();
-        
-        $platinum = \App\Models\register_profiles::first();
+        \Log::info('Session r_profile_id: ' . $r_profile_id);
 
-        if ($platinum) {
-            $platinum_id = $platinum->r_profile_id;
-        } else {
-            $platinum_id = null;
-        }
+        $data = Publication::where('r_profile_id', $r_profile_id)
+            ->orderBy('publication_ID', 'desc')
+            ->get();
 
-      
-        return view('PublicationData.MyPublicationManager')
-        ->with('data', $data)
-        ->with('platinum_id', $platinum_id);
+        \Log::info('Publications data: ' . $data->toJson());
+
+        return view('PublicationData.MyPublicationManager', compact('data'));
     }
+
 
 
     public function index()
@@ -169,7 +165,8 @@ class PublicationController extends Controller
             'publication_date' => $request->date,
             'publication_authors' => $request->authors,
             'publication_institution' => $request->institution,
-            'publication_types' => $request->type,        
+            'publication_types' => $request->type,  
+            'r_profile_id' => $request-> user_id,      
             
         ];
         
@@ -213,7 +210,8 @@ class PublicationController extends Controller
             'publication_date' => $request->date,
             'publication_authors' => $request->authors,
             'publication_institution' => $request->institution,
-            'publication_types' => $request->types,        
+            'publication_types' => $request->types, 
+            
             
         ];
         

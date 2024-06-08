@@ -17,7 +17,6 @@ class staff extends Model
         's_phone_number',
         's_username',
         's_password',
-        'mentor_id',
         'username'
     ];
 

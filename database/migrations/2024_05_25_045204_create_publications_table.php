@@ -16,6 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('r_profile_id');
             $table->foreign('r_profile_id')->references('r_profile_id')->on('register_profiles');
 
+            $table->unsignedBigInteger('e_ID')->nullable();
+            $table->foreign('e_ID')->references('e_ID')->on('expertdomain');
+
             $table->string('publication_title', 255);
             $table->string('publication_DOI', 100)->nullable();
             $table->text('publication_abstract')->nullable();

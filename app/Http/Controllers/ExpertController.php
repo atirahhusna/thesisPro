@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\ExpertDomain;
+use App\Models\expertdomain;
+use Barryvdh\DomPDF\Facade\Pdf; 
 
 class ExpertController extends Controller
 {
     public function index(){
-       $data = ExpertDomain::get();
+       $data = expertdomain::get();
        //return $data;
        return view('ExpertDomain/ViewExpert', compact('data'));
     }
@@ -53,7 +54,7 @@ class ExpertController extends Controller
 
     public function EditExpert($e_ID)
     {
-        $data = ExpertDomain::where('e_ID','=', $e_ID)->first();
+        $data = expertdomain::where('e_ID','=', $e_ID)->first();
         return view('ExpertDomain/EditExpert', compact('data'));
     }
 
@@ -79,7 +80,7 @@ class ExpertController extends Controller
         $e_TitleResearch = $request->e_TitleResearch;
         $e_Paper = $request->e_Paper;
 
-        ExpertDomain::where('e_ID', '=', $e_ID)->update([
+        expertdomain::where('e_ID', '=', $e_ID)->update([
             'e_Name'=>$e_Name,
             'e_University'=>$e_University,
             'e_Expertise'=>$e_Expertise,
@@ -95,14 +96,14 @@ class ExpertController extends Controller
 
     public function DeleteExpert($e_ID)
     {
-        ExpertDomain::where('e_ID', '=', $e_ID)->delete();
+        expertdomain::where('e_ID', '=', $e_ID)->delete();
         return redirect()->back()->with('success', 'Expert Deleted Successfully');
 
     }
 
     public function ExpertDetail($e_ID)
     {
-        $data = ExpertDomain::find($e_ID);
+        $data = expertdomain::find($e_ID);
         return view('ExpertDomain/ExpertDetail', compact('data'));
     }
 
@@ -110,7 +111,7 @@ class ExpertController extends Controller
     {
     $query = $request->input('query');
 
-    $experts = ExpertDomain::where('e_Name', 'like', "%$query%")
+    $experts = expertdomain::where('e_Name', 'like', "%$query%")
         ->orWhere('e_University', 'like', "%$query%")
         ->orWhere('e_Expertise', 'like', "%$query%")
         ->orWhere('e_TitleResearch', 'like', "%$query%")
@@ -119,17 +120,35 @@ class ExpertController extends Controller
     return view('ExpertDomain/SearchExpert', compact('experts', 'query'));
     }
 
-    public function ExpertList(){
-        $data = ExpertDomain::get();
+    public function List(){
+        $data = expertdomain::get();
         //return $data;
-        return view('ExpertDomain/ExpertList', compact('data'));
+        return view('ExpertDomain/List', compact('data'));
      }
 
-     public function MentorView($e_ID)
+     public function View($e_ID)
     {
-        $data = ExpertDomain::find($e_ID);
-        return view('ExpertDomain/MentorView', compact('data'));
+        $data = expertdomain::find($e_ID);
+        return view('ExpertDomain/View', compact('data'));
     }
 
+    public function Search(Request $request)
+    {
+    $query = $request->input('query');
+
+    $data = expertdomain::where('e_Name', 'like', "%$query%")
+        ->orWhere('e_University', 'like', "%$query%")
+        ->orWhere('e_Expertise', 'like', "%$query%")
+        ->orWhere('e_TitleResearch', 'like', "%$query%")
+        ->get();
+
+    return view('ExpertDomain/List', compact('data', 'query'));
+    }
+
+    public function Export(){
+        $pdf = Pdf::loadView('ExpertDomain.Export');
+ 
+        return $pdf->download('Export.pdf');
+    }
 
 }

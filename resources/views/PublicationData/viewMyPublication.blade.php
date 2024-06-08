@@ -1,6 +1,8 @@
 @extends('Header.platinum')
 @section('content')
-
+@php
+$r_profile_id = session('r_profile_id', 'default value'); // Retrieve r_profile_id from session or use 'default value' if it doesn't exist
+@endphp
 <!--START-->
 <div id="content">
   <div id="view">

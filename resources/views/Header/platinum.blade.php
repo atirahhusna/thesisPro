@@ -9,9 +9,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <!-- Add this in your header section -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Add this before the closing body tag -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
-
+  
         ::after,
         ::before {
             box-sizing: border-box;
@@ -19,6 +28,16 @@
             padding: 0;
         }
 
+        .profile-view {
+    width: 50%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Add margin to the bottom */
+}
+
+    
         a {
             text-decoration: none;
         }
@@ -407,6 +426,7 @@
     </style>
 </head>
 <body>
+
     <div class="wrapper">
         <aside id="sidebar">
             <div class="d-flex">
@@ -426,14 +446,15 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">My Profile</a>
+                        <a href="{{ route('platinumProfile') }}" class="sidebar-link">My Profile</a>
+
                         </li>
                         <li class="sidebar-item">
                             <a href="#" class="sidebar-link">Mentor profile</a>
                         </li>
                         
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Platinum Profile</a>
+                            <a href="http://127.0.0.1:8000/Platinum.PlatinumList" class="sidebar-link">Platinum Profile</a>
                         </li>
                     </ul>
                 </li>
@@ -489,7 +510,7 @@
                 </li>
             </ul>
             <div class="sidebar-footer">
-                <a href="#" class="sidebar-link">
+            <a href="{{ route('logout') }}" class="sidebar-link">
                     <i class="lni lni-exit"></i>
                     <span>Logout</span>
                 </a>
@@ -504,7 +525,7 @@
                         </a>
                     </div>
                 </nav>
-                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome To ThesisPro !</a>
+                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome to ThesisPro, {{ session('platinum')['r_profile_id'] }}!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

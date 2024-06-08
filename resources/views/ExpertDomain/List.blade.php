@@ -1,21 +1,18 @@
-@extends('Header/platinum')
+@extends('Header/mentor')
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Expert</title>
-    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
+<style>
+    .table {
+        width: 100%;
+    }
 
-        .search-container {
+    h3 {
+        color: black;
+        margin-top: 10px;
+        font-family: "Helvetica", sans-serif;
+    }
+
+    .search-container {
             margin: auto;
             width: 80%;
             padding-top: 100px;
@@ -93,9 +90,7 @@
             outline: none;
         }
 
-    </style>
-</head>
-<body>
+</style>
 
                 <div class="search-container">
                     <div class="search-text">
@@ -108,54 +103,70 @@
                         <label for="filter">Filter</label>
                         <select id="filter" wire:model="nyFilter" class="filter-select">
                             <option value="">No Selected</option>
-                            @foreach ($experts as $expert)
+                            @foreach ($data as $expert)
                                 <option value="{{ $expert->e_ID }}">{{ $expert->e_Expertise}}</option>
                             @endforeach
                         </select>
                     </div>
 
-                    <form action="{{url('SearchExpert')}}" method="GET">
+                    <form action="{{url('Search')}}" method="GET">
                         <input type="text" name="query" class="search-input" placeholder="Search...">
                         <button type="submit" class="search-button">Search</button>
                     </form>
                 </div>
 
-            </nav>
+<title>Expert List</title>
 
+<div class="container">
+    <div class="row" style="margin:10px;">                    
+        <div class="col-14">                    
+            <div class="card">
+                <div class="card-header">
+                    <h3>Expert List</h3>
+                    <div style="margin-right:10px">
+            </div><br>
 
-            @if(isset($experts))
-                <div class="container mt-5">
-                    <h4>Search Results for "{{ $query }}"</h4>
-                    <table class="table table-striped">
-                        <thead>
+                    <table class = "table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Expert Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php 
+                            $i = 1;
+                        @endphp
+                        @foreach ($data as $expert)
                             <tr>
-                                <th>Name</th>
-                                <th>Expertise</th>
-                                <th>Title Research</th>
-                                <th>Paper</th>
+                                <td>{{$i}}</td>
+                                <td>{{$expert->e_Name}}</td>
+                                <td>
+                                <a href="{{url('View/'.$expert->e_ID)}}" class="btn btn-primary">VIEW</a>
+                                </td>
+
                             </tr>
-                        </thead>
-                        <tbody>
-                            @forelse($experts as $expert)
-                                <tr>
-                                    <td>{{ $expert->e_Name }}</td>
-                                    <td>{{ $expert->e_Expertise }}</td>
-                                    <td>{{ $expert->e_TitleResearch }}</td>
-                                    <td>{{ $expert->e_Paper }}</td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="7">No experts found matching your search criteria.</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
+                            @php 
+                                $i++;
+                            @endphp
+                        @endforeach
+                    </tbody>
                     </table>
                 </div>
-            @endif
-      
+            </div>
         </div>
     </div>
+</div>
 
-</body>
-</html>
-@endsection
+
+
+
+
+
+
+
+
+
+
+@endsection 

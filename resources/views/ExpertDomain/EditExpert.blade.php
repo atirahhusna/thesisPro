@@ -111,7 +111,7 @@
         }
         .form-group textarea {
             width: 70%; /* This will make the textarea take the full width of its container */
-            padding: 10px;
+            padding: 6px;
             font-size: 14px;
             line-height: 1.5;
             border: 1px solid #ccc;
@@ -136,7 +136,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Name">NAME</label>
-                                <input type="text" id="e_Name" name="e_Name" required value="{{$data->e_Name}}">
+                                <input type="text" style="width:300px; height:40px" id="e_Name" name="e_Name" required value="{{$data->e_Name}}">
                                 @error('e_Name')
                                 <div class="alert alert-danger" role="alert"></div>
                                     {{$message}}
@@ -144,24 +144,24 @@
                             </div>
                             <div class="form-group">
                                 <label for="e_University">WORKPLACE</label>
-                                <input type="text" id="e_University" name="e_University" required value="{{$data->e_University}}">
+                                <input type="text" style="width:300px; height:40px" id="e_University" name="e_University" required value="{{$data->e_University}}">
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Email">EMAIL</label>
-                                <input type="email" id="e_Email" name="e_Email" required value="{{$data->e_Email}}">
+                                <input type="email" style="width:300px; height:40px" id="e_Email" name="e_Email" required value="{{$data->e_Email}}">
                             </div>
                             <div class="form-group">
                                 <label for="e_PhoneNum">PHONE NUMBER</label>
-                                <input type="tel" id="e_PhoneNum" name="e_PhoneNum" required value="{{$data->e_PhoneNum}}">
+                                <input type="tel" style="width:300px; height:40px" id="e_PhoneNum" name="e_PhoneNum" required value="{{$data->e_PhoneNum}}">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Expertise">EXPERTISE</label>
-                                <input type="text" id="e_Expertise" name="e_Expertise" required value="{{$data->e_Expertise}}">
+                                <input type="text" style="width:300px; height:40px" id="e_Expertise" name="e_Expertise" required value="{{$data->e_Expertise}}">
                             </div>
                         </div>
                     </div>
@@ -173,6 +173,11 @@
                                 <textarea id="e_TitleResearch" name="e_TitleResearch" required>{{$data->e_TitleResearch}}</textarea>
                                 <label for="e_Paper">PAPER</label>
                                 <textarea id="e_Paper" name="e_Paper" required>{{$data->e_Paper}}</textarea>
+                                <label for="TypeOfPublication">TYPE OF PUBLICATION</label>
+                                <textarea id="TypeOfPublication" style="width:300px; height:40px" name="TypeOfPublication" required>{{$data->TypeOfPublication}}</textarea>
+                                <label for="year">YEAR</label>
+                                <textarea id="year" style="width:300px; height:40px" name="year" required>{{$data->year}}</textarea>
+                                
                             </div>
                         </div>
                     </div>

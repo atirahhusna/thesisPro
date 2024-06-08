@@ -1,5 +1,8 @@
 @extends('Header.platinum')
-@section('content')            
+@section('content')    
+@php
+$r_profile_id = session('r_profile_id', 'default value'); // Retrieve r_profile_id from session or use 'default value' if it doesn't exist
+@endphp        
             <div id="content">
             <div id ="view" >
 
@@ -47,7 +50,7 @@
                                 <tr>
                                     <th style="width:1150px;color:white;">TITLE</th>
                                     <th style="width:100px;color:white;">YEAR</th>
-                                    <th style="width:100px;color:white;">ACTION</th>
+                                    <th style="width:100px;color:white;text-align:center;">ACTION</th>
                                 </tr>
 
                                 @foreach ($data as $publication)
@@ -65,9 +68,9 @@
                                     </td>
                         
                                     <td>
-                                        <div class="button-container-view">
+                                        <div class="button-container-delete-edit-view">
                                             <a href="{{ url('publication/'.$publication->publication_ID.'/show') }}" method="GET" >
-                                                <button type="view">View</button>
+                                                <button style="margin-left:10px;" type="view">View</button>
                                             </a>
                                         </div>             
                                     </td>

@@ -9,8 +9,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('expertdomain', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('platID');
+            $table->id('e_ID');
+           // $table->unsignedBigInteger('platID');
             //$table->foreign('platID')->references('platID')->on('');
             $table->string('e_Name', 100);
             $table->string('e_Email', 50);

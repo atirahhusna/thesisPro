@@ -17,8 +17,9 @@ return new class extends Migration
 
             // Define the foreign key constraint
             $table->foreign('username')->references('username')->on('user_profiles');
-
             $table->string('m_name'); // Mentor name
+            $table->string('m_email'); // Mentor email
+            $table->string('m_pasword'); // Mentor name
             $table->string('m_education_level')->nullable(); // Mentor education level and history
             $table->string('m_position', 100)->nullable();
             $table->string('m_experience', 200)->nullable(); // Mentor career experience

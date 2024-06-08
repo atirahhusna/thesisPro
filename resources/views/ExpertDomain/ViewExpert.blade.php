@@ -36,12 +36,9 @@
                         <tr>
                             <th>ID</th>
                             <th>Expert Name</th>
-                            <th>Expert University</th>
                             <th>Expertise</th>
-                            <th>Expert Email</th>
-                            <th>Expert Phone Number</th>
-                            <th style="width: 20%;">Title Research</th>
-                            <th style="width: 25%;">Paper</th>
+                            <th>Year</th>
+                            <th>Type of Publications</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -53,12 +50,9 @@
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{{$expert->e_Name}}</td>
-                                <td>{{$expert->e_University}}</td>
                                 <td>{{$expert->e_Expertise}}</td>
-                                <td>{{$expert->e_Email}}</td>
-                                <td>{{$expert->e_PhoneNum}}</td>
-                                <td>{{$expert->e_TitleResearch}}</td>
-                                <td>{{$expert->e_Paper}}</td>
+                                <td>{{$expert->year}}</td>
+                                <td>{{$expert->TypeOfPublication}}</td>
                                 <td>
                                 <a href="{{url('ExpertDetail/'.$expert->e_ID)}}" class="btn btn-primary">VIEW</a>
                                 <a href="{{url('EditExpert/'.$expert->e_ID)}}" class="btn btn-primary">EDIT</a>

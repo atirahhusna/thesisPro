@@ -334,7 +334,9 @@
     </style>
 </head>
 <body>
-    
+@php
+        $r_name = session('r_name', 'default value'); // Retrieve r_name from session or use 'default value' if it doesn't exist
+    @endphp
     <div class="wrapper">
         <aside id="sidebar">
             <div class="d-flex">
@@ -388,7 +390,12 @@
                     </a>
                     <ul id="expert" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href=" {{ route('SearchExpert') }}" class="sidebar-link">Search Expert</a>
+                            <a href=" {{ route('Search') }}" class="sidebar-link">Search Expert</a>
+                        </li>
+                    </ul>
+                    <ul id="expert" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                        <li class="sidebar-item">
+                            <a href="{{ route('List') }}" class="sidebar-link">View Expert</a>
                         </li>
                     </ul>
                 </li>
@@ -420,16 +427,20 @@
                                             <a href="#" class="sidebar-link">CRMP Profile</a>
                                         </li>
                                         <li class="sidebar-item">
-                                            <a href=" {{route('WeeklyFocus.viewerMentor')}}" class="sidebar-link">Weekly Focus</a>
+                                            <a href="" class="sidebar-link">Weekly Focus</a>
                                         </li>
                                         <li class="sidebar-item">
+<<<<<<< HEAD
                                             <a href="{{route('DraftThesis.DraftViewerMentor')}}" class="sidebar-link">Draft Thesis</a>
+=======
+                                            <a href="#" class="sidebar-link">Draft Thesis</a>
+>>>>>>> b820712abcd6781f0ead0f9eaec72e6a23526742
                                         </li>
                                     </ul>
                                 </li>
             </ul>
             <div class="sidebar-footer">
-                <a href="#" class="sidebar-link">
+            <a href="{{ route('logout') }}" class="sidebar-link">
                     <i class="lni lni-exit"></i>
                     <span>Logout</span>
                 </a>
@@ -444,7 +455,7 @@
                         </a>
                     </div>
                 </nav>
-                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome To ThesisPro !</a>
+                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome to ThesisPro!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
