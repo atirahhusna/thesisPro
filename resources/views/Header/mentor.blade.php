@@ -427,7 +427,7 @@
                                             <a href="#" class="sidebar-link">CRMP Profile</a>
                                         </li>
                                         <li class="sidebar-item">
-                                            <a href=" {{WeeklyFocus}}" class="sidebar-link">Weekly Focus</a>
+                                            <a href="" class="sidebar-link">Weekly Focus</a>
                                         </li>
                                         <li class="sidebar-item">
                                             <a href="#" class="sidebar-link">Draft Thesis</a>
