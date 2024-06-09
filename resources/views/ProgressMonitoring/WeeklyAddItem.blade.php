@@ -1,5 +1,4 @@
-@extends('ProgressMonitoring.layoutWeekly')
-@section('content')
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <div class="my-3 p-3 bg-body rounded shadow-sm">
     <div class="mb-3 row">
@@ -70,4 +69,4 @@
         </div>
     </form>
 </div>
-@endsection
+
