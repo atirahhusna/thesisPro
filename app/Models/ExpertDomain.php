@@ -14,7 +14,7 @@ class expertdomain extends Model
 
     protected $fillable = [
         'e_ID',
-        //'platID',
+        'r_profile_id', 
         'e_Name',
         'e_University',
         'e_Expertise',
@@ -23,4 +23,9 @@ class expertdomain extends Model
         'e_TitleResearch',
         'e_Paper',
     ];
+
+    public function registerProfile()
+    {
+        return $this->belongsTo(register_profiles::class, 'r_profile_id', 'r_profile_id');
+    }
 }

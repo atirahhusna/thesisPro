@@ -28,6 +28,9 @@ class ExpertController extends Controller
             'e_PhoneNum' => 'required|numeric|min:12',
             'e_TitleResearch' => 'required',
             'e_Paper' => 'required',
+          
+
+
 
         ]);
 
@@ -38,6 +41,8 @@ class ExpertController extends Controller
         $e_PhoneNum = $request->e_PhoneNum;
         $e_TitleResearch = $request->e_TitleResearch;
         $e_Paper = $request->e_Paper;
+       
+
 
         $expert = new ExpertDomain();
         $expert->e_name = $e_Name;
@@ -47,6 +52,7 @@ class ExpertController extends Controller
         $expert->e_PhoneNum = $e_PhoneNum;
         $expert->e_TitleResearch = $e_TitleResearch;
         $expert->e_Paper = $e_Paper;
+   
         $expert->save();
 
         return redirect()->back()->with('success', 'Expert Added');
@@ -68,6 +74,7 @@ class ExpertController extends Controller
             'e_PhoneNum' => 'required|numeric|min:12',
             'e_TitleResearch' => 'required',
             'e_Paper' => 'required',
+           
 
         ]);
 
@@ -79,6 +86,7 @@ class ExpertController extends Controller
         $e_PhoneNum = $request->e_PhoneNum;
         $e_TitleResearch = $request->e_TitleResearch;
         $e_Paper = $request->e_Paper;
+      
 
         expertdomain::where('e_ID', '=', $e_ID)->update([
             'e_Name'=>$e_Name,

@@ -133,6 +133,8 @@
                                 <th>Expertise</th>
                                 <th>Title Research</th>
                                 <th>Paper</th>
+                                <th>Actions</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -142,6 +144,9 @@
                                     <td>{{ $expert->e_Expertise }}</td>
                                     <td>{{ $expert->e_TitleResearch }}</td>
                                     <td>{{ $expert->e_Paper }}</td>
+                                    <td>
+                                    <a href="{{url('ExpertDetail/'.$expert->e_ID)}}" class="btn btn-primary">VIEW</a>
+                                         </td>
                                 </tr>
                             @empty
                                 <tr>
