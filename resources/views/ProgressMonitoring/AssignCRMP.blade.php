@@ -19,6 +19,24 @@
             <button class="btn btn-secondary" type="submit">Search</button>
         </form>
     </div>
+    @if (Session::has('success'))
+    <div class="pt-3">
+        <div class="alert alert-success">
+            {{ Session::get('success') }}
+        </div>
+    </div>
+    @endif
+    @if ($errors->any())
+    <div class="pt-3">
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $item)
+                    <li>{{$item}}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+    @endif
 
     <h4><b>LIST OF CRMP</b></h4>
     <table class="table table-striped">
@@ -27,18 +45,22 @@
                 <th class="col-md-1">No</th>
                 <th class="col-md-3">ID</th>
                 <th class="col-md-4">NAME</th>
-                <th class="col-md-2">ACTION</th>
+                <th class="col-md-2">MARK</th>
+                <th class="col-md-1">ACTION</th>
             </tr>
         </thead>
         <tbody>
+            @foreach($crmps as $crmp)
             <tr>
-                <td>1</td>
-                <td>1001</td>
-                <td>Ani</td>
+                <td>{{ $loop->iteration }}</td>
+                <td>{{ $crmp->r_profile_id }}</td>
+                <td>{{ $crmp->r_name }}</td>
+                <td>{{ $crmp->r_mark }}</td>
                 <td>
-                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#chooseModal">Choose</button>
+                    <button class="btn btn-warning btn-sm assign-btn" data-bs-toggle="modal" data-bs-target="#chooseModal" data-profile-id="{{ $crmp->r_profile_id }}">Choose</button>
                 </td>
             </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
@@ -70,7 +92,9 @@
                     <tbody>
                         @foreach($profiles as $profile)
                         <tr>
-                            <td><input type="checkbox" name="platinum[]" value="2001"></td>
+                            <td>
+                                <input type="checkbox" name="platinum[]" value="{{ $profile->r_profile_id }}">
+                            </td>
                             <td>{{ $profile->r_profile_id }}</td>
                             <td>{{ $profile->r_name }}</td>
                         </tr>
@@ -78,14 +102,43 @@
                         <!-- Add more items as needed -->
                     </tbody>
                 </table>
+                <!-- Hidden form for assigning Platinum -->
+                <form id="assignForm" action="{{ route('storeCRMP') }}" method="POST" style="display: none;">
+                    @csrf
+                    <input type="hidden" id="selectedPlatinum" name="selected_platinum">
+                    <input type="hidden" id="selectedCRMPProfileId" name="selected_crmp_profile_id">
+                </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="return confirm('Confirm to assign')">Save changes</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="handleSubmit()">Save</button>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    // JavaScript to handle assigning Platinum
+    const assignButtons = document.querySelectorAll('.assign-btn');
+    const assignForm = document.getElementById('assignForm');
+    const selectedPlatinumInput = document.getElementById('selectedPlatinum');
+    const selectedCRMPProfileIdInput = document.getElementById('selectedCRMPProfileId');
+
+    assignButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const profileId = button.getAttribute('data-profile-id');
+        selectedCRMPProfileIdInput.value = profileId; // Set the value of the hidden input
+        assignForm.action = '{{ route("storeCRMP") }}'; // Update the form action
+    });
+});
+
+    function handleSubmit() {
+        const selectedCheckboxes = document.querySelectorAll('input[name="platinum[]"]:checked');
+        const selectedPlatinumIds = Array.from(selectedCheckboxes).map(cb => cb.value);
+        selectedPlatinumInput.value = JSON.stringify(selectedPlatinumIds);
+        assignForm.submit();
+    }
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 @endsection

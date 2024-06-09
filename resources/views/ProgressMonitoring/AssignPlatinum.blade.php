@@ -45,11 +45,11 @@
                         <td>{{ $profile->r_profile_id }}</td>
                         <td>{{ $profile->r_name }}</td>
                         <td>
-                            <form action="{{ url('storePlatinum', ['id' => $profile->r_profile_id]) }}" method="POST">
+                            <form action="{{  url('storePlatinum', ['id' => $profile->r_profile_id]) }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="r_name" value="{{ $profile->r_name }}">
-                                <button type="submit" class="btn btn-primary" onclick="return confirm('Confirm to assign')">Assign</button>
-                            </form>   
+                                <input type="hidden" name="r_profile_id" value="{{ $profile->r_profile_id }}">
+                                <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm('Confirm to assign')">Assign</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

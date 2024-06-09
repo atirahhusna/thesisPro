@@ -35,13 +35,13 @@
         </div>
         <div class="mb-3 row">
             <label for="WF_SDate.f" class="col-sm-2 col-form-label">Start Date</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10" style="width: 200px">
                 <input type="date" class="form-control" name='WF_SDate[f]' id="WF_SDate.f" value="{{ old('WF_SDate.f') }}">
             </div>
         </div>
         <div class="mb-3 row">
             <label for="WF_EDate.f" class="col-sm-2 col-form-label">End Date</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10" style="width: 200px">
                 <input type="date" class="form-control" name='WF_EDate[f]' id="WF_EDate.f" value="{{ old('WF_EDate.f') }}">
             </div>
         </div>
@@ -52,19 +52,19 @@
         <h2>ADMIN</h2>
         <div class="mb-3 row">
             <label for="WF_Description.admin" class="col-sm-2 col-form-label">Description</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10" >
                 <textarea class="form-control" name='WF_Description[admin]' id="WF_Description.admin">{{ old('WF_Description.admin') }}</textarea>
             </div>
         </div>
         <div class="mb-3 row">
             <label for="WF_SDate.admin" class="col-sm-2 col-form-label">Start Date</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10" style="width: 200px"> 
                 <input type="date" class="form-control" name='WF_SDate[admin]' id="WF_SDate.admin" value="{{ old('WF_SDate.admin') }}">
             </div>
         </div>
         <div class="mb-3 row">
             <label for="WF_EDate.admin" class="col-sm-2 col-form-label">End Date</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10" style="width: 200px">
                 <input type="date" class="form-control" name='WF_EDate[admin]' id="WF_EDate.admin" value="{{ old('WF_EDate.admin') }}">
             </div>
         </div>
@@ -81,13 +81,13 @@
         </div>
         <div class="mb-3 row">
             <label for="WF_SDate.social" class="col-sm-2 col-form-label">Start Date</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10" style="width: 200px">
                 <input type="date" class="form-control" name='WF_SDate[social]' id="WF_SDate.social" value="{{ old('WF_SDate.social') }}">
             </div>
         </div>
         <div class="mb-3 row">
             <label for="WF_EDate.social" class="col-sm-2 col-form-label">End Date</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10" style="width: 200px">
                 <input type="date" class="form-control" name='WF_EDate[social]' id="WF_EDate.social" value="{{ old('WF_EDate.social') }}">
             </div>
         </div>
@@ -104,13 +104,13 @@
         </div>
         <div class="mb-3 row">
             <label for="WF_SDate.recovery" class="col-sm-2 col-form-label">Start Date</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10" style="width: 200px">
                 <input type="date" class="form-control" name='WF_SDate[recovery]' id="WF_SDate.recovery" value="{{ old('WF_SDate.recovery') }}">
             </div>
         </div>
         <div class="mb-3 row">
             <label for="WF_EDate.recovery" class="col-sm-2 col-form-label">End Date</label>
-            <div class="col-sm-10">
+            <div class="col-sm-10" style="width: 200px">
                 <input type="date" class="form-control" name='WF_EDate[recovery]' id="WF_EDate.recovery" value="{{ old('WF_EDate.recovery') }}">
             </div>
         </div>

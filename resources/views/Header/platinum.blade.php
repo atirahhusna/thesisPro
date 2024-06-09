@@ -450,7 +450,7 @@
 
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Mentor profile</a>
+                            <a href="http://127.0.0.1:8000/platinum.MentorProfile" class="sidebar-link">Mentor profile</a>
                         </li>
                         
                         <li class="sidebar-item">

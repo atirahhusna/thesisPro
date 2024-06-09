@@ -9,19 +9,16 @@ class staff extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'staff_id';
+
 
     protected $fillable = [
         'staff_id',
         's_name',
-        's_address',
-        's_phone_number',
-        's_username',
         's_password',
-        'username'
+        's_email',
+        's_address',
+        's_phone_number'
     ];
 
-    public function user_profiles()
-    {
-        return $this->belongsTo(user_profiles::class, 'username', 'username');
-    }
 }

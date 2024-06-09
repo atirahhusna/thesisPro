@@ -30,6 +30,10 @@ return new class extends Migration
             $table->string('r_program', 30)->nullable(); // Program
             $table->string('r_size', 5)->nullable(); // T-shirt size
             $table->string('r_batch', 10)->nullable(); // Platinum batch
+            $table->string('r_name', 55)->nullable(); // Platinum name
+            $table->string('r_mark', 50)->nullable(); // Email
+            $table->string('crmp_id')->nullable();
+            $table->foreign('crmp_id')->references('crmp_id')->on('crmps')->onDelete('cascade');
             $table->string('r_name'); // Platinum name
 
             // Timestamps

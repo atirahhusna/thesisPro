@@ -356,10 +356,10 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">My Profile</a>
+                            <a href="http://127.0.0.1:8000/MentorProfile" class="sidebar-link">My Profile</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Staff Profile</a>
+                            <a href="http://127.0.0.1:8000/Mentor.StaffList" class="sidebar-link">Staff Profile</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="http://127.0.0.1:8000/Mentor.PlatinumList" class="sidebar-link">Platinum Profile</a>
@@ -425,6 +425,7 @@
                                             <a href="" class="sidebar-link">Weekly Focus</a>
                                         </li>
                                         <li class="sidebar-item">
+                                            <a href="{{route('DraftThesis.DraftViewerMentor')}}" class="sidebar-link">Draft Thesis</a>
                                             <a href="#" class="sidebar-link">Draft Thesis</a>
                                         </li>
                                     </ul>

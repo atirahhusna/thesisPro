@@ -1,14 +1,13 @@
 @extends('Header/platinum')
 @section('content')
 <hr>
-<link rel="stylesheet" href="{{ asset('ProgressMonitoring/WeeklyFocus.css') }}"/>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"crossorigin="anonymous"> 
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Data Mahasiswa</title>
+    <link rel="stylesheet" href="{{ asset('ProgressMonitoring/WeeklyFocus.css') }}"/>
     <style>
 
     </style>
@@ -20,13 +19,13 @@
         <div style="display: flex; align-items: center;">
             <input style="width:1000px;height:40px;" type="search" id="search" name="keywords" value="{{Request::get('keywords') }}" placeholder="Enter keywords">
             <div class="button-container">
-                <button style="height:40px;" type="submit">Search</button>
+                <button style="height:40px; width:100px" type="submit">Search</button>
             </div>
         </div>
     </form>
 </div>
 <div class="button-group">
-    <nav class="hehe">
+    <nav class="hehe" style="padding-top: 70px">
         <center>
             <ul>
                 <li><a href="#" onclick="filterTasks('All')">All</a></li>
@@ -90,16 +89,15 @@
 
 <div class="my-3 p-3 bg-body rounded shadow-sm">
     <table class="table table-striped">
-        <div>
-        <h3><b>FOCUS</b></h3>
+        <b>FOCUS</b>
         </div>
         <thead>
             <tr>
                 <th class="col-md-1">No</th>
                 <th class="col-md-3">Description</th>
-                <th class="col-md-4">StartDate</th>
+                <th class="col-md-2">StartDate</th>
                 <th class="col-md-2">EndDate</th>
-                <th class="col-md-2">Action</th>
+                <th class="col-md-1">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -148,15 +146,15 @@
             @endforeach
         </tbody>
     </table>
+    <b>ADMIN</b>
     <table class="table table-striped">
-        <h3><b>ADMIN</b></h3>
         <thead>
             <tr>
                 <th class="col-md-1">No</th>
                 <th class="col-md-3">Description</th>
-                <th class="col-md-4">StartDate</th>
+                <th class="col-md-2">StartDate</th>
                 <th class="col-md-2">EndDate</th>
-                <th class="col-md-2">Action</th>
+                <th class="col-md-1">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -205,14 +203,14 @@
         </tbody>
     </table>
     <table class="table table-striped">
-        <h3><b>SOCIAL</b></h3>
+        <b>SOCIAL</b>
         <thead>
             <tr>
                 <th class="col-md-1">No</th>
                 <th class="col-md-3">Description</th>
-                <th class="col-md-4">StartDate</th>
+                <th class="col-md-2">StartDate</th>
                 <th class="col-md-2">EndDate</th>
-                <th class="col-md-2">Action</th>
+                <th class="col-md-1">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -261,14 +259,14 @@
         </tbody>
     </table>
     <table class="table table-striped">
-        <h3><b>RECOVERY</b></h3>
         <thead>
+            <b>RECOVERY</b>
             <tr>
                 <th class="col-md-1">No</th>
                 <th class="col-md-3">Description</th>
-                <th class="col-md-4">StartDate</th>
+                <th class="col-md-2">StartDate</th>
                 <th class="col-md-2">EndDate</th>
-                <th class="col-md-2">Action</th>
+                <th class="col-md-1">Action</th>
             </tr>
         </thead>
         <tbody>

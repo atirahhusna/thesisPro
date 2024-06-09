@@ -38,13 +38,15 @@
                 </div>
             </form>
           </div>
+          @foreach ($data as $item)
+          <b>Start Date: {{ $item->DT_SDate }}</b>
+          @endforeach
                     
                  <table class="table table-striped">
                      <thead>
                          <tr>
                              <th>Draf No</th>
                              <th>Title</th>
-                             <th>Start Date</th>
                              <th>Completion</th>
                              <th>Days To Prepare</th>
                              <th>Pages</th>
@@ -57,7 +59,6 @@
                       <tr>
                         <td>{{ $item->DT_DraftNum}}</td>
                         <td>{{ $item->DT_Title }}</td>
-                        <td>{{ $item->DT_SDate }}</td>
                         <td>{{ $item->DT_Completion }}</td>
                         <td>{{ $item->DT_DaysToPrepare }}</td>
                         <td>{{ $item->DT_PagesNum }}</td>

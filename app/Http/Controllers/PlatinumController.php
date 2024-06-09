@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\register_profiles;
+use App\Models\Mentor;
 
 use Illuminate\Http\Request;
 
@@ -81,6 +82,28 @@ class PlatinumController extends Controller
         $data = register_profiles::where('r_profile_id', $id)->first();
         return view('userprofile.Platinum.platinumProfile')->with('data', $data);
     }
+
+    public function mentorProfile()
+{
+    // Get the staff ID from the session
+    $mentorId = session('mentor');
+
+    // Debug: Check if staff ID is retrieved correctly from the session
+    if (!$mentorId) {
+        return redirect()->back()->with('error', 'mentor ID not found in session.');
+    }
+
+    // Retrieve the staff data from the database
+    $data = Mentor::where('mentor_id', $mentorId)->first();
+
+    // Debug: Check if staff data is retrieved correctly
+    if (!$data) {
+        return redirect()->back()->with('error', 'User not found.');
+    }
+
+    // Pass the data to the view
+    return view('userprofile.platinum.mentorProfile', ['data' => $data]);
+}
   
 
 }
