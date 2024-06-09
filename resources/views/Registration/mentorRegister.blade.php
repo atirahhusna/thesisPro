@@ -74,7 +74,7 @@ button:hover {
 @section('content')
     <div class="form-container">
         <div class="container">
-            <h2>Staff Registration Form</h2>
+            <h2>Mentor Registration Form</h2>
 
             <!-- Display success message -->
             @if (session('success'))
@@ -97,31 +97,31 @@ button:hover {
                 </div>
             @endif
 
-            <form id="registrationForm" method="POST" action="{{ route('userPost') }}">
+            <form id="registrationForm" method="POST" action="{{ route('mentorPost') }}">
                 @csrf
                 @method('post')
                 <!-- Add input fields for staff registration details -->
                 
                 <div class="form-group">
                     <label for="text">Name</label>
-                    <input type="text" id="s_name" name="s_name" required>
+                    <input type="text" id="m_name" name="m_name" required>
                 </div>
                 <div class="form-group">
                     <label for="text">Email</label>
-                    <input type="text" id="s_email" name="s_email" required>
+                    <input type="text" id="m_email" name="m_email" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="s_password" name="s_password" required>
+                    <input type="password" id="m_pasword" name="m_pasword" required>
                 </div>
                 <div class="form-group">
                     <label for="text">Address</label>
-                    <input type="text" id="s_address" name="s_address" required>
+                    <input type="text" id="m_address" name="m_address" required>
                 </div>
                 <div class="form-group">
                     <label for="text">Phone Number</label>
-                    <input type="text" id="s_phone_number" name="s_phone_number" required>
+                    <input type="text" id="m_phone_number" name="m_phone_number" required>
                 </div>
                 <!-- Add more fields as needed -->
 

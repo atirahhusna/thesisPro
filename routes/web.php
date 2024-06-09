@@ -33,21 +33,27 @@ Route::get('/logout', [AccountController::class, 'logout'])->name('logout');
 //registration
 Route::get('/Registration', [AccountController::class, 'registerForm'])->name('registerForm');
 Route::post('/Registration', [AccountController::class, 'registerPost'])->name('registerPost');
-Route::get('/userRegister', [AccountController::class, 'user'])->name('user');
-Route::post('/userRegister', [AccountController::class, 'userPost'])->name('userPost');
+Route::get('/staffRegister', [AccountController::class, 'user'])->name('user');
+Route::post('/staffRegister', [AccountController::class, 'userPost'])->name('userPost');
 Route::get('/RegisterList', [AccountController::class, 'RegisterList'])->name('RegisterList');
 Route::get('/RegisterList/{id}/edit', [AccountController::class, 'edit'])->name('edit');
 Route::delete('/RegisterList/{id}', [AccountController::class, 'destroy'])->name('destroy');
 Route::put('/RegisterList/{id}', [AccountController::class, 'update']);
+Route::get('/mentorRegister', [AccountController::class, 'mentorForm'])->name('mentorForm');
+Route::post('/mentorRegister', [AccountController::class, 'mentorPost'])->name('mentorPost');
 //profile staff
 Route::get('/Staff.PlatinumList', [StaffController::class, 'profileView'])->name('profileView');
 Route::get('/Staff.PlatinumList/{id}/show', [StaffController::class, 'show'])->name('show');
 Route::get('/Staff.PlatinumList/search', [StaffController::class, 'profileView'])->name('profileView');
+Route::get('/Staff.MentorProfile', [StaffController::class, 'mentorProfile'])->name('mentorProfile');
 //profile mentor
 Route::get('/Mentor.PlatinumList', [MentorController::class, 'profileView'])->name('profileView');
 Route::get('/Mentor.PlatinumList/{id}/show', [MentorController::class, 'show'])->name('show');
 Route::get('/Mentor.PlatinumList/search', [MentorController::class, 'profileView'])->name('profileView');
 Route::get('/MentorRegisterList', [MentorController::class, 'registerList'])->name('MentorRegisterList');
+Route::get('/Mentor.StaffList', [MentorController::class, 'staffList'])->name('staffList');
+Route::get('/Mentor.StaffList/{id}/show', [MentorController::class, 'staffProfile'])->name('staffProfile');
+Route::get('/Mentor.StaffList/search', [MentorController::class, 'staffList'])->name('staffList');
 //edit and update profile platinum
 Route::get('/platinumProfile', [PlatinumController::class, 'show'])->name('platinumProfile');
 Route::put('/platinumProfile/update', [PlatinumController::class, 'update'])->name('update');
@@ -55,13 +61,19 @@ Route::get('/platinumProfile/{id}/edit', [PlatinumController::class, 'edit'])->n
 Route::get('/Platinum.PlatinumList', [PlatinumController::class, 'profileView'])->name('platinumList');
 Route::get('/Platinum.PlatinumList/{id}/show', [PlatinumController::class, 'showPlatinum'])->name('ViewPlatinum');
 Route::get('/Platinum.PlatinumList/search', [PlatinumController::class, 'profileView'])->name('platinumList');
+Route::get('/platinum.MentorProfile', [PlatinumController::class, 'mentorProfile'])->name('platinumViewMentor');
 //edit and update staff profile
-Route::get('/StaffProfile', [StaffController::class, 'show'])->name('StaffProfile');
+Route::get('/StaffProfile', [StaffController::class, 'showProfile'])->name('StaffProfile');
 Route::put('/StaffProfile/update', [StaffController::class, 'update'])->name('StaffUpdateProfile');
 Route::get('/StaffProfile/{id}/edit', [StaffController::class, 'edit'])->name('StaffEditProfile');
+//edit and update mentor profile
+Route::get('/MentorProfile', [MentorController::class, 'showProfile'])->name('MentorProfile');
+Route::put('/MentorProfile/update', [MentorController::class, 'update'])->name('MentorUpdateProfile');
+Route::get('/MentorProfile/{id}/edit', [MentorController::class, 'edit'])->name('MentorEditProfile');
 
 
-//Route Publication
+
+//Route Publication module 3
 Route::resource('publication',PublicationController::class ); /* call controller*/
 Route::get('/publicationManager', [PublicationController::class , 'PublicationManager'])->name('publication.publicationManager');
 Route::get('/publicationReport', [PublicationController::class , 'ReportViewer'])->name('publication.publicationReport'); /*route name*/
@@ -106,7 +118,7 @@ Route::get('/test', [PublicationController::class , 'create']);
 Route::get('/temp', [platinumTemplateController::class , 'Template']);
 
 
-//RouteExpert Domain
+//RouteExpert Domain module 2
 Route::get('ViewExpert', [ExpertController::class, 'index'])->name('ViewExpert');
 Route::get('AddExpert', [ExpertController::class, 'AddExpert']);
 Route::post('SaveExpert', [ExpertController::class, 'SaveExpert']);

@@ -15,17 +15,12 @@ class Mentor extends Model
     protected $fillable = [
 
         'mentor_id',
-        'm_username',
-        'name',
+        'm_name',
+        'm_email',
+        'm_pasword',
         'm_education_level',
         'm_position',
         'm_experience',
-        'm_phone_number',
-        'username'
+        'm_phone_number'
     ];
-
-    public function user_profiles()
-    {
-        return $this->belongsTo(user_profiles::class, 'username', 'username');
-    }
 }

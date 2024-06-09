@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\register_profiles;
 use App\Models\crmp;
+use App\Models\staff;
+use App\Models\Mentor;
 use Illuminate\Http\Request;
 
 class StaffController extends Controller
@@ -155,16 +157,80 @@ class StaffController extends Controller
     
         return redirect()->back()->with('success', 'Platinum users assigned to CRMP successfully.');
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+    public function showProfile()
+{
+    // Get the staff ID from the session
+    $staffId = session('staff');
+
+    // Debug: Check if staff ID is retrieved correctly from the session
+    if (!$staffId) {
+        return redirect()->back()->with('error', 'Staff ID not found in session.');
+    }
+
+    // Retrieve the staff data from the database
+    $data = staff::where('staff_id', $staffId)->first();
+
+    // Debug: Check if staff data is retrieved correctly
+    if (!$data) {
+        return redirect()->back()->with('error', 'User not found.');
+    }
+
+    // Pass the data to the view
+    return view('userprofile.staff.StaffProfileIndex', ['data' => $data]);
+}
+
+public function update(Request $request)
+{
+    // Get the staff ID from the session
+    $staffId = session('staff');
+
+    // Debug: Check if staff ID is retrieved correctly from the session
+    if (!$staffId) {
+        return redirect()->back()->with('error', 'Staff ID not found in session.');
+    }
+
+    // Retrieve the staff data from the database
+    $data = staff::where('staff_id', $staffId)->first();
+
+    if (!$data) {
+        return redirect()->back()->with('error', 'User not found.');
+    }
+
+    // Update the profile
+    $data->update($request->all());
+
+    // Set success message
+    return redirect()->route('StaffProfile')->with('message', ['type' => 'success', 'text' => 'Profile updated successfully.']);
+}
+
+public function edit(string $staffId)
+{
+    $data = staff::where('staff_id', $staffId)->first();
+    return view('userprofile.staff.StaffProfileEdit')->with('data', $data);
+}
+
+public function mentorProfile()
+{
+    // Get the staff ID from the session
+    $mentorId = session('mentor');
+
+    // Debug: Check if staff ID is retrieved correctly from the session
+    if (!$mentorId) {
+        return redirect()->back()->with('error', 'mentor ID not found in session.');
+    }
+
+    // Retrieve the staff data from the database
+    $data = Mentor::where('mentor_id', $mentorId)->first();
+
+    // Debug: Check if staff data is retrieved correctly
+    if (!$data) {
+        return redirect()->back()->with('error', 'User not found.');
+    }
+
+    // Pass the data to the view
+    return view('userprofile.staff.mentorProfile', ['data' => $data]);
+}
+
+
 }

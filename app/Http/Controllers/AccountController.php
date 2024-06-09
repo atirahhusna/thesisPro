@@ -21,6 +21,12 @@ class AccountController extends Controller
         return view('Registration.userRegister');
     }
 
+    
+    public function mentorForm()
+    {
+        return view('Registration.mentorRegister');
+    }
+
     public function registerForm()
     {
         return view('Registration.Register');
@@ -118,25 +124,62 @@ class AccountController extends Controller
      {
          // Validation
          $validatedData = $request->validate([
-             'password' => 'required',
-             'role' => 'required',
-             'email' =>'required',
+             's_name' => 'required',
+             's_email' => 'required',
+             's_password' =>'required',
+             's_address' =>'required',
+             's_phone_number' =>'required',
          ]);
      
          try {
              // Create user profile
-             $userProfile = user_profiles::create([
-                 'password' => bcrypt($validatedData['password']),
-                 'role' => $validatedData['role'],
-                 'email' => $validatedData['email']
+             $userProfile = staff::create([
+                 's_password' => bcrypt($validatedData['s_password']),
+                 's_name' => $validatedData['s_name'],
+                 's_email' => $validatedData['s_email'],
+                 's_address' => $validatedData['s_address'],
+                 's_phone_number' => $validatedData['s_phone_number']
              ]);
+             
      
      
-             return redirect()->route('user')->with('success', 'User created successfully!');
+             return redirect()->route('user')->with('success', 'staff created successfully!');
          } catch (\Exception $e) {
-             return redirect()->back()->with('error', 'Failed to create user: ' . $e->getMessage());
+             return redirect()->back()->with('error', 'Failed to create staff: ' . $e->getMessage());
          }
      }
+
+     public function mentorPost(Request $request)
+     {
+         // Validation
+         $validatedData = $request->validate([
+             'm_name' => 'required',
+             'm_email' => 'required',
+             'm_pasword' =>'required',
+             'm_address' =>'required',
+             'm_phone_number' =>'required',
+         ]);
+     
+         try {
+             // Create user profile
+             $userProfile = Mentor::create([
+                 'm_pasword' => bcrypt($validatedData['m_pasword']),
+                 'm_name' => $validatedData['m_name'],
+                 'm_email' => $validatedData['m_email'],
+                 'm_address' => $validatedData['m_address'],
+                 'm_phone_number' => $validatedData['m_phone_number']
+             ]);
+             
+     
+     
+             return redirect()->route('user')->with('success', 'mentor created successfully!');
+         } catch (\Exception $e) {
+             return redirect()->back()->with('error', 'Failed to create mentor: ' . $e->getMessage());
+         }
+     }
+
+
+
      public function registerPost(Request $request)
 {
     // Validation
@@ -177,158 +220,134 @@ class AccountController extends Controller
 }
 
 
-    public function LoginPost(Request $request)
-    {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-            'role' => 'required',
-        ]);
-    
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $role = $request->input('role');
-    
-        $authenticated = false;
-        $user = null;
-    
-        if ($role == 'staff') {
+public function LoginPost(Request $request)
+{
+    $request->validate([
+        'email' => 'required',
+        'password' => 'required',
+        'role' => 'required',
+    ]);
 
-            if($this->manualStaffAuth($email, $password)){
-                $user = user_profiles::where('email', $email)->first();
-               $this->manualLogin('staff', $user);
+    $email = $request->input('email');
+    $password = $request->input('password');
+    $role = $request->input('role');
 
-               //check if the user is authenticated
-               if ($this->manualStaffAuth($email, $password)){
+    $authenticated = false;
+    $user = null;
+
+    if ($role == 'staff') {
+        if ($this->manualStaffAuth($email, $password)) {
+            $user = staff::where('s_email', $email)->first();
+            $this->manualLogin('staff', $user);
+
+            // Check if the user is authenticated
+            if ($this->manualStaffAuth($email, $password)) {
                 return redirect()->route('StaffPage');
-               }
-               else {
-
+            } else {
                 return redirect()->back()->withErrors(['Invalid credentials']);
             }
-            }else {
+        } else {
+            return redirect()->back()->withErrors(['Invalid credentials']);
+        }
+    } elseif ($role == 'mentor') {
+        if ($this->manualMentorAuth($email, $password)) {
+            $user = Mentor::where('m_email', $email)->first();
+            $this->manualLogin('mentor', $user);
 
+            // Check if the user is authenticated
+            if ($this->manualMentorAuth($email, $password)) {
+                return redirect()->route('MentorPage');
+            } else {
                 return redirect()->back()->withErrors(['Invalid credentials']);
             }
-           
-        } elseif ($role == 'mentor') { 
-            
-            if($this->manualMentorAuth($email, $password)){
-            $user = user_profiles::where('email', $email)->first();
-           $this->manualLogin('mentor', $user);
-
-           //check if the user is authenticated
-           if ($this->manualMentorAuth($email, $password)){
-            return redirect()->route('MentorPage');
-           }
-           else {
-
+        } else {
             return redirect()->back()->withErrors(['Invalid credentials']);
         }
-        }else {
+    } elseif ($role == 'platinum') {
+        if ($this->manualPlatinumAuth($email, $password)) {
+            $user = register_profiles::where('r_identity_card', $email)->first();
+            $this->manualLogin('platinum', $user);
 
-            return redirect()->back()->withErrors(['Invalid credentials']);
-        }
-        } elseif ($role == 'platinum') {
-            
-            if($this->manualPlatinumAuth($email, $password)){
-                $user = register_profiles::where('r_identity_card', $email)->first();
-               $this->manualLogin('platinum', $user);
-    
-               //check if the user is authenticated
-               if ($this->manualPlatinumAuth($email, $password)){
+            // Check if the user is authenticated
+            if ($this->manualPlatinumAuth($email, $password)) {
                 return redirect()->route('PlatinumPage');
-               }
-               else {
-    
+            } else {
                 return redirect()->back()->withErrors(['Invalid credentials']);
             }
-            }else {
-    
-                return redirect()->back()->withErrors(['Invalid credentials']);
-            }
-        }
-    
-      
-    }
-    
-
-    private function manualStaffAuth($email, $password)
-    {
-        $user = user_profiles::where('email', $email)->first();
-        if($user && Hash::check($password, $user->password)){
-            return true;
-        }
-        return false;
-    }
-
-    private function manualMentorAuth($email, $password)
-    {
-        $user = user_profiles::where('email', $email)->first();
-        if($user && Hash::check($password, $user->password)){
-            return true;
-        }
-        return false;
-    }
-
-    private function manualPlatinumAuth($r_identity_card, $password)
-    {
-        $user = register_profiles::where('r_identity_card', $r_identity_card)->first();
-        if($user && Hash::check($password, $user->r_password)){
-            return true;
-        }
-        return false;
-    }
-
-    private function manualLogin($role, $user)
-    {
-        if ($role == 'staff') {
-            session(['staff' => $user->staff_id]);
-        } elseif ($role == 'mentor') {
-            session(['mentor' => $user->mentor_id]);
-        } elseif ($role == 'platinum') {
-            session(['platinum' => [
-                'r_name' => $user->r_name,
-                'r_profile_id' => $user->r_profile_id
-            ]]);
-            
+        } else {
+            return redirect()->back()->withErrors(['Invalid credentials']);
         }
     }
-    
-    private function manualCheck($role)
-    {
-        if ($role == 'staff') {
-            return session()->has('staff');
-        } elseif ($role == 'mentor') {
-            return session()->has('mentor');
-        } elseif ($role == 'platinum') {
-            return session()->has('platinum');
-        }
-    
-        return false;
+}
+
+private function manualStaffAuth($email, $password)
+{
+    $user = staff::where('s_email', $email)->first();
+    if ($user && Hash::check($password, $user->s_password)) {
+        return true;
     }
-    
-    public function Login()
-    {
-        return view('Login.Login');
+    return false;
+}
+
+private function manualMentorAuth($email, $password)
+{
+    $user = Mentor::where('m_email', $email)->first();
+    if ($user && Hash::check($password, $user->m_pasword)) {
+        return true;
+    }
+    return false;
+}
+
+private function manualPlatinumAuth($r_identity_card, $password)
+{
+    $user = register_profiles::where('r_identity_card', $r_identity_card)->first();
+    if ($user && Hash::check($password, $user->r_password)) {
+        return true;
+    }
+    return false;
+}
+
+private function manualLogin($role, $user)
+{
+    if ($role == 'staff') {
+        session(['staff' => $user->staff_id]);
+    } elseif ($role == 'mentor') {
+        session(['mentor' => $user->mentor_id]);
+    } elseif ($role == 'platinum') {
+        session(['platinum' => [
+            'r_name' => $user->r_name,
+            'r_profile_id' => $user->r_profile_id
+        ]]);
+    }
+}
+
+private function manualCheck($role)
+{
+    if ($role == 'staff') {
+        return session()->has('staff');
+    } elseif ($role == 'mentor') {
+        return session()->has('mentor');
+    } elseif ($role == 'platinum') {
+        return session()->has('platinum');
     }
 
-    public function ForgotPassword()
-    {
-        return view('Login.ForgotPassword');
-    }
+    return false;
+}
 
+public function Login()
+{
+    return view('Login.Login');
+}
 
-    public function logout(Request $request)
-    {
-        Auth::logout();
-    
-        $request->session()->invalidate();
-    
-        $request->session()->regenerateToken();
-    
-        return redirect('/Login')->with('success', 'You have been logged out.');
-    }
-    
+public function logout(Request $request)
+{
+    Auth::logout();
+
+    $request->session()->invalidate();
+
+    $request->session()->regenerateToken();
+
+    return redirect('/Login')->with('success', 'You have been logged out.');
+}
 }
 

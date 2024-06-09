@@ -299,13 +299,10 @@
                     </a>
                     <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">My Profile</a>
+                            <a href="http://127.0.0.1:8000/StaffProfile" class="sidebar-link">My Profile</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Staff Profile</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Mentor profile</a>
+                            <a href="http://127.0.0.1:8000/Staff.MentorProfile" class="sidebar-link">Mentor profile</a>
                         </li>
                         <li class="sidebar-item">
                             <a href="http://127.0.0.1:8000/Staff.PlatinumList" class="sidebar-link">Platinum Profile</a>
@@ -327,7 +324,10 @@
                         </li>
                         <!-- Add dropdown items for different types of registration -->
                         <li class="sidebar-item">
-                            <a href="{{ route('user')}}" class="sidebar-link">Register user</a>
+                            <a href="{{ route('user')}}" class="sidebar-link">Register staff</a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('mentorForm')}}" class="sidebar-link">Register mentor</a>
                         </li>
                         <li class="sidebar-item">
                         <a href="{{ route('registerForm') }}" class="sidebar-link">Register Platinum</a>
