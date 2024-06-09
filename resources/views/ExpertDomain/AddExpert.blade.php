@@ -110,9 +110,9 @@
             display: block;
             margin-bottom: 5px;
         }
-        .form-group textarea {
-            width: 70%; /* This will make the textarea take the full width of its container */
-            padding: 10px;
+        //.form-group textarea {
+            width: 60%; /* This will make the textarea take the full width of its container */
+            padding: 3px;
             font-size: 14px;
             line-height: 1.5;
             border: 1px solid #ccc;
@@ -136,7 +136,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Name">NAME</label>
-                                <input type="text" style="width:300px; height:40px" id="e_Name" name="e_Name" required value="{{old('e_Name')}}">
+                                <input type="text" style="width:400px; height:40px" id="e_Name" name="e_Name" required value="{{old('e_Name')}}">
                             </div>
                             <div class="form-group">
                                 <label for="e_University">WORKPLACE</label>
@@ -168,18 +168,18 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Email">EMAIL</label>
-                                <input type="email" style="width:300px; height:40px" id="e_Email" name="e_Email" required value="{{old('e_Email')}}">
+                                <input type="email" style="width:400px; height:40px" id="e_Email" name="e_Email" required value="{{old('e_Email')}}">
                             </div>
                             <div class="form-group">
                                 <label for="e_PhoneNum">PHONE NUMBER</label>
-                                <input type="tel" style="width:300px; height:40px" id="e_PhoneNum" name="e_PhoneNum" required value="{{old('e_PhoneNum')}}">
+                                <input type="tel" style="width:400px; height:40px" id="e_PhoneNum" name="e_PhoneNum" required value="{{old('e_PhoneNum')}}">
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_Expertise">EXPERTISE</label>
-                                <input type="text" style="width:300px; height:40px" id="e_Expertise" name="e_Expertise" required value="{{old('e_Expertise')}}">
+                                <input type="text" style="width:400px; height:40px" id="e_Expertise" name="e_Expertise" required value="{{old('e_Expertise')}}">
                             </div>
                         </div>
                     </div>
@@ -187,14 +187,30 @@
                         <div class="section-header">Research</div>
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="e_TitleResearch">TITLE RESEARCH</label>
-                                <textarea id="e_TitleResearch" name="e_TitleResearch"  required value="{{old('e_TitleResearch')}}"></textarea>
+                                <label for="e_TitleResearch">TITLE RESEARCH</label> 
+                                <textarea id="e_TitleResearch" style="height: 80px; width: 50%;" name="e_TitleResearch" required value="{{old('e_TitleResearch')}}"></textarea>
                                 <label for="e_Paper">PAPER</label>
-                                <textarea id="e_Paper" rows="3" name="e_Paper" required value="{{old('e_Paper')}}"></textarea>
-                                <label for="TypeOfPublication">TYPE OF PUBLICATION</label>
-                                <input type="text" style="width:400px; height:40px" id="TypeOfPublication" name="TypeOfPublication" required value="{{old('TypeOfPublication')}}">
-                                <label for="year">YEAR</label>
-                                <input type="text" style="width:200px; height:40px" id="year" name="year" required value="{{old('year')}}">
+                                <textarea id="e_Paper" style="height: 80px; width: 50%;" name="e_Paper" required value="{{old('e_Paper')}}"></textarea>
+                                <label for="author">AUTHOR</label>
+                                <input type="text" style="width:400px; height:40px" id="author" name="author" required value="{{old('author')}}">
+                                <label for="date">PUBLICATION DATE</label>
+                                <input type="date" style="width:400px; height:40px" id="date" name="date" required value="{{old('date')}}">
+
+                                <label for="type">TYPE OF PUBLICATION</label>
+                                <select type="option" id="type" name="type" required>
+                                    <option value="">Select publication type</option>
+                                    <option value="Article">Article</option>
+                                    <option value="Case Studies">Case Studies</option>
+                                    <option value="Journal">Journal</option>
+                                    <option value="Review">Review</option>
+                                    <option value="Thesis">Thesis</option>
+                                </select>   
+                                
+                                <label for="DOI">DOI</label>
+                                <input type="TEXT" style="width:400px; height:40px" id="DOI" name="DOI" required value="{{old('DOI')}}">
+
+
+                                
                             </div>
                         </div>
                     </div>

@@ -145,13 +145,9 @@
                                 <label for="e_Expertise"><strong>EXPERTISE</label>
                                 <p class="expert-detail">{{$data->e_Expertise}}</p>
                                 <label for="e_TitleResearch"><strong>TITLE RESEARCH</label>
-                                <p class="expert-detail">{{$data->e_TitleResearch}}</p>
-                                <label for="e_Paper"><strong>PAPER</label>
-                                <p class="expert-detail">{{$data->e_Paper}}</p>
-                                <label for="year"><strong>Year</label>
-                                <p class="expert-detail">{{$data->year}}</p>                                
-                                <label for="publication_types"><strong>Type of Publication</label>
-                                <p class="expert-detail">{{$data->publication_types}}</p>
+                                <p class="expert-detail">{{ request('author,') }} {{ \Carbon\Carbon::parse($data->date)->format('Y, ') }} {{$data->e_TitleResearch}}. {{$data->e_Paper,}} {{$data->DOI}}</p>                               
+                                <label for="type"><strong>Type of Publication</label>
+                                <p class="expert-detail">{{$data->type}}</p>
                             </div>
                         </div>
                     </div>

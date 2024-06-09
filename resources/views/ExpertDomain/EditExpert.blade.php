@@ -170,13 +170,30 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="e_TitleResearch">TITLE RESEARCH</label>
-                                <textarea id="e_TitleResearch" name="e_TitleResearch" required>{{$data->e_TitleResearch}}</textarea>
+                                <textarea id="e_TitleResearch" style="height: 80px; width: 50%;" name="e_TitleResearch" required>{{$data->e_TitleResearch}}</textarea>
                                 <label for="e_Paper">PAPER</label>
-                                <textarea id="e_Paper" name="e_Paper" required>{{$data->e_Paper}}</textarea>
-                                <label for="TypeOfPublication">TYPE OF PUBLICATION</label>
-                                <textarea id="TypeOfPublication" style="width:300px; height:40px" name="TypeOfPublication" required>{{$data->TypeOfPublication}}</textarea>
-                                <label for="year">YEAR</label>
-                                <textarea id="year" style="width:300px; height:40px" name="year" required>{{$data->year}}</textarea>
+                                <textarea id="e_Paper" style="height: 80px; width: 50%;" name="e_Paper" required>{{$data->e_Paper}}</textarea>
+                                <label for="author">AUTHOR</label>
+                                <textarea id="author" style="width:300px; height:40px" name="author" required>{{$data->author}}</textarea>
+                                <label for="date">DATE</label>
+                                <input type="date" id="date" style="width:300px; height:40px" name="date" required>{{$data->date}}</textarea>
+
+                                <label for="type">TYPE OF PUBLICATION</label>
+                                <select type="option" id="type" name="type" required>{{$data->type}}
+                                    <option value="">Select publication type</option>
+                                    <option value="Article">Article</option>
+                                    <option value="Case Studies">Case Studies</option>
+                                    <option value="Journal">Journal</option>
+                                    <option value="Review">Review</option>
+                                    <option value="Thesis">Thesis</option>
+                                </select>    
+
+                                 <label for="DOI">DOI</label>
+                                <textarea id="text" style="width:300px; height:40px" name="DOI" required>{{$data->DOI}}</textarea>
+               
+                                
+                                                        
+                            
                                 
                             </div>
                         </div>
