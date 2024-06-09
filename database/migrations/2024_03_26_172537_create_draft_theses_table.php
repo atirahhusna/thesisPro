@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('draft_theses', function (Blueprint $table) {
-            $table->id('DT_DraftNum')->primary();
+            $table->id();
+            $table->integer('DT_DraftNum');
             $table->bigInteger('r_profile_id')->unsigned()->nullable();
             $table->foreign('r_profile_id')->references('r_profile_id')->on('register_profiles')->onDelete('cascade');
             $table->string('DT_Title', 100)->nullable();

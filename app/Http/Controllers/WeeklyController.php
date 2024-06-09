@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\register_profiles;
+use App\Models\crmp;
 use App\Models\WeeklyFocus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -13,6 +14,12 @@ class WeeklyController extends Controller
      */
     public function index(Request $request)
     {
+
+    // Get the platinum ID from the session
+    $plat_id = Session::get('platinum');
+
+    // Retrieve the authenticated user's profile based on the session value
+    $auth = register_profiles::where('r_profile_id', $plat_id)->get();
         $keywords = $request->keywords;
         $data1 = collect();
         $data2 = collect();

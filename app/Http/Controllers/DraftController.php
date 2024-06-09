@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\DraftThesis;
-use App\Models\RegisterProfiles;
-use App\Models\Crmp;
+use App\Models\register_profiles;
+use App\Models\crmp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
 
 class DraftController extends Controller
 {
@@ -16,41 +15,38 @@ class DraftController extends Controller
      */
     public function index(Request $request)
     {
-        if (Session::has('r_profile_id')) {
-            $platinum = Session::get('r_profile_id');
+        $r_profile_id = Session::get('r_profile_id');
     
-            $query = DraftThesis::where('r_profile_id', $platinum);
+        // Retrieve data based on the r_profile_id
+        $data = DraftThesis::where('r_profile_id', $r_profile_id);
     
-            $keywords = $request->keywords;
-            $totLine = 10;
-    
-            if (strlen($keywords)) {
-                $query->where(function ($query) use ($keywords) {
-                    $query->where('DT_DraftNum', 'like', "%$keywords%")
-                        ->orWhere('DT_Title', 'like', "%$keywords%")
-                        ->orWhere('DT_PagesNum', 'like', "%$keywords%")
-                        ->orWhere('DT_SDate', 'like', "%$keywords%");
-                });
-            }
-    
-            $data = $query->orderBy('DT_DraftNum', 'asc')->paginate($totLine);
-    
-            // Store the last viewed drafts in session
-            Session::put('last_viewed_drafts', $data->toArray());
-    
-            return view('ProgressMonitoring.DraftThesis', compact('data'));
-        } else {
-            return redirect()->route('Login')->with('error', 'Please log in first.');
+        // Apply keyword search if provided
+        $keywords = $request->keywords;
+        if ($keywords) {
+            $data->where(function ($query) use ($keywords) {
+                $query->where('DT_DraftNum', 'like', "%$keywords%")
+                    ->orWhere('DT_Title', 'like', "%$keywords%")
+                    ->orWhere('DT_PagesNum', 'like', "%$keywords%")
+                    ->orWhere('DT_SDate', 'like', "%$keywords%");
+            });
         }
+    
+        // Fetch the paginated data
+        $totLine = 10;
+        $data = $data->orderBy('DT_DraftNum', 'asc')->paginate($totLine);
+    
+        return view('ProgressMonitoring.DraftThesis', compact('data'));
     }
     
-
+    
 
     /**
      * Show the form for creating a new resource.
      */
     public function createThesis()
     {
+            // Get the platinum ID from the session
+        $plat_id = Session::get('platinum');
         return view('ProgressMonitoring.DraftNewTitle');
     }
 
@@ -59,54 +55,55 @@ class DraftController extends Controller
      */
     public function store(Request $request)
     {
-        Session::flash('DT_Title', $request->DT_Title);
 
-        $request->validate([
+        Session::flash('DT_Title', $request -> DT_Title);
+        
+        $request ->validate([
             'DT_Title' => 'required|unique:draft_theses,DT_Title',
             'DT_SDate' => 'required|date',
             'DT_EDate' => 'required|date',
             'DT_PagesNum' => 'required',
-        ], [
-            'DT_Title.required' => 'Title is required',
-            'DT_Title.unique' => 'Title already exists',
-            'DT_SDate.required' => 'Start Date is required',
-            'DT_EDate.required' => 'End Date is required',
-            'DT_PagesNum.required' => 'Number of Pages is required',
-        ]);
-
-        $data = [
-            'DT_Title' => $request->DT_Title,
-            'DT_SDate' => $request->DT_SDate,
-            'DT_EDate' => $request->DT_EDate,
-            'DT_PagesNum' => $request->DT_PagesNum,
+    ],[
+        'DT_Title.required' => 'Title is required',
+        'DT_Title.unique' => 'Title already exists',
+        'DT_SDate.required' => 'Start Date is required',
+        'DT_EDate.required' => 'End Date is required',
+        'DT_PagesNum.required' => 'Number of Pages is required',
+    ]);
+        $data=[
+            'DT_DraftNum'=>$request->DT_DraftNum,
+            'DT_Title'=> $request -> DT_Title,
+            'DT_SDate'=> $request -> DT_SDate,
+            'DT_EDate'=> $request -> DT_EDate,
+            'DT_PagesNum'=> $request -> DT_PagesNum,
         ];
+        
+        // Check if there are any existing entries
+$existingDraftsCount = DraftThesis::count();
 
+// If there are no existing entries, set DT_DraftNum to 1, otherwise get the max value and increment it
+$data['DT_DraftNum'] = $existingDraftsCount == 0 ? 1 : DraftThesis::max('DT_DraftNum') + 1;
         DraftThesis::create($data);
-
-        Session::put('last_created_draft', $data);
-
         return redirect()->to('DraftThesis')->with('success', 'Data saved successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function showDraftList(Request $request)
+    public function showDratfList(Request $request)
     {
-        $data = [
-            'DT_DraftNum' => $request->DT_DraftNum,
-            'DT_PagesNum' => $request->DT_PagesNum,
-            'DT_Comment' => $request->DT_Comment,
-            'DT_DDC' => $request->DT_DDC,
-            'DT_Completion' => $request->DT_Completion,
+        $data=[
+            'DT_DraftNum'=> $request -> DT_DraftNum,
+            'DT_PagesNum'=> $request -> DT_PagesNum,
+            'DT_Comment'=> $request -> DT_Comment,
+            'DT_DDC'=> $request -> DT_DDC,
+            'DT_Completion'=> $request -> DT_Completion,
         ];
-
-        Session::put('last_viewed_draft', $data);
 
         return view('ProgressMonitoring.DraftWork');
     }
 
-    /**
+        /**
      * Show the viewer interface.
      */
     public function DraftViewerCRMP()
@@ -116,18 +113,14 @@ class DraftController extends Controller
 
     public function DraftViewerMentor(Request $request)
     {
-        $crmps = Crmp::all();
-        $profiles = RegisterProfiles::all();
-
+        // Fetch the search keyword
+        $crmps = crmp::all();
+        $profiles = register_profiles::all();
         if ($request->has('katakunci')) {
-            $profiles = RegisterProfiles::where('r_profile_id', 'like', '%' . $request->katakunci . '%')
-                ->orWhere('r_name', 'like', '%' . $request->katakunci . '%')
-                ->get();
-        }
-
-        Session::put('last_searched_profiles', $profiles->toArray());
-
-        return view('ProgressMonitoring.DraftViewerMentor', compact('profiles'));
+            $profiles = register_profiles::where('r_profile_id', 'like', '%' . $request->katakunci . '%')
+                                       ->orWhere('r_name', 'like', '%' . $request->katakunci . '%')
+                                       ->get();}
+        return view('ProgressMonitoring.DraftViewerMentor',compact('profiles', 'crmps'));
     }
 
     public function DraftWorkViewer()
@@ -140,9 +133,7 @@ class DraftController extends Controller
      */
     public function edit(string $id)
     {
-        $data = DraftThesis::where('DT_Title', $id)->first();
-        Session::put('last_edit_draft', $data);
-
+        $data = DraftThesis::where('DT_Title',$id)->first();
         return view('ProgressMonitoring.DraftEdit')->with('data', $data);
     }
 
@@ -151,30 +142,25 @@ class DraftController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'DT_Title' => 'required|unique:draft_theses,DT_Title,' . $id,
+        $request ->validate([
+            'DT_Title' => 'required|unique:draft_theses,DT_Title',
             'DT_SDate' => 'required|date',
             'DT_EDate' => 'required|date',
             'DT_PagesNum' => 'required',
-        ], [
-            'DT_Title.required' => 'Title is required',
-            'DT_Title.unique' => 'Title already exists',
-            'DT_SDate.required' => 'Start Date is required',
-            'DT_EDate.required' => 'End Date is required',
-            'DT_PagesNum.required' => 'Number of Pages is required',
-        ]);
-
-        $data = [
-            'DT_Title' => $request->DT_Title,
-            'DT_SDate' => $request->DT_SDate,
-            'DT_EDate' => $request->DT_EDate,
-            'DT_PagesNum' => $request->DT_PagesNum,
+    ],[
+        'DT_Title.required' => 'Title is required',
+        'DT_Title.unique' => 'Title already exists',
+        'DT_SDate.required' => 'Start Date is required',
+        'DT_EDate.required' => 'End Date is required',
+        'DT_PagesNum.required' => 'Number of Pages is required',
+    ]);
+        $data=[
+            'DT_Title'=> $request -> DT_Title,
+            'DT_SDate'=> $request -> DT_SDate,
+            'DT_EDate'=> $request -> DT_EDate,
+            'DT_PagesNum'=> $request -> DT_PagesNum,
         ];
-
-        DraftThesis::where('DT_Title', $id)->update($data);
-
-        Session::put('last_updated_draft', $data);
-
+        DraftThesis::where('DT_Title',$id)->update($data);
         return redirect()->to('DraftThesis')->with('success', 'Data updated successfully');
     }
 
@@ -183,11 +169,8 @@ class DraftController extends Controller
      */
     public function destroy($id)
     {
-        $deletedData = DraftThesis::where('DT_Title', $id)->first();
         DraftThesis::where('DT_Title', $id)->delete();
-
-        Session::put('last_deleted_draft', $deletedData);
-
         return redirect()->to('DraftThesis')->with('success', 'Item deleted successfully');
+        // Redirect to the WeeklyFocus page
     }
 }

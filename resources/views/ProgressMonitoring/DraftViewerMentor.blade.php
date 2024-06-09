@@ -60,7 +60,7 @@
                <td>{{ $loop->iteration }}</td>
                <td>{{ $profile->r_profile_id }}</td>
                <td>{{ $profile->r_name }}</td>
-               <td>{{ $profile->crmp->crmp_id ?? 'N/A' }}</td> <!-- Display CRMP ID -->
+               <td>{{ $profile->crmp_id ?? 'N/A' }}</td> <!-- Display CRMP ID -->
                <td>7</td>
                <td>
                  <a href='' class="btn btn-warning btn-sm">View</a>
@@ -116,7 +116,7 @@
                      <td>{{ $loop->iteration }}</td>
                      <td>{{ $profile->r_profile_id }}</td>
                      <td>{{ $profile->r_name }}</td>
-                     <td>{{ $profile->crmp->crmp_id ?? 'N/A' }}</td> <!-- Display CRMP ID -->
+                     <td>{{ $profile->crmp_id ?? 'N/A' }}</td> <!-- Display CRMP ID -->
                      <td>
                        <a href='' class="btn btn-warning btn-sm">View</a>
                      </td>

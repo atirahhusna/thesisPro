@@ -19,23 +19,10 @@
         <div style="display: flex; align-items: center;">
             <input style="width:1000px;height:40px;" type="search" id="search" name="keywords" value="{{Request::get('keywords') }}" placeholder="Enter keywords">
             <div class="button-container">
-                <button style="height:40px; width:100px" type="submit">Search</button>
+                <button  style="margin-bottom:40px;height:40px;" type="submit">Search</button>
             </div>
         </div>
     </form>
-</div>
-<div class="button-group">
-    <nav class="hehe" style="padding-top: 70px">
-        <center>
-            <ul>
-                <li><a href="#" onclick="filterTasks('All')">All</a></li>
-                <li><a href="#" onclick="filterTasks('Focus')">Focus</a></li>
-                <li><a href="#" onclick="filterTasks('Admin')">Admin</a></li>
-                <li><a href="#" onclick="filterTasks('Social')">Social</a></li>
-                <li><a href="#" onclick="filterTasks('Recovery')">Recovery</a></li>
-            </ul>
-        </center>
-    </nav>
 </div>
 @if (Session::has('success'))
 <div class="pt-3">
