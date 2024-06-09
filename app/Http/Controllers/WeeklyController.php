@@ -46,14 +46,33 @@ class WeeklyController extends Controller
 
     public function view($platinum_id)
     {
-        // Fetch weekly focus data for a specific platinum student
-        $data1 = WeeklyFocus::where('platinum_id', $platinum_id)->where('WF_Type', 'focus')->get();
-        $data2 = WeeklyFocus::where('platinum_id', $platinum_id)->where('WF_Type', 'admin')->get();
-        $data3 = WeeklyFocus::where('platinum_id', $platinum_id)->where('WF_Type', 'social')->get();
-        $data4 = WeeklyFocus::where('platinum_id', $platinum_id)->where('WF_Type', 'recovery')->get();
-        $data = WeeklyFocus::where('platinum_id', $platinum_id)->where('WF_Type')->get();
+        // Retrieve r_profile_id from the session
+        $r_profile_id = session('r_profile_id');
+    
+        // Fetch weekly focus data for a specific platinum student and r_profile_id
+        $data1 = WeeklyFocus::where('platinum_id', $platinum_id)
+                            ->where('r_profile_id', $r_profile_id)
+                            ->where('WF_Type', 'focus')
+                            ->get();
+        $data2 = WeeklyFocus::where('platinum_id', $platinum_id)
+                            ->where('r_profile_id', $r_profile_id)
+                            ->where('WF_Type', 'admin')
+                            ->get();
+        $data3 = WeeklyFocus::where('platinum_id', $platinum_id)
+                            ->where('r_profile_id', $r_profile_id)
+                            ->where('WF_Type', 'social')
+                            ->get();
+        $data4 = WeeklyFocus::where('platinum_id', $platinum_id)
+                            ->where('r_profile_id', $r_profile_id)
+                            ->where('WF_Type', 'recovery')
+                            ->get();
+        $data = WeeklyFocus::where('platinum_id', $platinum_id)
+                           ->where('r_profile_id', $r_profile_id)
+                           ->get();
+    
         return view('WeeklyFocus.view', compact('data1', 'data2', 'data3', 'data4', 'data'));
     }
+    
 
     public function viewerMentor()
     {

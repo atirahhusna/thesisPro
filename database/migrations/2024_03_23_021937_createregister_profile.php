@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('r_name', 55)->nullable(); // Platinum name
             $table->string('r_mark', 50)->nullable(); // Email
             $table->string('crmp_id')->nullable();
-            $table->foreign('crmp_id')->references('crmp_id')->on('crmps')->onDelete('cascade');
+            $table->foreign('crmp_id')->references('crmp_id')->on('crmps')->onDelete('cascade')->nullable();
 
 
             // Timestamps
