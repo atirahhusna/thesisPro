@@ -93,6 +93,9 @@ Route::post('/storePlatinum/{id}', [StaffController::class, 'storePlatinum'])->n
 Route::get('/assignCRMP', [StaffController::class, 'assignCRMP'])->name('assignCRMP');
 Route::post('/storeCRMP', [StaffController::class, 'storeCRMP'])->name('storeCRMP');
 
+//view Platinum Profile
+Route::get('/CRMPViewPlatinum', [PlatinumController::class, 'ListPlatinum'])->name('ListPlatinum');
+
 //Route Progress Monitoring weekly focus
 Route::resource('WeeklyFocus', WeeklyController::class);
 Route::get('/WeeklyFocusManager', [WeeklyController::class, 'index'])->name('WeeklyFocus.index');
@@ -111,7 +114,7 @@ Route::get('/DraftThesisManager', [DraftController::class, 'index'])->name('Draf
 Route::get('/DraftNewTitle', [DraftController::class , 'createThesis']);
 Route::get('/DraftWork', [DraftController::class , 'showDratfList']);
 Route::get('/DraftViewerMentor', [DraftController::class , 'DraftViewerMentor'])->name('DraftThesis.DraftViewerMentor');
-Route::get('/DraftViewerCRMP', [DraftController::class , 'DraftViewerCRMP']);
+Route::get('/DraftViewerCRMP', [DraftController::class , 'DraftViewerCRMP'])->name('DraftThesis.DraftViewerCRMP');
 Route::get('/DraftWorkViewer', [DraftController::class , 'DraftWorkViewer']);
 Route::get('/test', [PublicationController::class , 'create']);
 

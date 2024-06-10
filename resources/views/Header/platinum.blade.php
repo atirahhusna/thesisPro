@@ -510,6 +510,10 @@
                 </li>
             </ul>
             <div class="sidebar-footer">
+                <a href="{{ route('ListPlatinum') }}" class="sidebar-link">
+                    <i class="lni lni-exit"></i>
+                    <span>CRMP</span>
+                </a>
             <a href="{{ route('logout') }}" class="sidebar-link">
                     <i class="lni lni-exit"></i>
                     <span>Logout</span>
