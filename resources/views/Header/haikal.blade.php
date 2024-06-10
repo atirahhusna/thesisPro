@@ -1,5 +1,0 @@
-@extends('Header.platinum')
-@section('content')
-
-
-@endsection
