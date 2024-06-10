@@ -116,7 +116,11 @@
                         <select id="filter" wire:model="nyFilter" class="filter-select">
                             <option value="">No Selected</option>
                             @foreach ($data as $expert)
-                                <option value="{{ $expert->e_ID }}">{{ $expert->e_Expertise}}</option>
+                            <option value="{{ $expert->e_ID }}">
+                                {{ $expert->e_Expertise }} - {{ $expert->e_University }}
+                            </option>
+                                <a href="{{url('Export')}}" class="btn btn-success">DOWNLOAD</a>
+
                             @endforeach
                         </select>
                     </div>
@@ -126,6 +130,8 @@
                         <button type="submit" class="search-button">Search</button>
                     </form>
                 </div>
+
+
 
 <title>Expert List</title>
 
@@ -151,8 +157,6 @@
                             <th>ID</th>
                             <th>Expert Name</th>
                             <th>Expertise</th>
-                            <th>Year</th>
-                            <th>Type of Publications</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -160,15 +164,12 @@
                         @php 
                             $i = 1;
                         @endphp
-                        @foreach ($data as $expert)
-                            @foreach ($data as $index => $publication)
+                            @foreach ($data as $expert)
 
                             <tr>
                                 <td>{{$i}}</td>
                                 <td>{{$expert->e_Name}}</td>
                                 <td>{{$expert->e_Expertise}}</td>
-                                <td>{{ \Carbon\Carbon::parse($publication->publication_date)->format('Y') }}</td>
-                                <td>{{ $publication->publication_types}}</td>
                                 <td>
                                 <a href="{{url('ExpertDetail/'.$expert->e_ID)}}" class="btn btn-primary">VIEW</a>
                                 <a href="{{url('EditExpert/'.$expert->e_ID)}}" class="btn btn-primary">EDIT</a>
@@ -181,7 +182,7 @@
                                 $i++;
                             @endphp
                             @endforeach
-                        @endforeach
+                        
                     </tbody>
                     </table>
                 </div>
