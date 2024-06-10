@@ -1,5 +1,9 @@
 @extends('Header/platinum')
 @section('content')
+@php
+        $req_id = Session::get('platinum');
+$r_profile_id = session('r_profile_id'); // Retrieve r_profile_id from session or use 'default value' if it doesn't exist
+@endphp
 <center>
 <hr>
 </center>
