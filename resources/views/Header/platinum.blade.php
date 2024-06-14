@@ -510,6 +510,10 @@
                 </li>
             </ul>
             <div class="sidebar-footer">
+                <a href="{{ route('ListPlatinum') }}" class="sidebar-link">
+                    <i class="lni lni-exit"></i>
+                    <span>CRMP</span>
+                </a>
             <a href="{{ route('logout') }}" class="sidebar-link">
                     <i class="lni lni-exit"></i>
                     <span>Logout</span>
@@ -525,7 +529,7 @@
                         </a>
                     </div>
                 </nav>
-                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome to ThesisPro, {{ session('platinum')['r_profile_id'] }}!</a>
+                <a class="navbar-brand" style="font-size:30px;" href="#">Welcome to ThesisPro, {{ session('platinum')['r_name'] }}!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

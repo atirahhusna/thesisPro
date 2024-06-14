@@ -422,11 +422,10 @@
                                             <a href="#" class="sidebar-link">CRMP Profile</a>
                                         </li>
                                         <li class="sidebar-item">
-                                            <a href="" class="sidebar-link">Weekly Focus</a>
+                                            <a href="{{ route('WeeklyFocus.viewerMentor') }}" class="sidebar-link">Weekly Focus</a>
                                         </li>
                                         <li class="sidebar-item">
                                             <a href="{{route('DraftThesis.DraftViewerMentor')}}" class="sidebar-link">Draft Thesis</a>
-                                            <a href="#" class="sidebar-link">Draft Thesis</a>
                                         </li>
                                     </ul>
                                 </li>

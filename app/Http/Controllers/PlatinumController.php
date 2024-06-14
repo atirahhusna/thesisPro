@@ -104,6 +104,24 @@ class PlatinumController extends Controller
     // Pass the data to the view
     return view('userprofile.platinum.mentorProfile', ['data' => $data]);
 }
+
+public function ListPlatinum(Request $request)
+{
+    $query = register_profiles::select('*', \DB::raw("CASE WHEN r_mark IS NULL THEN 'No Value' ELSE r_mark END AS r_mark_display"))
+    ->whereNull('r_mark');
+
+    // Apply search filters if the search keyword is present
+    if ($request->has('katakunci') && !empty($request->katakunci)) {
+        $query->where(function ($subQuery) use ($request) {
+            $subQuery->where('r_profile_id', 'like', '%' . $request->katakunci . '%')
+                     ->orWhere('r_name', 'like', '%' . $request->katakunci . '%');
+        });
+    }
+
+// Get the filtered results
+$profiles = $query->get();
+    return view('ProgressMonitoring.CRMPViewPlatinum', compact('profiles'));
+}
   
 
 }

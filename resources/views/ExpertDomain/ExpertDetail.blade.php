@@ -144,10 +144,13 @@
                                 <p class="expert-detail">{{$data->e_PhoneNum}}</p>
                                 <label for="e_Expertise"><strong>EXPERTISE</label>
                                 <p class="expert-detail">{{$data->e_Expertise}}</p>
+
+
                                 <label for="e_TitleResearch"><strong>TITLE RESEARCH</label>
-                                <p class="expert-detail">{{ request('author,') }} {{ \Carbon\Carbon::parse($data->date)->format('Y, ') }} {{$data->e_TitleResearch}}. {{$data->e_Paper,}} {{$data->DOI}}</p>                               
+                                <p class="expert-detail"> {{ \Carbon\Carbon::parse($data->date)->format('Y, ') }} {{$data->e_TitleResearch}}. {{$data->e_Paper,}} {{$data->DOI}}</p>                               
                                 <label for="type"><strong>Type of Publication</label>
                                 <p class="expert-detail">{{$data->type}}</p>
+
                             </div>
                         </div>
                     </div>

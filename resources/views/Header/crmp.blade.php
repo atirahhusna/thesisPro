@@ -315,13 +315,13 @@
                     </a>
                     <ul id="registration" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Platinum Profile</a>
+                            <a href="{{ route('ListPlatinum') }}" class="sidebar-link">Platinum Profile</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Weekly focus</a>
+                            <a href="{{ route('WeeklyFocus.viewerCRMP') }}" class="sidebar-link">Weekly focus</a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Draft thesis</a>
+                            <a href="{{ route('DraftThesis.DraftViewerCRMP') }}" class="sidebar-link">Draft thesis</a>
                         </li>
                     </ul>
                 </li>
@@ -329,10 +329,15 @@
               
             </ul>
             <div class="sidebar-footer">
-                <a href="#" class="sidebar-link">
+                <a href="{{ route('WeeklyFocus.index') }}" class="sidebar-link">
+                    <i class="lni lni-exit"></i>
+                    <span>Platinum</span>
+                </a>
+                <a href="{{ route('logout') }}" class="sidebar-link">
                     <i class="lni lni-exit"></i>
                     <span>Logout</span>
                 </a>
+                ProgressMonitoring.CRMPViewPlatinum
             </div>
         </aside>
         <div class="main">

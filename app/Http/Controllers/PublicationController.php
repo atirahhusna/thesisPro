@@ -53,13 +53,15 @@ class PublicationController extends Controller
 
         $institutionKeywords = $request->institutionKeywords;
         $yearKeywords = $request->yearKeywords;
-
+        $keywords = $request->keywords;
+    
         $query = publication::query();
-
-        if (strlen($institutionKeywords) && strlen($yearKeywords)) {
-            // If both keywords are provided
+    
+        if (strlen($institutionKeywords) && strlen($yearKeywords) && strlen($keywords)) {
+            // If both institution and year keywords are provided
             $query->where('publication_institution', 'like', "%$institutionKeywords%")
-                  ->whereYear('publication_date', $yearKeywords);
+                  ->whereYear('publication_date', $yearKeywords)
+                  ->where('publication_title', 'like', "%$keywords%");
         } else {
             // If only institution keyword is provided
             if (strlen($institutionKeywords)) {
@@ -69,6 +71,11 @@ class PublicationController extends Controller
             // If only year keyword is provided
             if (strlen($yearKeywords)) {
                 $query->whereYear('publication_date', $yearKeywords);
+            }
+
+            // Adding title keywords conditionally
+            if (strlen($keywords)) {
+                $query->where('publication_title', 'like', "%$keywords%");
             }
         }
 
@@ -147,10 +154,10 @@ class PublicationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    /*public function create()
     {
         return view('PublicationData.test');
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.
