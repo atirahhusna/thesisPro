@@ -14,12 +14,10 @@ class WeeklyController extends Controller
      */
     public function index(Request $request)
     {
-
-    // Get the platinum ID from the session
-    $plat_id = Session::get('platinum');
-
-    // Retrieve the authenticated user's profile based on the session value
-    $auth = register_profiles::where('r_profile_id', $plat_id)->get();
+        // Get the r_profile_id from the session
+        $plat_id = Session::get('platinum');
+        
+        // Retrieve keywords from the request
         $keywords = $request->keywords;
         $data1 = collect();
         $data2 = collect();
@@ -27,28 +25,32 @@ class WeeklyController extends Controller
         $data4 = collect();
         $data = collect();
 
-        if(strlen($keywords)){
-            $data = WeeklyFocus::where('WF_Description', 'like', "%$keywords%")
-                ->orWhere('WF_Type', 'like', "%$keywords%")
-                ->orWhere('WF_SDate', 'like', "%$keywords%")
-                ->orWhere('WF_EDate', 'like', "%$keywords%");
+        if (strlen($keywords)) {
+            // Filter data based on keywords and r_profile_id
+            $data = WeeklyFocus::where('r_profile_id', $plat_id)
+                ->where(function($query) use ($keywords) {
+                    $query->where('WF_Description', 'like', "%$keywords%")
+                          ->orWhere('WF_Type', 'like', "%$keywords%")
+                          ->orWhere('WF_SDate', 'like', "%$keywords%")
+                          ->orWhere('WF_EDate', 'like', "%$keywords%");
+                })
+                ->get();
+        } else {
+            // Fetch weekly focus data for a specific r_profile_id
+            $data1 = WeeklyFocus::where('r_profile_id', $plat_id)->where('WF_Type', 'focus')->get();
+            $data2 = WeeklyFocus::where('r_profile_id', $plat_id)->where('WF_Type', 'admin')->get();
+            $data3 = WeeklyFocus::where('r_profile_id', $plat_id)->where('WF_Type', 'social')->get();
+            $data4 = WeeklyFocus::where('r_profile_id', $plat_id)->where('WF_Type', 'recovery')->get();
+            $data = WeeklyFocus::where('r_profile_id', $plat_id)->get();
         }
-        else{
-        $data1 = WeeklyFocus::where('WF_Type', 'focus')->get();
-        $data2 = WeeklyFocus::where('WF_Type', 'admin')->get();
-        $data3 = WeeklyFocus::where('WF_Type', 'social')->get();
-        $data4 = WeeklyFocus::where('WF_Type', 'recovery')->get();
-        $data = WeeklyFocus::where('WF_Type')->get();
-        }
-        
+
         return view('ProgressMonitoring.WeeklyFocus', compact('data1', 'data2', 'data3', 'data4', 'data'));
     }
-
     public function view($platinum_id)
     {
         // Retrieve r_profile_id from the session
-        $r_profile_id = session('r_profile_id');
-    
+        $r_profile_id = Session::get('platinum');
+
         // Fetch weekly focus data for a specific platinum student and r_profile_id
         $data1 = WeeklyFocus::where('platinum_id', $platinum_id)
                             ->where('r_profile_id', $r_profile_id)
@@ -69,10 +71,9 @@ class WeeklyController extends Controller
         $data = WeeklyFocus::where('platinum_id', $platinum_id)
                            ->where('r_profile_id', $r_profile_id)
                            ->get();
-    
+
         return view('WeeklyFocus.view', compact('data1', 'data2', 'data3', 'data4', 'data'));
     }
-    
 
     public function viewerMentor()
     {

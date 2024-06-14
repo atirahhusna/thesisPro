@@ -52,7 +52,9 @@
     font-size: 16px; /* Standard font size */
   }
 
-  .profile-field input[type="text"], .profile-field input[type="password"] {
+
+  .profile-field input[type="text"], 
+  .profile-field input[type="password"] {
     width: 100%; /* Make input full width */
     padding: 10px; /* Standard padding */
     box-sizing: border-box;
@@ -62,7 +64,8 @@
     transition: border-color 0.3s ease; /* Smooth transition */
   }
 
-  .profile-field input[type="text"]:focus, .profile-field input[type="password"]:focus {
+  .profile-field input[type="text"]:focus, 
+  .profile-field input[type="password"]:focus {
     border-color: #6c5ce7; /* Purple border on focus */
     outline: none;
   }
@@ -122,7 +125,7 @@
       </div>
 
       <div class="profile-field">
-        <label for="password">Password</label>
+        <label for="phone">Password</label>
         <input type="password" id="password" name="s_password" value="{{ $data->s_password }}">
       </div>
 

@@ -72,20 +72,23 @@
     font-size: 16px; /* Standard font size */
   }
 
-  .profile-field input[type="text"] {
-    width: 700px;
-    padding: 10px; /* Standard padding */
-    box-sizing: border-box;
-    color: #333333; /* Dark gray font color */
-    border: 1px solid #cccccc; /* Light gray border */
-    border-radius: 5px; /* Slight border radius */
-    transition: border-color 0.3s ease; /* Smooth transition */
-  }
+  .profile-field input[type="text"],
+.profile-field input[type="password"] {
+  width: 700px;
+  padding: 10px; /* Standard padding */
+  box-sizing: border-box;
+  color: #333333; /* Dark gray font color */
+  border: 1px solid #cccccc; /* Light gray border */
+  border-radius: 5px; /* Slight border radius */
+  transition: border-color 0.3s ease; /* Smooth transition */
+}
 
-  .profile-field input[type="text"]:focus {
-    border-color: #6c5ce7; /* Purple border on focus */
-    outline: none;
-  }
+.profile-field input[type="text"]:focus,
+.profile-field input[type="password"]:focus {
+  border-color: #6c5ce7; /* Purple border on focus */
+  outline: none;
+}
+
 
   .edit-btn {
   width: 100%; /* Make the button wider */
